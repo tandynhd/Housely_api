@@ -78,7 +78,7 @@ include('includes/config.php');
         
        
                 <!-- Start: Welcome Section -->
-                <section class="welcome-section">
+            <section class="welcome-section">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
