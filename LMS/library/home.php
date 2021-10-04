@@ -163,7 +163,7 @@ include('includes/config.php');
                 <ul class="category-list">
                     <li class="category-item adults">
                         <figure>
-                            <img src="images/category-filter/home-v1/fitness-img-01.jpg" alt="New Releaase" />
+                            <img src="images/category-filter/home-v1/fitness-img-01.jpg" alt="Facilities" />
                             <figcaption class="bg-orange">
                                 <div class="info-block">
                                     <h4>Fitness</h4>
@@ -178,7 +178,7 @@ include('includes/config.php');
                     
                     <li class="category-item kids-teens">
                         <figure>
-                            <img src="images/category-filter/home-v1/front-desk-img-02.jpg" alt="New Releaase" />
+                            <img src="images/category-filter/home-v1/front-desk-img-02.jpg" alt="Facilities" />
                             <figcaption class="bg-orange">
                                 <div class="info-block">
                                     <h4>Front Desk</h4>
@@ -191,7 +191,7 @@ include('includes/config.php');
 
                     <li class="category-item video">
                         <figure>
-                            <img src="images/category-filter/home-v1/lobby-img-03.jpg" alt="New Releaase" />
+                            <img src="images/category-filter/home-v1/lobby-img-03.jpg" alt="Facilities" />
                             <figcaption class="bg-orange">
                                 <div class="info-block">
                                     <h4>Front Security Gate</h4>
@@ -204,7 +204,7 @@ include('includes/config.php');
 
                     <li class="category-item audio">
                         <figure>
-                            <img src="images/category-filter/home-v1/library-img-04.jpg" alt="New Releaase" />
+                            <img src="images/category-filter/home-v1/library-img-04.jpg" alt="Facilities" />
                             <figcaption class="bg-orange">
                                 <div class="info-block">
                                     <h4>Library</h4>
@@ -217,7 +217,7 @@ include('includes/config.php');
 
                     <li class="category-item books">
                         <figure>
-                            <img src="images/category-filter/home-v1/pool-img-05.jpg" alt="New Releaase" />
+                            <img src="images/category-filter/home-v1/pool-img-05.jpg" alt="Facilities" />
                             <figcaption class="bg-orange">
                                 <div class="info-block">
                                     <h4>Swimming Pool</h4>
@@ -231,7 +231,7 @@ include('includes/config.php');
 
                     <li class="category-item magazines">
                         <figure>
-                            <img src="images/category-filter/home-v1/game-img-06.jpg" alt="New Releaase" />
+                            <img src="images/category-filter/home-v1/game-img-06.jpg" alt="Facilities" />
                             <figcaption class="bg-orange">
                                 <div class="info-block">
                                     <h4>Game Room</h4>
@@ -244,7 +244,7 @@ include('includes/config.php');
 
                     <li class="category-item adults">
                         <figure>
-                            <img src="images/category-filter/home-v1/laundry-img-07.jpg" alt="New Releaase" />
+                            <img src="images/category-filter/home-v1/laundry-img-07.jpg" alt="Facilities" />
                             <figcaption class="bg-orange">
                                 <div class="info-block">
                                     <h4>Laundry Room</h4>
@@ -257,7 +257,7 @@ include('includes/config.php');
 
                     <li class="category-item kids-teens">
                         <figure>
-                            <img src="images/category-filter/home-v1/working-img-08.jpg" alt="New Releaase" />
+                            <img src="images/category-filter/home-v1/working-img-08.jpg" alt="Facilities" />
                             <figcaption class="bg-orange">
                                 <div class="info-block">
                                     <h4>Co-Working Spaces</h4>
