@@ -45,7 +45,7 @@ include('includes/config.php');
             <div class="carousel-inner">
                 <div class="item active">
                     <figure>
-                        <img alt="Home Slide" src="images/header-slider/home-v1/03-Stationary-3.jpg" />
+                        <img alt="Home Slide" src="images/header-slider/home-v1/front-appartment.jpg" />
                     </figure>
                     <div class="container">
                         <div class="carousel-caption">
@@ -61,7 +61,7 @@ include('includes/config.php');
                 </div>
                 <div class="item">
                     <figure>
-                        <img alt="Home Slide" src="images/header-slider/home-v1/side-shelves-view-sm.jpg" />
+                        <img alt="Home Slide" src="images/header-slider/home-v1/inside-apartment.jpg" />
                     </figure>
                     <div class="container">
                         <div class="carousel-caption">
@@ -151,7 +151,7 @@ include('includes/config.php');
                 <div class="center-content">
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3">
-                            <h2 class="section-title">Check Out The New Releases</h2>
+                            <h2 class="section-title">Our Facilities</h2>
                             <span class="underline center"></span>
                             <p class="lead"></p>
                         </div>
@@ -163,55 +163,21 @@ include('includes/config.php');
                 <ul class="category-list">
                     <li class="category-item adults">
                         <figure>
-                            <img src="images/category-filter/home-v1/category-filter-img-01.jpg" alt="New Releaase" />
+                            <img src="images/category-filter/home-v1/fitness-img-01.jpg" alt="New Releaase" />
                             <figcaption class="bg-orange">
                                 <div class="info-block">
-                                    <h4>The Great Gatsby</h4>
-                                    <span class="author"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                    <span class="author"><strong>ISBN:</strong> 9781581573268</span>
-                                    <div class="rating">
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                    </div>
-                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                    <a href="#"></a>
-                                    <ol>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-heart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-envelope"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-share-alt"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-search"></i>
-                                            </a>
-                                        </li>
-                                    </ol>
+                                    <h4>Fitness</h4>
+                    
+                                    <p>Housely has excellent fully equipped and modern indoor Gymnasium for those who are into health and fitness.</p>
+                                    <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
+                                   
                                 </div>
                             </figcaption>
                         </figure>
                     </li>
                     <li class="category-item kids-teens">
                         <figure>
-                            <img src="images/category-filter/home-v1/category-filter-img-02.jpg" alt="New Releaase" />
+                            <img src="images/category-filter/home-v1/front-desk-img-02.jpg" alt="New Releaase" />
                             <figcaption class="bg-orange">
                                 <div class="info-block">
                                     <h4>The Great Gatsby</h4>
@@ -259,7 +225,7 @@ include('includes/config.php');
                     </li>
                     <li class="category-item video">
                         <figure>
-                            <img src="images/category-filter/home-v1/category-filter-img-03.jpg" alt="New Releaase" />
+                            <img src="images/category-filter/home-v1/lobby-img-03.jpg" alt="New Releaase" />
                             <figcaption class="bg-orange">
                                 <div class="info-block">
                                     <h4>The Great Gatsby</h4>
@@ -307,7 +273,7 @@ include('includes/config.php');
                     </li>
                     <li class="category-item audio">
                         <figure>
-                            <img src="images/category-filter/home-v1/category-filter-img-04.jpg" alt="New Releaase" />
+                            <img src="images/category-filter/home-v1/library-img-04.jpg" alt="New Releaase" />
                             <figcaption class="bg-orange">
                                 <div class="info-block">
                                     <h4>The Great Gatsby</h4>
@@ -353,57 +319,25 @@ include('includes/config.php');
                             </figcaption>
                         </figure>
                     </li>
+                    
                     <li class="category-item books">
                         <figure>
-                            <img src="images/category-filter/home-v1/category-filter-img-05.jpg" alt="New Releaase" />
+                            <img src="images/category-filter/home-v1/pool-img-05.jpg" alt="New Releaase" />
                             <figcaption class="bg-orange">
                                 <div class="info-block">
-                                    <h4>The Great Gatsby</h4>
-                                    <span class="author"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                    <span class="author"><strong>ISBN:</strong> 9781581573268</span>
-                                    <div class="rating">
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                    </div>
+                                    <h4>Swimming Pool</h4>
+                                   
                                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                    <a href="#"></a>
-                                    <ol>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-heart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-envelope"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-share-alt"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-search"></i>
-                                            </a>
-                                        </li>
-                                    </ol>
+                                    <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
+
                                 </div>
                             </figcaption>
                         </figure>
                     </li>
+
                     <li class="category-item magazines">
                         <figure>
-                            <img src="images/category-filter/home-v1/category-filter-img-06.jpg" alt="New Releaase" />
+                            <img src="images/category-filter/home-v1/game-img-06.jpg" alt="New Releaase" />
                             <figcaption class="bg-orange">
                                 <div class="info-block">
                                     <h4>The Great Gatsby</h4>
@@ -449,102 +383,35 @@ include('includes/config.php');
                             </figcaption>
                         </figure>
                     </li>
+
                     <li class="category-item adults">
                         <figure>
-                            <img src="images/category-filter/home-v1/category-filter-img-07.jpg" alt="New Releaase" />
+                            <img src="images/category-filter/home-v1/laundry-img-07.jpg" alt="New Releaase" />
                             <figcaption class="bg-orange">
                                 <div class="info-block">
-                                    <h4>The Great Gatsby</h4>
-                                    <span class="author"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                    <span class="author"><strong>ISBN:</strong> 9781581573268</span>
-                                    <div class="rating">
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                    </div>
+                                    <h4>Laundry Room</h4>
                                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                    <a href="#"></a>
-                                    <ol>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-heart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-envelope"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-share-alt"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-search"></i>
-                                            </a>
-                                        </li>
-                                    </ol>
+                                    <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
                                 </div>
                             </figcaption>
                         </figure>
                     </li>
+
                     <li class="category-item kids-teens">
                         <figure>
-                            <img src="images/category-filter/home-v1/category-filter-img-08.jpg" alt="New Releaase" />
+                            <img src="images/category-filter/home-v1/working-img-08.jpg" alt="New Releaase" />
                             <figcaption class="bg-orange">
                                 <div class="info-block">
-                                    <h4>The Great Gatsby</h4>
-                                    <span class="author"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                    <span class="author"><strong>ISBN:</strong> 9781581573268</span>
-                                    <div class="rating">
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                    </div>
+                                    <h4>Co-Working Spaces</h4>
+                    
                                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                    <a href="#"></a>
-                                    <ol>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-heart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-envelope"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-share-alt"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-search"></i>
-                                            </a>
-                                        </li>
-                                    </ol>
+                                    <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
+                                    
                                 </div>
                             </figcaption>
                         </figure>
                     </li>
+
                 </ul>
                 <div class="center-content">
                     <a href="#" class="btn btn-primary">View More</a>
