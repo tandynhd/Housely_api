@@ -32,9 +32,9 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="topbar-info">
-                                                <a href="tel:+61-3-8376-6284"><i class="fa fa-phone"></i>+66-3-8376-6284</a>
+                                                <a href="tel:+66-3-8376-6284"><i class="fa fa-phone"></i>+66-3-8376-6284</a>
                                                 <span>/</span>
-                                                <a href="mailto:support@homely.com"><i class="fa fa-envelope"></i>support@homely.com</a>
+                                                <a href="mailto:support@housely.com"><i class="fa fa-envelope"></i>support@housely.com</a>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
@@ -134,7 +134,7 @@
                                     <div class="navbar-brand">
                                         <h1>
                                             <a href="home.php">
-                                                <img src="images/libraria-logo-v1.png" alt="LITERARIUM" />
+                                                <img src="housely-logo-100.png" alt=" HOUSELY" />
                                             </a>
                                         </h1>
                                     </div>
@@ -150,7 +150,7 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="topbar-info">
-                                                <a href="tel:+61-3-8376-6284"><i class="fa fa-phone"></i>+66-3-8376-6284</a>
+                                                <a href="tel:+61-3-8376-6284"><i class="fa fa-phone"></i>+66-87-536-6363</a>
                                                 <span>/</span>
                                                 <a href="mailto:support@homely.com"><i class="fa fa-envelope"></i>support@homely.com</a>
                                             </div>

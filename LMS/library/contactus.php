@@ -130,9 +130,9 @@ include('includes/config.php');
                                             <div class="bottom-info">
                                                 <span class="top-arrow"></span>
                                                 <ul>
-                                                    <li>www.literarium.com</li>
-                                                    <li>support@literarium.com</li>
-                                                    <li>info@literarium.com</li>
+                                                    <li>www.housely.com</li>
+                                                    <li>support@housely.com</li>
+                                                    <li>info@housely.com</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -140,9 +140,9 @@ include('includes/config.php');
                                             <div class="bottom-info orange-bg">
                                                 <span class="bottom-arrow"></span>
                                                 <ul>
-                                                    <li>www.literarium.com</li>
-                                                    <li>support@literarium.com</li>
-                                                    <li>info@literarium.com</li>
+                                                    <li>www.housely.com</li>
+                                                    <li>support@housely.com</li>
+                                                    <li>info@housely.com</li>
                                                 </ul>
                                             </div>
                                             <div class="top-info dark-bg">
