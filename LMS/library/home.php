@@ -65,7 +65,7 @@ include('includes/config.php');
                     </figure>
                     <div class="container">
                         <div class="carousel-caption">
-                            <h3>You Found The Right Place!</h3>
+                            <h3>You Found The Right Place!!</h3>
                             <h2>Register Today</h2>
                             <p>Nothing is pleasanter than finding a right dorm.</p>
                             <div class="slide-buttons hidden-sm hidden-xs">    
