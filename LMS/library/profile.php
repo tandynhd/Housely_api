@@ -134,7 +134,7 @@ header('location:profile.php');
 	
 	
 	<div class="col-md-12">
-                <h4 class="header-line">Issued Books</h4>
+                <h4 class="header-line">Customer Details</h4>
     </div>
 	
 	
@@ -145,7 +145,7 @@ header('location:profile.php');
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading" id="tableheading">
-                          Issued Books 
+                          Customer Details
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -153,8 +153,8 @@ header('location:profile.php');
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Book Name</th>
-                                            <th>ISBN </th>
+                                            <th>Customer Name</th>
+                                            <th>Customer ID </th>
                                             <th>Issued Date</th>
                                             <th>Return Date</th>
                                             <th>Fine in(USD)</th>
