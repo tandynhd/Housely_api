@@ -152,7 +152,7 @@
                                             <div class="topbar-info">
                                                 <a href="tel:+61-3-8376-6284"><i class="fa fa-phone"></i>+66-87-536-6363</a>
                                                 <span>/</span>
-                                                <a href="mailto:support@homely.com"><i class="fa fa-envelope"></i>support@homely.com</a>
+                                                <a href="mailto:support@housely.com"><i class="fa fa-envelope"></i>support@housely.com</a>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">

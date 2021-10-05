@@ -17,7 +17,7 @@ include('includes/config.php');
         <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
 
       
-        <title>..:: LITERARIUM ::..</title>
+        <title> Contact Housely</title>
         
        
         <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
@@ -75,9 +75,9 @@ include('includes/config.php');
                                             <div class="bottom-info">
                                                 <span class="top-arrow"></span>
                                                 <ul>
-                                                    <li>Thammasat University, Kuang Luang </li>
-                                                    <li>Pathumthani, Thailand</li>
-                                                    <li>PO Box 12120</li>
+                                                    <li> SIIT, Thammasat University</li>
+                                                    <li>99 Moo 18 Khlong Nueng, Khlong Luang District</li>
+                                                    <li>Pathum Thani 12121</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -85,9 +85,9 @@ include('includes/config.php');
                                             <div class="bottom-info orange-bg">
                                                 <span class="bottom-arrow"></span>
                                                 <ul>
-                                                   <li>Thammasat University, Kuang Luang </li>
-                                                    <li>Pathumthani, Thailand</li>
-                                                    <li>PO Box 12120</li>
+                                                    <li> SIIT, Thammasat University</li>
+                                                    <li>99 Moo 18 Khlong Nueng, Khlong Luang District</li>
+                                                    <li>Pathum Thani 12121</li>
                                                 </ul>
                                             </div>
                                             <div class="top-info dark-bg">
@@ -98,27 +98,27 @@ include('includes/config.php');
                                     <div class="flipcard">
                                         <div class="front">
                                             <div class="top-info">
-                                                <span><i class="fa fa-fax" aria-hidden="true"></i> Phone and Fax</span>
+                                                <span><i class="fa fa-fax" aria-hidden="true"></i> Phone</span>
                                             </div>
                                             <div class="bottom-info">
                                                 <span class="top-arrow"></span>
                                                 <ul>
-                                                    <li><a href="tel:+123-456-7890">Local: +66-23-456-7890</a></li>
-                                                    <li><a href="tel:+123-456-7890">Local: +66-23-456-7890</a></li>
-                                                    <li><a href="fax:(001)-254-7359">Fax: +66-23-456-7890</a></li>
+                                                    <li><a href="tel:+66-87-536-6363 ">Local: +66-87-536-6363 </a></li>
+                                                    <li><a href="tel:+66-97-456-7890">Local: +66-97-456-7890</a></li>
+                                                    
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="back">
                                             <div class="bottom-info orange-bg">
                                                 <span class="bottom-arrow"></span>
-                                                <ul><li><a href="tel:+123-456-7890">Local: +66-23-456-7890</a></li>
-                                                    <li><a href="tel:+123-456-7890">Local: +66-23-456-7890</a></li>
-                                                    <li><a href="fax:(001)-254-7359">Fax: +66-23-456-7890</a></li>
+                                                <ul><li><a href="tel:+66-87-536-6363">Local: +66-87-536-6363 </a></li>
+                                                    <li><a href="tel:+66-97-456-7890">Local: +66-97-456-7890</a></li>
+                                                    
                                                 </ul>
                                             </div>
                                             <div class="top-info dark-bg">
-                                                <span><i class="fa fa-fax" aria-hidden="true"></i> Phone and Fax</span>
+                                                <span><i class="fa fa-fax" aria-hidden="true"></i> Phone</span>
                                             </div>                                                
                                         </div>
                                     </div>
@@ -130,7 +130,7 @@ include('includes/config.php');
                                             <div class="bottom-info">
                                                 <span class="top-arrow"></span>
                                                 <ul>
-                                                    <li>www.housely.com</li>
+                                                    
                                                     <li>support@housely.com</li>
                                                     <li>info@housely.com</li>
                                                 </ul>
@@ -140,7 +140,7 @@ include('includes/config.php');
                                             <div class="bottom-info orange-bg">
                                                 <span class="bottom-arrow"></span>
                                                 <ul>
-                                                    <li>www.housely.com</li>
+                                                    
                                                     <li>support@housely.com</li>
                                                     <li>info@housely.com</li>
                                                 </ul>

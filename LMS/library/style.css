@@ -9406,7 +9406,7 @@ a:focus {
   position: relative;
 }
 .welcome-section .welcome-image {
-  background-image: url(images/welcome-img-home-v1.jpg);
+  background-image: url(images/welcome-img-home-housely.jpg);
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
@@ -9549,7 +9549,7 @@ a:focus {
 }
 .category-filter {
   background-attachment: fixed;
-  background-image: url(images/project-filter-bg-home-v1.jpg);
+  background-image: url(images/project-filter-bg-home-v1-1.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -10312,7 +10312,7 @@ a:focus {
 }
 .news-events.banner {
   background-attachment: fixed;
-  background-image: url(images/news-event/home-v1-news-event-banner.jpg);
+  background-image: url(images/news-event/home-v1-news-event-banner-1.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -10749,7 +10749,7 @@ a:focus {
 }
 .latest-blog.banner {
   background-attachment: fixed;
-  background-image: url(images/latest-blog-bg-home-v1.jpg);
+  background-image: url(images/latest-blog-bg-home-v1-1.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
