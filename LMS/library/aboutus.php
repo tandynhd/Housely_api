@@ -61,11 +61,12 @@ include('includes/config.php');
         
         
        
-                <!-- Start: Welcome Section -->
-            <section class="welcome-section">
+            <!-- Start: Welcome Section -->
+        <section class="welcome-section">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
+                        
                         <div class="welcome-wrap">
                             <div class="welcome-text">
                                 <h2 class="section-title">Welcome to Housely</h2>
@@ -84,7 +85,7 @@ include('includes/config.php');
                                         <div class="fact-icon">
                                             <i class="ebook"></i>
                                         </div>
-                                        <span>Countries<strong class="fact-counter">20</strong></span>
+                                        <span><strong class="fact-counter">35</strong> Province in Thailand</span>
                                     </div>
                                 </li>
                                 <li class="bg-green">
@@ -92,7 +93,7 @@ include('includes/config.php');
                                         <div class="fact-icon">
                                             <i class="eaudio"></i>
                                         </div>
-                                        <span>Branches in Thailand<strong class="fact-counter">790</strong></span>
+                                        <span>Close to<strong class="fact-counter">25</strong> University</span>
                                     </div>
                                 </li>
                                 <li class="bg-red">
@@ -100,7 +101,8 @@ include('includes/config.php');
                                         <div class="fact-icon">
                                             <i class="magazine"></i>
                                         </div>
-                                        <span>Rooms<strong class="fact-counter">450</strong></span>
+                                        <span>Housely member<strong class="fact-counter">57,000</strong></span>
+                                        
                                     </div>
                                 </li>
                                 <li class="bg-blue">
@@ -108,7 +110,8 @@ include('includes/config.php');
                                         <div class="fact-icon">
                                             <i class="videos"></i>
                                         </div>
-                                        <span>Active Users<strong class="fact-counter">24,000,000</strong></span>
+                                        <span>Award<strong class="fact-counter">5</strong></span>
+                                        
                                     </div>
                                 </li>
                             </ul>
@@ -128,7 +131,7 @@ include('includes/config.php');
         <section class="latest-blog section-padding banner">
             <div class="container">
                 <div class="center-content">
-                    <h2 class="section-title">What We Look Forward To</h2>
+                    <h2 class="section-title">OUR PRIORITY</h2>
                     <span class="underline center"></span>
                     <p class="lead"></p>
                 </div>
@@ -139,7 +142,7 @@ include('includes/config.php');
                                 <a href="#" class="bg-yellow">
                                     <div class="title">
                                         <i class="yellow"></i>
-                                        <h3>Goals</h3>
+                                        <h3>FIXING</h3>
                                     </div>
                                 </a>
                             </li>
@@ -147,7 +150,7 @@ include('includes/config.php');
                                 <a href="#" class="bg-light-green">
                                     <div class="title">
                                         <i class="light-green"></i>
-                                        <h3>Motto</h3>
+                                        <h3>PROPERTY maintanence</h3>
                                     </div>
                                 </a>
                             </li>
@@ -155,7 +158,7 @@ include('includes/config.php');
                                 <a href="#" class="bg-blue">
                                     <div class="title">
                                         <i class="blue"></i>
-                                        <h3>Vision</h3>
+                                        <h3>BOOKING</h3>
                                     </div>
                                 </a>
                             </li>
@@ -163,7 +166,7 @@ include('includes/config.php');
                                 <a href="#" class="bg-red">
                                     <div class="title">
                                         <i class="red"></i>
-                                        <h3>Team</h3>
+                                        <h3>TRANSFER</h3>
                                     </div>
                                 </a>
                             </li>
@@ -171,7 +174,7 @@ include('includes/config.php');
                                 <a href="#" class="bg-violet">
                                     <div class="title">
                                         <i class="violet"></i>
-                                        <h3>Aims</h3>
+                                        <h3>INFORMATION</h3>
                                     </div>
                                 </a>
                             </li>
@@ -179,7 +182,7 @@ include('includes/config.php');
                                 <a href="#" class="bg-green">
                                     <div class="title">
                                         <i class="green"></i>
-                                        <h3>Feature</h3>
+                                        <h3>PRIVILEGES</h3>
                                     </div>
                                 </a>
                             </li>
@@ -189,266 +192,71 @@ include('includes/config.php');
                         <div class="tab-content active">
                             <article>
                                 <figure>
-                                    <img src="images/latest-blog-img-home-v1.jpg" alt="Latest Blog">
-                                    <figcaption>
-                                        <a href="#.">
-                                            <span class="date">07</span>
-                                            <span class="month">Mar</span>
-                                        </a>
-                                    </figcaption>
+                                    <img src="images/priority/01.jpg" alt="Latest Blog">
                                 </figure>
-                                <div class="post-detail">
-                                    <div class="info-bar">
-                                        <div class="comments">
-                                            <a href="#">
-                                                <i class="fa fa-comment"></i> 37
-                                            </a>
-                                        </div>
-                                        <div class="likes">
-                                            <a href="#">
-                                                <i class="fa fa-thumbs-o-up"></i> 110
-                                            </a>
-                                        </div>
-                                        <div class="viewed">
-                                            <a href="#">
-                                                <i class="fa fa-eye"></i> 180
-                                            </a>
-                                        </div>
-                                        <div class="share">
-                                            <a href="#">
-                                                <i class="fa fa-share-alt"></i> Share
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <h4>It uses dictionary over 200 Latin</h4>
-                                    <div class="author">
-                                        <a href="#">
-                                            <i class="fa fa-user"></i> Adrey Pachai
-                                        </a>
-                                    </div>
-                                    <p>Books are written and printed texts that serve to give information to the reader. Before books are ready for the market they have to go through certain procedures of validation after which they are confirmed to be of market standards.</p>
+                                <div class="post-detail"> 
+                                    <h4>PRIORITY FIXING</h4>
+                                    <p>Entitled to receive advice and recommendations from experienced repair team, delivering a fast and professional fixing service with effective management process.</p>
                                     <a class="btn btn-dark-gray">Read More</a>
                                 </div>
                             </article>
                         </div>
                         <div class="tab-content">
-                            <article>
+                        <article>
                                 <figure>
-                                    <img src="images/latest-blog-img-home-v1-2.jpg" alt="Latest Blog">
-                                    <figcaption>
-                                        <a href="#.">
-                                            <span class="date">06</span>
-                                            <span class="month">Mar</span>
-                                        </a>
-                                    </figcaption>
+                                    <img src="images/priority/02.jpg" alt="Latest Blog">
                                 </figure>
-                                <div class="post-detail">
-                                    <div class="info-bar">
-                                        <div class="comments">
-                                            <a href="#">
-                                                <i class="fa fa-comment"></i> 37
-                                            </a>
-                                        </div>
-                                        <div class="likes">
-                                            <a href="#">
-                                                <i class="fa fa-thumbs-o-up"></i> 110
-                                            </a>
-                                        </div>
-                                        <div class="viewed">
-                                            <a href="#">
-                                                <i class="fa fa-eye"></i> 180
-                                            </a>
-                                        </div>
-                                        <div class="share">
-                                            <a href="#">
-                                                <i class="fa fa-share-alt"></i> Share
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <h4>eBooks</h4>
-                                    <div class="author">
-                                        <a href="#">
-                                            <i class="fa fa-user"></i> Adrey Pachai
-                                        </a>
-                                    </div>
-									<p>Literarium is one the best libraries. You Guys Should Check This Library</p>
+                                <div class="post-detail"> 
+                                    <h4>PRIORITY PROPERTY maintanence</h4>
+                                    <p>Professional maintanence system for our properties.</p>
                                     <a class="btn btn-dark-gray">Read More</a>
                                 </div>
                             </article>
                         </div>
                         <div class="tab-content">
-                            <article>
+                        <article>
                                 <figure>
-                                    <img src="images/latest-blog-img-home-v1.jpg" alt="Latest Blog">
-                                    <figcaption>
-                                        <a href="#.">
-                                            <span class="date">05</span>
-                                            <span class="month">Mar</span>
-                                        </a>
-                                    </figcaption>
+                                    <img src="images/priority/03.jpg" alt="Latest Blog">
                                 </figure>
-                                <div class="post-detail">
-                                    <div class="info-bar">
-                                        <div class="comments">
-                                            <a href="#">
-                                                <i class="fa fa-comment"></i> 37
-                                            </a>
-                                        </div>
-                                        <div class="likes">
-                                            <a href="#">
-                                                <i class="fa fa-thumbs-o-up"></i> 110
-                                            </a>
-                                        </div>
-                                        <div class="viewed">
-                                            <a href="#">
-                                                <i class="fa fa-eye"></i> 180
-                                            </a>
-                                        </div>
-                                        <div class="share">
-                                            <a href="#">
-                                                <i class="fa fa-share-alt"></i> Share
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <h4>DVDS</h4>
-                                    <div class="author">
-                                        <a href="#">
-                                            <i class="fa fa-user"></i> Adrey Pachai
-                                        </a>
-                                    </div>
-									
+                                <div class="post-detail"> 
+                                    <h4>PRIORITY BOOKING</h4>
+                                    <p>Priority access to reserve your preferred units at any projects you want.</p>
                                     <a class="btn btn-dark-gray">Read More</a>
                                 </div>
                             </article>
                         </div>
                         <div class="tab-content">
-                            <article>
+                        <article>
                                 <figure>
-                                    <img src="images/latest-blog-img-home-v1-2.jpg" alt="Latest Blog">
-                                    <figcaption>
-                                        <a href="#.">
-                                            <span class="date">04</span>
-                                            <span class="month">Mar</span>
-                                        </a>
-                                    </figcaption>
+                                    <img src="images/priority/04.jpg" alt="Latest Blog">
                                 </figure>
-                                <div class="post-detail">
-                                    <div class="info-bar">
-                                        <div class="comments">
-                                            <a href="#">
-                                                <i class="fa fa-comment"></i> 37
-                                            </a>
-                                        </div>
-                                        <div class="likes">
-                                            <a href="#">
-                                                <i class="fa fa-thumbs-o-up"></i> 110
-                                            </a>
-                                        </div>
-                                        <div class="viewed">
-                                            <a href="#">
-                                                <i class="fa fa-eye"></i> 180
-                                            </a>
-                                        </div>
-                                        <div class="share">
-                                            <a href="#">
-                                                <i class="fa fa-share-alt"></i> Share
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <h4>Magazines</h4>
-                                    <div class="author">
-                                        <a href="#">
-                                            <i class="fa fa-user"></i> Adrey Pachai
-                                        </a>
-                                    </div>
+                                <div class="post-detail"> 
+                                    <h4>PRIORITY TRANSFER</h4>
+                                    <p>Assists you in property conveyance procedures for your convenience.</p>
                                     <a class="btn btn-dark-gray">Read More</a>
                                 </div>
                             </article>
                         </div>
                         <div class="tab-content">
-                            <article>
+                        <article>
                                 <figure>
-                                    <img src="images/latest-blog-img-home-v1.jpg" alt="Latest Blog">
-                                    <figcaption>
-                                        <a href="#.">
-                                            <span class="date">03</span>
-                                            <span class="month">Mar</span>
-                                        </a>
-                                    </figcaption>
+                                    <img src="images/priority/05.jpg" alt="Latest Blog">
                                 </figure>
-                                <div class="post-detail">
-                                    <div class="info-bar">
-                                        <div class="comments">
-                                            <a href="#">
-                                                <i class="fa fa-comment"></i> 37
-                                            </a>
-                                        </div>
-                                        <div class="likes">
-                                            <a href="#">
-                                                <i class="fa fa-thumbs-o-up"></i> 110
-                                            </a>
-                                        </div>
-                                        <div class="viewed">
-                                            <a href="#">
-                                                <i class="fa fa-eye"></i> 180
-                                            </a>
-                                        </div>
-                                        <div class="share">
-                                            <a href="#">
-                                                <i class="fa fa-share-alt"></i> Share
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <h4>Audio</h4>
-                                    <div class="author">
-                                        <a href="#">
-                                            <i class="fa fa-user"></i> Adrey Pachai
-                                        </a>
-                                    </div>
+                                <div class="post-detail"> 
+                                    <h4>PRIORITY INFORMATION</h4>
+                                    <p>Delivers advance information on our latest projects.</p>
                                     <a class="btn btn-dark-gray">Read More</a>
                                 </div>
                             </article>
                         </div>
                         <div class="tab-content">
-                            <article>
+                        <article>
                                 <figure>
-                                    <img src="images/latest-blog-img-home-v1-2.jpg" alt="Latest Blog">
-                                    <figcaption>
-                                        <a href="#.">
-                                            <span class="date">02</span>
-                                            <span class="month">Mar</span>
-                                        </a>
-                                    </figcaption>
+                                    <img src="images/priority/06.jpg" alt="Latest Blog">
                                 </figure>
-                                <div class="post-detail">
-                                    <div class="info-bar">
-                                        <div class="comments">
-                                            <a href="#">
-                                                <i class="fa fa-comment"></i> 37
-                                            </a>
-                                        </div>
-                                        <div class="likes">
-                                            <a href="#">
-                                                <i class="fa fa-thumbs-o-up"></i> 110
-                                            </a>
-                                        </div>
-                                        <div class="viewed">
-                                            <a href="#">
-                                                <i class="fa fa-eye"></i> 180
-                                            </a>
-                                        </div>
-                                        <div class="share">
-                                            <a href="#">
-                                                <i class="fa fa-share-alt"></i> Share
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <h4>eAudio</h4>
-                                    <div class="author">
-                                        <a href="#">
-                                            <i class="fa fa-user"></i> Adrey Pachai
-                                        </a>
-                                    </div>
+                                <div class="post-detail"> 
+                                    <h4>PRIORITY PRIVILEGES</h4>
+                                    <p>A curated selection of lifestyle privileges for your unparalleled living experience.</p>
                                     <a class="btn btn-dark-gray">Read More</a>
                                 </div>
                             </article>
@@ -478,7 +286,8 @@ include('includes/config.php');
         </section>
         <!-- End: Newsletter -->
 	   
-        <section class="social-network section-padding">
+         <!-- Start: Social Network -->
+         <section class="social-network section-padding">
             <div class="container">
                 <div class="center-content">
                     <h2 class="section-title">Follow Us</h2>
@@ -503,14 +312,14 @@ include('includes/config.php');
                     <li>
                         <a class="google" href="#" target="_blank">
                             <span>
-                                <i class="fa fa-google-plus"></i>
+                                <i class="fa fa-google"></i>
                             </span>
                         </a>
                     </li>
                     <li>
                         <a class="rss" href="#" target="_blank">
                             <span>
-                                <i class="fa fa-rss"></i>
+                                <i class="fa fa-instagram "></i>
                             </span>
                         </a>
                     </li>
