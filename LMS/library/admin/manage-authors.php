@@ -14,7 +14,7 @@ $sql = "delete from authors  WHERE id=:id";
 $query = $dbh->prepare($sql);
 $query -> bindParam(':id',$id, PDO::PARAM_STR);
 $query -> execute();
-$_SESSION['delmsg']="Author deleted";
+$_SESSION['delmsg']="Staff Removed";
 header('location:manage-authors.php');
 
 }
@@ -28,7 +28,7 @@ header('location:manage-authors.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-   <title>..:: LITERARIUM ::..</title>
+   <title> Housely </title>
         
        
         <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
@@ -67,14 +67,14 @@ header('location:manage-authors.php');
         <section class="page-banner services-banner">
             <div class="container">
                 <div class="banner-header">
-                    <h2>Manage Authors</h2>
+                    <h2>Manage Staff</h2>
                     <span class="underline center"></span>
                     <p class="lead"></p>
                 </div>
                 <div class="breadcrumb">
                     <ul>
-                        <li><a href="reserved-books.php">Reserved Books</a></li>
-                        <li>Manage Authors</li>
+                        <li><a href="reserved-books.php"> Admin </a></li>
+                        <li>Manage Staff</li>
                     </ul>
                 </div>
             </div>
@@ -141,7 +141,7 @@ header('location:manage-authors.php');
                     
                     <div class="panel panel-default">
                         <div class="panel-heading" id="tableheading">
-                           Authors Listing
+                           Staff Listing
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -149,9 +149,9 @@ header('location:manage-authors.php');
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Author</th>
+                                            <th>Staff</th>
                                          
-                                            <th>Creation Date</th>
+                                            <th>Joining Date</th>
                                             <th>Updation Date</th>
                                             <th>Action</th>
                                         </tr>
@@ -174,7 +174,7 @@ foreach($results as $result)
                                             <td class="center">
 
                                             <a href="edit-author.php?athrid=<?php echo htmlentities($result->id);?>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 
-                                          <a href="manage-authors.php?del=<?php echo htmlentities($result->id);?>" onclick="return confirm('Are you sure you want to delete?');"" >  <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button>
+                                          <a href="manage-authors.php?del=<?php echo htmlentities($result->id);?>" onclick="return confirm('Are you sure you want to delete?');"" >  <button class="btn btn-danger"><i class="fa fa-pencil"></i> Remove </button>
                                             </td>
                                         </tr>
  <?php $cnt=$cnt+1;}} ?>                                      

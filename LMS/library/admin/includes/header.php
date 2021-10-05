@@ -9,7 +9,7 @@
                                     <div class="navbar-brand">
                                         <h1>
                                             <a href="index-2.html">
-                                                <img src="images/libraria-logo-v1.png" alt="LITERARIUM" />
+                                                <img src="includes/housely-logo-100.png" alt="HOUSELY" />
                                             </a>
                                         </h1>
                                     </div>
@@ -27,7 +27,7 @@
                                             <div class="topbar-info">
                                                 <a href="tel:+61-3-8376-6284"><i class="fa fa-phone"></i>+66-3-8376-6284</a>
                                                 <span>/</span>
-                                                <a href="mailto:support@libraria.com"><i class="fa fa-envelope"></i>support@literaium.com</a>
+                                                <a href="mailto:support@housely.com"><i class="fa fa-envelope"></i>support@housely.com</a>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="navbar-collapse hidden-sm hidden-xs">
                                     <ul class="nav navbar-nav">
-                                        <li class="dropdown" >
+                                        <!-- <li class="dropdown" >
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Categories</a>
 											<ul class="dropdown-menu">
                                                 <li><a href="add-category.php">Add Categories</a></li>
@@ -50,49 +50,49 @@
                                                 
                                             </ul>
                                             
-                                        </li>
+                                        </li> -->
                                         <li class="dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Authors</a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Staff</a>
 											<ul class="dropdown-menu">
-                                                <li><a href="add-author.php">Add Authors</a></li>
-                                                <li><a href="manage-authors.php">Manage Authors</a></li>
+                                                <li><a href="add-author.php">Add Staff</a></li>
+                                                <li><a href="manage-authors.php">Manage Staff</a></li>
                                                 
                                             </ul>
                                             
                                         </li>
-										<li class="dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Publishers</a>
+										<!-- <li class="dropdown">
+                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Category</a>
 											<ul class="dropdown-menu">
                                                 <li><a href="add-publisher.php">Add Publishers</a></li>
                                                 <li><a href="manage-publishers.php">Manage Publishers</a></li>
                                                 
                                             </ul>
                                             
-                                        </li>
+                                        </li> -->
 										<li class="dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Books</a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Services</a>
 											<ul class="dropdown-menu">
-                                                <li><a href="add-book.php">Add Books</a></li>
-                                                <li><a href="manage-books.php">Manage Books</a></li>
+                                                <li><a href="add-book.php">Add Services</a></li>
+                                                <li><a href="manage-books.php">Manage Services</a></li>
                                                 
                                             </ul>
                                             
                                         </li>
                                         <li class="dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle disabled" href="reserved-books.php">Reserved Books</a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle disabled" href="reserved-books.php">Booked Services</a>
                                             
                                         </li>
                                         <li class="dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Issue Books</a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Issue Services</a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="issue-book.php">Issue New Books</a></li>
-                                                <li><a href="manage-issued-books.php">Manage Issued Books</a></li>
+                                                <li><a href="issue-book.php">Issue New Services</a></li>
+                                                <li><a href="manage-issued-books.php">Manage Issued Services</a></li>
                                                 
                                             </ul>
                                         </li>
                                         
                                         
-                                        <li><a href="reg-students.php">Reg Students</a></li>
+                                        <li><a href="reg-students.php"> Customers </a></li>
                                     </ul>
                                 </div>
                             </div>

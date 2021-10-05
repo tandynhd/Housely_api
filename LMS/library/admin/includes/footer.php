@@ -1,14 +1,14 @@
-   <!-- Start: Footer -->
-        <footer class="site-footer">
+  <!-- Start: Footer -->
+  <footer class="site-footer">
             <div class="container">
                 <div id="footer-widgets">
                     <div class="row">
                         <div class="col-md-4 col-sm-6 widget-container">
                             <div id="text-2" class="widget widget_text">
-                                <h3 class="footer-widget-title">About Literarium</h3>
+                                <h3 class="footer-widget-title">About Housely</h3>
                                 <span class="underline left"></span>
                                 <div class="textwidget">
-                                    Enriching life with the knowledge of the world. Knowledge shouldn't be limited by pandemic.
+                                    Bringing your home to you. Homeliness shouldn't be limited to one's home.
                                 </div>
                                 <address>
                                     <div class="info">
@@ -17,11 +17,11 @@
                                     </div>
                                     <div class="info">
                                         <i class="fa fa-envelope"></i>
-                                        <span><a href="mailto:support@libraria.com">support@literarium.com</a></span>
+                                        <span><a href="mailto:support@housely.com">support@housely.com</a></span>
                                     </div>
                                     <div class="info">
                                         <i class="fa fa-phone"></i>
-                                        <span><a href="tel:012-345-6789">+66-3-8376-6284</a></span>
+                                        <span><a href="tel:012-345-6789">+66-87-536-6363</a></span>
                                     </div>
                                 </address>
                             </div>
@@ -32,7 +32,7 @@
                                 <span class="underline left"></span>
                                 <div class="menu-quick-links-container">
                                     <ul id="menu-quick-links" class="menu">
-                                        <li><a href="#">Library News</a></li>
+                                        <li><a href="#">Dorm News</a></li>
                                         <li><a href="#">History</a></li>
                                         <li><a href="#">Meet Our Staff</a></li>
                                         <li><a href="#">Board of Trustees</a></li>
@@ -48,10 +48,10 @@
                                 <h3 class="footer-widget-title">Timing</h3>
                                 <span class="underline left"></span>
                                 <div class="timming-text-widget">
-                                    <time datetime="2017-02-13">Mon - Thu: 9 am - 9 pm</time>
-                                    <time datetime="2017-02-13">Fri: 9 am - 6 pm</time>
-                                    <time datetime="2017-02-13">Sat: 9 am - 5 pm</time>
-                                    <time datetime="2017-02-13">Sun: 1 pm - 6 pm</time>
+                                    <time datetime="2021-10-04">Mon - Thu: 9 am - 9 pm</time>
+                                    <time datetime="2021-10-04">Fri: 9 am - 6 pm</time>
+                                    <time datetime="2021-10-04">Sat: 9 am - 5 pm</time>
+                                    <time datetime="2021-10-04">Sun: 1 pm - 6 pm</time>
                                     <ul>
                                         <li><a href="#">Closings</a></li>
                                         <li><a href="#">Branches</a></li>
@@ -66,10 +66,10 @@
                                 <div id="twitter-feed">
                                     <ul>
                                         <li>
-                                            <p><a href="#">@Literarium</a>  When nothing goes right, go left. ~Confucious  <a href="#">rootdirh.com</a></p>
+                                            <p><a href="#">@housely</a>  When nothing goes right, go left. ~Confucious </p>
                                         </li>
                                         <li>
-                                            <p><a href="#">@Literarium</a> Villain, I have done thy mother. ~Shakesphere  <a href="#">rootdirh.com</a></p>
+                                            <p><a href="#">@housely</a> Villain, I have done thy mother. ~Shakesphere</p>
                                         </li>
                                     </ul>
                                 </div>
@@ -83,7 +83,7 @@
                     <div class="row">
                         <div class="footer-text">
                             <div >
-                   &copy; 2020 Literarium |<a href="" > Designed by : Techtroopers</a> 
+                   &copy; 2021 Housely |<a href="" > Designed by : typo</a> 
                 </div>
                         </div>
                         
@@ -95,8 +95,3 @@
 		
 		
 		
-		
-		
-		
-		
-	

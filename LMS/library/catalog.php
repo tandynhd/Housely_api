@@ -14,7 +14,7 @@ else{?>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>..:: LITERARIUM ::..</title>
+    <title> Housely </title>
         
        
         <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
@@ -59,14 +59,14 @@ else{?>
         <section class="page-banner services-banner">
             <div class="container">
                 <div class="banner-header">
-                    <h2>Catalog</h2>
+                    <h2>Services</h2>
                     <span class="underline center"></span>
-                    <p class="lead">"Nothing is pleasanter than exploring a library."</p>
+                    <p class="lead">"Getting a house isn't the hard part, maintaining it is."</p>
                 </div>
                 <div class="breadcrumb">
                     <ul>
                         <li><a href="home.php">Home</a></li>
-                        <li>Catalog</li>
+                        <li>Services</li>
                     </ul>
                 </div>
             </div>
@@ -106,18 +106,18 @@ else{?>
                                 <section class="search-filters">
                                     <div class="container">
                                         <div class="filter-box">
-                                            <h3>What are you looking for at the library?</h3>
+                                            <h3>What services are you looking for?</h3>
                                             <form action="" method="get">
                                                 <div class="col-md-4 col-sm-6">
                                                     <div class="form-group">
-                                                        <label class="sr-only" for="keywords">Search by Book Name</label>
-                                                        <input class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search by Book Name" type="text">
+                                                        <label class="sr-only" for="keywords">Search by Service Name</label>
+                                                        <input class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search by Service Name" type="text">
                                                     </div>
-                                                </div>
+                                                <!-- </div>
                                                 <div class="col-md-3 col-sm-6">
                                                     <div class="form-group">
                                                         <select name="catalog" id="catalog" class="form-control">
-                                                            <option>Search the Catalog</option>
+                                                            <option>Search </option>
                                                             
                                                         </select>
                                                     </div>
@@ -126,11 +126,11 @@ else{?>
                                                     <div class="form-group">
                                                         <select name="category" id="category" class="form-control">
                                                             <option>All Categories</option>
-                                                            <option>Adventure</option>
-                                                            <option>Science</option>
-                                                            <option>Novels</option>
-                                                            <option>Articles</option>
-                                                            <option>Magazines</option>
+                                                            <option>Mechanic</option>
+                                                            <option>Maid</option>
+                                                            <option>Electrician</option>
+                                                            <option>Gardener</option>
+                                                            <option>Plumber</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -142,7 +142,7 @@ else{?>
                                             </form>
                                         </div>
                                     </div>
-                                </section>
+                                </section> -->
                                 <!-- End: Search Section -->
                             </div>
 		

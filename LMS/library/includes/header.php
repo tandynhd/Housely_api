@@ -16,7 +16,7 @@
                                     <div class="navbar-brand">
                                         <h1>
                                             <a href="home.php">
-                                                <img src="housely-logo-100.png" alt=" HOUSELY" />
+                                                <img src="includes/housely-logo-100.png" alt=" HOUSELY" />
                                             </a>
                                         </h1>
                                     </div>
@@ -53,19 +53,17 @@
                                             <a data-toggle="dropdown" class="dropdown-toggle disabled" href="home.php">Home</a>
                                             
                                         </li>
+
                                         <li class="dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle disabled" href="catalog.php">Rooms</a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle disabled" href="profile.php">Profile</a>
+											                                            
+                                        </li>
+
+                                        <li class="dropdown">
+                                            <a data-toggle="dropdown" class="dropdown-toggle disabled" href="catalog.php">Services</a>
                                             
                                         </li>
-                                        <li class="dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Profile</a>
-											<ul class="dropdown-menu">
-												<li><a href="profile.php">View Profile</a></li>
-                                                <li><a href="edit-profile.php">Edit Profile</a></li>
-                                                
-                                            </ul>
-                                            
-                                        </li>
+                                        
                                         
                                         <li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle disabled" href="aboutus.php">About Us</a>
@@ -134,7 +132,7 @@
                                     <div class="navbar-brand">
                                         <h1>
                                             <a href="home.php">
-                                                <img src="housely-logo-100.png" alt=" HOUSELY" />
+                                                <img src="includes/housely-logo-100.png" alt=" HOUSELY" />
                                             </a>
                                         </h1>
                                     </div>

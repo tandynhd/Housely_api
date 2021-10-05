@@ -28,7 +28,7 @@ header('location:profile.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>..:: LITERARIUM ::..</title>
+    <title> Housely </title>
         
        
         <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
@@ -79,246 +79,66 @@ header('location:profile.php');
        
 		
 
-    <div class="content-wrapper">
-         <div class="container">
-        <div class="row pad-botm">
-            
-	
-	
-	<div class="row">
-    <?php if($_SESSION['error']!="")
-    {?>
-<div class="col-md-6">
-<div class="alert alert-danger" >
- <strong>Error :</strong> 
- <?php echo htmlentities($_SESSION['error']);?>
-<?php echo htmlentities($_SESSION['error']="");?>
-</div>
-</div>
-<?php } ?>
-<?php if($_SESSION['msg']!="")
-{?>
-<div class="col-md-6">
-<div class="alert alert-success" >
- <strong>Success :</strong> 
- <?php echo htmlentities($_SESSION['msg']);?>
-<?php echo htmlentities($_SESSION['msg']="");?>
-</div>
-</div>
-<?php } ?>
-<?php if($_SESSION['updatemsg']!="")
-{?>
-<div class="col-md-6">
-<div class="alert alert-success" >
- <strong>Success :</strong> 
- <?php echo htmlentities($_SESSION['updatemsg']);?>
-<?php echo htmlentities($_SESSION['updatemsg']="");?>
-</div>
-</div>
-<?php } ?>
-
-
-   <?php if($_SESSION['delmsg']!="")
-    {?>
-<div class="col-md-6">
-<div class="alert alert-success" >
- <strong>Success :</strong> 
- <?php echo htmlentities($_SESSION['delmsg']);?>
-<?php echo htmlentities($_SESSION['delmsg']="");?>
-</div>
-</div>
-<?php } ?>
-
-</div>						
-	
-	
-	
-	<div class="col-md-12">
-                <h4 class="header-line">Customer Details</h4>
-    </div>
-	
-	
-    
-
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- Advanced Tables -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading" id="tableheading">
-                          Customer Details
-                        </div>
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="content-table" id="dataTables-example">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Customer Name</th>
-                                            <th>Customer ID </th>
-                                            <th>Issued Date</th>
-                                            <th>Return Date</th>
-                                            <th>Fine in(USD)</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-<?php 
-$sid=$_SESSION['stdid'];
-$sql="SELECT books.BookName,books.ISBNNumber,issuedbookdetails.IssuesDate,issuedbookdetails.ReturnDate,issuedbookdetails.id as rid,issuedbookdetails.fine from  issuedbookdetails join students on students.StudentId=issuedbookdetails.StudentId join books on books.id=issuedbookdetails.BookId where students.StudentId=:sid order by issuedbookdetails.id desc";
-$query = $dbh -> prepare($sql);
-$query-> bindParam(':sid', $sid, PDO::PARAM_STR);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$cnt=1;
-if($query->rowCount() > 0)
-{
-foreach($results as $result)
-{               ?>                                      
-                                        <tr class="odd gradeX">
-                                            <td class="center"><?php echo htmlentities($cnt);?></td>
-                                            <td class="center"><?php echo htmlentities($result->BookName);?></td>
-                                            <td class="center"><?php echo htmlentities($result->ISBNNumber);?></td>
-                                            <td class="center"><?php echo htmlentities($result->IssuesDate);?></td>
-                                            <td class="center"><?php if($result->ReturnDate=="")
-                                            {?>
-                                            <span style="color:red">
-                                             <?php   echo htmlentities("Not Return Yet"); ?>
-                                                </span>
-                                            <?php } else {
-                                            echo htmlentities($result->ReturnDate);
-                                        }
-                                            ?></td>
-                                              <td class="center"><?php echo htmlentities($result->fine);?></td>
-                                         
-                                        </tr>
- <?php $cnt=$cnt+1;}} ?>                                      
-                                    </tbody>
-                                </table>
+    < <!-- Start: Welcome Section -->
+            <section class="welcome-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="welcome-wrap">
+                            <div class="welcome-text">
+                                <h2 class="section-title">Welcome to Housely Mr. X</h2>
+                                <span class="underline left"></span>
+                                <p class="lead">The house you didn't know you had</p>
+                                <p>Now manage all your dorm related functions from one single place. </p>
+                                <p>Pay your rent with a single click (assuming the bank account has already been linked). </p>
+                                <p>Pay before 5th of every month to avoid a fine of 200 baht every day.</p>
+                                <a class="btn btn-primary" href="#">Pay Now</a>
                             </div>
-                            
                         </div>
                     </div>
-                    <!--End Advanced Tables -->
-                </div>
-            </div>
-
-
-
-
-
-
-
-
-<div class="col-md-12">
-                <h4 class="header-line">Reserved Books</h4>
-    </div>
-	
-	
-    
-
-            <div class="row">
-                <div class="col-md-12">
-                   
-                    <div class="panel panel-default">
-                        <div class="panel-heading" id="tableheading">
-                          Reserved Books 
-                        </div>
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="content-table" id="dataTables-example">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Book Name</th>
-                                            <th>ISBN </th>
-                                            <th>Reserved Date</th>
-                                            <th>Reservation Completed Date</th>
-											<th>Action</th>
-                                            
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-<?php 
-$sid=$_SESSION['stdid'];
-$sql="SELECT books.BookName,books.ISBNNumber,reservedbookdetails.ReservedDate,reservedbookdetails.ReservationCanceledDate,reservedbookdetails.id as rid from  reservedbookdetails join students on students.StudentId=reservedbookdetails.StudentId join books on books.id=reservedbookdetails.BookId where students.StudentId=:sid order by reservedbookdetails.id desc";
-$query = $dbh -> prepare($sql);
-$query-> bindParam(':sid', $sid, PDO::PARAM_STR);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$cnt=1;
-if($query->rowCount() > 0)
-{
-foreach($results as $result)
-{               ?>                                      
-                                        <tr class="odd gradeX">
-                                            <td class="center"><?php echo htmlentities($cnt);?></td>
-                                            <td class="center"><?php echo htmlentities($result->BookName);?></td>
-                                            <td class="center"><?php echo htmlentities($result->ISBNNumber);?></td>
-                                            <td class="center"><?php echo htmlentities($result->ReservedDate);?></td>
-                                            <td class="center"><?php if($result->ReservationCanceledDate=="")
-                                            {?>
-                                            <span style="color:red">
-                                             <?php   echo htmlentities("Not Completed"); ?>
-                                                </span>
-                                            <?php } else {
-                                            echo htmlentities($result->ReservationCanceledDate);
-                                        }
-                                            ?></td>
-											
-											<td class="center">
-											
-											
-											
-											<?php if($result->ReservationCanceledDate=="")
-                                            {?>
-                                            
-                                             <a href="profile.php?del=<?php echo htmlentities($result->rid);?>" onclick="return confirm('Are you sure you want to cancel?');" >  <button class="btn btn-danger"> Cancel</button>
-                                                
-                                            <?php } else { ?>
-                                              <button class="btn btn-success" disabled> Completed</button>
-                                        
-										<?php }
-                                            ?>
-											
-								
-                                            
-                                            </td>
-                                              
-                                         
-                                        </tr>
- <?php $cnt=$cnt+1;}} ?>                                      
-                                    </tbody>
-                                </table>
-                            </div>
-                            
+                    <div class="col-md-3">
+                        <div class="facts-counter">
+                            <ul>
+                                <li class="bg-light-green">
+                                    <div class="fact-item">
+                                        <div class="fact-icon">
+                                            <i class="ebook"></i>
+                                        </div>
+                                        <span>Rent<strong class="fact-counter">5,000</strong></span>
+                                    </div>
+                                </li>
+                                <li class="bg-green">
+                                    <div class="fact-item">
+                                        <div class="fact-icon">
+                                            <i class="eaudio"></i>
+                                        </div>
+                                        <span>Electricty Bill<strong class="fact-counter">1,000</strong></span>
+                                    </div>
+                                </li>
+                                <li class="bg-red">
+                                    <div class="fact-item">
+                                        <div class="fact-icon">
+                                            <i class="magazine"></i>
+                                        </div>
+                                        <span>Water Bill<strong class="fact-counter">450</strong></span>
+                                    </div>
+                                </li>
+                                <li class="bg-blue">
+                                    <div class="fact-item">
+                                        <div class="fact-icon">
+                                            <i class="videos"></i>
+                                        </div>
+                                        <span>Total<strong class="fact-counter">6,450</strong></span>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                    
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-    </div>
-    </div>
-    </div>
+            <div class="welcome-image"></div>
+        </section>
+        <!-- End: Welcome Section -->
 
      
   <?php include('includes/footer.php');?>
