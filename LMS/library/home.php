@@ -91,6 +91,7 @@ include('includes/config.php');
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
+                        
                         <div class="welcome-wrap">
                             <div class="welcome-text">
                                 <h2 class="section-title">Welcome to Housely</h2>
@@ -109,7 +110,7 @@ include('includes/config.php');
                                         <div class="fact-icon">
                                             <i class="ebook"></i>
                                         </div>
-                                        <span>Countries<strong class="fact-counter">20</strong></span>
+                                        <span><strong class="fact-counter">35</strong> Province in Thailand</span>
                                     </div>
                                 </li>
                                 <li class="bg-green">
@@ -117,7 +118,7 @@ include('includes/config.php');
                                         <div class="fact-icon">
                                             <i class="eaudio"></i>
                                         </div>
-                                        <span>Branches in Thailand<strong class="fact-counter">790</strong></span>
+                                        <span>Close to<strong class="fact-counter">25</strong> University</span>
                                     </div>
                                 </li>
                                 <li class="bg-red">
@@ -125,7 +126,8 @@ include('includes/config.php');
                                         <div class="fact-icon">
                                             <i class="magazine"></i>
                                         </div>
-                                        <span>Rooms<strong class="fact-counter">450</strong></span>
+                                        <span>Housely member<strong class="fact-counter">57,000</strong></span>
+                                        
                                     </div>
                                 </li>
                                 <li class="bg-blue">
@@ -133,7 +135,8 @@ include('includes/config.php');
                                         <div class="fact-icon">
                                             <i class="videos"></i>
                                         </div>
-                                        <span>Active Users<strong class="fact-counter">24,000,000</strong></span>
+                                        <span>Award<strong class="fact-counter">5</strong></span>
+                                        
                                     </div>
                                 </li>
                             </ul>
@@ -161,9 +164,9 @@ include('includes/config.php');
             </div>
             <div id="category-filter">
                 <ul class="category-list">
-                    <li class="category-item adults">
+                    <li class="category-item health-facilities">
                         <figure>
-                            <img src="images/category-filter/home-v1/fitness-img-01.jpg" alt="New Releaase" />
+                            <img src="images/category-filter/home-v1/fitness-img-01.jpg" alt="Facilities" />
                             <figcaption class="bg-orange">
                                 <div class="info-block">
                                     <h4>Fitness</h4>
@@ -175,158 +178,52 @@ include('includes/config.php');
                             </figcaption>
                         </figure>
                     </li>
-                    <li class="category-item kids-teens">
+                    
+                    <li class="category-item security-facilities">
                         <figure>
-                            <img src="images/category-filter/home-v1/front-desk-img-02.jpg" alt="New Releaase" />
+                            <img src="images/category-filter/home-v1/front-desk-img-02.jpg" alt="Facilities" />
                             <figcaption class="bg-orange">
                                 <div class="info-block">
-                                    <h4>The Great Gatsby</h4>
-                                    <span class="author"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                    <span class="author"><strong>ISBN:</strong> 9781581573268</span>
-                                    <div class="rating">
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                    </div>
+                                    <h4>Front Desk</h4>
                                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
                                     <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                                    <ol>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-heart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-envelope"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-share-alt"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-search"></i>
-                                            </a>
-                                        </li>
-                                    </ol>
                                 </div>
                             </figcaption>
                         </figure>
                     </li>
-                    <li class="category-item video">
+
+                    <li class="category-item security-facilities">
                         <figure>
-                            <img src="images/category-filter/home-v1/lobby-img-03.jpg" alt="New Releaase" />
+                            <img src="images/category-filter/home-v1/lobby-img-03.jpg" alt="Facilities" />
                             <figcaption class="bg-orange">
                                 <div class="info-block">
-                                    <h4>The Great Gatsby</h4>
-                                    <span class="author"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                    <span class="author"><strong>ISBN:</strong> 9781581573268</span>
-                                    <div class="rating">
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                    </div>
+                                    <h4>Front Security Gate</h4>
                                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                    <a href="#"></a>
-                                    <ol>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-heart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-envelope"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-share-alt"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-search"></i>
-                                            </a>
-                                        </li>
-                                    </ol>
+                                    <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
                                 </div>
                             </figcaption>
                         </figure>
                     </li>
-                    <li class="category-item audio">
+
+                    <li class="category-item activity-facilities">
                         <figure>
-                            <img src="images/category-filter/home-v1/library-img-04.jpg" alt="New Releaase" />
+                            <img src="images/category-filter/home-v1/library-img-04.jpg" alt="Facilities" />
                             <figcaption class="bg-orange">
                                 <div class="info-block">
-                                    <h4>The Great Gatsby</h4>
-                                    <span class="author"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                    <span class="author"><strong>ISBN:</strong> 9781581573268</span>
-                                    <div class="rating">
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                    </div>
+                                    <h4>Library</h4>
                                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                    <a href="#"></a>
-                                    <ol>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-heart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-envelope"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-share-alt"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-search"></i>
-                                            </a>
-                                        </li>
-                                    </ol>
+                                    <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
                                 </div>
                             </figcaption>
                         </figure>
                     </li>
-                    
-                    <li class="category-item books">
+
+                    <li class="category-item health-facilities">
                         <figure>
-                            <img src="images/category-filter/home-v1/pool-img-05.jpg" alt="New Releaase" />
+                            <img src="images/category-filter/home-v1/pool-img-05.jpg" alt="Facilities" />
                             <figcaption class="bg-orange">
                                 <div class="info-block">
                                     <h4>Swimming Pool</h4>
-                                   
                                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
                                     <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
 
@@ -335,58 +232,22 @@ include('includes/config.php');
                         </figure>
                     </li>
 
-                    <li class="category-item magazines">
+                    <li class="category-item activity-facilities">
                         <figure>
-                            <img src="images/category-filter/home-v1/game-img-06.jpg" alt="New Releaase" />
+                            <img src="images/category-filter/home-v1/game-img-06.jpg" alt="Facilities" />
                             <figcaption class="bg-orange">
                                 <div class="info-block">
-                                    <h4>The Great Gatsby</h4>
-                                    <span class="author"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                    <span class="author"><strong>ISBN:</strong> 9781581573268</span>
-                                    <div class="rating">
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                    </div>
+                                    <h4>Game Room</h4>
                                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                    <a href="#"></a>
-                                    <ol>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-heart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-envelope"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-share-alt"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-search"></i>
-                                            </a>
-                                        </li>
-                                    </ol>
+                                    <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
                                 </div>
                             </figcaption>
                         </figure>
                     </li>
 
-                    <li class="category-item adults">
+                    <li class="category-item convenient-facilities">
                         <figure>
-                            <img src="images/category-filter/home-v1/laundry-img-07.jpg" alt="New Releaase" />
+                            <img src="images/category-filter/home-v1/laundry-img-07.jpg" alt="Facilities" />
                             <figcaption class="bg-orange">
                                 <div class="info-block">
                                     <h4>Laundry Room</h4>
@@ -397,9 +258,9 @@ include('includes/config.php');
                         </figure>
                     </li>
 
-                    <li class="category-item kids-teens">
+                    <li class="category-item activity-facilities">
                         <figure>
-                            <img src="images/category-filter/home-v1/working-img-08.jpg" alt="New Releaase" />
+                            <img src="images/category-filter/home-v1/working-img-08.jpg" alt="Facilities" />
                             <figcaption class="bg-orange">
                                 <div class="info-block">
                                     <h4>Co-Working Spaces</h4>
@@ -428,7 +289,7 @@ include('includes/config.php');
                     <li class="bg-yellow">
                         <div class="feature-box">
                             <i class="yellow"></i>
-                            <h3>Books</h3>
+                            <h3>Editble Backyard</h3>
                             <p> There are many different kinds of books published in as many languages as do exist around the world.</p>
                             <a class="yellow" href="#">
                                 View Selection <i class="fa fa-long-arrow-right"></i>
@@ -438,7 +299,7 @@ include('includes/config.php');
                     <li class="bg-light-green">
                         <div class="feature-box">
                             <i class="light-green"></i>
-                            <h3>Magazines</h3>
+                            <h3>market DELIVERY</h3>
                             <p>There are many different kinds of Magaziness published in as many languages as do exist around the world.</p>
                             <a class="light-green" href="#">
                                 View Selection <i class="fa fa-long-arrow-right"></i>
@@ -448,7 +309,7 @@ include('includes/config.php');
                     <li class="bg-blue">
                         <div class="feature-box">
                             <i class="blue"></i>
-                            <h3>DVDs</h3>
+                            <h3>LIVING PRIVILEGES</h3>
                             <p>There are many different kinds of DVDs published in as many languages as do exist around the world.</p>
                             <a class="blue" href="#">
                                 View Selection <i class="fa fa-long-arrow-right"></i>
@@ -458,7 +319,7 @@ include('includes/config.php');
                     <li class="bg-red">
                         <div class="feature-box">
                             <i class="red"></i>
-                            <h3>Articles</h3>
+                            <h3>Cleaning services</h3>
                             <p>There are many different kinds of Articles published in as many languages as do exist around the world.</p>
                             <a class="red" href="#">
                                 View Selection <i class="fa fa-long-arrow-right"></i>
@@ -468,7 +329,7 @@ include('includes/config.php');
                     <li class="bg-violet">
                         <div class="feature-box">
                             <i class="violet"></i>
-                            <h3>Audio</h3>
+                            <h3>LAUNDRY SERVICE</h3>
                             <p>There are many different kinds of Audio published in as many languages as do exist around the world.</p>
                             <a class="violet" href="#">
                                 View Selection <i class="fa fa-long-arrow-right"></i>
@@ -478,7 +339,7 @@ include('includes/config.php');
                     <li class="bg-green">
                         <div class="feature-box">
                             <i class="green"></i>
-                            <h3>DVDs</h3>
+                            <h3>MOVING SERVICES</h3>
 							 <p>There are many different kinds of eAudio published in as many languages as do exist around the world.</p>
 
                             <a class="green" href="#">
@@ -497,13 +358,13 @@ include('includes/config.php');
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="center-content">
-                            <h2 class="section-title">Subscribe to our Newsletters</h2>
+                            <h2 class="section-title">Discover Your New Home</h2>
                             <span class="underline center"></span>
                             
                         </div>
                         <div class="form-group">
-                            <input class="form-control" placeholder="Enter your Email!" id="newsletter" name="newsletter" type="email">
-                            <input class="form-control" value="Subscribe" type="submit">
+                            <input class="form-control" placeholder="Enter your Email, we will help you find the right fit" id="newsletter" name="newsletter" type="email">
+                            <input class="form-control" value="Enter" type="submit">
                         </div>
                     </div>
                 </div>
@@ -516,7 +377,7 @@ include('includes/config.php');
         <section class="latest-blog section-padding banner">
             <div class="container">
                 <div class="center-content">
-                    <h2 class="section-title">Latest from Blog</h2>
+                    <h2 class="section-title">Latest Blog form our staff</h2>
                     <span class="underline center"></span>
                     <p class="lead"></p>
                 </div>
@@ -527,7 +388,7 @@ include('includes/config.php');
                                 <a href="#" class="bg-yellow">
                                     <div class="title">
                                         <i class="yellow"></i>
-                                        <h3>Books</h3>
+                                        <h3>Editble Backyard</h3>
                                     </div>
                                 </a>
                             </li>
@@ -535,7 +396,7 @@ include('includes/config.php');
                                 <a href="#" class="bg-light-green">
                                     <div class="title">
                                         <i class="light-green"></i>
-                                        <h3>Articles</h3>
+                                        <h3>market DELIVERY</h3>
                                     </div>
                                 </a>
                             </li>
@@ -543,7 +404,7 @@ include('includes/config.php');
                                 <a href="#" class="bg-blue">
                                     <div class="title">
                                         <i class="blue"></i>
-                                        <h3>DVDS</h3>
+                                        <h3>LIVING PRIVILEGES</h3>
                                     </div>
                                 </a>
                             </li>
@@ -551,7 +412,7 @@ include('includes/config.php');
                                 <a href="#" class="bg-red">
                                     <div class="title">
                                         <i class="red"></i>
-                                        <h3>Magazines</h3>
+                                        <h3>Cleaning services</h3>
                                     </div>
                                 </a>
                             </li>
@@ -559,7 +420,7 @@ include('includes/config.php');
                                 <a href="#" class="bg-violet">
                                     <div class="title">
                                         <i class="violet"></i>
-                                        <h3>Audio</h3>
+                                        <h3>LAUNDRY SERVICE</h3>
                                     </div>
                                 </a>
                             </li>
@@ -567,7 +428,7 @@ include('includes/config.php');
                                 <a href="#" class="bg-green">
                                     <div class="title">
                                         <i class="green"></i>
-                                        <h3>eAudio</h3>
+                                        <h3>MOVING SERVICES</h3>
                                     </div>
                                 </a>
                             </li>
@@ -577,7 +438,7 @@ include('includes/config.php');
                         <div class="tab-content active">
                             <article>
                                 <figure>
-                                    <img src="images/latest-blog-img-home-v1.jpg" alt="Latest Blog">
+                                    <img src="images/latest-blog-img-home-v1-1.jpg" alt="Latest Blog">
                                     <figcaption>
                                         <a href="#.">
                                             <span class="date">07</span>
@@ -622,7 +483,7 @@ include('includes/config.php');
                         <div class="tab-content">
                             <article>
                                 <figure>
-                                    <img src="images/latest-blog-img-home-v1-2.jpg" alt="Latest Blog">
+                                    <img src="images/latest-blog-img-home-v1-de.jpg" alt="Latest Blog">
                                     <figcaption>
                                         <a href="#.">
                                             <span class="date">06</span>
@@ -664,10 +525,11 @@ include('includes/config.php');
                                 </div>
                             </article>
                         </div>
+
                         <div class="tab-content">
                             <article>
                                 <figure>
-                                    <img src="images/latest-blog-img-home-v1.jpg" alt="Latest Blog">
+                                    <img src="images/latest-blog-img-home-v1-pv.jpg" alt="Latest Blog">
                                     <figcaption>
                                         <a href="#.">
                                             <span class="date">05</span>
@@ -704,7 +566,7 @@ include('includes/config.php');
                                             <i class="fa fa-user"></i> Adrey Pachai
                                         </a>
                                     </div>
-									
+									<p>Get on top discount up to 15% when purchase 1MB up (Discount 10% when purchase THB650,000 up)</p>
                                     <a class="btn btn-dark-gray">Read More</a>
                                 </div>
                             </article>
@@ -923,7 +785,7 @@ include('includes/config.php');
         <section class="news-events section-padding banner">
             <div class="container">
                 <div class="center-content">
-                    <h2 class="section-title c-light">News &amp; Events</h2>
+                    <h2 class="section-title c-light">NEWS &amp; ARTICLES</h2>
                     <span class="underline center"></span>
                     <p class="lead c-light"></p>
                 </div>
