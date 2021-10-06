@@ -18,7 +18,7 @@ $query = $dbh->prepare($sql);
 $query -> bindParam(':id',$id, PDO::PARAM_STR);
 $query -> bindParam(':status',$status, PDO::PARAM_STR);
 $query -> execute();
-header('location:reg-students.php');
+header('location:reg-customers.php');
 }
 
 
@@ -33,7 +33,7 @@ $query = $dbh->prepare($sql);
 $query -> bindParam(':id',$id, PDO::PARAM_STR);
 $query -> bindParam(':status',$status, PDO::PARAM_STR);
 $query -> execute();
-header('location:reg-students.php');
+header('location:reg-customers.php');
 }
 
 
@@ -44,7 +44,7 @@ header('location:reg-students.php');
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta name="staff" content="" />
     <title> Housely </title>
         
        
@@ -87,7 +87,7 @@ header('location:reg-students.php');
                 </div>
                 <div class="breadcrumb">
                     <ul>
-                        <li><a href="reserved-books.php">Reserved Services</a></li>
+                        <li><a href="reg-customers.php">Admin</a></li>
                         <li>Customers</li>
                     </ul>
                 </div>

@@ -15,7 +15,7 @@ $query = $dbh->prepare($sql);
 $query -> bindParam(':id',$id, PDO::PARAM_STR);
 $query -> execute();
 $_SESSION['delmsg']="Staff Removed";
-header('location:manage-authors.php');
+header('location:manage-staff.php');
 
 }
 
@@ -73,7 +73,7 @@ header('location:manage-authors.php');
                 </div>
                 <div class="breadcrumb">
                     <ul>
-                        <li><a href="reserved-books.php"> Admin </a></li>
+                        <li><a href="reg-students.php"> Admin </a></li>
                         <li>Manage Staff</li>
                     </ul>
                 </div>
@@ -157,7 +157,7 @@ header('location:manage-authors.php');
                                         </tr>
                                     </thead>
                                     <tbody>
-<?php $sql = "SELECT * from  satff";
+<?php $sql = "SELECT * from  staff";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -173,8 +173,8 @@ foreach($results as $result)
                                             <td class="center"><?php echo htmlentities($result->UpdationDate);?></td>
                                             <td class="center">
 
-                                            <a href="edit-author.php?athrid=<?php echo htmlentities($result->id);?>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 
-                                          <a href="manage-authors.php?del=<?php echo htmlentities($result->id);?>" onclick="return confirm('Are you sure you want to delete?');"" >  <button class="btn btn-danger"><i class="fa fa-pencil"></i> Remove </button>
+                                            <a href="edit-staff.php?athrid=<?php echo htmlentities($result->id);?>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 
+                                          <a href="manage-staff.php?del=<?php echo htmlentities($result->id);?>" onclick="return confirm('Are you sure you want to delete?');"" >  <button class="btn btn-danger"><i class="fa fa-pencil"></i> Remove </button>
                                             </td>
                                         </tr>
  <?php $cnt=$cnt+1;}} ?>                                      

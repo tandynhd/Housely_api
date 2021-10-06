@@ -3,7 +3,7 @@ require_once("includes/config.php");
 if(!empty($_POST["studentid"])) {
   $studentid= strtoupper($_POST["studentid"]);
  
-    $sql ="SELECT FullName,Status FROM students WHERE StudentId=:studentid";
+    $sql ="SELECT FullName,Status FROM customers WHERE StudentId=:studentid";
 $query= $dbh -> prepare($sql);
 $query-> bindParam(':studentid', $studentid, PDO::PARAM_STR);
 $query-> execute();

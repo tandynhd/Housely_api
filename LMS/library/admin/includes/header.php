@@ -54,8 +54,8 @@
                                         <li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Staff</a>
 											<ul class="dropdown-menu">
-                                                <li><a href="add-author.php">Add Staff</a></li>
-                                                <li><a href="manage-authors.php">Manage Staff</a></li>
+                                                <li><a href="add-staff.php">Add Staff</a></li>
+                                                <li><a href="manage-staff.php">Manage Staff</a></li>
                                                 
                                             </ul>
                                             
@@ -92,7 +92,7 @@
                                         </li>
                                         
                                         
-                                        <li><a href="reg-students.php"> Customers </a></li>
+                                        <li><a href="reg-customers.php"> Customers </a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -115,10 +115,10 @@
                                             
                                         </li>
                                         <li class="dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Authors</a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Staff</a>
 											<ul class="dropdown-menu">
-                                                <li><a href="add-author.php">Add Authors</a></li>
-                                                <li><a href="manage-authors.php">Manage Authors</a></li>
+                                                <li><a href="add-staff.php">Add Staff</a></li>
+                                                <li><a href="manage-staff.php">Manage Staff</a></li>
                                                 
                                             </ul>
                                             
@@ -155,7 +155,7 @@
                                         </li>
                                         
                                         
-                                        <li><a href="reg-students.php">Reg Students</a></li>
+                                        <li><a href="reg-customers.php">Reg Customers</a></li>
                                         <li><a href="change-password.php">Change Password</a></li>
 										<li><a href="logout.php">Log Out</a></li>
                                 </ul>

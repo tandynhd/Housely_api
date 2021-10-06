@@ -8,24 +8,19 @@ header('location:index.php');
 }
 else{ 
 
-if(isset($_POST['create']))
+if(isset($_POST['update']))
 {
+$athrid=intval($_GET['athrid']);
 $author=$_POST['author'];
-$sql="INSERT INTO  staff(AuthorName) VALUES(:author)";
+$sql="update  staff set AuthorName=:author where id=:athrid";
 $query = $dbh->prepare($sql);
 $query->bindParam(':author',$author,PDO::PARAM_STR);
+$query->bindParam(':athrid',$athrid,PDO::PARAM_STR);
 $query->execute();
-$lastInsertId = $dbh->lastInsertId();
-if($lastInsertId)
-{
-$_SESSION['msg']="Staff added successfully";
-header('location:manage-authors.php');
-}
-else 
-{
-$_SESSION['error']="Something went wrong. Please try again";
-header('location:manage-authors.php');
-}
+$_SESSION['updatemsg']="Staff info updated successfully";
+header('location:manage-staff.php');
+
+
 
 }
 ?>
@@ -40,58 +35,51 @@ header('location:manage-authors.php');
         
        
         <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
-    
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
-  
+    
     <link href="assets/css/style.css" rel="stylesheet" />
 	<link href="assets/css/style1.css" rel="stylesheet" />
    
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 	
-	
-	
-	
-	
-	
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
         <link href="assets/css2/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-       
+        
         <link href="assets/css2/mmenu.css" rel="stylesheet" type="text/css" />
         <link href="assets/css2/mmenu.positioning.css" rel="stylesheet" type="text/css" />
 
        
         <link href="assets/css2/style.css" rel="stylesheet" type="text/css" />
-	
+
 	
 	
 
 </head>
 <body>
-      
+     
 <?php include('includes/header.php');?>
-
 
 
 
         <section class="page-banner services-banner">
             <div class="container">
                 <div class="banner-header">
-                    <h2>Add Staff</h2>
+                    <h2>Edit Staff</h2>
                     <span class="underline center"></span>
                     <p class="lead"></p>
                 </div>
                 <div class="breadcrumb">
                     <ul>
-                        <li><a href="reserved-books.php">Reserved Services</a></li>
-                        <li>Add Staff</li>
+                        <li><a href="reg-students.php">Admin</a></li>
+                        <li>Edit Staff</li>
                     </ul>
                 </div>
             </div>
         </section>
-        
+       
     
     <div class="content-wrapper">
          <div class="container">
@@ -103,7 +91,7 @@ header('location:manage-authors.php');
 
 </div>
 <div class="row">
-<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3"">
+<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 <div class="panel panel-info">
 <div class="panel-heading" id="formheading">
 Staff Info
@@ -112,10 +100,23 @@ Staff Info
 <form role="form" method="post">
 <div class="form-group">
 <label>Staff Name</label>
-<input class="form-control" type="text" name="author" autocomplete="off"  required />
+<?php 
+$athrid=intval($_GET['athrid']);
+$sql = "SELECT * from  staff where id=:athrid";
+$query = $dbh -> prepare($sql);
+$query->bindParam(':athrid',$athrid,PDO::PARAM_STR);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$cnt=1;
+if($query->rowCount() > 0)
+{
+foreach($results as $result)
+{               ?>   
+<input class="form-control" type="text" name="author" value="<?php echo htmlentities($result->AuthorName);?>" required />
+<?php }} ?>
 </div>
 
-<button type="submit" name="create" class="btn btn-primary">Add </button>
+<button type="submit" name="update" class="btn btn-primary">Update </button>
 
                                     </form>
                             </div>
@@ -128,7 +129,7 @@ Staff Info
     </div>
      
   <?php include('includes/footer.php');?>
-      
+     
     <script src="assets/js/jquery-1.10.2.js"></script>
     
     <script src="assets/js/bootstrap.js"></script>
