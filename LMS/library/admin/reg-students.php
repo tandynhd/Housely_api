@@ -13,7 +13,7 @@ if(isset($_GET['inid']))
 {
 $id=$_GET['inid'];
 $status=0;
-$sql = "update students set Status=:status  WHERE id=:id";
+$sql = "update customers set Status=:status  WHERE id=:id";
 $query = $dbh->prepare($sql);
 $query -> bindParam(':id',$id, PDO::PARAM_STR);
 $query -> bindParam(':status',$status, PDO::PARAM_STR);
@@ -28,7 +28,7 @@ if(isset($_GET['id']))
 {
 $id=$_GET['id'];
 $status=1;
-$sql = "update students set Status=:status  WHERE id=:id";
+$sql = "update customers set Status=:status  WHERE id=:id";
 $query = $dbh->prepare($sql);
 $query -> bindParam(':id',$id, PDO::PARAM_STR);
 $query -> bindParam(':status',$status, PDO::PARAM_STR);
@@ -45,7 +45,7 @@ header('location:reg-students.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>..:: LITERARIUM ::..</title>
+    <title> Housely </title>
         
        
         <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
@@ -81,14 +81,14 @@ header('location:reg-students.php');
         <section class="page-banner services-banner">
             <div class="container">
                 <div class="banner-header">
-                    <h2>Registered Students</h2>
+                    <h2>Customers</h2>
                     <span class="underline center"></span>
                     <p class="lead"></p>
                 </div>
                 <div class="breadcrumb">
                     <ul>
-                        <li><a href="reserved-books.php">Reserved Books</a></li>
-                        <li>Reg Students</li>
+                        <li><a href="reserved-books.php">Reserved Services</a></li>
+                        <li>Customers</li>
                     </ul>
                 </div>
             </div>
@@ -110,7 +110,7 @@ header('location:reg-students.php');
                     
                     <div class="panel panel-default">
                         <div class="panel-heading" id="tableheading">
-                          Reg Students
+                          Customers
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -118,8 +118,8 @@ header('location:reg-students.php');
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Student ID</th>
-                                            <th>Student Name</th>
+                                            <th>Customer ID</th>
+                                            <th>Customer Name</th>
                                             <th>Email id </th>
                                             <th>Mobile Number</th>
                                             <th>Reg Date</th>
@@ -129,7 +129,7 @@ header('location:reg-students.php');
                                         </tr>
                                     </thead>
                                     <tbody>
-<?php $sql = "SELECT * from students";
+<?php $sql = "SELECT * from customers";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);

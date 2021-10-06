@@ -10,11 +10,11 @@ else{
 if(isset($_GET['del']))
 {
 $id=$_GET['del'];
-$sql = "delete from books  WHERE id=:id";
+$sql = "delete from services  WHERE id=:id";
 $query = $dbh->prepare($sql);
 $query -> bindParam(':id',$id, PDO::PARAM_STR);
 $query -> execute();
-$_SESSION['delmsg']="Category deleted scuccessfully ";
+$_SESSION['delmsg']="Service deleted scuccessfully ";
 header('location:manage-books.php');
 
 }
@@ -28,7 +28,7 @@ header('location:manage-books.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>..:: LITERARIUM ::..</title>
+    <title> Housely </title>
         
        
         <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
@@ -63,14 +63,14 @@ header('location:manage-books.php');
         <section class="page-banner services-banner">
             <div class="container">
                 <div class="banner-header">
-                    <h2>Manage Books</h2>
+                    <h2>Manage Services</h2>
                     <span class="underline center"></span>
                     <p class="lead"></p>
                 </div>
                 <div class="breadcrumb">
                     <ul>
-                        <li><a href="reserved-books.php">Reserved Books</a></li>
-                        <li>Manage Books</li>
+                        <li><a href="reg-students.php">Admin</a></li>
+                        <li>Manage Services</li>
                     </ul>
                 </div>
             </div>
@@ -135,7 +135,7 @@ header('location:manage-books.php');
                    
                     <div class="panel panel-default">
                         <div class="panel-heading" id="tableheading">
-                           Books Listing
+                           Services Listing
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -143,20 +143,18 @@ header('location:manage-books.php');
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Book Name</th>
+                                            <th>Service Name</th>
                                             <th>Category</th>
-                                            <th>Author</th>
+                                            <th>Staff</th>
 											<th>Publisher</th>
-                                            <th>ISBN</th>
-                                            <th>Price</th>
-											<th>No Of Books<br> Remaining</th>
+                                            <th>Service ID</th>
 											<th>Tumbnail</th>
                                             <th>Action</th>
 											
                                         </tr>
                                     </thead>
                                     <tbody>
-<?php $sql = "SELECT books.BookName,category.CategoryName,authors.AuthorName,publishers.PublisherName,books.ISBNNumber,books.BookPrice,books.no_of_books,books.image,books.id as bookid from  books join category on category.id=books.CatId join authors on authors.id=books.AuthorId join publishers on publishers.id=books.PublisherId";
+<?php $sql = "SELECT services.BookName,category.CategoryName,staff.AuthorName,bills.PublisherName,services.ISBNNumber,services.image, services.id as serviceid from  services join category on category.id=services.CatId join staff on staff.id=services.AuthorId join bills on bills.id=services.PublisherId";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);

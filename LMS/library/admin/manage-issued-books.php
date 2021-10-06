@@ -18,7 +18,7 @@ else{
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-   <title>..:: LITERARIUM ::..</title>
+   <title> Housely </title>
         
        
         <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
@@ -52,14 +52,14 @@ else{
         <section class="page-banner services-banner">
             <div class="container">
                 <div class="banner-header">
-                    <h2>Issued Books</h2>
+                    <h2>Issued Services</h2>
                     <span class="underline center"></span>
                     <p class="lead"></p>
                 </div>
                 <div class="breadcrumb">
                     <ul>
-                        <li><a href="reserved-books.php">Reserved Books</a></li>
-                        <li>Issued Books</li>
+                        <li><a href="reg-students.php">Admin</a></li>
+                        <li>Issued Servicess</li>
                     </ul>
                 </div>
             </div>
@@ -118,7 +118,7 @@ else{
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading" id="tableheading">
-                          Issued Books 
+                          Issued Services
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -126,16 +126,15 @@ else{
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Student Name</th>
-                                            <th>Book Name</th>
-                                            <th>ISBN </th>
+                                            <th>Customer Name</th>
+                                            <th>Service Name</th>
+                                            <th>Service ID </th>
                                             <th>Issued Date</th>
-                                            <th>Return Date</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-<?php $sql = "SELECT students.FullName,books.BookName,books.ISBNNumber,issuedbookdetails.IssuesDate,issuedbookdetails.ReturnDate,issuedbookdetails.id as rid from  issuedbookdetails join students on students.StudentId=issuedbookdetails.StudentId join books on books.id=issuedbookdetails.BookId order by issuedbookdetails.id desc";
+<?php $sql = "SELECT customers.FullName,services.BookName,services.ISBNNumber,issuedServices.IssuesDate,issuedServices.id as rid from  issuedServices join customers on customers.StudentId=issuedServices.StudentId join services on services.id=issuedservices.BookId order by issuedservices.id desc";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);

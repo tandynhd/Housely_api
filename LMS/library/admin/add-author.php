@@ -11,14 +11,14 @@ else{
 if(isset($_POST['create']))
 {
 $author=$_POST['author'];
-$sql="INSERT INTO  authors(AuthorName) VALUES(:author)";
+$sql="INSERT INTO  staff(AuthorName) VALUES(:author)";
 $query = $dbh->prepare($sql);
 $query->bindParam(':author',$author,PDO::PARAM_STR);
 $query->execute();
 $lastInsertId = $dbh->lastInsertId();
 if($lastInsertId)
 {
-$_SESSION['msg']="Author Listed successfully";
+$_SESSION['msg']="Staff added successfully";
 header('location:manage-authors.php');
 }
 else 
@@ -36,7 +36,7 @@ header('location:manage-authors.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>..:: LITERARIUM ::..</title>
+    <title> Housely </title>
         
        
         <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
@@ -79,14 +79,14 @@ header('location:manage-authors.php');
         <section class="page-banner services-banner">
             <div class="container">
                 <div class="banner-header">
-                    <h2>Add Author</h2>
+                    <h2>Add Staff</h2>
                     <span class="underline center"></span>
                     <p class="lead"></p>
                 </div>
                 <div class="breadcrumb">
                     <ul>
-                        <li><a href="reserved-books.php">Reserved Books</a></li>
-                        <li>Add Author</li>
+                        <li><a href="reserved-books.php">Reserved Services</a></li>
+                        <li>Add Staff</li>
                     </ul>
                 </div>
             </div>
@@ -106,12 +106,12 @@ header('location:manage-authors.php');
 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3"">
 <div class="panel panel-info">
 <div class="panel-heading" id="formheading">
-Author Info
+Staff Info
 </div>
 <div class="panel-body">
 <form role="form" method="post">
 <div class="form-group">
-<label>Author Name</label>
+<label>Staff Name</label>
 <input class="form-control" type="text" name="author" autocomplete="off"  required />
 </div>
 

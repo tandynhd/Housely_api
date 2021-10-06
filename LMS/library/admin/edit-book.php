@@ -32,7 +32,7 @@ move_uploaded_file($_FILES["image"]["tmp_name"],"images/".$img);
 
 
 $bookid=intval($_GET['bookid']);
-$sql="update  books set BookName=:bookname,CatId=:category,AuthorId=:author,PublisherId=:publisher,ISBNNumber=:isbn,no_of_books=:noofbooks,BookPrice=:price,image=:img where id=:bookid";
+$sql="update  services set BookName=:bookname,CatId=:category,AuthorId=:author,PublisherId=:publisher,ISBNNumber=:isbn,no_of_books=:noofbooks,BookPrice=:price,image=:img where id=:bookid";
 $query = $dbh->prepare($sql);
 $query->bindParam(':bookname',$bookname,PDO::PARAM_STR);
 $query->bindParam(':category',$category,PDO::PARAM_STR);
@@ -57,7 +57,7 @@ header('location:manage-books.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>..:: LITERARIUM ::..</title>
+    <title> Housely </title>
         
        
         <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
@@ -91,14 +91,14 @@ header('location:manage-books.php');
         <section class="page-banner services-banner">
             <div class="container">
                 <div class="banner-header">
-                    <h2>Edit Book</h2>
+                    <h2>Edit Service</h2>
                     <span class="underline center"></span>
                     <p class="lead"></p>
                 </div>
                 <div class="breadcrumb">
                     <ul>
-                        <li><a href="reserved-books.php">Reserved Books</a></li>
-                        <li>Edit Book</li>
+                        <li><a href="reg-students.php">Admin</a></li>
+                        <li>Edit Services</li>
                     </ul>
                 </div>
             </div>
@@ -118,7 +118,7 @@ header('location:manage-books.php');
 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 <div class="panel panel-info">
 <div class="panel-heading" id="formheading">
-Book Info
+Service Info
 </div>
 <div class="panel-body">
 <form role="form" method="post" enctype="multipart/form-data">
@@ -136,7 +136,7 @@ foreach($results as $result)
 {               ?>  
 
 <div class="form-group">
-<label>Book Name<span style="color:red;">*</span></label>
+<label>Service Name<span style="color:red;">*</span></label>
 <input class="form-control" type="text" name="bookname" value="<?php echo htmlentities($result->BookName);?>" required />
 </div>
 
@@ -175,7 +175,7 @@ else
 
 
 <div class="form-group">
-<label> Author<span style="color:red;">*</span></label>
+<label> Staff <span style="color:red;">*</span></label>
 <select class="form-control" name="author" required="required">
 <option value="<?php echo htmlentities($result->athrid);?>"> <?php echo htmlentities($athrname=$result->AuthorName);?></option>
 <?php 
@@ -228,7 +228,7 @@ continue;
 
 
 <div class="form-group">
-<label>ISBN Number<span style="color:red;">*</span></label>
+<label>Service ID<span style="color:red;">*</span></label>
 <input class="form-control" type="text" name="isbn" value="<?php echo htmlentities($result->ISBNNumber);?>"  required="required" />
 <p class="help-block">An ISBN is an International Standard Book Number.ISBN Must be unique</p>
 </div>

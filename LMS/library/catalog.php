@@ -162,7 +162,7 @@ else{?>
                                     
 <?php 
 
-$sql = "SELECT books.BookName,category.CategoryName,authors.AuthorName,publishers.PublisherName,books.ISBNNumber,books.no_of_books,books.image,books.id as bookid from  books join category on category.id=books.CatId join authors on authors.id=books.AuthorId join publishers on publishers.id=books.PublisherId";
+$sql = "SELECT services.BookName,category.CategoryName,staff.AuthorName,services.image,services.id as serviceid from  services join category on category.id=services.CatId join staff on staff.id=services.AuthorId join bills on bills.id=services.PublisherId;";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -179,7 +179,7 @@ foreach($results as $result)
   <div class="info"  >
     
     <h1 style="font-family:'Lato', Georgia, Times, serif; font-weight:900;"><?php echo htmlentities($result->BookName);?></h1>
-    <p><?php echo htmlentities($result->CategoryName);?> </br>Author - <?php echo htmlentities($result->AuthorName);?> </br>Publisher - <?php echo htmlentities($result->PublisherName);?></br>ISBN - <?php echo htmlentities($result->ISBNNumber);?> </p>
+    <p><?php echo htmlentities($result->CategoryName);?> </br>Staff - <?php echo htmlentities($result->AuthorName);?> </p>
 
   
   <?php if($result->no_of_books!=0)

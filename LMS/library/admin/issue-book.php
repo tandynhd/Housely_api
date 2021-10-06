@@ -12,7 +12,7 @@ if(isset($_POST['issue']))
 {
 $studentid=strtoupper($_POST['studentid']);
 $bookid=$_POST['bookdetails'];
-$sql="INSERT INTO  issuedbookdetails(StudentID,BookId) VALUES(:studentid,:bookid)";
+$sql="INSERT INTO  issuedServices(StudentID,BookId) VALUES(:studentid,:bookid)";
 $query = $dbh->prepare($sql);
 $query->bindParam(':studentid',$studentid,PDO::PARAM_STR);
 $query->bindParam(':bookid',$bookid,PDO::PARAM_STR);
@@ -20,7 +20,7 @@ $query->execute();
 $lastInsertId = $dbh->lastInsertId();
 if($lastInsertId)
 {
-$_SESSION['msg']="Book issued successfully";
+$_SESSION['msg']="Service issued successfully";
 header('location:manage-issued-books.php');
 }
 else 
@@ -38,7 +38,7 @@ header('location:manage-issued-books.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>..:: LITERARIUM ::..</title>
+    <title> Housely </title>
         
        
         <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
@@ -109,14 +109,14 @@ error:function (){}
         <section class="page-banner services-banner">
             <div class="container">
                 <div class="banner-header">
-                    <h2>Issue a New Book</h2>
+                    <h2>Issue a New Service</h2>
                     <span class="underline center"></span>
                     <p class="lead"></p>
                 </div>
                 <div class="breadcrumb">
                     <ul>
-                        <li><a href="reserved-books.php">Reserved Books</a></li>
-                        <li>Issue Books</li>
+                        <li><a href="reg-students.php">Admin</a></li>
+                        <li>Issue Services</li>
                     </ul>
                 </div>
             </div>
@@ -136,13 +136,13 @@ error:function (){}
 <div class="col-md-10 col-sm-6 col-xs-12 col-md-offset-1">
 <div class="panel panel-info">
 <div class="panel-heading" id="formheading">
-Issue a New Book
+Issue a New Service
 </div>
 <div class="panel-body">
 <form role="form" method="post">
 
 <div class="form-group">
-<label>Srtudent id<span style="color:red;">*</span></label>
+<label>Customer ID<span style="color:red;">*</span></label>
 <input class="form-control" type="text" name="studentid" id="studentid" onBlur="getstudent()" autocomplete="off"  required />
 </div>
 
@@ -155,7 +155,7 @@ Issue a New Book
 
 
 <div class="form-group">
-<label>ISBN Number or Book Title<span style="color:red;">*</span></label>
+<label>Service ID or Name<span style="color:red;">*</span></label>
 <input class="form-control" type="text" name="booikid" id="bookid" onBlur="getbook()"  required="required" />
 </div>
 

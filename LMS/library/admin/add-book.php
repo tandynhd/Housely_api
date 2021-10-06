@@ -34,7 +34,7 @@ move_uploaded_file($_FILES["image"]["tmp_name"],"images/".$img);
 
 
 
-$sql="INSERT INTO  books(BookName,CatId,AuthorId,PublisherId,ISBNNumber,BookPrice,image,no_of_books) VALUES(:bookname,:category,:author,:publisher,:isbn,:price,:img,:noofbooks)";
+$sql="INSERT INTO  services(BookName,CatId,AuthorId,PublisherId,ISBNNumber,BookPrice,image,no_of_books) VALUES(:bookname,:category,:author,:publisher,:isbn,:price,:img,:noofbooks)";
 $query = $dbh->prepare($sql);
 $query->bindParam(':bookname',$bookname,PDO::PARAM_STR);
 $query->bindParam(':category',$category,PDO::PARAM_STR);
@@ -68,7 +68,7 @@ header('location:manage-books.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>..:: LITERARIUM ::..</title>
+    <title> Housely </title>
         
        
         <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
@@ -107,14 +107,14 @@ header('location:manage-books.php');
         <section class="page-banner services-banner">
             <div class="container">
                 <div class="banner-header">
-                    <h2>Add Book</h2>
+                    <h2>Add Services</h2>
                     <span class="underline center"></span>
                     <p class="lead"></p>
                 </div>
                 <div class="breadcrumb">
                     <ul>
-                        <li><a href="reserved-books.php">Reserved Books</a></li>
-                        <li>Add Book</li>
+                        <li><a href="index.php">Admin</a></li>
+                        <li>Add Services</li>
                     </ul>
                 </div>
             </div>
@@ -140,12 +140,12 @@ header('location:manage-books.php');
 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 <div class="panel panel-info">
 <div class="panel-heading" id="formheading">
-Book Info
+Service Info
 </div>
 <div class="panel-body">
 <form role="form" method="post" enctype="multipart/form-data">
 <div class="form-group">
-<label>Book Name<span style="color:red;">*</span></label>
+<label>Service Name<span style="color:red;">*</span></label>
 <input class="form-control" type="text" name="bookname" autocomplete="off"  required />
 </div>
 
@@ -180,12 +180,12 @@ foreach($results as $result)
 
 
 <div class="form-group">
-<label> Author<span style="color:red;">*</span></label>
+<label> Staff<span style="color:red;">*</span></label>
 <select class="form-control" name="author" required="required">
-<option value=""> Select Author</option>
+<option value=""> Select Staff</option>
 <?php 
 
-$sql = "SELECT * from  authors ";
+$sql = "SELECT * from  staff ";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -209,7 +209,7 @@ foreach($results as $result)
 <option value=""> Select Publisher</option>
 <?php 
 
-$sql = "SELECT * from  publishers ";
+$sql = "SELECT * from  bills ";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
