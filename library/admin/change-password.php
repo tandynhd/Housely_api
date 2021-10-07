@@ -40,7 +40,7 @@ $error="Your current password is wrong";
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>..:: LITERARIUM ::..</title>
+    <title>Housely</title>
         
        
         <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
