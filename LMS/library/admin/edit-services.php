@@ -32,7 +32,7 @@ move_uploaded_file($_FILES["image"]["tmp_name"],"images/".$img);
 
 
 $bookid=intval($_GET['bookid']);
-$sql="update  services set BookName=:bookname,CatId=:category,AuthorId=:author,PublisherId=:publisher,ISBNNumber=:isbn,no_of_books=:noofbooks,BookPrice=:price,image=:img where id=:bookid";
+$sql="update services set BookName=:bookname,CatId=:category,AuthorId=:author,PublisherId=:publisher,ISBNNumber=:isbn,no_of_books=:noofbooks,BookPrice=:price,image=:img where id=:bookid";
 $query = $dbh->prepare($sql);
 $query->bindParam(':bookname',$bookname,PDO::PARAM_STR);
 $query->bindParam(':category',$category,PDO::PARAM_STR);
@@ -45,7 +45,7 @@ $query->bindParam(':bookid',$bookid,PDO::PARAM_STR);
 $query->bindParam(':img',$img,PDO::PARAM_STR);
 $query->execute();
 $_SESSION['msg']="Book info updated successfully";
-header('location:manage-books.php');
+header('location:manage-services.php');
 
 }
 }
@@ -97,7 +97,7 @@ header('location:manage-books.php');
                 </div>
                 <div class="breadcrumb">
                     <ul>
-                        <li><a href="reg-students.php">Admin</a></li>
+                        <li><a href="reg-customers.php">Admin</a></li>
                         <li>Edit Services</li>
                     </ul>
                 </div>
@@ -124,7 +124,7 @@ Service Info
 <form role="form" method="post" enctype="multipart/form-data">
 <?php 
 $bookid=intval($_GET['bookid']);
-$sql = "SELECT books.BookName,category.CategoryName,category.id as cid,authors.AuthorName,authors.id as athrid,publishers.PublisherName,publishers.id as pubid,books.ISBNNumber,books.BookPrice,books.no_of_books,books.id as bookid from  books join category on category.id=books.CatId join authors on authors.id=books.AuthorId join publishers on publishers.id=books.PublisherId where books.id=:bookid";
+$sql = "SELECT books.BookName,category.CategoryName,category.id as cid,authors.AuthorName,authors.id as athrid,publishers.PublisherName,publishers.id as pubid,services.ISBNNumber,services.BookPrice,services.no_of_books,services.id as bookid from  books join category on category.id=services.CatId join authors on authors.id=services.AuthorId join publishers on publishers.id=services.PublisherId where services.id=:bookid";
 $query = $dbh -> prepare($sql);
 $query->bindParam(':bookid',$bookid,PDO::PARAM_STR);
 $query->execute();

@@ -7,17 +7,7 @@ if(strlen($_SESSION['alogin'])==0)
 header('location:index.php');
 }
 else{ 
-if(isset($_GET['del']))
-{
-$id=$_GET['del'];
-$sql = "delete from services  WHERE id=:id";
-$query = $dbh->prepare($sql);
-$query -> bindParam(':id',$id, PDO::PARAM_STR);
-$query -> execute();
-$_SESSION['delmsg']="Service deleted scuccessfully ";
-header('location:manage-books.php');
 
-}
 
 
     ?>
@@ -28,19 +18,19 @@ header('location:manage-books.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title> Housely </title>
+    <title>Housely</title>
         
        
         <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
-  
-    <link href="assets/css/font-awesome.css" rel="stylesheet" />
     
-    <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
    
+    <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    
     <link href="assets/css/style.css" rel="stylesheet" />
 	<link href="assets/css/style1.css" rel="stylesheet" />
-    
+   
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 	
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
@@ -50,39 +40,53 @@ header('location:manage-books.php');
         <link href="assets/css2/mmenu.css" rel="stylesheet" type="text/css" />
         <link href="assets/css2/mmenu.positioning.css" rel="stylesheet" type="text/css" />
 
-       
+        
         <link href="assets/css2/style.css" rel="stylesheet" type="text/css" />
-		
+	
+	
+	
 
 </head>
 <body>
-     
+      
 <?php include('includes/header.php');?>
+
+
+
 
 
         <section class="page-banner services-banner">
             <div class="container">
                 <div class="banner-header">
-                    <h2>Manage Services</h2>
+                    <h2>BOOKED SERVICES</h2>
                     <span class="underline center"></span>
                     <p class="lead"></p>
                 </div>
                 <div class="breadcrumb">
                     <ul>
-                        <li><a href="reg-students.php">Admin</a></li>
-                        <li>Manage Services</li>
+                        <li><a href="reg-customers.php">Admin</a></li>
+                        <li>Booked Services</li>
                     </ul>
                 </div>
             </div>
         </section>
         
+
+
+
+
+
+
     <div class="content-wrapper">
          <div class="container">
         <div class="row pad-botm">
             <div class="col-md-12">
                 <h4 class="header-line"></h4>
     </div>
-     <div class="row">
+     
+	 
+	 
+	 <div class="row">
     <?php if($_SESSION['error']!="")
     {?>
 <div class="col-md-6">
@@ -103,16 +107,7 @@ header('location:manage-books.php');
 </div>
 </div>
 <?php } ?>
-<?php if($_SESSION['updatemsg']!="")
-{?>
-<div class="col-md-6">
-<div class="alert alert-success" >
- <strong>Success :</strong> 
- <?php echo htmlentities($_SESSION['updatemsg']);?>
-<?php echo htmlentities($_SESSION['updatemsg']="");?>
-</div>
-</div>
-<?php } ?>
+
 
 
    <?php if($_SESSION['delmsg']!="")
@@ -127,34 +122,37 @@ header('location:manage-books.php');
 <?php } ?>
 
 </div>
+	 
+	 
+	 
+	 
+	 
 
 
         </div>
             <div class="row">
                 <div class="col-md-12">
-                   
+                    
                     <div class="panel panel-default">
-                        <div class="panel-heading" id="tableheading">
-                           Services Listing
+                        <div class="panel-heading"id="tableheading">
+                          Booked Services 
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="content-table" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                            <th>BookId</th>
+                                            <th>Customer ID</th>
                                             <th>Service Name</th>
-                                            <th>Category</th>
-                                            <th>Staff</th>
-											<th>Publisher</th>
-                                            <th>Service ID</th>
-											<th>Tumbnail</th>
+                                            <th>Service Type</th>
+                                            <th>Reserved Date</th>
+                                            <th>Completed Date</th>
                                             <th>Action</th>
-											
                                         </tr>
                                     </thead>
                                     <tbody>
-<?php $sql = "SELECT services.BookName,category.CategoryName,staff.AuthorName,bills.PublisherName,services.ISBNNumber,services.image, services.id as serviceid from  services join category on category.id=services.CatId join staff on staff.id=services.AuthorId join bills on bills.id=services.PublisherId";
+<?php $sql = "SELECT students.FullName,books.BookName,books.ISBNNumber,reservedbookdetails.ReservedDate,reservedbookdetails.ReservationCanceledDate,reservedbookdetails.id as rid from  reservedbookdetails join students on students.StudentId=reservedbookdetails.StudentId join books on books.id=reservedbookdetails.BookId order by reservedbookdetails.id desc";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -165,19 +163,23 @@ foreach($results as $result)
 {               ?>                                      
                                         <tr class="odd gradeX">
                                             <td class="center"><?php echo htmlentities($cnt);?></td>
+                                            <td class="center"><?php echo htmlentities($result->FullName);?></td>
                                             <td class="center"><?php echo htmlentities($result->BookName);?></td>
-                                            <td class="center"><?php echo htmlentities($result->CategoryName);?></td>
-                                            <td class="center"><?php echo htmlentities($result->AuthorName);?></td>
-											<td class="center"><?php echo htmlentities($result->PublisherName);?></td>
                                             <td class="center"><?php echo htmlentities($result->ISBNNumber);?></td>
-                                            <td class="center"><?php echo htmlentities($result->BookPrice);?></td>
-											<td class="center"><?php echo htmlentities($result->no_of_books);?></td>
-											<td class="center"><img src="images/<?php echo $result->image;?>" style="width:100px;"></td>
-                                            <td class="center">
-											
+                                            <td class="center"><?php echo htmlentities($result->ReservedDate);?></td>
+                                            <td class="center"><?php if($result->ReservationCanceledDate=="")
+                                            {
+                                                echo htmlentities("Not Completed Yet");
+                                            } else {
 
-                                            <a href="edit-book.php?bookid=<?php echo htmlentities($result->bookid);?>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 
-                                          <a href="manage-books.php?del=<?php echo htmlentities($result->bookid);?>" onclick="return confirm('Are you sure you want to delete?');"" >  <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button>
+
+                                            echo htmlentities($result->ReservationCanceledDate);
+}
+                                            ?></td>
+                                            <td class="center">
+
+                                            <a href="update-reserve-bookdetails.php?rid=<?php echo htmlentities($result->rid);?>"><button class="btn btn-primary">Complete</button> 
+                                         
                                             </td>
                                         </tr>
  <?php $cnt=$cnt+1;}} ?>                                      
@@ -196,17 +198,18 @@ foreach($results as $result)
     </div>
     </div>
 
-    
+     
   <?php include('includes/footer.php');?>
       
     <script src="assets/js/jquery-1.10.2.js"></script>
-   
+    
     <script src="assets/js/bootstrap.js"></script>
     
     <script src="assets/js/dataTables/jquery.dataTables.js"></script>
     <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
-    
+      
     <script src="assets/js/custom.js"></script>
+	
 	 <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
        
         <script type="text/javascript" src="js/jquery-ui.min.js"></script>

@@ -162,7 +162,7 @@ else{?>
                                     
 <?php 
 
-$sql = "SELECT services.BookName,category.CategoryName,staff.AuthorName,services.image,services.id as serviceid from  services join category on category.id=services.CatId join staff on staff.id=services.AuthorId join bills on bills.id=services.PublisherId;";
+$sql = "SELECT services.BookName,category.CategoryName,services.image, services.id as serviceid from services,category where services.catId = category.id;";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
