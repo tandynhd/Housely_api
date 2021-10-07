@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 06, 2021 at 03:05 PM
+-- Generation Time: Oct 07, 2021 at 05:03 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -28,19 +28,20 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `admin_id` int(11) NOT NULL,
-  `admin_FullName` varchar(100) DEFAULT NULL,
-  `admin_Email` varchar(120) DEFAULT NULL,
-  `admin_UserName` varchar(100) NOT NULL,
-  `admin_Password` varchar(100) NOT NULL,
+  `id` int(11) NOT NULL,
+  `FullName` varchar(100) DEFAULT NULL,
+  `AdminEmail` varchar(120) DEFAULT NULL,
+  `UserName` varchar(100) NOT NULL,
+  `Password` varchar(100) NOT NULL,
+  `updationDate` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` VALUES
-(1, 'Hong', 'hong@gmail.com', 'admin', 'admin');
+INSERT INTO `admin` (`id`, `FullName`, `AdminEmail`, `UserName`, `Password`, `updationDate`) VALUES
+(1, 'Tandin Dorji', 'tandind@gmail.com', 'admin', '21232f297a57a5a743894a0e4a801fc3', '2021-10-07 14:16:58');
 
 -- --------------------------------------------------------
 
@@ -48,22 +49,22 @@ INSERT INTO `admin` VALUES
 -- Table structure for table `bills`
 --
 
--- CREATE TABLE `bills` (
---   `id` int(11) NOT NULL,
---   `PublisherName` varchar(159) DEFAULT NULL,
---   `creationDate` timestamp NULL DEFAULT current_timestamp(),
---   `UpdationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
--- ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `bills` (
+  `id` int(11) NOT NULL,
+  `PublisherName` varchar(159) DEFAULT NULL,
+  `creationDate` timestamp NULL DEFAULT current_timestamp(),
+  `UpdationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --
--- -- Dumping data for table `bills`
--- --
+--
+-- Dumping data for table `bills`
+--
 
--- INSERT INTO `bills` (`id`, `PublisherName`, `creationDate`, `UpdationDate`) VALUES
--- (1, 'SPVI', '2017-07-08 05:49:09', '2020-11-23 08:02:58'),
--- (2, 'ARSD', '2017-07-08 07:30:23', '2020-11-23 08:03:06'),
--- (14, 'COVID19', '2020-11-07 06:52:44', '2020-11-23 08:03:15'),
--- (15, 'Pentagon', '2020-11-07 07:08:19', '2020-11-23 08:03:40');
+INSERT INTO `bills` (`id`, `PublisherName`, `creationDate`, `UpdationDate`) VALUES
+(1, 'SPVI', '2017-07-08 05:49:09', '2020-11-23 08:02:58'),
+(2, 'ARSD', '2017-07-08 07:30:23', '2020-11-23 08:03:06'),
+(14, 'COVID19', '2020-11-07 06:52:44', '2020-11-23 08:03:15'),
+(15, 'Pentagon', '2020-11-07 07:08:19', '2020-11-23 08:03:40');
 
 -- --------------------------------------------------------
 
@@ -72,18 +73,19 @@ INSERT INTO `admin` VALUES
 --
 
 CREATE TABLE `category` (
-  `category_id` int(11) NOT NULL,
-  `category_Name` varchar(150) DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `CategoryName` varchar(150) DEFAULT NULL,
+  `Status` int(1) DEFAULT NULL,
+  `CreationDate` timestamp NULL DEFAULT current_timestamp(),
+  `UpdationDate` timestamp NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` VALUES
-(1, 'Home Delivery'),
-(2, 'Cleaning'),
-(3, 'Maintenance');
+INSERT INTO `category` (`id`, `CategoryName`, `Status`, `CreationDate`, `UpdationDate`) VALUES
+(13, 'Services', 1, '2021-10-05 14:49:08', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -92,22 +94,28 @@ INSERT INTO `category` VALUES
 --
 
 CREATE TABLE `customers` (
-  `cust_id` int(11) NOT NULL,
-  `cust_FullName` varchar(120) DEFAULT NULL,
-  `cust_EmailId` varchar(120) DEFAULT NULL,
-  `cust_MobileNumber` char(11) DEFAULT NULL,
-  `cust_Password` varchar(120) DEFAULT NULL,
-  `cust_Status` int(1) DEFAULT NULL,
-  `cust_RegDate` timestamp NULL DEFAULT current_timestamp()
+  `id` int(11) NOT NULL,
+  `StudentId` varchar(100) DEFAULT NULL,
+  `FullName` varchar(120) DEFAULT NULL,
+  `EmailId` varchar(120) DEFAULT NULL,
+  `MobileNumber` char(11) DEFAULT NULL,
+  `Password` varchar(120) DEFAULT NULL,
+  `Status` int(1) DEFAULT NULL,
+  `RegDate` timestamp NULL DEFAULT current_timestamp(),
+  `UpdationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+  `no_of_books_reserved` int(10) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` VALUES
-(1, 'SID001', 'John Cena', 'csfsd@dfsfks.com', '8569710025', '92228410fc8b872914e023160cf4ae8f', 1, '2017-07-11 15:41:27'),
-;
+INSERT INTO `customers` (`id`, `StudentId`, `FullName`, `EmailId`, `MobileNumber`, `Password`, `Status`, `RegDate`, `UpdationDate`, `no_of_books_reserved`) VALUES
+(4, 'SID005', 'John Cena', 'csfsd@dfsfks.com', '8569710025', '92228410fc8b872914e023160cf4ae8f', 1, '2017-07-11 15:41:27', '2020-11-23 08:00:45', 0),
+(8, 'SID009', 'Adam', 'test@gmail.com', '2359874527', 'f925916e2754e5e03f75dd58a5733251', 0, '2017-07-11 15:58:28', '2020-11-23 09:14:32', 0),
+(11, 'SID012', 'Himasara  Warnakulasuriya', 'himasara98@gmail.com', '64671250245', '81dc9bdb52d04dc20036dbd8313ed055', 1, '2020-10-27 16:22:06', '2020-11-23 10:09:29', 4),
+(14, 'SID017', 'Ugyen Pem', 'u@gmail.com', '+9751765146', '81dc9bdb52d04dc20036dbd8313ed055', 1, '2021-10-05 13:33:36', NULL, 0),
+(15, 'SID018', 'Hima', 'h@gmail.com', '12423534654', '81dc9bdb52d04dc20036dbd8313ed055', 1, '2021-10-07 14:02:23', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -115,18 +123,31 @@ INSERT INTO `customers` VALUES
 -- Table structure for table `issuedservices`
 --
 
-CREATE TABLE `issuedServices` (
-  `iServ_id` int(11) NOT NULL,
-  `iServ_customerID` varchar(150) DEFAULT NULL,
-  `iServ_IssuedDate` timestamp NULL DEFAULT current_timestamp()
+CREATE TABLE `issuedservices` (
+  `id` int(11) NOT NULL,
+  `BookId` int(11) DEFAULT NULL,
+  `StudentID` varchar(150) DEFAULT NULL,
+  `IssuesDate` timestamp NULL DEFAULT current_timestamp(),
+  `ReturnDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+  `RetrunStatus` int(1) DEFAULT NULL,
+  `fine` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `issuedservices`
 --
 
-INSERT INTO `issuedservices`  VALUES
-(1, 'SID001', '2017-07-15 10:59:26'),
+INSERT INTO `issuedservices` (`id`, `BookId`, `StudentID`, `IssuesDate`, `ReturnDate`, `RetrunStatus`, `fine`) VALUES
+(5, 1, 'SID009', '2017-07-15 10:59:26', NULL, 0, NULL),
+(7, 3, 'SID012', '2020-10-27 16:29:34', '2020-10-27 16:31:40', 1, 20),
+(8, 3, 'SID012', '2020-10-27 17:26:52', NULL, NULL, NULL),
+(9, 3, 'SID002', '2020-10-27 17:30:21', '2020-10-30 17:17:43', 1, 0),
+(10, 10, 'SID012', '2020-11-01 18:08:18', NULL, NULL, NULL),
+(11, 18, 'SID012', '2020-11-16 07:17:21', NULL, NULL, NULL),
+(12, 18, 'SID012', '2020-11-23 05:37:28', NULL, NULL, NULL),
+(13, 18, 'SID012', '2020-11-23 07:16:23', '2020-11-23 07:19:18', 1, 0),
+(14, 18, 'SID012', '2020-11-23 09:15:46', '2020-11-23 09:16:18', 1, 0);
+
 --
 -- Triggers `issuedservices`
 --
@@ -294,7 +315,11 @@ INSERT INTO `staff` (`id`, `AuthorName`, `creationDate`, `UpdationDate`) VALUES
 (12, 'David Blane', '2020-11-23 07:40:48', NULL),
 (13, 'Donald Trump', '2020-11-23 07:40:59', NULL),
 (14, 'Justin Bieber', '2020-11-23 07:41:20', NULL),
-(15, 'Chris Gayle', '2020-11-23 07:42:17', NULL);
+(15, 'Chris Gayle', '2020-11-23 07:42:17', NULL),
+(16, 'Tandin Dorji', '2021-10-06 13:30:01', '2021-10-06 14:37:00'),
+(17, 'Hong', '2021-10-06 14:22:49', NULL),
+(18, 'Inkies', '2021-10-06 14:37:09', NULL),
+(19, 'Hima', '2021-10-07 14:07:12', NULL);
 
 --
 -- Indexes for dumped tables
@@ -375,7 +400,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `issuedservices`
@@ -393,13 +418,13 @@ ALTER TABLE `reserveddetails`
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
