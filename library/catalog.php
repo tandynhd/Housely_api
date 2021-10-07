@@ -61,7 +61,7 @@ else{?>
                 <div class="banner-header">
                     <h2>Services</h2>
                     <span class="underline center"></span>
-                    <p class="lead">"Getting a house isn't the hard part, maintaining it is!!"</p>
+                    <p class="lead">"Getting a house isn't the hard part, getting a soul mate is."</p>
                 </div>
                 <div class="breadcrumb">
                     <ul>
