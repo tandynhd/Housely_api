@@ -72,8 +72,8 @@
 										<li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Services</a>
 											<ul class="dropdown-menu">
-                                                <li><a href="add-book.php">Add Services</a></li>
-                                                <li><a href="manage-books.php">Manage Services</a></li>
+                                                <li><a href="add-services.php">Add Services</a></li>
+                                                <li><a href="manage-services.php">Manage Services</a></li>
                                                 
                                             </ul>
                                             
@@ -135,8 +135,8 @@
 										<li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Books</a>
 											<ul class="dropdown-menu">
-                                                <li><a href="add-book.php">Add Books</a></li>
-                                                <li><a href="manage-books.php">Manage Books</a></li>
+                                                <li><a href="add-services.php">Add Services</a></li>
+                                                <li><a href="manage-services.php">Manage Services</a></li>
                                                 
                                             </ul>
                                             
@@ -148,7 +148,7 @@
                                         <li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Issue Books</a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="issue-book.php">Issue New Books</a></li>
+                                                <li><a href="issue-book.php">Issue New Service</a></li>
                                                 <li><a href="manage-issued-books.php">Manage Issued Books</a></li>
                                                 
                                             </ul>
