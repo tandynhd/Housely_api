@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 07, 2021 at 05:03 PM
+-- Generation Time: Oct 07, 2021 at 05:44 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `housely`
 --
+CREATE DATABASE IF NOT EXISTS `housely` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `housely`;
 
 -- --------------------------------------------------------
 
@@ -27,6 +29,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin`
 --
 
+DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
   `FullName` varchar(100) DEFAULT NULL,
@@ -49,6 +52,7 @@ INSERT INTO `admin` (`id`, `FullName`, `AdminEmail`, `UserName`, `Password`, `up
 -- Table structure for table `bills`
 --
 
+DROP TABLE IF EXISTS `bills`;
 CREATE TABLE `bills` (
   `id` int(11) NOT NULL,
   `PublisherName` varchar(159) DEFAULT NULL,
@@ -72,6 +76,7 @@ INSERT INTO `bills` (`id`, `PublisherName`, `creationDate`, `UpdationDate`) VALU
 -- Table structure for table `category`
 --
 
+DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
   `id` int(11) NOT NULL,
   `CategoryName` varchar(150) DEFAULT NULL,
@@ -93,6 +98,7 @@ INSERT INTO `category` (`id`, `CategoryName`, `Status`, `CreationDate`, `Updatio
 -- Table structure for table `customers`
 --
 
+DROP TABLE IF EXISTS `customers`;
 CREATE TABLE `customers` (
   `id` int(11) NOT NULL,
   `StudentId` varchar(100) DEFAULT NULL,
@@ -123,6 +129,7 @@ INSERT INTO `customers` (`id`, `StudentId`, `FullName`, `EmailId`, `MobileNumber
 -- Table structure for table `issuedservices`
 --
 
+DROP TABLE IF EXISTS `issuedservices`;
 CREATE TABLE `issuedservices` (
   `id` int(11) NOT NULL,
   `BookId` int(11) DEFAULT NULL,
@@ -151,12 +158,14 @@ INSERT INTO `issuedservices` (`id`, `BookId`, `StudentID`, `IssuesDate`, `Return
 --
 -- Triggers `issuedservices`
 --
+DROP TRIGGER IF EXISTS `insertissuenoofbooks`;
 DELIMITER $$
 CREATE TRIGGER `insertissuenoofbooks` BEFORE INSERT ON `issuedservices` FOR EACH ROW BEGIN
 	UPDATE books SET no_of_books=no_of_books-1 WHERE id=NEW.BookId;
 END
 $$
 DELIMITER ;
+DROP TRIGGER IF EXISTS `updateissuenoofbooks`;
 DELIMITER $$
 CREATE TRIGGER `updateissuenoofbooks` BEFORE UPDATE ON `issuedservices` FOR EACH ROW BEGIN
 	UPDATE books SET no_of_books=no_of_books+1 WHERE id=NEW.BookId;
@@ -170,6 +179,7 @@ DELIMITER ;
 -- Table structure for table `reserveddetails`
 --
 
+DROP TABLE IF EXISTS `reserveddetails`;
 CREATE TABLE `reserveddetails` (
   `id` int(11) NOT NULL,
   `BookId` int(11) DEFAULT NULL,
@@ -214,36 +224,42 @@ INSERT INTO `reserveddetails` (`id`, `BookId`, `StudentID`, `ReservedDate`, `Res
 --
 -- Triggers `reserveddetails`
 --
+DROP TRIGGER IF EXISTS `deletereserve`;
 DELIMITER $$
 CREATE TRIGGER `deletereserve` BEFORE DELETE ON `reserveddetails` FOR EACH ROW BEGIN
 	UPDATE students SET no_of_books_reserved=no_of_books_reserved-1 WHERE StudentId=OLD.StudentID;
 END
 $$
 DELIMITER ;
+DROP TRIGGER IF EXISTS `deletereservenoofbooks`;
 DELIMITER $$
 CREATE TRIGGER `deletereservenoofbooks` BEFORE DELETE ON `reserveddetails` FOR EACH ROW BEGIN
 	UPDATE books SET no_of_books=no_of_books+1 WHERE id=OLD.BookId;
 END
 $$
 DELIMITER ;
+DROP TRIGGER IF EXISTS `insertreserve`;
 DELIMITER $$
 CREATE TRIGGER `insertreserve` BEFORE INSERT ON `reserveddetails` FOR EACH ROW BEGIN
 	UPDATE students SET no_of_books_reserved=no_of_books_reserved+1 WHERE StudentId=NEW.StudentID;
 END
 $$
 DELIMITER ;
+DROP TRIGGER IF EXISTS `insertreservenoofbooks`;
 DELIMITER $$
 CREATE TRIGGER `insertreservenoofbooks` BEFORE INSERT ON `reserveddetails` FOR EACH ROW BEGIN
 	UPDATE books SET no_of_books=no_of_books-1 WHERE id=NEW.BookId;
 END
 $$
 DELIMITER ;
+DROP TRIGGER IF EXISTS `updatereserve`;
 DELIMITER $$
 CREATE TRIGGER `updatereserve` BEFORE UPDATE ON `reserveddetails` FOR EACH ROW BEGIN
 	UPDATE students SET no_of_books_reserved=no_of_books_reserved-1 WHERE StudentId=NEW.StudentID;
 END
 $$
 DELIMITER ;
+DROP TRIGGER IF EXISTS `updatereservenoofbooks`;
 DELIMITER $$
 CREATE TRIGGER `updatereservenoofbooks` BEFORE UPDATE ON `reserveddetails` FOR EACH ROW BEGIN
 	UPDATE books SET no_of_books=no_of_books+1 WHERE id=NEW.BookId;
@@ -257,6 +273,7 @@ DELIMITER ;
 -- Table structure for table `services`
 --
 
+DROP TABLE IF EXISTS `services`;
 CREATE TABLE `services` (
   `id` int(11) NOT NULL,
   `BookName` varchar(255) DEFAULT NULL,
@@ -297,6 +314,7 @@ INSERT INTO `services` (`id`, `BookName`, `CatId`, `AuthorId`, `PublisherId`, `I
 -- Table structure for table `staff`
 --
 
+DROP TABLE IF EXISTS `staff`;
 CREATE TABLE `staff` (
   `id` int(11) NOT NULL,
   `AuthorName` varchar(159) DEFAULT NULL,
