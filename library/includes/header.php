@@ -60,7 +60,7 @@
                                         </li>
 
                                         <li class="dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle disabled" href="catalog.php">Services</a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle disabled" href="services.php">Services</a>
                                             
                                         </li>
                                         
