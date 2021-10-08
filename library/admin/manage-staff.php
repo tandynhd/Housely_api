@@ -168,7 +168,7 @@ foreach($results as $result)
 {               ?>                                      
                                         <tr class="odd gradeX">
                                             <td class="center"><?php echo htmlentities($cnt);?></td>
-                                            <td class="center"><?php echo htmlentities($result->AuthorName);?></td>
+                                            <td class="center"><?php echo htmlentities($result->StaffName);?></td>
                                             <td class="center"><?php echo htmlentities($result->creationDate);?></td>
                                             <td class="center"><?php echo htmlentities($result->UpdationDate);?></td>
                                             <td class="center">
