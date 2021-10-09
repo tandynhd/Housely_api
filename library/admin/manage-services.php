@@ -153,7 +153,7 @@ if(isset($_GET['del']))
                                         </tr>
                                     </thead>
                                     <tbody>
-<?php $sql = "SELECT service.servName,servicecatagory.servCataName,service.servDesc,service.servthumbnail FROM service,servicecatagory WHERE service.servCataID = servicecatagory.servCataID ;";
+<?php $sql = "SELECT service.servID, service.servName,servicecatagory.servCataName,service.servDesc,service.servthumbnail FROM service,servicecatagory WHERE service.servCataID = servicecatagory.servCataID ;";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -171,7 +171,7 @@ foreach($results as $result)
                                             <td class="center">
 											
 
-                                            <a href="edit-services.php?bookid=<?php echo htmlentities($result->servID );?>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 
+                                            <a href="edit-services.php?servID =<?php echo htmlentities($result->servID );?>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 
                                           <a href="manage-services.php?del=<?php echo htmlentities($result->servID );?>" onclick="return confirm('Are you sure you want to delete?');" >  <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button>
                                             </td>
                                         </tr>

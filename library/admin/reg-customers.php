@@ -8,6 +8,19 @@ header('location:index.php');
 }
 else{ 
 
+    if(isset($_GET['del']))
+    {
+        $id=$_GET['del'];
+        $sql = "delete from customer  WHERE custID=:custID";
+        $query = $dbh->prepare($sql);
+        $query -> bindParam(':custID',$custID, PDO::PARAM_STR);
+        $query -> execute();
+        $_SESSION['delmsg']="Service deleted scuccessfully ";
+        header('location:reg-customers.php');
+    
+    }
+    
+
 // code for block student    
 if(isset($_GET['inid']))
 {
@@ -117,7 +130,7 @@ header('location:reg-customers.php');
                                 <table class="content-table" id="dataTables-example">
                                     <thead>
                                         <tr>
-                            
+                                            <th>SN Number</th>
                                             <th>Customer ID</th>
                                             <th>Customer Name</th>
                                             <th>Email</th>
@@ -140,6 +153,7 @@ foreach($results as $result)
 {               ?>                                      
                                         <tr class="odd gradeX">
                                             <td class="center"><?php echo htmlentities($cnt);?></td>
+                                            <td class="center"><?php echo htmlentities($result->custID );?></td>
                                             <td class="center"><?php echo htmlentities($result->custName );?></td>
                                             <td class="center"><?php echo htmlentities($result->custEmail);?></td>
                                             <td class="center"><?php echo htmlentities($result->custTele);?></td>
@@ -147,7 +161,7 @@ foreach($results as $result)
                                             <td class="center">
 
                                             <a href="edit-staff.php?athrid=<?php echo htmlentities($result->id);?>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 
-                                          <a href="manage-staff.php?del=<?php echo htmlentities($result->id);?>" onclick="return confirm('Are you sure you want to delete?');"" >  <button class="btn btn-danger"><i class="fa fa-pencil"></i> Remove </button>
+                                            <a href="reg-customers.php?del=<?php echo htmlentities($result->custID);?>" onclick="return confirm('Are you sure you want to delete?');"" >  <button class="btn btn-danger"><i class="fa fa-pencil"></i> Remove </button>
                                             </td>
 											 
 											 

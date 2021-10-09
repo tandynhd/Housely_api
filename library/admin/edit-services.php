@@ -123,10 +123,10 @@ Service Info
 <div class="panel-body">
 <form role="form" method="post" enctype="multipart/form-data">
 <?php 
-$bookid=intval($_GET['bookid']);
-$sql = "SELECT books.BookName,category.CategoryName,category.id as cid,authors.AuthorName,authors.id as athrid,publishers.PublisherName,publishers.id as pubid,services.ISBNNumber,services.BookPrice,services.no_of_books,services.id as bookid from  books join category on category.id=services.CatId join authors on authors.id=services.AuthorId join publishers on publishers.id=services.PublisherId where services.id=:bookid";
+$servID=intval($_GET['servID']);
+$sql = "SELECT * from service where service.servID=:servID";
 $query = $dbh -> prepare($sql);
-$query->bindParam(':bookid',$bookid,PDO::PARAM_STR);
+$query->bindParam(':servID',$servID,PDO::PARAM_STR);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 $cnt=1;
@@ -136,20 +136,9 @@ foreach($results as $result)
 {               ?>  
 
 <div class="form-group">
-<label>Service Name<span style="color:red;">*</span></label>
-<input class="form-control" type="text" name="bookname" value="<?php echo htmlentities($result->BookName);?>" required />
-</div>
-
-<div class="form-group">
-<label>Thumbnail<span style="color:red;">*</span></label>
-<input class="form-control" type="file" name="image" value=""  required />
-
-</div>
-
-<div class="form-group">
-<label> Category<span style="color:red;">*</span></label>
+<label> Service Category<span style="color:red;">*</span></label>
 <select class="form-control" name="category" required="required">
-<option value="<?php echo htmlentities($result->cid);?>"> <?php echo htmlentities($catname=$result->CategoryName);?></option>
+<option value="<?php echo htmlentities($result->servCataID );?>"> <?php echo htmlentities($catname=$result->servCataName);?></option>
 <?php 
 $status=1;
 $sql1 = "SELECT * from  category where Status=:status";
@@ -161,87 +150,29 @@ if($query1->rowCount() > 0)
 {
 foreach($resultss as $row)
 {           
-if($catname==$row->CategoryName)
+if($catname==$row->servCataName)
 {
 continue;
 }
 else
 {
     ?>  
-<option value="<?php echo htmlentities($row->id);?>"><?php echo htmlentities($row->CategoryName);?></option>
+<option value="<?php echo htmlentities($row->id);?>"><?php echo htmlentities($row->servCataName);?></option>
  <?php }}} ?> 
 </select>
 </div>
 
-
 <div class="form-group">
-<label> Staff <span style="color:red;">*</span></label>
-<select class="form-control" name="author" required="required">
-<option value="<?php echo htmlentities($result->athrid);?>"> <?php echo htmlentities($athrname=$result->AuthorName);?></option>
-<?php 
-
-$sql2 = "SELECT * from  authors ";
-$query2 = $dbh -> prepare($sql2);
-$query2->execute();
-$result2=$query2->fetchAll(PDO::FETCH_OBJ);
-if($query2->rowCount() > 0)
-{
-foreach($result2 as $ret)
-{           
-if($athrname==$ret->AuthorName)
-{
-continue;
-} else{
-
-    ?>  
-<option value="<?php echo htmlentities($ret->id);?>"><?php echo htmlentities($ret->AuthorName);?></option>
- <?php }}} ?> 
-</select>
-</div>
-
-
-
-<div class="form-group">
-<label>Publisher<span style="color:red;">*</span></label>
-<select class="form-control" name="publisher" required="required">
-<option value="<?php echo htmlentities($result->pubid);?>"> <?php echo htmlentities($pubname=$result->PublisherName);?></option>
-<?php 
-
-$sql2 = "SELECT * from  publishers";
-$query2 = $dbh -> prepare($sql2);
-$query2->execute();
-$result2=$query2->fetchAll(PDO::FETCH_OBJ);
-if($query2->rowCount() > 0)
-{
-foreach($result2 as $ret)
-{           
-if($pubname==$ret->PublisherName)
-{
-continue;
-} else{
-
-    ?>  
-<option value="<?php echo htmlentities($ret->id);?>"><?php echo htmlentities($ret->PublisherName);?></option>
- <?php }}} ?> 
-</select>
-</div>
-
-
-<div class="form-group">
-<label>Service ID<span style="color:red;">*</span></label>
-<input class="form-control" type="text" name="isbn" value="<?php echo htmlentities($result->ISBNNumber);?>"  required="required" />
-<p class="help-block">An ISBN is an International Standard Book Number.ISBN Must be unique</p>
+<label>Service Name<span style="color:red;">*</span></label>
+<input class="form-control" type="text" name="servicename" value="<?php echo htmlentities($result->	servName);?>" required />
 </div>
 
 <div class="form-group">
- <label>No Of Copies<span style="color:red;">*</span></label>
- <input class="form-control" type="text" name="noofbooks" autocomplete="off" value="<?php echo htmlentities($result->no_of_books);?>"  required="required" />
- </div>
+<label>Thumbnail<span style="color:red;">*</span></label>
+<input class="form-control" type="file" name="image" value=""  required />
 
- <div class="form-group">
- <label>Price in USD<span style="color:red;">*</span></label>
- <input class="form-control" type="text" name="price" value="<?php echo htmlentities($result->BookPrice);?>"   required="required" />
- </div>
+</div>
+
  <?php }} ?>
 <button type="submit" name="update" class="btn btn-primary">Update </button>
 
