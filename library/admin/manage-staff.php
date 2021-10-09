@@ -7,17 +7,18 @@ if(strlen($_SESSION['alogin'])==0)
 header('location:index.php');
 }
 else{
-if(isset($_GET['del']))
-{
-$id=$_GET['del'];
-$sql = "delete from staff WHERE id=:id";
-$query = $dbh->prepare($sql);
-$query -> bindParam(':id',$id, PDO::PARAM_STR);
-$query -> execute();
-$_SESSION['delmsg']="Staff Removed";
-header('location:manage-staff.php');
 
-}
+    if(isset($_GET['del']))
+    {
+        $id=$_GET['del'];
+        $sql = "delete from staff WHERE Staffid=:id";
+        $query = $dbh->prepare($sql);
+        $query -> bindParam(':id',$id, PDO::PARAM_STR);
+        $query -> execute();
+        $_SESSION['delmsg']="Staff Removed";
+        header('location:manage-staff.php');
+
+    }
 
 
     ?>
@@ -27,7 +28,7 @@ header('location:manage-staff.php');
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta name="staff" content="" />
    <title> Housely </title>
         
        
@@ -73,7 +74,7 @@ header('location:manage-staff.php');
                 </div>
                 <div class="breadcrumb">
                     <ul>
-                        <li><a href="reg-students.php"> Admin</a></li>
+                        <li><a href="reg-customers.php"> Admin</a></li>
                         <li>Manage Staff</li>
                     </ul>
                 </div>
@@ -148,7 +149,8 @@ header('location:manage-staff.php');
                                 <table class="content-table" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                            
+                                            <th>Staff ID</th>
                                             <th>Staff</th>
                                             <th>StaffTele</th>
                                             <th>StaffEmail</th>
@@ -179,8 +181,10 @@ foreach($results as $result)
                                             
                                             <td class="center">
 
-                                            <a href="edit-staff.php?athrid=<?php echo htmlentities($result->id);?>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 
-                                          <a href="manage-staff.php?del=<?php echo htmlentities($result->id);?>" onclick="return confirm('Are you sure you want to delete?');"" >  <button class="btn btn-danger"><i class="fa fa-pencil"></i> Remove </button>
+                                            <a href="edit-staff.php?StaffID =<?php echo htmlentities($result->StaffID);?>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 
+                                            <a href="manage-staff.php?del=<?php echo htmlentities($result->StaffID);?>" 
+                                            onclick="return confirm('Are you sure you want to delete?');"" > 
+                                             <button class="btn btn-danger"><i class="fa fa-pencil"></i> Remove </button>
                                             </td>
                                         </tr>
  <?php $cnt=$cnt+1;}} ?>                                      

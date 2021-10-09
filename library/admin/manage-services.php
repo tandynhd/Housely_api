@@ -10,12 +10,12 @@ else{
 if(isset($_GET['del']))
 {
     $id=$_GET['del'];
-    $sql = "delete from services  WHERE id=:id";
+    $sql = "delete from service  WHERE servID=:id";
     $query = $dbh->prepare($sql);
     $query -> bindParam(':id',$id, PDO::PARAM_STR);
     $query -> execute();
     $_SESSION['delmsg']="Service deleted scuccessfully ";
-    header('location:manage-books.php');
+    header('location:manage-services.php');
 
 }
 
@@ -28,7 +28,7 @@ if(isset($_GET['del']))
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta name="staff" content="" />
     <title> Housely </title>
         
        
@@ -143,12 +143,10 @@ if(isset($_GET['del']))
                                 <table class="content-table" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                            <th>Service ID</th>
                                             <th>Service Name</th>
                                             <th>Category Name</th>
                                             <th>Service Description</th>
-											<!--<th>Publisher</th>-->
-                                            <!--<th>Service ID</th>-->
 											<th>Tumbnail</th>
                                             <th>Action</th>
 											
@@ -173,8 +171,8 @@ foreach($results as $result)
                                             <td class="center">
 											
 
-                                            <a href="edit-services.php?bookid=<?php echo htmlentities($result->bookid);?>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 
-                                          <a href="manage-services.php?del=<?php echo htmlentities($result->bookid);?>" onclick="return confirm('Are you sure you want to delete?');" >  <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button>
+                                            <a href="edit-services.php?bookid=<?php echo htmlentities($result->servID );?>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 
+                                          <a href="manage-services.php?del=<?php echo htmlentities($result->servID );?>" onclick="return confirm('Are you sure you want to delete?');" >  <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button>
                                             </td>
                                         </tr>
  <?php $cnt=$cnt+1;}} ?>                                      
