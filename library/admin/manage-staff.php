@@ -155,8 +155,6 @@ header('location:manage-staff.php');
                                             <th>StaffAddr</th>
                                             <th>StaffSalary</th>
                                             <th>staffContractStart</th>
-                                            <th>ShiftStart</th>
-                                            <th>ShiftEnd</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -178,8 +176,6 @@ foreach($results as $result)
                                             <td class="center"><?php echo htmlentities($result->StaffAddr);?></td>
                                             <td class="center"><?php echo htmlentities($result->StaffSalary);?></td>
                                             <td class="center"><?php echo htmlentities($result->staffContractStart);?></td>
-                                            <td class="center"><?php echo htmlentities($result->ShiftStart);?></td>
-                                            <td class="center"><?php echo htmlentities($result->ShiftEnd);?></td>
                                             
                                             <td class="center">
 

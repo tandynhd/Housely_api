@@ -18,16 +18,16 @@ if(isset($_POST['create']))
     $staffContractStart=$_POST['staffcontractstart'];
 
     
-    $sql="INSERT INTO  staff(StaffName,StaffTele,StaffEmail,StaffAddr,StaffSalary,staffContractStart) 
-          VALUES(:StaffName,:StaffTele,:StaffEmail,:StaffAddr,:StaffSalary,:staffContractStart";
+    $sql= "INSERT INTO  staff(StaffName,StaffTele,StaffEmail,StaffAddr,StaffSalary,staffContractStart) 
+          VALUES(:StaffName,:StaffTele,:StaffEmail,:StaffAddr,:StaffSalary,:staffContractStart)";
 
     $query = $dbh->prepare($sql);
-    $query->bindParam(':StaffName',$staff,PDO::PARAM_STR);
-    $query->bindParam(':StaffTele',$staff,PDO::PARAM_STR);
-    $query->bindParam(':StaffEmail',$staff,PDO::PARAM_STR);
-    $query->bindParam(':StaffAddr',$staff,PDO::PARAM_STR);
-    $query->bindParam(':StaffSalary',$staffstaff,PDO::PARAM_STR);
-    $query->bindParam(':staffContractStart',$staff,PDO::PARAM_STR);
+    $query->bindParam(':StaffName',$StaffName,PDO::PARAM_STR);
+    $query->bindParam(':StaffTele',$StaffTele,PDO::PARAM_STR);
+    $query->bindParam(':StaffEmail',$StaffEmail,PDO::PARAM_STR);
+    $query->bindParam(':StaffAddr',$StaffAddr,PDO::PARAM_STR);
+    $query->bindParam(':StaffSalary',$StaffSalary,PDO::PARAM_STR);
+    $query->bindParam(':staffContractStart',$staffContractStart,PDO::PARAM_STR);
     $query->execute();
 
     $lastInsertId = $dbh->lastInsertId();
@@ -153,7 +153,7 @@ if(isset($_POST['create']))
 
                     <div class="form-group">
                         <label>Staff Contract Start<span style="color:red;">*</span></label>
-                        <input class="form-control" type="text" name="staffcontractstart" autocomplete="off"  required />
+                        <input class="form-control" type="date" name="staffcontractstart" autocomplete="off"  required />
                     </div>
 
                     <button type="submit" name="create" class="btn btn-primary">Add </button>
