@@ -2,7 +2,7 @@
 session_start();
 error_reporting(0);
 include('includes/config.php');
-if(strlen($_SESSION['slogin'])==0)
+if(strlen($_SESSION['alogin'])==0)
     {   
 header('location:index.php');
 }
@@ -17,7 +17,7 @@ if(isset($_POST['create']))
     $StaffSalary=$_POST['staffsalary'];
     $staffContractStart=$_POST['staffcontractstart'];
 
-
+    
     $sql="INSERT INTO  staff(StaffName,StaffTele,StaffEmail,StaffAddr,StaffSalary,staffContractStart) 
           VALUES(:StaffName,:StaffTele,:StaffEmail,:StaffAddr,:StaffSalary,:staffContractStart";
 
@@ -153,7 +153,7 @@ if(isset($_POST['create']))
 
                     <div class="form-group">
                         <label>Staff Contract Start<span style="color:red;">*</span></label>
-                        <input class="form-control" type="date" name="staffcontractstart" autocomplete="off"  required />
+                        <input class="form-control" type="text" name="staffcontractstart" autocomplete="off"  required />
                     </div>
 
                     <button type="submit" name="create" class="btn btn-primary">Add </button>
