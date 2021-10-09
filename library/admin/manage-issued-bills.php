@@ -17,7 +17,7 @@ else{
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta name="staff" content="" />
    <title> Housely </title>
         
        
@@ -52,14 +52,14 @@ else{
         <section class="page-banner services-banner">
             <div class="container">
                 <div class="banner-header">
-                    <h2>Issued Services</h2>
+                    <h2>Issued Bills</h2>
                     <span class="underline center"></span>
                     <p class="lead"></p>
                 </div>
                 <div class="breadcrumb">
                     <ul>
-                        <li><a href="reg-students.php">Admin</a></li>
-                        <li>Issued Servicess</li>
+                        <li><a href="reg-customers.php">Admin</a></li>
+                        <li>Issued Bills</li>
                     </ul>
                 </div>
             </div>
@@ -127,14 +127,14 @@ else{
                                         <tr>
                                             <th>#</th>
                                             <th>Customer Name</th>
-                                            <th>Service Name</th>
-                                            <th>Service ID </th>
-                                            <th>Issued Date</th>
+                                            <th>Room Number</th>
+                                            <th>Total Bill </th>
+                                            <th>Payment Proof</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-<?php $sql = "SELECT customers.FullName,services.BookName,services.ISBNNumber,issuedServices.IssuesDate,issuedServices.id as rid from  issuedServices join customers on customers.StudentId=issuedServices.StudentId join services on services.id=issuedservices.BookId order by issuedservices.id desc";
+<?php $sql = "SELECT customers.FullName,roomrecord.roomNum,bill.totalbill,bill.evidenceurl FROM customers join roomrecord on customers.custID=roomrecord.custID join bills on bills.roomNum=roomrecord.roomNum ";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -146,18 +146,10 @@ foreach($results as $result)
                                         <tr class="odd gradeX">
                                             <td class="center"><?php echo htmlentities($cnt);?></td>
                                             <td class="center"><?php echo htmlentities($result->FullName);?></td>
-                                            <td class="center"><?php echo htmlentities($result->BookName);?></td>
-                                            <td class="center"><?php echo htmlentities($result->ISBNNumber);?></td>
-                                            <td class="center"><?php echo htmlentities($result->IssuesDate);?></td>
-                                            <td class="center"><?php if($result->ReturnDate=="")
-                                            {
-                                                echo htmlentities("Not Return Yet");
-                                            } else {
-
-
-                                            echo htmlentities($result->ReturnDate);
-}
-                                            ?></td>
+                                            <td class="center"><?php echo htmlentities($result->roomNum);?></td>
+                                            <td class="center"><?php echo htmlentities($result->totalbill);?></td>
+                                            <td class="center"><?php echo htmlentities($result->evidenceurl);?></td>
+        
                                             <td class="center">
 
                                             <a href="update-issue-bookdeails.php?rid=<?php echo htmlentities($result->rid);?>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 

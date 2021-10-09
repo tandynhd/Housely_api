@@ -11,28 +11,31 @@ else{
 if(isset($_POST['issue']))
 {
 $customerid=$_POST['customerid'];
-$serviceid=$_POST['serviceid'];
-$staffid=$_POST['staffid'];
-$servprice = $_POST['serviceprice'];
+// $serviceid=$_POST['serviceid'];
+// $staffid=$_POST['staffid'];
+// $servprice = $_POST['serviceprice'];
 // $sql="SELECT roomNum FROM roomContract WHERE custID = $customerid";
 
-$sql="INSERT INTO bookedservice(servID,custID,staffID,servPrice) VALUES(:serviceid,:customerid,:staffid,:servprice)";
+$sql="INSERT INTO bill(staffID,roomNum,roomID,billIssueDate) 
+SELECT rc.staffID, rc.roomNum, rr.roomrecid 
+       FROM roomcontract as rc,  roomrecord as rr
+       WHERE custID=$customerid AND 
+       rc.roomNum = rr.roomNum;
+		
+ ";
 $query = $dbh->prepare($sql);
 $query->bindParam(':customerid',$customerid,PDO::PARAM_STR);
-$query->bindParam(':serviceid',$serviceid,PDO::PARAM_STR);
-$query->bindParam(':staffid',$staffid,PDO::PARAM_STR);
-$query->bindParam(':servprice',$servprice,PDO::PARAM_STR);
 $query->execute();
 $lastInsertId = $dbh->lastInsertId();
 if($lastInsertId)
 {
 $_SESSION['msg']="Service issued successfully";
-header('location:manage-issued-services.php');
+header('location:manage-issued-bills.php');
 }
 else 
 {
 $_SESSION['error']="Something went wrong. Please try again";
-header('location:manage-issued-services.php');
+header('location:manage-issued-bills.php');
 }
 
 }
@@ -152,7 +155,7 @@ Issue a New Bill
             <input class="form-control" type="text" name="customerid" id="customerid" autocomplete="off"  required />
         </div>
 
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label>Service ID <span style="color:red;">*</span></label>
             <input class="form-control" type="text" name="serviceid" id="serviceid" required="required" />
         </div>
@@ -164,7 +167,7 @@ Issue a New Bill
 
         <div class="form-group">
             <label>Service Price (THB)<span style="color:red;">*</span></label>
-            <input class="form-control" type="text" name="serviceprice" id="serviceprice"  required="required" />
+            <input class="form-control" type="text" name="serviceprice" id="serviceprice"  required="required" /> -->
         </div>
         <button type="submit" name="issue" id="submit" class="btn btn-primary">Issue Bill </button>
 

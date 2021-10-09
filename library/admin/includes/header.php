@@ -42,15 +42,6 @@
                                 </div>
                                 <div class="navbar-collapse hidden-sm hidden-xs">
                                     <ul class="nav navbar-nav">
-                                        <!-- <li class="dropdown" >
-                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Categories</a>
-											<ul class="dropdown-menu">
-                                                <li><a href="add-category.php">Add Categories</a></li>
-                                                <li><a href="manage-categories.php">Manage Categories</a></li>
-                                                
-                                            </ul>
-                                            
-                                        </li> -->
                                         <li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Staff</a>
 											<ul class="dropdown-menu">
@@ -58,17 +49,8 @@
                                                 <li><a href="manage-staff.php">Manage Staff</a></li>
                                                 
                                             </ul>
-                                            
                                         </li>
-										<!-- <li class="dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Category</a>
-											<ul class="dropdown-menu">
-                                                <li><a href="add-publisher.php">Add Publishers</a></li>
-                                                <li><a href="manage-publishers.php">Manage Publishers</a></li>
-                                                
-                                            </ul>
-                                            
-                                        </li> -->
+
 										<li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Services</a>
 											<ul class="dropdown-menu">
@@ -85,14 +67,14 @@
                                         <li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Bill</a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="issue-bills.php">Issue a Bill</a></li>
+                                                <li><a href="issue-bills.php">Issue Bills</a></li>
                                                 <li><a href="manage-issued-bills.php">Manage Issued Bill</a></li>
                                                 
                                             </ul>
                                         </li>
                                         
                                         
-                                        <li><a href="reg-customers.php"> Customers </a></li>
+                                        <li><a href="reg-customers.php"> Registerd Customers </a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -105,6 +87,7 @@
                                         <h4>Navigation</h4>
                                         <a href="#" class="close"></a>
                                     </li>
+                                    
                                     <li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Categories</a>
 											<ul class="dropdown-menu">
@@ -133,7 +116,7 @@
                                             
                                         </li>
 										<li class="dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Books</a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Services</a>
 											<ul class="dropdown-menu">
                                                 <li><a href="add-services.php">Add Services</a></li>
                                                 <li><a href="manage-services.php">Manage Services</a></li>
@@ -146,10 +129,10 @@
                                             
                                         </li>
                                         <li class="dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Issue Books</a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Bill</a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="issue-bills.php">Issue New Service</a></li>
-                                                <li><a href="manage-issued-bills.php">Manage Issued Books</a></li>
+                                                <li><a href="issue-bills.php">Issue Bills</a></li>
+                                                <li><a href="manage-issued-bills.php">Manage Issued Bills</a></li>
                                                 
                                             </ul>
                                         </li>
