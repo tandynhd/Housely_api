@@ -162,7 +162,7 @@ else{?>
                                     
 <?php 
 
-$sql = "SELECT services.BookName,category.CategoryName,services.image, services.id as serviceid from services,category where services.catId = category.id;";
+$sql = "SELECT service.servName,servicecatagory.servCataName,service.servDesc,service.servthumbnail from service,servicecatagory where service.servCataID = servicecatagory.servCataID;";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -175,23 +175,21 @@ foreach($results as $result)
 <div class="col-lg-3 col-md-4 col-sm-12" id="card">
 
 <div class="card">
-  <img src="admin/images/<?php echo $result->image;?>" >
+  <img src="admin/images/stn/<?php echo $result->servthumbnail;?>" >
   <div class="info"  >
     
-    <h1 style="font-family:'Lato', Georgia, Times, serif; font-weight:900;"><?php echo htmlentities($result->BookName);?></h1>
-    <p><?php echo htmlentities($result->CategoryName);?> </br>Staff - <?php echo htmlentities($result->AuthorName);?> </p>
-
-  
-  <?php if($result->no_of_books!=0)
+    <h1 style="font-family:'Lato', Georgia, Times, serif; font-weight:900;"><?php echo htmlentities($result->servName);?></h1>
+    <p><?php echo htmlentities($result->servCataName);?> </br>Description - <?php echo htmlentities($result->servDesc);?> </p>
+    <?php if($result->no_of_books!=0)
                                             {?>
                                             
                                              <a href="reserve-book.php?bookid=<?php echo $result->bookid;?>" class="btn"  >Reserve</a>
                                                 
                                             <?php } else { ?>
                                              
-											  <a href="#" class="btn" disabled >Reserve</a>
+                                              <a href="#" class="btn" disabled >Reserve</a>
                                         
-										<?php }
+                                        <?php }
                                             ?>
   
   
@@ -206,7 +204,7 @@ foreach($results as $result)
 </div>
 
 
-	  
+      
 
 
 
@@ -238,12 +236,12 @@ foreach($results as $result)
             
     </div>
     </div>
-     
+<?php } ?>     
 <?php include('includes/footer.php');?>
      
-	  
-	  
-	  
+      
+      
+      
 <script>
 function myFunction() {
     var input, filter, ul, li, a, i, txtValue;
@@ -251,23 +249,23 @@ function myFunction() {
     filter = input.value.toUpperCase();
     ul = document.getElementById("myUL");
     li = ul.getElementsByTagName("h1");
-	a1 = document.querySelectorAll("#card");
-	
+    a1 = document.querySelectorAll("#card");
+    
     for (i = 0; i < li.length; i++) {
         a = li[i];
         txtValue = a.textContent || a.innerText;
-		
+        
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
           
-			a1[i].style.display = "";
-		
-		} else {
+            a1[i].style.display = "";
+        
+        } else {
            a1[i].style.display = "none";
         }
     }
 }
 </script>
-	  
+      
   <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
         
       
@@ -325,7 +323,7 @@ function myFunction() {
         
        
         <script type="text/javascript" src="js/main.js"></script>
-	       
+           
 
        
     
