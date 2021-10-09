@@ -3,10 +3,11 @@ session_start();
 error_reporting(0);
 include('includes/config.php');
 if(strlen($_SESSION['alogin'])==0)
-    {   
-header('location:index.php');
+{   
+    header('location:index.php');
 }
-else{ 
+else
+{ 
 
 if(isset($_POST['add']))
 {
@@ -19,35 +20,35 @@ if(isset($_POST['add']))
     $allowed_extensions = array(".jpg","jpeg",".png",".gif");
     if(!in_array($extension,$allowed_extensions))
     {
-    echo "<script>alert('Facility image has Invalid format. Only jpg / jpeg/ png /gif format allowed');</script>";
+        echo "<script>alert('Facility image has Invalid format. Only jpg / jpeg/ png /gif format allowed');</script>";
     }
     else
     {
-    $servthumbnail=md5($servthumbnail).time().$extension;
-    move_uploaded_file($_FILES["image"]["tmp_name"],"images/".$servthumbnail);
+        $servthumbnail=md5($servthumbnail).time().$extension;
+        move_uploaded_file($_FILES["serviceimage"]["tmp_name"],"images/stn/".$servthumbnail);
 
 
 
-    $sql="INSERT INTO  service(servName,servCataID,servDesc,servthumbnail) VALUES(:servName,:servCataID,:servDesc,:servthumbnail)";
-    $query = $dbh->prepare($sql);
-    $query->bindParam(':servName',$servName ,PDO::PARAM_STR);
-    $query->bindParam(':servCataID',$servCataID ,PDO::PARAM_STR);
-    $query->bindParam(':servDesc',$servDesc,PDO::PARAM_STR);
-    $query->bindParam(':servthumbnail',$servthumbnail,PDO::PARAM_STR);
-    $query->execute();
+        $sql="INSERT INTO  service(servName,servCataID,servDesc,servthumbnail) VALUES(:servName,:servCataID,:servDesc,:servthumbnail)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':servName',$servName ,PDO::PARAM_STR);
+        $query->bindParam(':servCataID',$servCataID ,PDO::PARAM_STR);
+        $query->bindParam(':servDesc',$servDesc,PDO::PARAM_STR);
+        $query->bindParam(':servthumbnail',$servthumbnail,PDO::PARAM_STR);
+        $query->execute();
 
 
-    $lastInsertId = $dbh->lastInsertId();
-    if($lastInsertId)
-    {
-    $_SESSION['msg']="Service Listed successfully";
-    header('location:manage-services.php');
-    }
-    else 
-    {
-    $_SESSION['error']="Something went wrong. Please try again";
-    header('location:manage-services.php');
-    }
+        $lastInsertId = $dbh->lastInsertId();
+        if($lastInsertId)
+        {
+            $_SESSION['msg']="Service Listed successfully";
+            header('location:manage-services.php');
+        }
+        else 
+        {
+            $_SESSION['error']="Something went wrong. Please try again";
+            header('location:manage-services.php');
+        }
     }
 }
 

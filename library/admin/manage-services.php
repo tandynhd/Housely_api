@@ -169,12 +169,12 @@ foreach($results as $result)
                                             <td class="center"><?php echo htmlentities($result->servName);?></td>
                                             <td class="center"><?php echo htmlentities($result->servCataName);?></td>
                                             <td class="center"><?php echo htmlentities($result->servDesc);?></td>
-											<td class="center"><img src="images/<?php echo $result->image;?>" style="width:100px;"></td>
+											<td class="center"><img src="images/stn/<?php echo $result->servthumbnail;?>" style="width:100px;"></td>
                                             <td class="center">
 											
 
                                             <a href="edit-services.php?bookid=<?php echo htmlentities($result->bookid);?>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 
-                                          <a href="manage-services.php?del=<?php echo htmlentities($result->bookid);?>" onclick="return confirm('Are you sure you want to delete?');"" >  <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button>
+                                          <a href="manage-services.php?del=<?php echo htmlentities($result->bookid);?>" onclick="return confirm('Are you sure you want to delete?');" >  <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button>
                                             </td>
                                         </tr>
  <?php $cnt=$cnt+1;}} ?>                                      
