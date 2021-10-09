@@ -73,7 +73,7 @@ header('location:manage-staff.php');
                 </div>
                 <div class="breadcrumb">
                     <ul>
-                        <li><a href="reg-students.php"> Admin </a></li>
+                        <li><a href="reg-students.php"> Admin</a></li>
                         <li>Manage Staff</li>
                     </ul>
                 </div>
