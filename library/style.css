@@ -58,6 +58,15 @@ Version: 1.0.0
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
+@media (max-width:771px) and (min-width:987px) {
+  .logo {
+      width: 10%;
+  }
+}
+.logo{
+	width: 40%;
+}
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;

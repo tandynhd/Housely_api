@@ -16,7 +16,7 @@
                                     <div class="navbar-brand">
                                         <h1>
                                             <a href="home.php">
-                                                <img src="includes/housely-logo-100.png" alt=" HOUSELY" />
+                                                <img class = "logo" src="includes/housely-logo-100.png" alt=" HOUSELY"/>
                                             </a>
                                         </h1>
                                     </div>
@@ -132,7 +132,7 @@
                                     <div class="navbar-brand">
                                         <h1>
                                             <a href="home.php">
-                                                <img src="includes/housely-logo-100.png" alt=" HOUSELY" />
+                                                <img class = "logo" src="includes/housely-logo-100.png" alt=" HOUSELY"/>
                                             </a>
                                         </h1>
                                     </div>

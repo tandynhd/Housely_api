@@ -14,13 +14,14 @@ $fp = fopen($count_my_page , "w");
 fputs($fp , "$hits[0]");
 fclose($fp); 
 $custId= $hits[0];   
+
 $custname=$_POST['fullname'];
 $custTele=$_POST['mobileno'];
 $custEmail =$_POST['email']; 
 $custAddr=$_POST['Address'];
 $password=md5($_POST['password']);
 
-$sql="INSERT INTO  customer(custId,custname,custTele,custEmail,custAddr,Password) VALUES(:custId,:custname,:custTele,:custEmail,:password)";
+$sql="INSERT INTO  customer(custID,custname,custTele,custEmail,custPass,custAddr) VALUES(:custId,:custname,:custTele,:custEmail,:password,:custAddr)";
 
 $query = $dbh->prepare($sql);
 $query->bindParam(':custId',$custId,PDO::PARAM_STR);
@@ -35,6 +36,7 @@ $lastInsertId = $dbh->lastInsertId();
 if($lastInsertId)
 {
 echo '<script>alert("Your Registration successfull and your Customer ID is  "+"'.$custId.'")</script>';
+echo "<script type='text/javascript'> document.location ='index.php'; </script>";
 }
 else 
 {
