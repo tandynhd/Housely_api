@@ -2,7 +2,7 @@
 session_start();
 error_reporting(0);
 include('includes/config.php');
-if(strlen($_SESSION['alogin'])==0)
+if(strlen($_SESSION['slogin'])==0)
     {   
 header('location:index.php');
 }
@@ -16,22 +16,18 @@ if(isset($_POST['create']))
     $StaffAddr=$_POST['staffaddress'];
     $StaffSalary=$_POST['staffsalary'];
     $staffContractStart=$_POST['staffcontractstart'];
-    $ShiftStart=$_POST['staffcshiftstart'];
-    $ShiftEnd=$_POST['staffshiftend'];
 
 
-    $sql="INSERT INTO  staff(StaffName,StaffTele,StaffEmail,StaffAddr,StaffSalary,staffContractStart,ShiftStart,ShiftEnd) 
-          VALUES(:StaffName,:StaffTele,:StaffEmail,:StaffAddr,:StaffSalary,:staffContractStart,:ShiftStart,:ShiftEnd)";
+    $sql="INSERT INTO  staff(StaffName,StaffTele,StaffEmail,StaffAddr,StaffSalary,staffContractStart) 
+          VALUES(:StaffName,:StaffTele,:StaffEmail,:StaffAddr,:StaffSalary,:staffContractStart";
 
     $query = $dbh->prepare($sql);
-    $query->bindParam(':StaffName',$author,PDO::PARAM_STR);
-    $query->bindParam(':StaffTele',$author,PDO::PARAM_STR);
-    $query->bindParam(':StaffEmail',$author,PDO::PARAM_STR);
-    $query->bindParam(':StaffAddr',$author,PDO::PARAM_STR);
-    $query->bindParam(':StaffSalary',$author,PDO::PARAM_STR);
-    $query->bindParam(':staffContractStart',$author,PDO::PARAM_STR);
-    $query->bindParam(':ShiftStart',$author,PDO::PARAM_STR);
-    $query->bindParam(':ShiftEnd',$author,PDO::PARAM_STR);
+    $query->bindParam(':StaffName',$staff,PDO::PARAM_STR);
+    $query->bindParam(':StaffTele',$staff,PDO::PARAM_STR);
+    $query->bindParam(':StaffEmail',$staff,PDO::PARAM_STR);
+    $query->bindParam(':StaffAddr',$staff,PDO::PARAM_STR);
+    $query->bindParam(':StaffSalary',$staffstaff,PDO::PARAM_STR);
+    $query->bindParam(':staffContractStart',$staff,PDO::PARAM_STR);
     $query->execute();
 
     $lastInsertId = $dbh->lastInsertId();
@@ -54,7 +50,7 @@ if(isset($_POST['create']))
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta name="staff" content="" />
     <title> Housely </title>
         
        
@@ -104,7 +100,7 @@ if(isset($_POST['create']))
                 </div>
                 <div class="breadcrumb">
                     <ul>
-                        <li><a href="reg-students.php">Admin</a></li>
+                        <li><a href="reg-customers.php">Admin</a></li>
                         <li>Add Staff</li>
                     </ul>
                 </div>
@@ -158,16 +154,6 @@ if(isset($_POST['create']))
                     <div class="form-group">
                         <label>Staff Contract Start<span style="color:red;">*</span></label>
                         <input class="form-control" type="date" name="staffcontractstart" autocomplete="off"  required />
-                    </div>
-
-                    <div class="form-group">
-                        <label>Staff Shift Start<span style="color:red;">*</span></label>
-                        <input class="form-control" type="time" name="staffcshiftstart" autocomplete="off"  required />
-                    </div>
-
-                    <div class="form-group">
-                        <label>Staff Shift End<span style="color:red;">*</span></label>
-                        <input class="form-control" type="time" name="staffshiftend" autocomplete="off"  required />
                     </div>
 
                     <button type="submit" name="create" class="btn btn-primary">Add </button>
