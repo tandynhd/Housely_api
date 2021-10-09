@@ -9,7 +9,7 @@
                                     <div class="navbar-brand">
                                         <h1>
                                             <a href="index-2.html">
-                                                <img src="includes/housely-logo-100.png" alt="HOUSELY" style = "width:30%">
+                                                <img class = "logo" src="includes/housely-logo-100.png" alt=" HOUSELY"/>
                                             </a>
                                         </h1>
                                     </div>
