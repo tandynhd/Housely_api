@@ -15,7 +15,14 @@
 /* =============================================================
    GENERAL STYLES
  ============================================================ */
-
+ @media (max-width:771px) and (min-width:987px) {
+    .logo {
+        width: 10%;
+    }
+  }
+  .logo{
+      width: 40%;
+  }
 body {
     font-family: 'Open Sans', sans-serif;
     line-height:28px;

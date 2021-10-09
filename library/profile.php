@@ -92,7 +92,10 @@ header('location:profile.php');
                                 <p>Now manage all your dorm related functions from one single place. </p>
                                 <p>Pay your rent with a single click (assuming the bank account has already been linked). </p>
                                 <p>Pay before 5th of every month to avoid a fine of 200 baht every day.</p>
-                                <a class="btn btn-primary" href="#">Pay Now</a>
+                                <div class="form-group">
+                                    <label>Payment Receipt<span style="color:red;">*</span></label>
+                                    <input class="form-control" type="file" name="paymentreceipt" value=""  required />
+                                </div>
                             </div>
                         </div>
                     </div>

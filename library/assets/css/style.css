@@ -218,6 +218,15 @@ height: 60px;
     .footer-section a, .footer-section a:hover {
         color:#000;
     }
+
+@media (max-width:771px) and (min-width:987px) {
+    .logo {
+        width: 10%;
+    }
+    }
+    .logo{
+        width: 40%;
+    }
 	
 	
 	

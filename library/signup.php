@@ -159,7 +159,7 @@ error:function (){}
                                                             </p>
 															 
                                                             <p class="form-row form-row-first input-required">                                                                
-                                                                <input type="text"  id="username" name="email" class="input-text" placeholder="Email">
+                                                                <input type="email"  id="username" name="email" class="input-text" placeholder="Email">
                                                             </p>
 
                                                             <p class="form-row form-row-first input-required">

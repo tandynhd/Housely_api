@@ -175,11 +175,8 @@ html,body{
 
 .panel {
 	background-color: #fffff;
-  color: #222;
-  text-align: left;
-  
-	
-	
+	color: #222;
+	text-align: left;	
 }
 
 /* #tableheading {
@@ -217,11 +214,14 @@ html,body{
 	
 	
 }
-
-.logo{
-	width: 30%;
-}
-
+@media (max-width:771px) and (min-width:987px) {
+	.logo {
+		width: 10%;
+	}
+  }
+  .logo{
+	  width: 40%;
+  }
 
 
 /* style-form */
