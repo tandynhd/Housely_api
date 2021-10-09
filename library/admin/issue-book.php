@@ -109,14 +109,14 @@ error:function (){}
         <section class="page-banner services-banner">
             <div class="container">
                 <div class="banner-header">
-                    <h2>Issue a New Service</h2>
+                    <h2>Issue a Bill</h2>
                     <span class="underline center"></span>
                     <p class="lead"></p>
                 </div>
                 <div class="breadcrumb">
                     <ul>
                         <li><a href="reg-students.php">Admin</a></li>
-                        <li>Issue Services</li>
+                        <li>Issue a Bill</li>
                     </ul>
                 </div>
             </div>
@@ -136,7 +136,7 @@ error:function (){}
 <div class="col-md-10 col-sm-6 col-xs-12 col-md-offset-1">
 <div class="panel panel-info">
 <div class="panel-heading" id="formheading">
-Issue a New Service
+Issue a New Bill
 </div>
 <div class="panel-body">
 <form role="form" method="post">
@@ -165,7 +165,7 @@ Issue a New Service
    
  </select>
  </div>
-<button type="submit" name="issue" id="submit" class="btn btn-primary">Issue Book </button>
+<button type="submit" name="issue" id="submit" class="btn btn-primary">Issue Bill </button>
 
                                     </form>
                             </div>

@@ -83,10 +83,10 @@
                                             
                                         </li>
                                         <li class="dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Issue Services</a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Bill</a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="issue-book.php">Issue New Services</a></li>
-                                                <li><a href="manage-issued-books.php">Manage Issued Services</a></li>
+                                                <li><a href="issue-book.php">Issue a Bill</a></li>
+                                                <li><a href="manage-issued-books.php">Manage Issued Bill</a></li>
                                                 
                                             </ul>
                                         </li>
