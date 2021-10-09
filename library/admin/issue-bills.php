@@ -10,23 +10,29 @@ else{
 
 if(isset($_POST['issue']))
 {
-$studentid=strtoupper($_POST['studentid']);
-$bookid=$_POST['bookdetails'];
-$sql="INSERT INTO  issuedServices(StudentID,BookId) VALUES(:studentid,:bookid)";
+$customerid=$_POST['customerid'];
+$serviceid=$_POST['serviceid'];
+$staffid=$_POST['staffid'];
+$servprice = $_POST['serviceprice'];
+// $sql="SELECT roomNum FROM roomContract WHERE custID = $customerid";
+
+$sql="INSERT INTO bookedservice(servID,custID,staffID,servPrice) VALUES(:serviceid,:customerid,:staffid,:servprice)";
 $query = $dbh->prepare($sql);
-$query->bindParam(':studentid',$studentid,PDO::PARAM_STR);
-$query->bindParam(':bookid',$bookid,PDO::PARAM_STR);
+$query->bindParam(':customerid',$customerid,PDO::PARAM_STR);
+$query->bindParam(':serviceid',$serviceid,PDO::PARAM_STR);
+$query->bindParam(':staffid',$staffid,PDO::PARAM_STR);
+$query->bindParam(':servprice',$servprice,PDO::PARAM_STR);
 $query->execute();
 $lastInsertId = $dbh->lastInsertId();
 if($lastInsertId)
 {
 $_SESSION['msg']="Service issued successfully";
-header('location:manage-issued-books.php');
+header('location:manage-issued-services.php');
 }
 else 
 {
 $_SESSION['error']="Something went wrong. Please try again";
-header('location:manage-issued-books.php');
+header('location:manage-issued-services.php');
 }
 
 }
@@ -139,36 +145,31 @@ error:function (){}
 Issue a New Bill
 </div>
 <div class="panel-body">
-<form role="form" method="post">
+        <form role="form" method="post">
 
-<div class="form-group">
-<label>Customer ID<span style="color:red;">*</span></label>
-<input class="form-control" type="text" name="studentid" id="studentid" onBlur="getstudent()" autocomplete="off"  required />
+        <div class="form-group">
+            <label>Customer ID<span style="color:red;">*</span></label>
+            <input class="form-control" type="text" name="customerid" id="customerid" autocomplete="off"  required />
+        </div>
+
+        <div class="form-group">
+            <label>Service ID <span style="color:red;">*</span></label>
+            <input class="form-control" type="text" name="serviceid" id="serviceid" required="required" />
+        </div>
+
+        <div class="form-group">
+            <label>Staff ID <span style="color:red;">*</span></label>
+            <input class="form-control" type="text" name="staffid" id="staffid"  required="required" />
+        </div>
+
+        <div class="form-group">
+            <label>Service Price (THB)<span style="color:red;">*</span></label>
+            <input class="form-control" type="text" name="serviceprice" id="serviceprice"  required="required" />
+        </div>
+        <button type="submit" name="issue" id="submit" class="btn btn-primary">Issue Bill </button>
+
+        </form>
 </div>
-
-<div class="form-group">
-<span id="get_student_name" style="font-size:16px;"></span> 
-</div>
-
-
-
-
-
-<div class="form-group">
-<label>Service ID or Name<span style="color:red;">*</span></label>
-<input class="form-control" type="text" name="booikid" id="bookid" onBlur="getbook()"  required="required" />
-</div>
-
- <div class="form-group">
-
-  <select  class="form-control" name="bookdetails" id="get_book_name" readonly>
-   
- </select>
- </div>
-<button type="submit" name="issue" id="submit" class="btn btn-primary">Issue Bill </button>
-
-                                    </form>
-                            </div>
                         </div>
                             </div>
 
