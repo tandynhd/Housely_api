@@ -10,56 +10,47 @@ else{
 
 if(isset($_POST['add']))
 {
-$bookname=$_POST['bookname'];
+    $servID =$_POST['servicename'];
+    $servDesc=$_POST['servicedesc'];
+    
+
+    $servthumbnail = $_FILES["image"]["name"];
+    $extension = substr($servthumbnail,strlen($servthumbnail)-4,strlen($servthumbnail));
+    $allowed_extensions = array(".jpg","jpeg",".png",".gif");
+    if(!in_array($extension,$allowed_extensions))
+    {
+    echo "<script>alert('Facility image has Invalid format. Only jpg / jpeg/ png /gif format allowed');</script>";
+    }
+    else
+    {
+    $servthumbnail=md5($servthumbnail).time().$extension;
+    move_uploaded_file($_FILES["image"]["tmp_name"],"images/".$servthumbnail);
 
 
-$category=$_POST['category'];
-$author=$_POST['author'];
-$publisher=$_POST['publisher'];
-$isbn=$_POST['isbn'];
-$noofbooks=$_POST['noofbooks'];
-$price=$_POST['price'];
 
-$img = $_FILES["image"]["name"];
-$extension = substr($img,strlen($img)-4,strlen($img));
-$allowed_extensions = array(".jpg","jpeg",".png",".gif");
-if(!in_array($extension,$allowed_extensions))
-{
-echo "<script>alert('Facility image has Invalid format. Only jpg / jpeg/ png /gif format allowed');</script>";
+    $sql="INSERT INTO  service(servID,servCataID,servDesc,servthumbnail) VALUES(:bookname,:servCataID,:servthumbnail)";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':servID',$servID ,PDO::PARAM_STR);
+    $query->bindParam(':servCataID',$servCataID ,PDO::PARAM_STR);
+    $query->bindParam(':servDesc',$servDesc,PDO::PARAM_STR);
+    $query->bindParam(':servthumbnail',$servthumbnail,PDO::PARAM_STR);
+    $query->execute();
+
+
+    $lastInsertId = $dbh->lastInsertId();
+    if($lastInsertId)
+    {
+    $_SESSION['msg']="Book Listed successfully";
+    header('location:manage-services.php');
+    }
+    else 
+    {
+    $_SESSION['error']="Something went wrong. Please try again";
+    header('location:manage-services.php');
+    }
+    }
 }
-else
-{
-$img=md5($img).time().$extension;
-move_uploaded_file($_FILES["image"]["tmp_name"],"images/".$img);
 
-
-
-$sql="INSERT INTO  services(BookName,CatId,AuthorId,PublisherId,ISBNNumber,BookPrice,image,no_of_books) VALUES(:bookname,:category,:author,:publisher,:isbn,:price,:img,:noofbooks)";
-$query = $dbh->prepare($sql);
-$query->bindParam(':bookname',$bookname,PDO::PARAM_STR);
-$query->bindParam(':category',$category,PDO::PARAM_STR);
-$query->bindParam(':author',$author,PDO::PARAM_STR);
-$query->bindParam(':publisher',$publisher,PDO::PARAM_STR);
-$query->bindParam(':isbn',$isbn,PDO::PARAM_STR);
-$query->bindParam(':price',$price,PDO::PARAM_STR);
-$query->bindParam(':noofbooks',$noofbooks,PDO::PARAM_STR);
-$query->bindParam(':img',$img,PDO::PARAM_STR);
-$query->execute();
-
-
-$lastInsertId = $dbh->lastInsertId();
-if($lastInsertId)
-{
-$_SESSION['msg']="Book Listed successfully";
-header('location:manage-services.php');
-}
-else 
-{
-$_SESSION['error']="Something went wrong. Please try again";
-header('location:manage-services.php');
-}
-}
-}
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -147,25 +138,31 @@ header('location:manage-services.php');
         <div class="panel-body">
         <form role="form" method="post" enctype="multipart/form-data">
         <div class="form-group">
-        <label>Service Name<span style="color:red;">*</span></label>
-        <input class="form-control" type="text" name="bookname" autocomplete="off"  required />
+            <label>Service Name<span style="color:red;">*</span></label>
+            <input class="form-control" type="text" name="servicename" autocomplete="off"  required />
         </div>
 
 
         <div class="form-group">
             <label>Service Thumbnail<span style="color:red;">*</span></label>
-            <input class="form-control" type="file" name="image" value=""  required />
+            <input class="form-control" type="file" name="serviceimage" value=""  required />
 
         </div>
+
+        <div class="form-group">
+            <label>Service Description<span style="color:red;">*</span></label>
+            <input class="form-control" type="text" name="servicedesc" autocomplete="off"  required />
+        </div>
+
 
 
         <div class="form-group">
             <label>Service Category<span style="color:red;">*</span></label>
-            <select class="form-control" name="category"  required="required">
+            <select class="form-control" name="servicecategory"  required="required">
                 <option value=""> Select Category</option>
                 <?php 
                     $status=1;
-                    $sql = "SELECT * from  category where Status=:status";
+                    $sql = "SELECT * from  servicecatagory where Status=:status";
                     $query = $dbh -> prepare($sql);
                     $query -> bindParam(':status',$status, PDO::PARAM_STR);
                     $query->execute();
@@ -174,8 +171,10 @@ header('location:manage-services.php');
                     if($query->rowCount() > 0)
                     {
                     foreach($results as $result)
-                    {               ?>  
-                    <option value="<?php echo htmlentities($result->id);?>"><?php echo htmlentities($result->CategoryName);?></option>
+                    {               
+                ?>  
+                    
+                    <option value="<?php echo htmlentities($result->id);?>"><?php echo htmlentities($result->servCataName);?></option>
                 <?php }} ?> 
             </select>
         </div>

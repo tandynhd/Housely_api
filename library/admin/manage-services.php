@@ -9,13 +9,13 @@ header('location:index.php');
 else{ 
 if(isset($_GET['del']))
 {
-$id=$_GET['del'];
-$sql = "delete from services  WHERE id=:id";
-$query = $dbh->prepare($sql);
-$query -> bindParam(':id',$id, PDO::PARAM_STR);
-$query -> execute();
-$_SESSION['delmsg']="Service deleted scuccessfully ";
-header('location:manage-books.php');
+    $id=$_GET['del'];
+    $sql = "delete from services  WHERE id=:id";
+    $query = $dbh->prepare($sql);
+    $query -> bindParam(':id',$id, PDO::PARAM_STR);
+    $query -> execute();
+    $_SESSION['delmsg']="Service deleted scuccessfully ";
+    header('location:manage-books.php');
 
 }
 
@@ -146,7 +146,7 @@ header('location:manage-books.php');
                                             <th>#</th>
                                             <th>Service Name</th>
                                             <th>Category Name</th>
-                                            <!--<th>Staff</th>-->
+                                            <th>Service Description</th>
 											<!--<th>Publisher</th>-->
                                             <!--<th>Service ID</th>-->
 											<th>Tumbnail</th>

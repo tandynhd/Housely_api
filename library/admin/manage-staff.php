@@ -150,9 +150,13 @@ header('location:manage-staff.php');
                                         <tr>
                                             <th>#</th>
                                             <th>Staff</th>
-                                         
-                                            <th>Joining Date</th>
-                                            <th>Updation Date</th>
+                                            <th>StaffTele</th>
+                                            <th>StaffEmail</th>
+                                            <th>StaffAddr</th>
+                                            <th>StaffSalary</th>
+                                            <th>staffContractStart</th>
+                                            <th>ShiftStart</th>
+                                            <th>ShiftEnd</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -169,8 +173,14 @@ foreach($results as $result)
                                         <tr class="odd gradeX">
                                             <td class="center"><?php echo htmlentities($cnt);?></td>
                                             <td class="center"><?php echo htmlentities($result->StaffName);?></td>
-                                            <td class="center"><?php echo htmlentities($result->creationDate);?></td>
-                                            <td class="center"><?php echo htmlentities($result->UpdationDate);?></td>
+                                            <td class="center"><?php echo htmlentities($result->StaffTele);?></td>
+                                            <td class="center"><?php echo htmlentities($result->StaffEmail);?></td>
+                                            <td class="center"><?php echo htmlentities($result->StaffAddr);?></td>
+                                            <td class="center"><?php echo htmlentities($result->StaffSalary);?></td>
+                                            <td class="center"><?php echo htmlentities($result->staffContractStart);?></td>
+                                            <td class="center"><?php echo htmlentities($result->ShiftStart);?></td>
+                                            <td class="center"><?php echo htmlentities($result->ShiftEnd);?></td>
+                                            
                                             <td class="center">
 
                                             <a href="edit-staff.php?athrid=<?php echo htmlentities($result->id);?>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 

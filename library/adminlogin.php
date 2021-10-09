@@ -9,12 +9,13 @@ if(isset($_POST['login']))
 {
  
 
-$username=$_POST['username'];
-$password=md5($_POST['password']);
-$sql ="SELECT UserName,Password FROM admin WHERE UserName=:username and Password=:password";
+$AdminUsername=$_POST['username'];
+#md5() for password 
+$AdminPass=$_POST['password'];
+$sql ="SELECT AdminUsername,AdminPass FROM admin WHERE AdminUsername=:username and AdminPass=:password";
 $query= $dbh -> prepare($sql);
-$query-> bindParam(':username', $username, PDO::PARAM_STR);
-$query-> bindParam(':password', $password, PDO::PARAM_STR);
+$query-> bindParam(':username', $AdminUsername, PDO::PARAM_STR);
+$query-> bindParam(':password', $AdminPass, PDO::PARAM_STR);
 $query-> execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 if($query->rowCount() > 0)

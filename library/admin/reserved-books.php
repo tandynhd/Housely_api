@@ -58,14 +58,14 @@ else{
         <section class="page-banner services-banner">
             <div class="container">
                 <div class="banner-header">
-                    <h2>Reserved Books</h2>
+                    <h2>Booked Service</h2>
                     <span class="underline center"></span>
                     <p class="lead"></p>
                 </div>
                 <div class="breadcrumb">
                     <ul>
-                        <li><a href="issued-books.php">Issued Books</a></li>
-                        <li>Reserved Books</li>
+                        <li><a href="reg-customers.php">Admin</a></li>
+                        <li>Booked Service</li>
                     </ul>
                 </div>
             </div>
@@ -135,7 +135,7 @@ else{
                     
                     <div class="panel panel-default">
                         <div class="panel-heading"id="tableheading">
-                          Reserved Books 
+                        Booked Service Information
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -143,16 +143,17 @@ else{
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Student Name</th>
-                                            <th>Book Name</th>
-                                            <th>ISBN </th>
-                                            <th>Reserved Date</th>
-                                            <th>Completed Date</th>
+                                            <th>servBookID</th>
+                                            <th>servID</th>
+                                            <th>custID</th>
+                                            <th>staffID</th>
+                                            <th>roomNum	</th>
+                                            <th>servPrice</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-<?php $sql = "SELECT students.FullName,books.BookName,books.ISBNNumber,reservedbookdetails.ReservedDate,reservedbookdetails.ReservationCanceledDate,reservedbookdetails.id as rid from  reservedbookdetails join students on students.StudentId=reservedbookdetails.StudentId join books on books.id=reservedbookdetails.BookId order by reservedbookdetails.id desc";
+<?php $sql = "SELECT * FROM bookedservice";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -163,10 +164,12 @@ foreach($results as $result)
 {               ?>                                      
                                         <tr class="odd gradeX">
                                             <td class="center"><?php echo htmlentities($cnt);?></td>
-                                            <td class="center"><?php echo htmlentities($result->FullName);?></td>
-                                            <td class="center"><?php echo htmlentities($result->BookName);?></td>
-                                            <td class="center"><?php echo htmlentities($result->ISBNNumber);?></td>
-                                            <td class="center"><?php echo htmlentities($result->ReservedDate);?></td>
+                                            <td class="center"><?php echo htmlentities($result->servBookID);?></td>
+                                            <td class="center"><?php echo htmlentities($result->servID);?></td>
+                                            <td class="center"><?php echo htmlentities($result->custID	);?></td>
+                                            <td class="center"><?php echo htmlentities($result->RstaffID);?></td>
+                                            <td class="center"><?php echo htmlentities($result->roomNum		);?></td>
+                                            <td class="center"><?php echo htmlentities($result->	servPrice);?></td>
                                             <td class="center"><?php if($result->ReservationCanceledDate=="")
                                             {
                                                 echo htmlentities("Not Completed Yet");
@@ -180,6 +183,11 @@ foreach($results as $result)
 
                                             <a href="update-reserve-bookdetails.php?rid=<?php echo htmlentities($result->rid);?>"><button class="btn btn-primary">Complete</button> 
                                          
+                                            </td>
+                                            <td class="center">
+
+                                            <a href="edit-staff.php?athrid=<?php echo htmlentities($result->id);?>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 
+                                          <a href="manage-staff.php?del=<?php echo htmlentities($result->id);?>" onclick="return confirm('Are you sure you want to delete?');"" >  <button class="btn btn-danger"><i class="fa fa-pencil"></i> Remove </button>
                                             </td>
                                         </tr>
  <?php $cnt=$cnt+1;}} ?>                                      

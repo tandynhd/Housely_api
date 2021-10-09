@@ -10,22 +10,41 @@ else{
 
 if(isset($_POST['create']))
 {
-$author=$_POST['author'];
-$sql="INSERT INTO  staff(AuthorName) VALUES(:author)";
-$query = $dbh->prepare($sql);
-$query->bindParam(':author',$author,PDO::PARAM_STR);
-$query->execute();
-$lastInsertId = $dbh->lastInsertId();
-if($lastInsertId)
-{
-$_SESSION['msg']="Staff added successfully";
-header('location:manage-staff.php');
-}
-else 
-{
-$_SESSION['error']="Something went wrong. Please try again";
-header('location:manage-staff.php');
-}
+    $StaffName=$_POST['staffname'];
+    $StaffTele=$_POST['staffphonenumber'];
+    $StaffEmail=$_POST['staffemail'];
+    $StaffAddr=$_POST['staffaddress'];
+    $StaffSalary=$_POST['staffsalary'];
+    $staffContractStart=$_POST['staffcontractstart'];
+    $ShiftStart=$_POST['staffcshiftstart'];
+    $ShiftEnd=$_POST['staffshiftend'];
+
+
+    $sql="INSERT INTO  staff(StaffName,StaffTele,StaffEmail,StaffAddr,StaffSalary,staffContractStart,ShiftStart,ShiftEnd) 
+          VALUES(:StaffName,:StaffTele,:StaffEmail,:StaffAddr,:StaffSalary,:staffContractStart,:ShiftStart,:ShiftEnd)";
+
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':StaffName',$author,PDO::PARAM_STR);
+    $query->bindParam(':StaffTele',$author,PDO::PARAM_STR);
+    $query->bindParam(':StaffEmail',$author,PDO::PARAM_STR);
+    $query->bindParam(':StaffAddr',$author,PDO::PARAM_STR);
+    $query->bindParam(':StaffSalary',$author,PDO::PARAM_STR);
+    $query->bindParam(':staffContractStart',$author,PDO::PARAM_STR);
+    $query->bindParam(':ShiftStart',$author,PDO::PARAM_STR);
+    $query->bindParam(':ShiftEnd',$author,PDO::PARAM_STR);
+    $query->execute();
+
+    $lastInsertId = $dbh->lastInsertId();
+    if($lastInsertId)
+    {
+        $_SESSION['msg']="Staff added successfully";
+        header('location:manage-staff.php');
+    }
+    else 
+    {
+        $_SESSION['error']="Something went wrong. Please try again";
+        header('location:manage-staff.php');
+    }
 
 }
 ?>
@@ -94,33 +113,69 @@ header('location:manage-staff.php');
         
     
     <div class="content-wrapper">
-         <div class="container">
+        <div class="container">
         <div class="row pad-botm">
             <div class="col-md-12">
                 <h4 class="header-line"></h4>
                 
-                            </div>
+            </div>
 
-</div>
-<div class="row">
-<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3"">
-<div class="panel panel-info">
-<div class="panel-heading" id="formheading">
-Staff Info
-</div>
-<div class="panel-body">
-<form role="form" method="post">
-<div class="form-group">
-<label>Staff Name</label>
-<input class="form-control" type="text" name="author" autocomplete="off"  required />
-</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                <div class="panel panel-info">
+                    <div class="panel-heading" id="formheading">
+                        Staff Information
+                    </div>
+                <div class="panel-body">
+                <form role="form" method="post" enctype="multipart/form-data">
 
-<button type="submit" name="create" class="btn btn-primary">Add </button>
+                    <div class="form-group">
+                        <label>Staff Name<span style="color:red;">*</span></label>
+                        <input class="form-control" type="text" name="staffname" autocomplete="off"  required />
+                    </div>
 
-                                    </form>
-                            </div>
-                        </div>
-                            </div>
+                    <div class="form-group">
+                        <label>Staff Phone Number<span style="color:red;">*</span></label>
+                        <input class="form-control" type="text" name="staffphonenumber" autocomplete="off"  required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Staff Email<span style="color:red;">*</span></label>
+                        <input class="form-control" type="Email" name="staffemail" autocomplete="off"  required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Staff Address<span style="color:red;">*</span></label>
+                        <input class="form-control" type="text" name="staffaddress" autocomplete="off"  required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Staff Salary<span style="color:red;">*</span></label>
+                        <input class="form-control" type="text" name="staffsalary" autocomplete="off"  required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Staff Contract Start<span style="color:red;">*</span></label>
+                        <input class="form-control" type="date" name="staffcontractstart" autocomplete="off"  required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Staff Shift Start<span style="color:red;">*</span></label>
+                        <input class="form-control" type="time" name="staffcshiftstart" autocomplete="off"  required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Staff Shift End<span style="color:red;">*</span></label>
+                        <input class="form-control" type="time" name="staffshiftend" autocomplete="off"  required />
+                    </div>
+
+                    <button type="submit" name="create" class="btn btn-primary">Add </button>
+
+                </form>
+            </div>
+            </div>
+            </div>
 
         </div>
    

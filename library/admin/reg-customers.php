@@ -117,19 +117,19 @@ header('location:reg-customers.php');
                                 <table class="content-table" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                            
                                             <th>Customer ID</th>
                                             <th>Customer Name</th>
-                                            <th>Email id </th>
-                                            <th>Mobile Number</th>
-                                            <th>Reg Date</th>
-											<th>Number of Reservations</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
+                                            <th>Email</th>
+                                            <th>Phone Number</th>
+                                            <th>Customer Address</th>
+                                            <th>Action</th>											
+                                        
                                         </tr>
                                     </thead>
                                     <tbody>
-<?php $sql = "SELECT * from customers";
+
+<?php $sql = "SELECT * from customer";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -140,41 +140,17 @@ foreach($results as $result)
 {               ?>                                      
                                         <tr class="odd gradeX">
                                             <td class="center"><?php echo htmlentities($cnt);?></td>
-                                            <td class="center"><?php echo htmlentities($result->StudentId);?></td>
-                                            <td class="center"><?php echo htmlentities($result->FullName);?></td>
-                                            <td class="center"><?php echo htmlentities($result->EmailId);?></td>
-                                            <td class="center"><?php echo htmlentities($result->MobileNumber);?></td>
-                                             <td class="center"><?php echo htmlentities($result->RegDate);?></td>
-											 
-											 <?php if($result->no_of_books_reserved>5){ ?>
-											 
-											 <td class="center" style="text-align:center;"><button class="btn btn-danger"> <?php echo htmlentities($result->no_of_books_reserved);?></button></td>
-											 <?php }
-											 else{ ?>
-												 
-												  <td class="center" style="text-align:center; "><button class="btn btn-success"> <?php echo htmlentities($result->no_of_books_reserved);?></td>
-											 <?php  }   ?> 
-											
-											
-											<td class="center"><?php if($result->Status==1)
-                                            {
-                                                echo htmlentities("Active");
-                                            } else {
-
-
-                                            echo htmlentities("Blocked");
-}
-                                            ?></td>
+                                            <td class="center"><?php echo htmlentities($result->custName );?></td>
+                                            <td class="center"><?php echo htmlentities($result->custEmail);?></td>
+                                            <td class="center"><?php echo htmlentities($result->custTele);?></td>
+                                            <td class="center"><?php echo htmlentities($result->custAddr);?></td>
                                             <td class="center">
-<?php if($result->Status==1)
- {?>
-<a href="reg-students.php?inid=<?php echo htmlentities($result->id);?>" onclick="return confirm('Are you sure you want to block this student?');" >  <button class="btn btn-danger"> Inactive</button>
-<?php } else {?>
 
-                                            <a href="reg-students.php?id=<?php echo htmlentities($result->id);?>" onclick="return confirm('Are you sure you want to active this student?');"><button class="btn btn-primary"> Active</button> 
-                                            <?php } ?>
-                                          
+                                            <a href="edit-staff.php?athrid=<?php echo htmlentities($result->id);?>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 
+                                          <a href="manage-staff.php?del=<?php echo htmlentities($result->id);?>" onclick="return confirm('Are you sure you want to delete?');"" >  <button class="btn btn-danger"><i class="fa fa-pencil"></i> Remove </button>
                                             </td>
+											 
+											 
                                         </tr>
  <?php $cnt=$cnt+1;}} ?>                                      
                                     </tbody>
