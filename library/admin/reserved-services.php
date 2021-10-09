@@ -7,7 +7,17 @@ if(strlen($_SESSION['alogin'])==0)
 header('location:index.php');
 }
 else{ 
-
+    if(isset($_GET['del']))
+    {
+        $id=$_GET['del'];
+        $sql = "delete from bookedservice  WHERE servBookID=:id";
+        $query = $dbh->prepare($sql);
+        $query -> bindParam(':id',$id, PDO::PARAM_STR);
+        $query -> execute();
+        $_SESSION['delmsg']="Service deleted scuccessfully ";
+        header('location:reserved-services.php');
+    
+    }
 
 
     ?>
@@ -107,7 +117,16 @@ else{
 </div>
 </div>
 <?php } ?>
-
+<?php if($_SESSION['updatemsg']!="")
+{?>
+<div class="col-md-6">
+<div class="alert alert-success" >
+ <strong>Success :</strong> 
+ <?php echo htmlentities($_SESSION['updatemsg']);?>
+<?php echo htmlentities($_SESSION['updatemsg']="");?>
+</div>
+</div>
+<?php } ?>
 
 
    <?php if($_SESSION['delmsg']!="")
@@ -174,13 +193,12 @@ foreach($results as $result)
                                             
                                             <td class="center">
 
-                                            <a href="update-reserve-bookdetails.php?rid=<?php echo htmlentities($result->rid);?>"><button class="btn btn-primary">Complete</button> 
+                                            <button class="btn btn-primary">Complete</button> 
                                          
                                             </td>
                                             <td class="center">
 
-                                            <a href="edit-staff.php?athrid=<?php echo htmlentities($result->id);?>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 
-                                          <a href="manage-staff.php?del=<?php echo htmlentities($result->id);?>" onclick="return confirm('Are you sure you want to delete?');"" >  <button class="btn btn-danger"><i class="fa fa-pencil"></i> Remove </button>
+                                          <a href="reserved-services.php?del=<?php echo htmlentities($result->servBookID);?>" onclick="return confirm('Are you sure you want to delete?');"" >  <button class="btn btn-danger"><i class="fa fa-pencil"></i> Remove </button>
                                             </td>
                                         </tr>
  <?php $cnt=$cnt+1;}} ?>                                      
