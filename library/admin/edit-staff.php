@@ -3,26 +3,24 @@ session_start();
 error_reporting(0);
 include('includes/config.php');
 if(strlen($_SESSION['alogin'])==0)
-    {   
-header('location:index.php');
+{   
+    header('location:index.php');
 }
 else{ 
 
-if(isset($_POST['update']))
-{
-$athrid=intval($_GET['athrid']);
-$author=$_POST['author'];
-$sql="update  staff set AuthorName=:author where id=:athrid";
-$query = $dbh->prepare($sql);
-$query->bindParam(':author',$author,PDO::PARAM_STR);
-$query->bindParam(':athrid',$athrid,PDO::PARAM_STR);
-$query->execute();
-$_SESSION['updatemsg']="Staff info updated successfully";
-header('location:manage-staff.php');
+    if(isset($_POST['update']))
+    {
+        $StaffID=intval($_GET['StaffID']);
+        $StaffName=$_POST['staffname'];
+        $sql="update  staff set StaffName=:StaffName where StaffID=:StaffID";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':StaffName',$StaffName,PDO::PARAM_STR);
+        $query->bindParam(':StaffID',$StaffID,PDO::PARAM_STR);
+        $query->execute();
+        $_SESSION['updatemsg']="Staff info updated successfully";
+        header('location:manage-staff.php');
 
-
-
-}
+    }
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -30,11 +28,11 @@ header('location:manage-staff.php');
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta name="staff" content="" />
     <title> Housely </title>
         
        
-        <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
@@ -87,36 +85,41 @@ header('location:manage-staff.php');
             <div class="col-md-12">
                 <h4 class="header-line"></h4>
                 
-                            </div>
+            </div>
 
-</div>
-<div class="row">
-<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-<div class="panel panel-info">
-<div class="panel-heading" id="formheading">
-Staff Info
-</div>
-<div class="panel-body">
-<form role="form" method="post">
-<div class="form-group">
-<label>Staff Name</label>
-<?php 
-$athrid=intval($_GET['athrid']);
-$sql = "SELECT * from  staff where id=:athrid";
-$query = $dbh -> prepare($sql);
-$query->bindParam(':athrid',$athrid,PDO::PARAM_STR);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$cnt=1;
-if($query->rowCount() > 0)
-{
-foreach($results as $result)
-{               ?>   
-<input class="form-control" type="text" name="author" value="<?php echo htmlentities($result->AuthorName);?>" required />
-<?php }} ?>
-</div>
+            </div>
+            <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+            <div class="panel panel-info">
+            <div class="panel-heading" id="formheading">
+                Staff Information
+            </div>
 
-<button type="submit" name="update" class="btn btn-primary">Update </button>
+            <div class="panel-body">
+            <form role="form" method="post">
+            <div class="form-group">
+                <label>Staff Name</label>
+                <?php 
+                // $StaffID =intval($_GET['StaffID']);
+                
+                $sql = "SELECT * from  staff where StaffID=:StaffID ";
+                $query = $dbh -> prepare($sql);
+                $query->bindParam(':StaffID',$StaffID,PDO::PARAM_STR);
+                $query->execute();
+                $results=$query->fetchAll(PDO::FETCH_OBJ);
+                
+                $cnt=1;
+                if($query->rowCount() > 0)
+                {
+                    
+                foreach($results as $result)
+                {               ?>   
+                <input class="form-control" type="text" name="staffname" value="<?php echo htmlentities($result->StaffName);?>" required />
+                <
+                <?php }} ?>
+            </div>
+
+            <button type="submit" name="update" class="btn btn-primary">Update </button>
 
                                     </form>
                             </div>
