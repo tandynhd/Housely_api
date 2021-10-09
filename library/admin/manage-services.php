@@ -155,7 +155,7 @@ if(isset($_GET['del']))
                                         </tr>
                                     </thead>
                                     <tbody>
-<?php $sql = "SELECT services.BookName,category.CategoryName,services.image, services.id as serviceid from services,category where services.catId = category.id;";
+<?php $sql = "SELECT service.servName,servicecatagory.servCataName,service.servDesc,service.servthumbnail FROM service,servicecatagory WHERE service.servCataID = servicecatagory.servCataID ;";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -166,9 +166,9 @@ foreach($results as $result)
 {               ?>                                      
                                         <tr class="odd gradeX">
                                             <td class="center"><?php echo htmlentities($cnt);?></td>
-                                            <td class="center"><?php echo htmlentities($result->BookName);?></td>
-                                            <td class="center"><?php echo htmlentities($result->CategoryName);?></td>
-                    
+                                            <td class="center"><?php echo htmlentities($result->servName);?></td>
+                                            <td class="center"><?php echo htmlentities($result->servCataName);?></td>
+                                            <td class="center"><?php echo htmlentities($result->servDesc);?></td>
 											<td class="center"><img src="images/<?php echo $result->image;?>" style="width:100px;"></td>
                                             <td class="center">
 											

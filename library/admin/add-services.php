@@ -10,11 +10,11 @@ else{
 
 if(isset($_POST['add']))
 {
-    $servID =$_POST['servicename'];
+    $servName =$_POST['servicename'];
     $servDesc=$_POST['servicedesc'];
-    
+    $servCataID=$_POST['servicecategory'];
 
-    $servthumbnail = $_FILES["image"]["name"];
+    $servthumbnail = $_FILES["serviceimage"]["name"];
     $extension = substr($servthumbnail,strlen($servthumbnail)-4,strlen($servthumbnail));
     $allowed_extensions = array(".jpg","jpeg",".png",".gif");
     if(!in_array($extension,$allowed_extensions))
@@ -28,9 +28,9 @@ if(isset($_POST['add']))
 
 
 
-    $sql="INSERT INTO  service(servID,servCataID,servDesc,servthumbnail) VALUES(:bookname,:servCataID,:servthumbnail)";
+    $sql="INSERT INTO  service(servName,servCataID,servDesc,servthumbnail) VALUES(:servName,:servCataID,:servDesc,:servthumbnail)";
     $query = $dbh->prepare($sql);
-    $query->bindParam(':servID',$servID ,PDO::PARAM_STR);
+    $query->bindParam(':servName',$servName ,PDO::PARAM_STR);
     $query->bindParam(':servCataID',$servCataID ,PDO::PARAM_STR);
     $query->bindParam(':servDesc',$servDesc,PDO::PARAM_STR);
     $query->bindParam(':servthumbnail',$servthumbnail,PDO::PARAM_STR);
@@ -40,7 +40,7 @@ if(isset($_POST['add']))
     $lastInsertId = $dbh->lastInsertId();
     if($lastInsertId)
     {
-    $_SESSION['msg']="Book Listed successfully";
+    $_SESSION['msg']="Service Listed successfully";
     header('location:manage-services.php');
     }
     else 
@@ -174,7 +174,7 @@ if(isset($_POST['add']))
                     {               
                 ?>  
                     
-                    <option value="<?php echo htmlentities($result->id);?>"><?php echo htmlentities($result->servCataName);?></option>
+                    <option value="<?php echo htmlentities($result->servCataID);?>"><?php echo htmlentities($result->servCataName);?></option>
                 <?php }} ?> 
             </select>
         </div>
