@@ -142,13 +142,14 @@ else{
                                 <table class="content-table" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                            
                                             <th>servBookID</th>
                                             <th>servID</th>
                                             <th>custID</th>
                                             <th>staffID</th>
                                             <th>roomNum	</th>
                                             <th>servPrice</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -163,22 +164,14 @@ if($query->rowCount() > 0)
 foreach($results as $result)
 {               ?>                                      
                                         <tr class="odd gradeX">
-                                            <td class="center"><?php echo htmlentities($cnt);?></td>
+                                            
                                             <td class="center"><?php echo htmlentities($result->servBookID);?></td>
                                             <td class="center"><?php echo htmlentities($result->servID);?></td>
                                             <td class="center"><?php echo htmlentities($result->custID	);?></td>
-                                            <td class="center"><?php echo htmlentities($result->RstaffID);?></td>
-                                            <td class="center"><?php echo htmlentities($result->roomNum		);?></td>
-                                            <td class="center"><?php echo htmlentities($result->	servPrice);?></td>
-                                            <td class="center"><?php if($result->ReservationCanceledDate=="")
-                                            {
-                                                echo htmlentities("Not Completed Yet");
-                                            } else {
-
-
-                                            echo htmlentities($result->ReservationCanceledDate);
-}
-                                            ?></td>
+                                            <td class="center"><?php echo htmlentities($result->staffID);?></td>
+                                            <td class="center"><?php echo htmlentities($result->roomNum	);?></td>
+                                            <td class="center"><?php echo htmlentities($result->servPrice);?></td>
+                                            
                                             <td class="center">
 
                                             <a href="update-reserve-bookdetails.php?rid=<?php echo htmlentities($result->rid);?>"><button class="btn btn-primary">Complete</button> 
