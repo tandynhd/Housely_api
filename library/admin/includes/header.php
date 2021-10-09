@@ -79,14 +79,14 @@
                                             
                                         </li>
                                         <li class="dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle disabled" href="reserved-books.php">Booked Services</a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle disabled" href="reserved-services.php">Booked Services</a>
                                             
                                         </li>
                                         <li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Bill</a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="issue-book.php">Issue a Bill</a></li>
-                                                <li><a href="manage-issued-books.php">Manage Issued Bill</a></li>
+                                                <li><a href="issue-bills.php">Issue a Bill</a></li>
+                                                <li><a href="manage-issued-bills.php">Manage Issued Bill</a></li>
                                                 
                                             </ul>
                                         </li>
@@ -142,14 +142,14 @@
                                             
                                         </li>
                                         <li class="dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle disabled" href="reserved-books.php">Reserved Books</a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle disabled" href="reserved-services.php">Booked Services</a>
                                             
                                         </li>
                                         <li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Issue Books</a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="issue-book.php">Issue New Service</a></li>
-                                                <li><a href="manage-issued-books.php">Manage Issued Books</a></li>
+                                                <li><a href="issue-bills.php">Issue New Service</a></li>
+                                                <li><a href="manage-issued-bills.php">Manage Issued Books</a></li>
                                                 
                                             </ul>
                                         </li>
