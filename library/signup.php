@@ -6,32 +6,35 @@ if(isset($_POST['signup']))
 {
 
  
-//Code for student ID
-$count_my_page = ("studentid.txt");
+//Code for customer ID
+$count_my_page = ("custid.txt");
 $hits = file($count_my_page);
 $hits[0] ++;
 $fp = fopen($count_my_page , "w");
 fputs($fp , "$hits[0]");
 fclose($fp); 
-$StudentId= $hits[0];   
-$fname=$_POST['fullname'];
-$mobileno=$_POST['mobileno'];
-$email=$_POST['email']; 
-$password=md5($_POST['password']); 
-$status=1;
-$sql="INSERT INTO  customers(StudentId,FullName,MobileNumber,EmailId,Password,Status) VALUES(:StudentId,:fname,:mobileno,:email,:password,:status)";
+$custId= $hits[0];   
+$custname=$_POST['fullname'];
+$custTele=$_POST['mobileno'];
+$custEmail =$_POST['email']; 
+$custAddr=$_POST['Address'];
+$password=md5($_POST['password']);
+
+$sql="INSERT INTO  customer(custId,custname,custTele,custEmail,custAddr,Password) VALUES(:custId,:custname,:custTele,:custEmail,:password)";
+
 $query = $dbh->prepare($sql);
-$query->bindParam(':StudentId',$StudentId,PDO::PARAM_STR);
-$query->bindParam(':fname',$fname,PDO::PARAM_STR);
-$query->bindParam(':mobileno',$mobileno,PDO::PARAM_STR);
-$query->bindParam(':email',$email,PDO::PARAM_STR);
+$query->bindParam(':custId',$custId,PDO::PARAM_STR);
+$query->bindParam(':custname',$custname,PDO::PARAM_STR);
+$query->bindParam(':custTele',$custTele,PDO::PARAM_STR);
+$query->bindParam(':custEmail',$custEmail,PDO::PARAM_STR);
+$query->bindParam(':custAddr',$custAddr,PDO::PARAM_STR);
 $query->bindParam(':password',$password,PDO::PARAM_STR);
-$query->bindParam(':status',$status,PDO::PARAM_STR);
+
 $query->execute();
 $lastInsertId = $dbh->lastInsertId();
 if($lastInsertId)
 {
-echo '<script>alert("Your Registration successfull and your Customer ID is  "+"'.$StudentId.'")</script>';
+echo '<script>alert("Your Registration successfull and your Customer ID is  "+"'.$custId.'")</script>';
 }
 else 
 {
@@ -98,9 +101,11 @@ error:function (){}
 </script>    
 
 </head>
+
+
 <body>
    
-<?php include('includes/header.php');?>
+    <?php include('includes/header.php');?>
 
 
         <section class="page-banner services-banner">
@@ -125,7 +130,7 @@ error:function (){}
 
 
 
-<div id="content" class="site-content">
+    <div id="content" class="site-content">
             <div id="primary" class="content-area">
                 <main id="main" class="site-main">
                     <div class="signin-main" style="padding-bottom:90px;">
@@ -142,30 +147,36 @@ error:function (){}
                                                             <span class="underline left"></span>
                                                         </div>
                                                         <form class="login" method="post">
-														<p class="form-row form-row-first input-required">
-                                                                
+
+														    <p class="form-row form-row-first input-required">
                                                                 <input type="text"  id="username" name="fullname" class="input-text" placeholder="Full Name">
-                                                             </p>
-															 <p class="form-row form-row-first input-required">
-                                                                
+                                                            </p>
+
+															<p class="form-row form-row-first input-required">
                                                                 <input type="text"  id="username" name="mobileno" class="input-text" placeholder="Mobile Number">
-                                                             </p>
+                                                            </p>
 															 
-                                                            <p class="form-row form-row-first input-required">
-                                                                
+                                                            <p class="form-row form-row-first input-required">                                                                
                                                                 <input type="text"  id="username" name="email" class="input-text" placeholder="Email">
-                                                             </p>
-                                                            <p class="form-row form-row-last input-required">
-                                                                
+                                                            </p>
+
+                                                            <p class="form-row form-row-first input-required">
+                                                                <input type="text"  id="username" name="Address" class="input-text" placeholder="Adddress">
+                                                            </p>
+
+                                                            <p class="form-row form-row-last input-required">                                                                
                                                                 <input type="password" id="password" name="password" class="input-text" placeholder="Password"> 
                                                             </p>
-															<p class="form-row form-row-last input-required">
-                                                                
+
+															<p class="form-row form-row-last input-required">                                                                
                                                                 <input type="password" id="password" name="confirmpassword" class="input-text" placeholder="Confirm Password"> 
                                                             </p>
-                                                            <div class="clear"></div>
                                                             
-                                                            <input type="submit" name="signup" class="button btn btn-default">
+                                                            
+
+
+                                                            <div class="clear"></div>                                                            
+                                                                <input type="submit" name="signup" class="button btn btn-default">
                                                             <div class="clear"></div>
                                                         </form>
                                                     </div>

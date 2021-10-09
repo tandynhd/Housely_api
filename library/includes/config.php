@@ -3,7 +3,7 @@
 define('DB_HOST','localhost');
 define('DB_USER','root');
 define('DB_PASS','');
-define('DB_NAME','housely');
+define('DB_NAME','hously_db');
 // Establish database connection.
 try
 {
