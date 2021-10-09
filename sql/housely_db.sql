@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2021 at 06:40 PM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.9
+-- Generation Time: Oct 09, 2021 at 08:53 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hously_db`
+-- Database: `housely_db`
 --
 
 -- --------------------------------------------------------
@@ -83,10 +83,12 @@ CREATE TABLE `bookedservice` (
 --
 
 CREATE TABLE `customer` (
-  `custID` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `custID` varchar(11) NOT NULL,
   `custName` varchar(100) NOT NULL,
   `custTele` varchar(10) NOT NULL,
   `custEmail` varchar(100) NOT NULL,
+  `custPass` varchar(250) NOT NULL,
   `custAddr` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -94,9 +96,9 @@ CREATE TABLE `customer` (
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`custID`, `custName`, `custTele`, `custEmail`, `custAddr`) VALUES
-(1, 'Didi Han', '0974289669', 'DidiH@gmail.com', '2021 Spring Avenue, Northampton, 	Pennsylvania, USA 18067'),
-(2, 'Plastic Kid', '0676458040', 'PlasticK@gmail.com', '2195 Twin House Lane, MONTPELIER, Virginia, USA, 23192');
+INSERT INTO `customer` (`id`, `custID`, `custName`, `custTele`, `custEmail`, `custPass`, `custAddr`) VALUES
+(7, 'CID001', 'Tandin Dorji', '123554678', 't@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '16 หมู่17 Thanon Phahon Yothin'),
+(8, 'CID002', 'Kannokarn Pinkeaw', '12435678', 'k@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'Thanon Phahon Yothin');
 
 -- --------------------------------------------------------
 
@@ -161,18 +163,19 @@ CREATE TABLE `service` (
 
 CREATE TABLE `servicecatagory` (
   `servCataID` int(11) NOT NULL,
-  `servCataName` varchar(100) NOT NULL
+  `servCataName` varchar(100) NOT NULL,
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `servicecatagory`
 --
 
-INSERT INTO `servicecatagory` (`servCataID`, `servCataName`) VALUES
-(1, 'Mechanical Service'),
-(2, 'Cleaning Service'),
-(3, 'Moving Service'),
-(4, 'Delivery Service');
+INSERT INTO `servicecatagory` (`servCataID`, `servCataName`, `status`) VALUES
+(1, 'Mechanical Service', 1),
+(2, 'Cleaning Service', 1),
+(3, 'Moving Service', 1),
+(4, 'Delivery Service', 1);
 
 -- --------------------------------------------------------
 
@@ -233,7 +236,7 @@ ALTER TABLE `bookedservice`
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
-  ADD PRIMARY KEY (`custID`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `roomcontract`
@@ -267,6 +270,16 @@ ALTER TABLE `servicecatagory`
 --
 ALTER TABLE `staff`
   ADD PRIMARY KEY (`StaffID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `customer`
+--
+ALTER TABLE `customer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
