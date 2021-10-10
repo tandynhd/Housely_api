@@ -32,7 +32,7 @@ if(isset($_GET['del']))
     <title> Housely </title>
         
        
-        <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
   
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
@@ -172,7 +172,7 @@ foreach($results as $result)
 											
 
                                             <a href="edit-services.php?servID =<?php echo htmlentities($result->servID );?>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 
-                                          <a href="manage-services.php?del=<?php echo htmlentities($result->servID );?>" onclick="return confirm('Are you sure you want to delete?');" >  <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button>
+                                          <a href="manage-services.php?del=<?php echo htmlentities($result->servID );?>" onclick="return confirm('Are you sure you want to delete?');"">  <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button>
                                             </td>
                                         </tr>
  <?php $cnt=$cnt+1;}} ?>                                      

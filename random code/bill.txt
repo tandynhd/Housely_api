@@ -1,0 +1,7 @@
+SELECT *
+FROM roomcontract rc
+LEFT JOIN roomrecord rr
+ON rc.roomNum = rr.roomNum
+LEFT JOIN bookedservice bs
+ON rr.roomNum = bs.roomNum;
+

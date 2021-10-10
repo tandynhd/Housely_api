@@ -8,47 +8,37 @@ header('location:index.php');
 }
 else{ 
 
-if(isset($_POST['update']))
-{
-$bookname=$_POST['bookname'];
-$category=$_POST['category'];
-$author=$_POST['author'];
-$publisher=$_POST['publisher'];
-$isbn=$_POST['isbn'];
-$price=$_POST['price'];
-$noofbooks=$_POST['noofbooks'];
+    if(isset($_POST['update']))
+    {
+        $servName =$_POST['servicename'];
+        $servDesc=$_POST['servicedesc'];
+        $servCataID=$_POST['servicecategory'];
 
-$img = $_FILES["image"]["name"];
-$extension = substr($img,strlen($img)-4,strlen($img));
-$allowed_extensions = array(".jpg","jpeg",".png",".gif");
-if(!in_array($extension,$allowed_extensions))
-{
-echo "<script>alert('Facility image has Invalid format. Only jpg / jpeg/ png /gif format allowed');</script>";
-}
-else
-{
-$img=md5($img).time().$extension;
-move_uploaded_file($_FILES["image"]["tmp_name"],"images/".$img);
+        $servthumbnail = $_FILES["serviceimage"]["name"];
+        $extension = substr($servthumbnail,strlen($servthumbnail)-4,strlen($servthumbnail));
+        $allowed_extensions = array(".jpg","jpeg",".png",".gif");
+        if(!in_array($extension,$allowed_extensions))
+        {
+            echo "<script>alert('Facility image has Invalid format. Only jpg / jpeg/ png /gif format allowed');</script>";
+        }
+        else
+        {
+            $servthumbnail=md5($servthumbnail).time().$extension;
+            move_uploaded_file($_FILES["serviceimage"]["tmp_name"],"images/stn/".$servthumbnail);
 
 
-$bookid=intval($_GET['bookid']);
-$sql="update services set BookName=:bookname,CatId=:category,AuthorId=:author,PublisherId=:publisher,ISBNNumber=:isbn,no_of_books=:noofbooks,BookPrice=:price,image=:img where id=:bookid";
-$query = $dbh->prepare($sql);
-$query->bindParam(':bookname',$bookname,PDO::PARAM_STR);
-$query->bindParam(':category',$category,PDO::PARAM_STR);
-$query->bindParam(':author',$author,PDO::PARAM_STR);
-$query->bindParam(':publisher',$publisher,PDO::PARAM_STR);
-$query->bindParam(':isbn',$isbn,PDO::PARAM_STR);
-$query->bindParam(':price',$price,PDO::PARAM_STR);
-$query->bindParam(':noofbooks',$noofbooks,PDO::PARAM_STR);
-$query->bindParam(':bookid',$bookid,PDO::PARAM_STR);
-$query->bindParam(':img',$img,PDO::PARAM_STR);
-$query->execute();
-$_SESSION['msg']="Book info updated successfully";
-header('location:manage-services.php');
+            $servID=intval($_GET['servID']);
+            $sql="update services set servName=:servName,servCataID=:servCataID,servDesc=:servDesc,servthumbnail=:servthumbnail where servID=:servID";
+            $query = $dbh->prepare($sql);
+            $query->bindParam(':servName',$servName ,PDO::PARAM_STR);
+            $query->bindParam(':servCataID',$servCataID ,PDO::PARAM_STR);
+            $query->bindParam(':servDesc',$servDesc,PDO::PARAM_STR);
+            $query->bindParam(':servthumbnail',$servthumbnail,PDO::PARAM_STR);
+            $_SESSION['msg']="Service information updated successfully";
+            header('location:manage-services.php');
 
-}
-}
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -97,7 +87,7 @@ header('location:manage-services.php');
                 </div>
                 <div class="breadcrumb">
                     <ul>
-                        <li><a href="reg-customers.php">Admin</a></li>
+                        <li><a href="manage-services.php">Manage Services</a></li>
                         <li>Edit Services</li>
                     </ul>
                 </div>
@@ -106,84 +96,90 @@ header('location:manage-services.php');
         
     
     <div class="content-wrapper">
-         <div class="container">
-        <div class="row pad-botm">
-            <div class="col-md-12">
-                <h4 class="header-line"></h4>
-                
-                            </div>
+        <div class="container">
+            <div class="row pad-botm">
+                <div class="col-md-12">
+                    <h4 class="header-line"></h4>   
+                </div>
 
-</div>
-<div class="row">
-<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-<div class="panel panel-info">
-<div class="panel-heading" id="formheading">
-Service Info
-</div>
-<div class="panel-body">
-<form role="form" method="post" enctype="multipart/form-data">
-<?php 
-$servID=intval($_GET['servID']);
-$sql = "SELECT * from service where service.servID=:servID";
-$query = $dbh -> prepare($sql);
-$query->bindParam(':servID',$servID,PDO::PARAM_STR);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$cnt=1;
-if($query->rowCount() > 0)
-{
-foreach($results as $result)
-{               ?>  
-
-<div class="form-group">
-<label> Service Category<span style="color:red;">*</span></label>
-<select class="form-control" name="category" required="required">
-<option value="<?php echo htmlentities($result->servCataID );?>"> <?php echo htmlentities($catname=$result->servCataName);?></option>
-<?php 
-$status=1;
-$sql1 = "SELECT * from  category where Status=:status";
-$query1 = $dbh -> prepare($sql1);
-$query1-> bindParam(':status',$status, PDO::PARAM_STR);
-$query1->execute();
-$resultss=$query1->fetchAll(PDO::FETCH_OBJ);
-if($query1->rowCount() > 0)
-{
-foreach($resultss as $row)
-{           
-if($catname==$row->servCataName)
-{
-continue;
-}
-else
-{
-    ?>  
-<option value="<?php echo htmlentities($row->id);?>"><?php echo htmlentities($row->servCataName);?></option>
- <?php }}} ?> 
-</select>
-</div>
-
-<div class="form-group">
-<label>Service Name<span style="color:red;">*</span></label>
-<input class="form-control" type="text" name="servicename" value="<?php echo htmlentities($result->	servName);?>" required />
-</div>
-
-<div class="form-group">
-<label>Thumbnail<span style="color:red;">*</span></label>
-<input class="form-control" type="file" name="image" value=""  required />
-
-</div>
-
- <?php }} ?>
-<button type="submit" name="update" class="btn btn-primary">Update </button>
-
-                                    </form>
-                            </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                    <div class="panel panel-info">
+                        <div class="panel-heading" id="formheading">
+                            Service Information
                         </div>
-                            </div>
+                        <div class="panel-body">
+                            <form role="form" method="post" enctype="multipart/form-data">
+                                <?php 
+                                $servID=intval($_GET['servID']);
+                                $sql = "SELECT * from service where service.servID=:servID";
+                                $query = $dbh -> prepare($sql);
+                                $query->bindParam(':servID',$servID,PDO::PARAM_STR);
+                                $query->execute();
+                                $results=$query->fetchAll(PDO::FETCH_OBJ);
+                                $cnt=1;
+                                echo(1);
+                                if($query->rowCount() > 0)
+                                {
+                                    echo(2);
+                                    foreach($results as $result)
+                                    {               ?>  
 
-        </div>
+                                        <div class="form-group">
+                                            <label> Service Category<span style="color:red;">*</span></label>
+                                                <select class="form-control" name="category" required="required">
+                                                    <option value="<?php echo htmlentities($result->servCataID );?>"> <?php echo htmlentities($catname=$result->servCataName);?></option>
+                                                    <?php 
+                                                    $status=1;
+                                                    $sql1 = "SELECT * from  category where Status=:status";
+                                                    $query1 = $dbh -> prepare($sql1);
+                                                    $query1-> bindParam(':status',$status, PDO::PARAM_STR);
+                                                    $query1->execute();
+                                                    $resultss=$query1->fetchAll(PDO::FETCH_OBJ);
+                                                    if($query1->rowCount() > 0)
+                                                    {
+                                                        foreach($resultss as $row)
+                                                        {           
+                                                            if($catname==$row->servCataName)
+                                                                {
+                                                                    continue;
+                                                                }
+                                                            else
+                                                                {
+                                                                    ?>  
+                                                                    <option value="<?php echo htmlentities($row->id);?>"><?php echo htmlentities($row->servCataName);?></option>
+                                                                    <?php 
+                                                                }
+                                                        }
+                                                    } ?> 
+                                                </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Service Name<span style="color:red;">*</span></label>
+                                            <input class="form-control" type="text" name="servicename" value="<?php echo htmlentities($result->	servName);?>" required />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Thumbnail<span style="color:red;">*</span></label>
+                                            <input class="form-control" type="file" name="serviceimage" value=""  required />
+
+                                        </div>
+
+                                    <?php 
+                                    }
+                                } ?>
+                                <button type="submit" name="update" class="btn btn-primary">Update </button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
    
-    </div>
+        </div>
     </div>
     
 

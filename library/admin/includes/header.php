@@ -8,7 +8,7 @@
                                 <div class="navbar-header">
                                     <div class="navbar-brand">
                                         <h1>
-                                            <a href="index-2.html">
+                                            <a href="reg-customers.php">
                                                 <img class = "logo" src="includes/housely-logo-100.png" alt=" HOUSELY"/>
                                             </a>
                                         </h1>

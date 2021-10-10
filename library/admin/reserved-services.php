@@ -162,12 +162,13 @@ else{
                                     <thead>
                                         <tr>
                                             
-                                            <th>servBookID</th>
-                                            <th>servID</th>
-                                            <th>custID</th>
-                                            <th>staffID</th>
-                                            <th>roomNum	</th>
-                                            <th>servPrice</th>
+                                            <th>Service Book ID</th>
+                                            <th>Service ID</th>
+                                            <th>Customer ID</th>
+                                            <th>Staff ID</th>
+                                            <th>Room Number</th>
+                                            <th>Service Price</th>
+                                            <th>Booked Date</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -190,6 +191,7 @@ foreach($results as $result)
                                             <td class="center"><?php echo htmlentities($result->staffID);?></td>
                                             <td class="center"><?php echo htmlentities($result->roomNum	);?></td>
                                             <td class="center"><?php echo htmlentities($result->servPrice);?></td>
+                                            <td class="center"><?php echo htmlentities($result->servDate);?></td>
                                             
                                             <td class="center">
 
