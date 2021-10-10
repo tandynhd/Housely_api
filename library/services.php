@@ -80,162 +80,82 @@ else{?>
     <div class="content-wrapper">
          <div class="container">
 		 
-		 
-		 
         <div class="row pad-botm">
 		
             <div class="col-md-12">
 			
-			
-			
-			
-			
                 <h4 class="header-line"></h4>
                 
-                            </div>
-     	
-							
-
-
-
+            </div>
         </div>
-		
 		
 		<div class="row">
                          
-                                <section class="search-filters">
-                                    <div class="container">
-                                        <div class="filter-box">
-                                            <h3>What services are you looking for?</h3>
-                                            <form action="" method="get">
-                                                <div class="col-md-4 col-sm-6">
-                                                    <div class="form-group">
-                                                        <label class="sr-only" for="keywords">Search by Service Name</label>
-                                                        <input class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search by Service Name" type="text">
-                                                    </div>
-                                                <!-- </div>
-                                                <div class="col-md-3 col-sm-6">
-                                                    <div class="form-group">
-                                                        <select name="catalog" id="catalog" class="form-control">
-                                                            <option>Search </option>
-                                                            
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3 col-sm-6">
-                                                    <div class="form-group">
-                                                        <select name="category" id="category" class="form-control">
-                                                            <option>All Categories</option>
-                                                            <option>Mechanic</option>
-                                                            <option>Maid</option>
-                                                            <option>Electrician</option>
-                                                            <option>Gardener</option>
-                                                            <option>Plumber</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2 col-sm-6">
-                                                    <div class="form-group">
-                                                        <input class="form-control" type="submit" value="Search"  >
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </section> -->
-                                <!-- End: Search Section -->
+            <section class="search-filters">
+                <div class="container">
+                    <div class="filter-box">
+                        <h3>What services are you looking for?</h3>
+                        <form action="" method="get">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="form-group">
+                                    <label class="sr-only" for="keywords">Search by Service Name</label>
+                                    <input class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search by Service Name" type="text">
+                                </div>
+                            
                             </div>
 		
-        
-        <div class="wrapper" > 
 
+                            <div class="wrapper" > 
 
-                    
-                <div class="row" id="myUL">  
+                                <div class="row" id="myUL">  
+                                  
+                                    <?php 
 
+                                    $sql = "SELECT service.servName,servicecatagory.servCataName,service.servDesc,service.servthumbnail from service,servicecatagory where service.servCataID = servicecatagory.servCataID;";
+                                    $query = $dbh -> prepare($sql);
+                                    $query->execute();
+                                    $results=$query->fetchAll(PDO::FETCH_OBJ);
 
+                                    if($query->rowCount() > 0)
+                                    {
+                                    foreach($results as $result)
+                                    {               ?>                        
 
+                                    <div class="col-lg-3 col-md-4 col-sm-12" id="card">
 
-
-
-				
-                                    
-<?php 
-
-$sql = "SELECT service.servName,servicecatagory.servCataName,service.servDesc,service.servthumbnail from service,servicecatagory where service.servCataID = servicecatagory.servCataID;";
-$query = $dbh -> prepare($sql);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-
-if($query->rowCount() > 0)
-{
-foreach($results as $result)
-{               ?>                        
-
-<div class="col-lg-3 col-md-4 col-sm-12" id="card">
-
-<div class="card">
-  <img src="admin/images/stn/<?php echo $result->servthumbnail;?>" >
-  <div class="info"  >
-    
-    <h1 style="font-family:'Lato', Georgia, Times, serif; font-weight:900;"><?php echo htmlentities($result->servName);?></h1>
-    <p><?php echo htmlentities($result->servCataName);?> </br>Description - <?php echo htmlentities($result->servDesc);?> </p>
-    <?php if($result->no_of_books!=0)
-                                            {?>
-                                            
-                                             <a href="reserve-book.php?bookid=<?php echo $result->bookid;?>" class="btn"  >Reserve</a>
+                                        <div class="card">
+                                        <img src="admin/images/stn/<?php echo $result->servthumbnail;?>" >
+                                            <div class="info"  >
                                                 
-                                            <?php } else { ?>
-                                             
-                                              <a href="#" class="btn" disabled >Reserve</a>
-                                        
-                                        <?php }
-                                            ?>
-  
-  
-  
-  
-  
-  
-  
-  </div>
-  
-</div>
-</div>
+                                                <h1 style="font-family:'Lato', Georgia, Times, serif; font-weight:900;"><?php echo htmlentities($result->servName);?></h1>
+                                                <p><?php echo htmlentities($result->servCataName);?> </br>Description - <?php echo htmlentities($result->servDesc);?> </p>
+                                                <?php if($result->no_of_books!=0)
+                                                                                        {?>
+                                                                                        
+                                                                                        <a href="reserve-book.php?bookid=<?php echo $result->bookid;?>" class="btn"  >Reserve</a>
+                                                                                            
+                                                                                        <?php } else { ?>
+                                                                                        
+                                                                                        <a href="#" class="btn" disabled >Reserve</a>
+                                                                                    
+                                                                                    <?php }?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php }} ?> 
 
-
-      
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-              
-                                        
-                                        
- <?php }} ?>                                      
-                                
-                              
-                    
-             
-      </div>         
-     </div>        
+                                </div>
+                                    
+                                                                     
+                            
+                            </div>         
+                        </div>        
 
             
-    </div>
-    </div>
+                </div>
+        </div>
+  </div>
+    
 <?php } ?>     
 <?php include('includes/footer.php');?>
      

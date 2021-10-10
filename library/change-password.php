@@ -12,7 +12,8 @@ if(isset($_POST['change']))
 $password=md5($_POST['password']);
 $newpassword=md5($_POST['newpassword']);
 $email=$_SESSION['login'];
-  $sql ="SELECT Password FROM students WHERE EmailId=:email and Password=:password";
+
+  $sql ="SELECT custPass FROM customer WHERE custEmail=:email and custPass=:password";
 $query= $dbh -> prepare($sql);
 $query-> bindParam(':email', $email, PDO::PARAM_STR);
 $query-> bindParam(':password', $password, PDO::PARAM_STR);
@@ -20,12 +21,12 @@ $query-> execute();
 $results = $query -> fetchAll(PDO::FETCH_OBJ);
 if($query -> rowCount() > 0)
 {
-$con="update students set Password=:newpassword where EmailId=:email";
+$con="update customer set custPass=:newpassword where custEmail=:email";
 $chngpwd1 = $dbh->prepare($con);
 $chngpwd1-> bindParam(':email', $email, PDO::PARAM_STR);
 $chngpwd1-> bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
 $chngpwd1->execute();
-$msg="Your Password succesfully changed";
+$msg="Your Password has been succesfully changed";
 }
 else {
 $error="Your current password is wrong";  
@@ -41,7 +42,7 @@ $error="Your current password is wrong";
         <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
         
        
-       <title>..:: LITERARIUM ::..</title>
+       <title> Housely </title>
         
        
         <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
@@ -56,13 +57,6 @@ $error="Your current password is wrong";
         
        
         <link href="style.css" rel="stylesheet" type="text/css" />
-        
-     
-	
-	
-	
-	
-	
 	
   <style>
     .errorWrap {
@@ -99,7 +93,6 @@ return true;
 <body>
     <!------MENU SECTION START-->
 <?php include('includes/header.php');?>
-
 <!-- Start: Page Banner -->
         <section class="page-banner services-banner">
             <div class="container">
