@@ -120,51 +120,58 @@ return true;
             </div>
         </section>
        
-<div class="content-wrapper">
-<div class="container">
-<div class="row pad-botm">
-<div class="col-md-12">
-<h4 class="header-line"></h4>
-</div>
-</div>
- <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
-        else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>            
-      
-<div class="row">
-<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3" >
-<div class="panel panel-info">
-<div class="panel-heading" id="formheading">
-Change Password
-</div>
-<div class="panel-body">
-<form role="form" method="post" onSubmit="return valid();" name="chngpwd">
+        <div id="content" class="site-content">
+            <div id="primary" class="content-area">
+                <main id="main" class="site-main">
+                    <div class="signin-main" style="padding-bottom:90px;">
+                        <div class="container">
+                            <div class="woocommerce">
+                                <div class="woocommerce-login">
+                                    <div class="company-info signin-register">
+                                        <div class="col-md-5 col-md-offset-1 ">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="company-detail bg-dark margin-left">
+                                                    <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
+        else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>   
+                                                     <div class="signin-head">
+                                                            <h2>Change Password</h2>
+                                                            <span class="underline left"></span>
+                                                        </div>
+                                                    <!-- <div class="panel-body"> -->
+                                                    <form class = "login" role="form" method="post" onSubmit="return valid();" name="chngpwd">
 
-<div class="form-group">
-<label>Current Password</label>
-<input class="form-control" type="password" name="password" autocomplete="off" required  />
-</div>
+                                                    <div class="form-group">
+                                                    <label>Current Password</label>
+                                                    <input class="form-control" type="password" name="password" autocomplete="off" required  />
+                                                    </div>
 
-<div class="form-group">
-<label>Enter Password</label>
-<input class="form-control" type="password" name="newpassword" autocomplete="off" required  />
-</div>
+                                                    <div class="form-group">
+                                                    <label>Enter New Password</label>
+                                                    <input class="form-control" type="password" name="newpassword" autocomplete="off" required  />
+                                                    </div>
 
-<div class="form-group">
-<label>Confirm Password </label>
-<input class="form-control"  type="password" name="confirmpassword" autocomplete="off" required  />
-</div>
+                                                    <div class="form-group">
+                                                    <label>Confirm Password </label>
+                                                    <input class="form-control"  type="password" name="confirmpassword" autocomplete="off" required  />
+                                                    </div>
 
- <button type="submit" name="change" class="btn btn-primary">Change </button> 
-</form>
- </div>
-</div>
-</div>
-</div>  
-        
-             
- 
-    </div>
-    </div>
+                                                    <button type="submit" name="change" class="btn btn-primary">Change </button> 
+                                                    </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
      
  <?php include('includes/footer.php');?>
      
