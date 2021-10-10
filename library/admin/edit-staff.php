@@ -10,10 +10,9 @@ else{
 
     if(isset($_POST['update']))
     {
+        $StaffID=intval($_GET['StffID']);
         $StaffName=$_POST['staffname'];
 
-
-        $StaffID=intval($_GET['StaffID']);
         $sql="update  staff set StaffName=:StaffName where StaffID=:StaffID";
         $query = $dbh->prepare($sql);
         $query->bindParam(':StaffName',$StaffName,PDO::PARAM_STR);
@@ -63,14 +62,14 @@ else{
         <section class="page-banner services-banner">
             <div class="container">
                 <div class="banner-header">
-                    <h2>Edit Staff</h2>
+                    <h2>Edit Staff Info</h2>
                     <span class="underline center"></span>
                     <p class="lead"></p>
                 </div>
                 <div class="breadcrumb">
                     <ul>
                         <li><a href="manage-staff.php">Manage Staff</a></li>
-                        <li>Edit Staff</li>
+                        <li>Edit Staff Info</li>
                     </ul>
                 </div>
             </div>
@@ -95,27 +94,20 @@ else{
                                 Staff Information
                             </div>
                             <div class="panel-body">
-                                echo(1);
                                 <form role="form" method="post" enctype="multipart/form-data">
-                                    echo(2);
                                     <?php 
-                                    echo(3);
-                                    $StaffID=intval($_GET['StaffID']);
+                                    $StaffID=intval($_GET['StffID']);
                                     $sql = "SELECT StaffName,StaffTele,StaffEmail,StaffAddr,StaffSalary from staff where StaffID=:StaffID";
-                                    echo(4);
                                     $query = $dbh -> prepare($sql);
                                     $query->bindParam(':StaffID',$StaffID,PDO::PARAM_STR);
                                     $query->execute();
                                     $results=$query->fetchAll(PDO::FETCH_OBJ);
                                     $cnt=1;
-                                    echo(5);
                                     if($query->rowCount() > 0)
                                     {
-                                        echo(6);
                                         foreach($results as $result)
-                                        {               ?>  
-                                            echo(7);
-                                            <div class="form-group">
+                                        {          echo $result;  ?> 
+                                            <div class="form-group"> vhkbj
                                                 <label>Staff Name<span style="color:red;">*</span></label>
                                                 <input class="form-control" type="text" name="staffname" value="<?php echo htmlentities($result->staffname);?>" required />
                                             </div>
