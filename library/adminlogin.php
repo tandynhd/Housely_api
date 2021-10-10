@@ -11,7 +11,7 @@ if(isset($_POST['login']))
 
 $AdminUsername=$_POST['username'];
 #md5() for password 
-$AdminPass=$_POST['password'];
+$AdminPass=md5($_POST['password']);
 $sql ="SELECT AdminUsername,AdminPass FROM admin WHERE AdminUsername=:username and AdminPass=:password";
 $query= $dbh -> prepare($sql);
 $query-> bindParam(':username', $AdminUsername, PDO::PARAM_STR);

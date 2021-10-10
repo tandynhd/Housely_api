@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 09, 2021 at 10:17 AM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.9
+-- Generation Time: Oct 10, 2021 at 12:19 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,8 +41,9 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`AdminID`, `AdminFN`, `AdminEmail`, `AdminUsername`, `AdminPass`, `AdminUpdationDate`) VALUES
-(1, 'Tandin Dorji', '6222790428@g.siit.tu.ac.th', 'Admin', 'admin', '2021-10-08 04:45:02'),
-(2, 'Kanokkarn Pinkeaw', '6222790147@g.siit.tu.ac.th', 'Admin2', 'admin', '2021-10-08 04:45:02');
+(1, 'Tandin Dorji', '6222790428@g.siit.tu.ac.th', 'Admin', '21232f297a57a5a743894a0e4a801fc3', '2021-10-10 09:38:38'),
+(2, 'Kanokkarn Pinkeaw', '6222790147@g.siit.tu.ac.th', 'Admin2', '21232f297a57a5a743894a0e4a801fc3', '2021-10-10 09:35:17'),
+(3, 'Inkies', 'i@gmail.com', 'admin3', '21232f297a57a5a743894a0e4a801fc3', '2021-10-10 09:35:42');
 
 -- --------------------------------------------------------
 
@@ -56,10 +57,18 @@ CREATE TABLE `bill` (
   `roomID` int(11) NOT NULL,
   `billIssueDate` datetime NOT NULL,
   `billDueDate` datetime NOT NULL,
+  `Total` decimal(10,2) NOT NULL,
   `roomNum` int(11) NOT NULL,
   `PaidStatus` tinyint(1) NOT NULL,
   `evidenceurl` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bill`
+--
+
+INSERT INTO `bill` (`BillID`, `staffID`, `roomID`, `billIssueDate`, `billDueDate`, `Total`, `roomNum`, `PaidStatus`, `evidenceurl`) VALUES
+(4, 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0.00', 1101, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -70,11 +79,20 @@ CREATE TABLE `bill` (
 CREATE TABLE `bookedservice` (
   `servBookID` int(11) NOT NULL,
   `servID` int(11) NOT NULL,
-  `custID` int(11) NOT NULL,
+  `custID` varchar(11) NOT NULL,
   `staffID` int(11) NOT NULL,
   `roomNum` int(11) NOT NULL,
   `servPrice` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bookedservice`
+--
+
+INSERT INTO `bookedservice` (`servBookID`, `servID`, `custID`, `staffID`, `roomNum`, `servPrice`) VALUES
+(0, 7, 'C001', 1, 0, '1234.00'),
+(1, 1, 'CID001', 2, 1101, '0.00'),
+(2, 2, 'CID002', 3, 1102, '500.00');
 
 -- --------------------------------------------------------
 
@@ -97,11 +115,12 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`id`, `custID`, `custName`, `custTele`, `custEmail`, `custPass`, `custAddr`) VALUES
-(7, 'CID001', 'Tandin Dorji', '123554678', 't@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '16 หมู่17 Thanon Phahon Yothin'),
-(8, 'CID002', 'Kannokarn Pinkeaw', '12435678', 'k@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'Thanon Phahon Yothin'),
-(9, 'CID003', 'hong gie', '0973369919', '6222790147@g.siit.tu.ac.th', '81dc9bdb52d04dc20036dbd8313ed055', 'korat,thailand'),
-(10, 'CID004', 'hong hong', '0973369919', 'hh@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'korat,thailand'),
-(11, 'CID005', 'honghonghong', '0973369919', 'h1@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'korat,thailand');
+(7, 'CID001', 'Charlene Su', '0618946633', 't@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Phatumthani,Thailand'),
+(8, 'CID002', 'Emotional Oranges', '0976369898', 'k@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'Korat,Thailand'),
+(9, 'CID003', 'Taylor Swift', '0826218523', 'tyt@g.siit.tu.ac.th', '81dc9bdb52d04dc20036dbd8313ed055', 'Chaingmai,thailand'),
+(10, 'CID004', 'Conan Gray', '0973369919', 'hh@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Trang,Thailand'),
+(12, 'CID006', 'inkkiew', '0973366359', 'i@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Khonkean,thailand'),
+(13, 'CID007', 'dasfjgkhlg', '124356', 'adfgg', '81dc9bdb52d04dc20036dbd8313ed055', 'easrtyru');
 
 -- --------------------------------------------------------
 
@@ -112,7 +131,7 @@ INSERT INTO `customer` (`id`, `custID`, `custName`, `custTele`, `custEmail`, `cu
 CREATE TABLE `roomcontract` (
   `rContID` int(11) NOT NULL,
   `staffID` int(11) NOT NULL,
-  `custID` int(11) NOT NULL,
+  `custID` varchar(11) NOT NULL,
   `roomNum` int(11) NOT NULL,
   `contSDate` date NOT NULL,
   `contEDate` date NOT NULL,
@@ -120,6 +139,16 @@ CREATE TABLE `roomcontract` (
   `parkingPrice` decimal(10,2) NOT NULL,
   `InternetPrice` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `roomcontract`
+--
+
+INSERT INTO `roomcontract` (`rContID`, `staffID`, `custID`, `roomNum`, `contSDate`, `contEDate`, `roomPrice`, `parkingPrice`, `InternetPrice`) VALUES
+(1, 1, 'CID001', 1101, '2020-11-06', '2021-11-06', '4500.00', '500.00', '0.00'),
+(2, 1, 'CID002', 1102, '2020-11-25', '2021-11-25', '5500.00', '0.00', '600.00'),
+(3, 1, 'CID003', 1103, '2020-12-25', '2021-12-25', '5500.00', '500.00', '600.00'),
+(4, 1, 'CID004', 1104, '2020-12-25', '2021-12-25', '6000.00', '0.00', '0.00');
 
 -- --------------------------------------------------------
 
@@ -140,10 +169,14 @@ CREATE TABLE `roomrecord` (
 --
 
 INSERT INTO `roomrecord` (`roomrecID`, `roomNum`, `electricityUnit`, `waterUnit`, `dRecord`) VALUES
-(1101, 0, 0, 0, '0000-00-00'),
-(1102, 0, 0, 0, '0000-00-00'),
-(1103, 0, 0, 0, '0000-00-00'),
-(1104, 0, 0, 0, '0000-00-00');
+(1, 1101, 32, 3, '2021-08-04'),
+(2, 1102, 139, 6, '2021-08-04'),
+(3, 1103, 49, 36, '2021-08-04'),
+(4, 1104, 56, 10, '2021-08-04'),
+(5, 1101, 86, 6, '2021-09-04'),
+(6, 1102, 199, 10, '2021-09-04'),
+(7, 1103, 100, 38, '2021-09-04'),
+(8, 1104, 120, 13, '2021-09-04');
 
 -- --------------------------------------------------------
 
@@ -164,10 +197,10 @@ CREATE TABLE `service` (
 --
 
 INSERT INTO `service` (`servID`, `servCataID`, `servName`, `servDesc`, `servthumbnail`) VALUES
-(7, '2', 'Bahtroom Cleaning', 'Includes: Sanitizing Counters and Sinks, Scrubbing Toilets, Cleaning Showers, Mopping Floors, Wiping Down Mirrors', '15e9226f3e918d0de51d9912cea8e9d21633766734jpeg'),
-(8, '1', 'Drywall Repair', 'Cracks from settling, Damage from moisture and Regular wear and tear', 'f2887e554dfd0655877c79e52c7d9efb1633766894jpeg'),
-(9, '2', 'Room Cleaning', 'getting your room as clean as it can be', 'fd3a19aa3f3de485a7f628b8aaa4c71e1633766984jpeg'),
-(10, '4', 'Market Delivery ', 'Freshly handpicked groceries at your fingertips', '565f28272fc98e0ebb4119182124a54a1633767277jpeg');
+(1, '1', 'Drywall Repair', 'Cracks from settling, Damage from moisture and Regular wear and tear', 'f2887e554dfd0655877c79e52c7d9efb1633766894jpeg'),
+(2, '2', 'Bahtroom Cleaning', 'Includes: Sanitizing Counters and Sinks, Scrubbing Toilets, Cleaning Showers, Mopping Floors, Wiping Down Mirrors', '15e9226f3e918d0de51d9912cea8e9d21633766734jpeg'),
+(3, '2', 'Room Cleaning', 'getting your room as clean as it can be', 'fd3a19aa3f3de485a7f628b8aaa4c71e1633766984jpeg'),
+(4, '4', 'Market Delivery ', 'Freshly handpicked groceries at your fingertips', '565f28272fc98e0ebb4119182124a54a1633767277jpeg');
 
 -- --------------------------------------------------------
 
@@ -204,20 +237,18 @@ CREATE TABLE `staff` (
   `StaffEmail` varchar(100) NOT NULL,
   `StaffAddr` varchar(250) NOT NULL,
   `StaffSalary` decimal(10,2) NOT NULL,
-  `staffContractStart` date NOT NULL,
-  `ShiftStart` time NOT NULL,
-  `ShiftEnd` time NOT NULL
+  `staffContractStart` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `staff`
 --
 
-INSERT INTO `staff` (`StaffID`, `StaffName`, `StaffTele`, `StaffEmail`, `StaffAddr`, `StaffSalary`, `staffContractStart`, `ShiftStart`, `ShiftEnd`) VALUES
-(1, 'Jay Park', '0614968260', 'JayP@housely.com', '164 Nuzum Court, Arcade, New York, USA, 14009', '30000.00', '2019-10-16', '09:00:00', '16:00:00'),
-(2, 'Groovy Room', '0914942447', 'GroovyEverywhere@housely.com', '575 Lightning Point Drive,Memphis,Tennessee, USA, 38110', '46000.00', '2017-09-29', '10:00:00', '17:00:00'),
-(3, 'LeeHi', '0975239612', 'LeeHi@housely.com', '2637 Shobe Lane, RALEIGH, North Carolina, USA, 27609', '50000.00', '2019-07-04', '05:00:00', '14:00:00'),
-(4, 'Hoody\r\n', '0647121390', 'Hoody@housely.com', '3205 Snyder Avenue, Charlotte, North Carolina, 28273', '18000.00', '2021-10-04', '09:00:00', '16:00:00');
+INSERT INTO `staff` (`StaffID`, `StaffName`, `StaffTele`, `StaffEmail`, `StaffAddr`, `StaffSalary`, `staffContractStart`) VALUES
+(1, 'Jay Park', '0614968260', 'JayP@housely.com', '164 Nuzum Court, Arcade, New York, USA, 14009', '30000.00', '2019-10-16'),
+(2, 'Groovy Room', '0914942447', 'GroovyEverywhere@housely.com', '575 Lightning Point Drive,Memphis,Tennessee, USA, 38110', '46000.00', '2017-09-29'),
+(3, 'LeeHi', '0975239612', 'LeeHi@housely.com', '2637 Shobe Lane, RALEIGH, North Carolina, USA, 27609', '50000.00', '2019-07-04'),
+(4, 'Hoody\r\n', '0647121390', 'Hoody@housely.com', '3205 Snyder Avenue, Charlotte, North Carolina, 28273', '18000.00', '2021-10-04');
 
 --
 -- Indexes for dumped tables
@@ -288,16 +319,28 @@ ALTER TABLE `staff`
 --
 
 --
+-- AUTO_INCREMENT for table `bill`
+--
+ALTER TABLE `bill`
+  MODIFY `BillID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `service`
 --
 ALTER TABLE `service`
   MODIFY `servID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `staff`
+--
+ALTER TABLE `staff`
+  MODIFY `StaffID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
