@@ -38,17 +38,16 @@ $error="Your current password is wrong";
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+    
     <title>Housely</title>
         
        
-        <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
    
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     
-    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/css2/style.css" rel="stylesheet" />
 	<link href="assets/css/style1.css" rel="stylesheet" />
     
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
@@ -64,6 +63,8 @@ $error="Your current password is wrong";
 
        
         <link href="assets/css2/style.css" rel="stylesheet" type="text/css" />
+
+        
 
 	
 	
@@ -129,35 +130,36 @@ return true;
                                 <div class="woocommerce-login">
                                     <div class="company-info signin-register">
                                         <div class="col-md-5 col-md-offset-1 ">
+
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <div class="company-detail bg-dark margin-left">
-                                                    <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
+
+                                                <div class="company-detail bg-dark margin-left">
+													<?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
         else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>   
-                                                     <div class="signin-head">
+                                                        <div class="signin-head">
                                                             <h2>Change Password</h2>
                                                             <span class="underline left"></span>
                                                         </div>
-                                                    <!-- <div class="panel-body"> -->
-                                                    <form class = "login" role="form" method="post" onSubmit="return valid();" name="chngpwd">
-
-                                                    <div class="form-group">
-                                                    <label>Current Password</label>
-                                                    <input class="form-control" type="password" name="password" autocomplete="off" required  />
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                    <label>Enter New Password</label>
-                                                    <input class="form-control" type="password" name="newpassword" autocomplete="off" required  />
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                    <label>Confirm Password </label>
-                                                    <input class="form-control"  type="password" name="confirmpassword" autocomplete="off" required  />
-                                                    </div>
-
-                                                    <button type="submit" name="change" class="btn btn-primary">Change </button> 
-                                                    </form>
+                                                        <form class="login" method="post" onSubmit="return valid();" name="chngpwd">
+                                                            
+                                                            <p class="form-row form-row-last input-required">
+                                                                
+                                                                <input type="password" id="password" name="password" class="input-text" placeholder="Current Password"> 
+                                                            </p>
+															<p class="form-row form-row-last input-required">
+                                                                
+                                                                <input type="password" id="password" name="newpassword" class="input-text" placeholder="New Password"> 
+                                                            </p>
+															<p class="form-row form-row-last input-required">
+                                                                
+                                                                <input type="password" id="password" name="confirmpassword" class="input-text" placeholder="Confirm Password"> 
+                                                            </p>
+                                                            <div class="clear"></div>
+                                                            
+                                                            <input type="submit" name="change" class="button btn btn-default">
+                                                            <div class="clear"></div>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>

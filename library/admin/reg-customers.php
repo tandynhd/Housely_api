@@ -119,6 +119,16 @@ header('location:reg-customers.php');
 
         </div>
             <div class="row">
+            <?php if($_SESSION['updatemsg']!="")
+            {?>
+            <div class="col-md-6">
+            <div class="alert alert-success" >
+            <strong>Success :</strong> 
+            <?php echo htmlentities($_SESSION['updatemsg']);?>
+            <?php echo htmlentities($_SESSION['updatemsg']="");?>
+            </div>
+            </div>
+            <?php } ?>
                 <div class="col-md-12">
                     
                     <div class="panel panel-default">
@@ -160,7 +170,7 @@ foreach($results as $result)
                                             <td class="center"><?php echo htmlentities($result->custAddr);?></td>
                                             <td class="center">
 
-                                            <a href="edit-customer.php?athrid=<?php echo htmlentities($result->id);?>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 
+                                            <a href="edit-customer.php?custID=<?php echo htmlentities($result->custID);?>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 
                                             <a href="reg-customers.php?del=<?php echo htmlentities($result->custID);?>" onclick="return confirm('Are you sure you want to delete?');"" >  <button class="btn btn-danger"><i class="fa fa-pencil"></i> Remove </button>
                                             </td>
 											 

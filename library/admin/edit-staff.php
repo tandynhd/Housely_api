@@ -96,7 +96,7 @@ else{
                             <div class="panel-body">
                                 <form role="form" method="post" enctype="multipart/form-data">
                                     <?php 
-                                    $StaffID=intval($_GET['StffID']);
+                                    $StaffID=intval($_GET['StaffID']);
                                     // $sql = "SELECT StaffName,StaffTele,StaffEmail,StaffAddr,StaffSalary from staff where StaffID=:StaffID";
                                     // $query = $dbh -> prepare($sql);
                                     // $query->bindParam(':StaffID',$StaffID,PDO::PARAM_STR);

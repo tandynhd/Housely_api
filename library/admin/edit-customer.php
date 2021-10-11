@@ -10,15 +10,22 @@ else{
 
 if(isset($_POST['update']))
 {
-$custID=intval($_GET['custID']);
-$custNamer=$_POST['custName'];
-$sql="update  customer set custName=:custName where custID=:custID";
-$query = $dbh->prepare($sql);
-$query->bindParam(':custName',$custName,PDO::PARAM_STR);
-$query->bindParam(':custID',$custID,PDO::PARAM_STR);
-$query->execute();
-$_SESSION['updatemsg']="Customer Information updated successfully";
-header('location:reg-customers.php');
+    $custID=$_GET['custID'];
+    $custName=$_POST['custName'];
+    $custemail=$_POST['custemail'];
+    $custtele=$_POST['custtele'];
+    $custaddr=$_POST['custaddr'];
+
+    $sql="update  customer set custName=:custName,custemail=:custemail,custtele:=custtele,custaddr=:custaddr where custID=:custID";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':custName',$custName,PDO::PARAM_STR);
+    $query->bindParam(':custemail',$custemail,PDO::PARAM_STR);
+    $query->bindParam(':custtele',$custtele,PDO::PARAM_STR);
+    $query->bindParam(':custaddr',$custaddr,PDO::PARAM_STR);
+    $query->bindParam(':custID',$custID,PDO::PARAM_STR);
+    $query->execute();
+    $_SESSION['updatemsg']="Customer Information updated successfully";
+    header('location:reg-customers.php');
 
 
 
@@ -99,9 +106,9 @@ Customer Information
 <div class="panel-body">
 <form role="form" method="post">
 <div class="form-group">
-<label>Customer Name</label>
+<!--<label>Customer Name</label>-->
 <?php 
-$custID=intval($_GET['custID']);
+$custID=$_GET['custID'];
 $sql = "SELECT * from  customer where custID=:custID";
 $query = $dbh -> prepare($sql);
 $query->bindParam(':custID',$custID,PDO::PARAM_STR);
@@ -112,11 +119,27 @@ if($query->rowCount() > 0)
 {
 foreach($results as $result)
 {               ?>   
-<input class="form-control" type="text" name="custname" value="<?php echo htmlentities($result->custName);?>" required />
-<?php }} ?>
-</div>
+    <div class="form-group">
+        <label>Customer Name</label>
+        <input class="form-control" type="text" name="custname" value="<?php echo htmlentities($result->custName);?>" required />
+    </div>
+    <div class="form-group">
+        <label>Customer Email</label>
+        <input class="form-control" type="text" name="custemail" value="<?php echo htmlentities($result->custEmail);?>" required />
+    </div>
+    <div class="form-group">
+        <label>Customer Phone Number</label>
+        <input class="form-control" type="text" name="custtele" value="<?php echo htmlentities($result->custTele);?>" required />
+    </div>
+    <div class="form-group">
+        <label>Customer Address</label>
+        <input class="form-control" type="text" name="custaddr" value="<?php echo htmlentities($result->custAddr);?>" required />
+    </div>
+    
+    <?php }} ?>
+    </div>
 
-<button type="submit" name="update" class="btn btn-primary">Update </button>
+    <button type="submit" name="update" class="btn btn-primary">Update </button>
 
                                     </form>
                             </div>

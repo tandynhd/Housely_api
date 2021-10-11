@@ -6,7 +6,34 @@ if(strlen($_SESSION['alogin'])==0)
     {   
 header('location:index.php');
 }
-else{ 
+else{
+    // code for recieve the payment   
+    if(isset($_GET['inid']))
+    {
+    $BillID=$_GET['inid'];
+    $PaidStatus=1;
+    $sql = "update bill set PaidStatus=:PaidStatus  WHERE BillID=:BillID";
+    $query = $dbh->prepare($sql);
+    $query -> bindParam(':BillID',$BillID, PDO::PARAM_STR);
+    $query -> bindParam(':PaidStatus',$PaidStatus, PDO::PARAM_STR);
+    $query -> execute();
+    header('location:manage-issued-bills.php');
+    }
+
+
+
+    //code for change the recieve payment staus
+    if(isset($_GET['id']))
+    {
+    $BillID=$_GET['id'];
+    $PaidStatus=0;
+    $sql = "update bill set PaidStatus=:PaidStatus  WHERE BillID=:BillID";
+    $query = $dbh->prepare($sql);
+    $query -> bindParam(':BillID',$BillID, PDO::PARAM_STR);
+    $query -> bindParam(':PaidStatus',$PaidStatus, PDO::PARAM_STR);
+    $query -> execute();
+    header('location:manage-issued-bills.php');
+    } 
 
 
 
@@ -113,13 +140,14 @@ else{
                                             <th>#</th>
                                             <th>Customer Name</th>
                                             <th>Room Number</th>
+                                            <th>Bill ID</th>
                                             <th>Total Bill </th>
                                             <th>Payment Proof</th>
-                                            <th>Action</th>
+                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-<?php $sql = "SELECT customer.custName,bill.roomNum,bill.total,bill.evidenceurl FROM customer join roomcontract on customer.custID=roomcontract.custID join bill on bill.rContID=roomcontract.rContID; ";
+<?php $sql = "SELECT customer.custName,bill.roomNum,bill.total,bill.evidenceurl,bill.PaidStatus,bill.billid FROM customer join roomcontract on customer.custID=roomcontract.custID join bill on bill.rContID=roomcontract.rContID; ";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -130,14 +158,27 @@ foreach($results as $result)
 {               ?>                                      
                                         <tr class="odd gradeX">
                                             <td class="center"><?php echo htmlentities($cnt);?></td>
+                                            
                                             <td class="center"><?php echo htmlentities($result->custName);?></td>
                                             <td class="center"><?php echo htmlentities($result->roomNum);?></td>
+                                            <td class="center"><?php echo htmlentities($result->billid);?></td>
                                             <td class="center"><?php echo htmlentities($result->total);?></td>
                                             <td class="center"><?php echo htmlentities($result->evidenceurl);?></td>
         
                                             <td class="center">
+                                                <?php if($result->PaidStatus==0)
+                                                {?>
+                                                <a href="manage-issued-bills.php?inid=<?php echo htmlentities($result->billid);?>" onclick="return confirm('Are you sure that we recieve the payment?');" >  <button class="btn btn-danger"> Waiting</button>
+                                                <?php }
+                                                else {?>
 
-                                            <a href="update-issue-bookdeails.php?rid=<?php echo htmlentities($result->rid);?>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 
+                                                <a href="manage-issued-bills.php?id=<?php echo htmlentities($result->billid);?>" onclick="return confirm('Are you sure you want to change the status to waiting?');"><button class="btn btn-primary"> Paid</button> 
+                                                <?php } ?>
+                                          
+                                            </td>
+                                            
+
+                                             
                                          
                                             </td>
                                         </tr>

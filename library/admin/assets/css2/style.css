@@ -14406,6 +14406,8 @@ a:focus {
   -moz-box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.07);
   box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.07);
   padding: 50px 30px;
+  position:relative;
+  left:67%;
 }
 @media (max-width: 991px) {
   .company-info .company-detail {

@@ -195,7 +195,14 @@ foreach($results as $result)
                                             
                                             <td class="center">
 
-                                            <button class="btn btn-primary">Complete</button> 
+                                            <?php if($result->servStatus==0)
+                                                {?>
+                                                 <button class="btn btn-primary"> In Progess</button>
+                                                <?php }
+                                                else {?>
+
+                                                <button class="btn btn-primary"> Completed</button> 
+                                                <?php } ?> 
                                          
                                             </td>
                                             <td class="center">

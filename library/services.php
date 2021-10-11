@@ -61,7 +61,7 @@ else{?>
                 <div class="banner-header">
                     <h2>Services</h2>
                     <span class="underline center"></span>
-                    <p class="lead">"Getting a house is not the hard part, maintaining it is."</p>
+                    <p class="lead">"Anything you need."</p>
                 </div>
                 <div class="breadcrumb">
                     <ul>
@@ -98,8 +98,10 @@ else{?>
                         <form action="" method="get">
                             <div class="col-md-4 col-sm-6">
                                 <div class="form-group">
+                                    
                                     <label class="sr-only" for="keywords">Search by Service Name</label>
                                     <input class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search by Service Name" type="text">
+                                    
                                 </div>
                             
                             </div>
@@ -128,7 +130,7 @@ else{?>
                                             <div class="info"  >
                                                 
                                                 <h1 style="font-family:'Lato', Georgia, Times, serif; font-weight:900;"><?php echo htmlentities($result->servName);?></h1>
-                                                <p><?php echo htmlentities($result->servCataName);?> </br>Description - <?php echo htmlentities($result->servDesc);?> </p>
+                                                <p><?php echo htmlentities($result->servCataName);?> </br> <?php echo htmlentities($result->servDesc);?> </p>
                                                 <?php if($result->no_of_books!=0)
                                                                                         {?>
                                                                                         
@@ -136,7 +138,7 @@ else{?>
                                                                                             
                                                                                         <?php } else { ?>
                                                                                         
-                                                                                        <a href="#" class="btn" disabled >Reserve</a>
+                                                                                        <a href="services.php" class="btn"  >Reserve</a>
                                                                                     
                                                                                     <?php }?>
                                             </div>
@@ -155,7 +157,7 @@ else{?>
                 </div>
         </div>
   </div>
-    
+  </div>
 <?php } ?>     
 <?php include('includes/footer.php');?>
      
