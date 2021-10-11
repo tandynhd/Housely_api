@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2021 at 05:34 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- Generation Time: Oct 11, 2021 at 09:27 AM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,7 +41,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`AdminID`, `AdminFN`, `AdminEmail`, `AdminUsername`, `AdminPass`, `AdminUpdationDate`) VALUES
-(1, 'Tandin Dorji', '6222790428@g.siit.tu.ac.th', 'Admin', '21232f297a57a5a743894a0e4a801fc3', '2021-10-10 10:23:08'),
+(1, 'Tandin Dorji', '6222790428@g.siit.tu.ac.th', 'Admin', '21232f297a57a5a743894a0e4a801fc3', '2021-10-11 06:32:07'),
 (2, 'Kanokkarn Pinkeaw', '6222790147@g.siit.tu.ac.th', 'Admin2', '21232f297a57a5a743894a0e4a801fc3', '2021-10-10 09:35:17'),
 (3, 'Inkies', 'i@gmail.com', 'admin3', '21232f297a57a5a743894a0e4a801fc3', '2021-10-10 09:35:42');
 
@@ -94,6 +94,7 @@ CREATE TABLE `bookedservice` (
   `staffID` int(11) NOT NULL,
   `roomNum` int(11) NOT NULL,
   `servPrice` decimal(10,2) NOT NULL,
+  `servStatus` tinyint(1) NOT NULL,
   `servDate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -101,9 +102,9 @@ CREATE TABLE `bookedservice` (
 -- Dumping data for table `bookedservice`
 --
 
-INSERT INTO `bookedservice` (`servBookID`, `servID`, `custID`, `staffID`, `roomNum`, `servPrice`, `servDate`) VALUES
-(1, 1, 'CID001', 2, 1101, '0.00', '2021-10-04'),
-(2, 2, 'CID002', 3, 1102, '500.00', '2021-10-05');
+INSERT INTO `bookedservice` (`servBookID`, `servID`, `custID`, `staffID`, `roomNum`, `servPrice`, `servStatus`, `servDate`) VALUES
+(1, 1, 'CID001', 2, 1101, '0.00', 1, '2021-10-04'),
+(2, 2, 'CID002', 3, 1102, '500.00', 0, '2021-10-05');
 
 -- --------------------------------------------------------
 
@@ -126,7 +127,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`id`, `custID`, `custName`, `custTele`, `custEmail`, `custPass`, `custAddr`) VALUES
-(7, 'CID001', 'Charlene Su', '0618946633', 't@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Phatumthani,Thailand'),
+(7, 'CID001', 'hong', '0618946633', 't@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Phatumthani,Thailand'),
 (8, 'CID002', 'Emotional Oranges', '0976369898', 'k@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'Korat,Thailand'),
 (9, 'CID003', 'Taylor Swift', '0826218523', 'tyt@g.siit.tu.ac.th', '81dc9bdb52d04dc20036dbd8313ed055', 'Chaingmai,thailand'),
 (10, 'CID004', 'Conan Gray', '0973369919', 'hh@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Trang,Thailand'),
@@ -348,7 +349,7 @@ ALTER TABLE `service`
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `StaffID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `StaffID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
