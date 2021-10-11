@@ -73,8 +73,8 @@ else{
         <div class="row pad-botm">
             <div class="col-md-12">
                 <h4 class="header-line"></h4>
-    </div>
-     <div class="row">
+            </div>
+        <div class="row">
     <?php if($_SESSION['error']!="")
     {?>
 <div class="col-md-6">
@@ -95,21 +95,6 @@ else{
 </div>
 </div>
 <?php } ?>
-
-
-
-   <?php if($_SESSION['delmsg']!="")
-    {?>
-<div class="col-md-6">
-<div class="alert alert-success" >
- <strong>Success :</strong> 
- <?php echo htmlentities($_SESSION['delmsg']);?>
-<?php echo htmlentities($_SESSION['delmsg']="");?>
-</div>
-</div>
-<?php } ?>
-
-</div>
 
 
         </div>
@@ -134,7 +119,7 @@ else{
                                         </tr>
                                     </thead>
                                     <tbody>
-<?php $sql = "SELECT customers.FullName,roomrecord.roomNum,bill.totalbill,bill.evidenceurl FROM customers join roomrecord on customers.custID=roomrecord.custID join bills on bills.roomNum=roomrecord.roomNum ";
+<?php $sql = "SELECT customer.custName,bill.roomNum,bill.total,bill.evidenceurl FROM customer join roomcontract on customer.custID=roomcontract.custID join bill on bill.rContID=roomcontract.rContID; ";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -145,9 +130,9 @@ foreach($results as $result)
 {               ?>                                      
                                         <tr class="odd gradeX">
                                             <td class="center"><?php echo htmlentities($cnt);?></td>
-                                            <td class="center"><?php echo htmlentities($result->FullName);?></td>
+                                            <td class="center"><?php echo htmlentities($result->custName);?></td>
                                             <td class="center"><?php echo htmlentities($result->roomNum);?></td>
-                                            <td class="center"><?php echo htmlentities($result->totalbill);?></td>
+                                            <td class="center"><?php echo htmlentities($result->total);?></td>
                                             <td class="center"><?php echo htmlentities($result->evidenceurl);?></td>
         
                                             <td class="center">
