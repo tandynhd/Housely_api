@@ -7,17 +7,34 @@ if(strlen($_SESSION['alogin'])==0)
 header('location:index.php');
 }
 else{ 
-    if(isset($_GET['del']))
-    {
-        $id=$_GET['del'];
-        $sql = "delete from bookedservice WHERE servBookID=:id";
-        $query = $dbh->prepare($sql);
-        $query -> bindParam(':id',$id, PDO::PARAM_STR);
-        $query -> execute();
-        $_SESSION['delmsg']="Service deleted scuccessfully ";
-        header('location:reserved-services.php');
     
+    if(isset($_GET['inid']))
+    {
+    $servBookID=$_GET['inid'];
+    $servStatus=1;
+    $sql = "update bookedservice set servStatus=:servStatus  WHERE servBookID=:servBookID";
+    $query = $dbh->prepare($sql);
+    $query -> bindParam(':servBookID',$servBookID, PDO::PARAM_STR);
+    $query -> bindParam(':servStatus',$servStatus, PDO::PARAM_STR);
+    $query -> execute();
+    header('location:reserved-services.php');
     }
+
+
+
+    
+    if(isset($_GET['id']))
+    {
+    $servBookID=$_GET['id'];
+    $servStatus=0;
+    $sql = "update bookedservice set servStatus=:servStatus  WHERE servBookID=:servBookID";
+    $query = $dbh->prepare($sql);
+    $query -> bindParam(':servBookID',$servBookID, PDO::PARAM_STR);
+    $query -> bindParam(':servStatus',$servStatus, PDO::PARAM_STR);
+    $query -> execute();
+    header('location:reserved-services.php');
+    } 
+    
 
 
     ?>
@@ -170,7 +187,7 @@ else{
                                             <th>Service Price</th>
                                             <th>Booked Date</th>
                                             <th>Status</th>
-                                            <th>Action</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -194,21 +211,17 @@ foreach($results as $result)
                                             <td class="center"><?php echo htmlentities($result->servDate);?></td>
                                             
                                             <td class="center">
-
-                                            <?php if($result->servStatus==0)
+                                                <?php if($result->servStatus==0)
                                                 {?>
-                                                 <button class="btn btn-primary"> In Progess</button>
+                                                <a href="reserved-services.php?inid=<?php echo htmlentities($result->servBookID);?>" onclick="return confirm('Do you want to change the status?');" >  <button class="btn btn-danger"> In Progress </button>
                                                 <?php }
                                                 else {?>
 
-                                                <button class="btn btn-primary"> Completed</button> 
-                                                <?php } ?> 
-                                         
+                                                <a href="reserved-services.php?id=<?php echo htmlentities($result->servBookID);?>" onclick="return confirm('Do you want to change the status?');"><button class="btn btn-primary"> Completed</button> 
+                                                <?php } ?>
+                                          
                                             </td>
-                                            <td class="center">
-
-                                          <a href="reserved-services.php?del=<?php echo htmlentities($result->servBookID);?>" onclick="return confirm('Are you sure you want to delete?');"" >  <button class="btn btn-danger"><i class="fa fa-pencil"></i> Remove </button>
-                                            </td>
+                                            
                                         </tr>
  <?php $cnt=$cnt+1;}} ?>                                      
                                     </tbody>

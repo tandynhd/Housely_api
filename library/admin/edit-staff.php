@@ -10,7 +10,7 @@ else{
 
     if(isset($_POST['update']))
     {
-        $StaffID=intval($_GET['StffID']);
+        $StaffID=$_GET['StffID'];
         $StaffName=$_POST['staffname'];
 
         $sql="update  staff set StaffName=:StaffName where StaffID=:StaffID";
@@ -88,65 +88,45 @@ else{
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                        <div class="panel panel-info">
-                            <div class="panel-heading" id="formheading">
-                                Staff Information
-                            </div>
-                            <div class="panel-body">
-                                <form role="form" method="post" enctype="multipart/form-data">
-                                    <?php 
-                                    $StaffID=intval($_GET['StaffID']);
-                                    // $sql = "SELECT StaffName,StaffTele,StaffEmail,StaffAddr,StaffSalary from staff where StaffID=:StaffID";
-                                    // $query = $dbh -> prepare($sql);
-                                    // $query->bindParam(':StaffID',$StaffID,PDO::PARAM_STR);
-                                    // $query->execute();
-                                    // $results=$query->fetchAll(PDO::FETCH_OBJ);
-                                    // $cnt=1;
-                                    // if($query->rowCount() > 0)
-                                    // {
-                                    //     foreach($results as $result)
-                                    //     {           
-                                            ?> 
-                                            <div class="form-group"> 
-                                                <label>Staff Name<span style="color:red;">*</span></label>
-                                                <input class="form-control" type="text" name="staffname" value="<?php echo $StaffID;?>" required />
-                                            </div>
+<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+<div class="panel panel-info">
+<div class="panel-heading" id="formheading">
+Staff Information 
+</div>
+<div class="panel-body">
+<form role="form" method="post">
+<div class="form-group">
+<?php 
+$StaffID=$_GET['StaffID'];
+$sql = "SELECT * from  staff where StaffID=:StaffID";
+$query = $dbh -> prepare($sql);
+$query->bindParam(':StaffID',$StaffID,PDO::PARAM_STR);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$cnt=1;
+if($query->rowCount() > 0)
+{
+foreach($results as $result)
+{               ?>   
+    <div class="form-group">
+        <label>Customer Name</label>
+        <input class="form-control" type="text" name="custname" value="<?php echo htmlentities($result->StaffName);?>" required />
+    </div>
 
-                                            <div class="form-group">
-                                                <label>Staff Phone Number<span style="color:red;">*</span></label>
-                                                <input class="form-control" type="text" name="staffphoneNo" value="<?php echo htmlentities($result->StaffTele);?>" required />
-                                            </div>
+    <?php }} ?>
+    </div>
 
-                                            <div class="form-group">
-                                                <label>Staff Email<span style="color:red;">*</span></label>
-                                                <input class="form-control" type="email" name="staffemail" value="<?php echo htmlentities($result->StaffEmail);?>" required />
-                                            </div>
+    <button type="submit" name="update" class="btn btn-primary">Update </button>
 
-                                            <div class="form-group">
-                                                <label>Staff Address<span style="color:red;">*</span></label>
-                                                <input class="form-control" type="text" name="staffaddress" value="<?php echo htmlentities($result->StaffAddr);?>"  required />
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label>Staff Salary<span style="color:red;">*</span></label>
-                                                <input class="form-control" type="text" name="staffsalary" value="<?php echo htmlentities($result->StaffSalary);?>"  required />
-                                            </div>
-
-                                        <?php 
-                                     
-                                    ?>
-                                    <button type="submit" name="update" class="btn btn-primary">Update </button>
-
-                                </form>
+                                    </form>
                             </div>
                         </div>
-                    </div>
+                            </div>
 
-                </div>
-   
-            </div>
         </div>
+   
+    </div>
+    </div>
     
         <?php include('includes/footer.php');?>
         
