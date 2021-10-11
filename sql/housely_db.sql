@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2021 at 09:27 AM
+-- Generation Time: Oct 11, 2021 at 11:12 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -103,7 +103,7 @@ CREATE TABLE `bookedservice` (
 --
 
 INSERT INTO `bookedservice` (`servBookID`, `servID`, `custID`, `staffID`, `roomNum`, `servPrice`, `servStatus`, `servDate`) VALUES
-(1, 1, 'CID001', 2, 1101, '0.00', 1, '2021-10-04'),
+(1, 1, 'CID001', 2, 1101, '0.00', 0, '2021-10-04'),
 (2, 2, 'CID002', 3, 1102, '500.00', 0, '2021-10-05');
 
 -- --------------------------------------------------------
@@ -257,7 +257,8 @@ INSERT INTO `staff` (`StaffID`, `StaffName`, `StaffTele`, `StaffEmail`, `StaffAd
 (1, 'Jay Park', '0614968260', 'JayP@housely.com', '164 Nuzum Court, Arcade, New York, USA, 14009', '30000.00', '2019-10-16'),
 (2, 'Groovy Room', '0914942447', 'GroovyEverywhere@housely.com', '575 Lightning Point Drive,Memphis,Tennessee, USA, 38110', '46000.00', '2017-09-29'),
 (3, 'LeeHi', '0975239612', 'LeeHi@housely.com', '2637 Shobe Lane, RALEIGH, North Carolina, USA, 27609', '50000.00', '2019-07-04'),
-(4, 'Hoody\r\n', '0647121390', 'Hoody@housely.com', '3205 Snyder Avenue, Charlotte, North Carolina, 28273', '18000.00', '2021-10-04');
+(4, 'Hoody\r\n', '0647121390', 'Hoody@housely.com', '3205 Snyder Avenue, Charlotte, North Carolina, 28273', '18000.00', '2021-10-04'),
+(9, 'chacha malone', '0874589632', 'chacha@gmail.com', 'home town cha cha cha', '85410.00', '2021-10-11');
 
 --
 -- Indexes for dumped tables
@@ -349,7 +350,7 @@ ALTER TABLE `service`
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `StaffID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `StaffID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
