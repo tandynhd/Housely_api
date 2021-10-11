@@ -10,19 +10,19 @@ else{
 
 if(isset($_POST['update']))
 {
-    $custID=$_GET['custID'];
-    $custName=$_POST['custName'];
+    $id=intval($_GET['id']);
+    $custName=$_POST['custname'];
     $custEmail=$_POST['custemail'];
     $custTele=$_POST['custtele'];
     $custAddr=$_POST['custaddr'];
-
-    $sql="update customer set custName=:custName,custEmail=:custEmail,custTele:=custTele,custAddr=:custAddr where custID=:custID";
+    
+    $sql="UPDATE customer SET custName=:custName,custEmail=:custEmail,custTele=:custTele,custAddr=:custAddr WHERE id=:id";
     $query = $dbh->prepare($sql);
     $query->bindParam(':custName',$custName,PDO::PARAM_STR);
     $query->bindParam(':custEmail',$custEmail,PDO::PARAM_STR);
     $query->bindParam(':custTele',$custTele,PDO::PARAM_STR);
     $query->bindParam(':custAddr',$custAddr,PDO::PARAM_STR);
-    $query->bindParam(':custID',$custID,PDO::PARAM_STR);
+    $query->bindParam(':id',$id,PDO::PARAM_STR);
     $query->execute();
     $_SESSION['updatemsg']="Customer Information updated successfully";
     header('location:reg-customers.php');
@@ -108,10 +108,10 @@ Customer Information
 <div class="form-group">
 <!--<label>Customer Name</label>-->
 <?php 
-$custID=$_GET['custID']; 
-$sql = "SELECT * from  customer where custID=:custID";
+$id=$_GET['id']; 
+$sql = "SELECT * from  customer where id=:id";
 $query = $dbh -> prepare($sql);
-$query->bindParam(':custID',$custID,PDO::PARAM_STR);
+$query->bindParam(':id',$id,PDO::PARAM_STR);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 $cnt=1;

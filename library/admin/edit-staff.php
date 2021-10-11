@@ -107,7 +107,8 @@ $cnt=1;
 if($query->rowCount() > 0)
 {
 foreach($results as $result)
-{               ?>   
+{             
+      ?>   
     <div class="form-group">
         <label>Customer Name</label>
         <input class="form-control" type="text" name="custname" value="<?php echo htmlentities($result->StaffName);?>" required />
