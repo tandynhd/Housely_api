@@ -97,7 +97,8 @@ Staff Information
 <form role="form" method="post">
 <div class="form-group">
 <?php 
-$StaffID=$_GET['StaffID'];
+$StaffID=$_GET['staffID'];
+echo "<script type='text/javascript'> alert($StaffID); </script>";
 $sql = "SELECT * from  staff where StaffID=:StaffID";
 $query = $dbh -> prepare($sql);
 $query->bindParam(':StaffID',$StaffID,PDO::PARAM_STR);
@@ -111,7 +112,7 @@ foreach($results as $result)
       ?>   
     <div class="form-group">
         <label>Customer Name</label>
-        <input class="form-control" type="text" name="custname" value="<?php echo htmlentities($result->StaffName);?>" required />
+        <input class="form-control" type="text" name="custname" value="<?php echo $StaffID;?>" required />
     </div>
 
     <?php }} ?>

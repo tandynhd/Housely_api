@@ -62,6 +62,65 @@ if(isset($_POST['issue']))
     }
 
 }
+
+if(isset($_POST['issueall']))
+{   $sql2 = "SELECT custID FROM customer";
+
+    $query2 = $dbh->prepare($sql2);
+    $query2->execute();
+    
+    $results2=$query2->fetchAll(PDO::FETCH_OBJ);
+    $cnt=1;
+    if($query2->rowCount() > 0)
+    {
+        foreach($results2 as $result)
+        {    
+
+
+        $customerid=($result -> custID);
+        
+        $sql1 = "SELECT rc.custID, rc.roomPrice, rc.parkingPrice,rc.InternetPrice,rc.staffID, rc.rContID,rc.roomNum,rr.electricityUnit,rr.waterUnit
+        FROM roomcontract as rc JOIN roomrecord as rr on rc.roomNum = rr.roomNum
+        HAVING rc.custID=:customerid;";
+
+        $query1 = $dbh->prepare($sql1);
+        $query1->bindParam(':customerid',$customerid,PDO::PARAM_STR);
+        $query1->execute();
+        $results1=$query1->fetchAll(PDO::FETCH_OBJ);
+        $cnt=1;
+        if($query1->rowCount() > 0)
+        {
+            foreach($results1 as $result)
+            {    
+                $rPrice = ($result->roomPrice);
+                $pPrice = ($result -> parkingPrice);
+                $iPrice = ($result -> InternetPrice);
+                $sID = ($result -> staffID);
+                $rcID = ($result -> rContID);
+                $rNum = ($result -> roomNum);
+                $eUnit = ($result -> electricityUnit);
+                $wunit = ($result -> waterUnit);
+            }
+        }
+        $total = $rPrice +$pPrice + $iPrice + ($eUnit*55) + ($wunit*30);
+        $bidate = date('Y-m-d H:i:s');
+
+        $sql="INSERT INTO bill(staffID,rContID,roomNum,Total, billIssueDate) 
+        VALUES(:sID, :rcID, :rNum, :total, :bidate);";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':sID',$sID,PDO::PARAM_STR);
+        $query->bindParam(':rcID',$rcID,PDO::PARAM_STR);
+        $query->bindParam(':rNum',$rNum,PDO::PARAM_STR);
+        $query->bindParam(':total',$total,PDO::PARAM_STR);
+        $query->bindParam(':bidate',$bidate,PDO::PARAM_STR);
+        $query->execute();
+        $lastInsertId = $dbh->lastInsertId();
+    }
+    $_SESSION['msg']="All bills issued successfully";
+    header('location:manage-issued-bills.php');
+    }
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -158,12 +217,20 @@ Issue a New Bill
 </div>
 <div class="panel-body">
         <form role="form" method="post">
-
         <div class="form-group">
             <label>Customer ID<span style="color:red;">*</span></label>
-            <input class="form-control" type="text" name="customerid" id="customerid" autocomplete="off"  required />
+            <input class="form-control" type="text" name="customerid" id="customerid" autocomplete="off"   />
         </div>
         <button type="submit" name="issue" id="submit" class="btn btn-primary">Issue Bill </button>
+
+        <div class="form-group">
+            
+        </div>
+
+        <div class="form-group">
+            <button type="submit" name="issueall" id="submitall" class="btn btn-primary">Issue Bill to all </button>
+        </div>
+        
 
         </form>
 </div>
