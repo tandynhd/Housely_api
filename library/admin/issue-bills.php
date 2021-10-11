@@ -10,36 +10,58 @@ else{
 
 if(isset($_POST['issue']))
 {
-$customerid=$_POST['customerid'];
-// $serviceid=$_POST['serviceid'];
-// $staffid=$_POST['staffid'];
-// $servprice = $_POST['serviceprice'];
-// $sql="SELECT roomNum FROM roomContract WHERE custID = $customerid";
+    $customerid=$_POST['customerid'];
+    
+    $sql1 = "SELECT rc.roomPrice, rc.parkingPrice,rc.InternetPrice,rc.staffID, rc.rContID,rc.roomNum
+    FROM roomcontract as rc
+    WHERE custID=:customerid;";
 
-$sql="INSERT INTO bill(staffID,roomNum,roomID,billIssueDate) 
-SELECT rc.staffID, rc.roomNum, rr.roomrecid 
-       FROM roomcontract as rc,  roomrecord as rr
-       WHERE custID=$customerid AND 
-       rc.roomNum = rr.roomNum;
-		
- ";
-$query = $dbh->prepare($sql);
-$query->bindParam(':customerid',$customerid,PDO::PARAM_STR);
-$query->execute();
-$lastInsertId = $dbh->lastInsertId();
-if($lastInsertId)
-{
-$_SESSION['msg']="Service issued successfully";
-header('location:manage-issued-bills.php');
-}
-else 
-{
-$_SESSION['error']="Something went wrong. Please try again";
-header('location:manage-issued-bills.php');
-}
+    $query1 = $dbh->prepare($sql1);
+    $query1->bindParam(':customerid',$customerid,PDO::PARAM_STR);
+    $query1->execute();
+    $results1=$query1->fetchAll(PDO::FETCH_OBJ);
+    $cnt=1;
+    if($query1->rowCount() > 0)
+    {
+        foreach($results1 as $result)
+        {    
+            $rPrice = ($result->roomPrice);
+            $pPrice = ($result -> parkingPrice);
+            $iPrice = ($result -> InternetPrice);
+            $sID = ($result -> staffID);
+            $rcID = ($result -> rContID);
+            $rNum = ($result -> roomNum);
+        }
+    }
+    $total = $rPrice +$pPrice + $iPrice;
+    $bidate = date('Y-m-d H:i:s');
+    
+    $sql="INSERT INTO bill(staffID,rContID,roomNum,Total, billIssueDate) 
+    VALUES(:sID, :rcID, :rNum, :total, :bidate);";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':sID',$sID,PDO::PARAM_STR);
+    $query->bindParam(':rcID',$rcID,PDO::PARAM_STR);
+    $query->bindParam(':rNum',$rNum,PDO::PARAM_STR);
+    $query->bindParam(':total',$total,PDO::PARAM_STR);
+    $query->bindParam(':bidate',$bidate,PDO::PARAM_STR);
+    $query->execute();
+    $lastInsertId = $dbh->lastInsertId();
+
+
+    if($lastInsertId)
+    {
+    $_SESSION['msg']="Bill issued successfully";
+    header('location:manage-issued-bills.php');
+    }
+    else 
+    {
+    $_SESSION['error']="Something went wrong. Please try again";
+    header('location:manage-issued-bills.php');
+    }
 
 }
 ?>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -85,21 +107,6 @@ error:function (){}
 });
 }
 
-//function for book details
-function getbook() {
-$("#loaderIcon").show();
-jQuery.ajax({
-url: "get_book.php",
-data:'bookid='+$("#bookid").val(),
-type: "POST",
-success:function(data){
-$("#get_book_name").html(data);
-$("#loaderIcon").hide();
-},
-error:function (){}
-});
-}
-
 </script> 
 <style type="text/css">
   .others{
@@ -118,14 +125,14 @@ error:function (){}
         <section class="page-banner services-banner">
             <div class="container">
                 <div class="banner-header">
-                    <h2>Issue a Bill</h2>
+                    <h2>Issue Bill</h2>
                     <span class="underline center"></span>
                     <p class="lead"></p>
                 </div>
                 <div class="breadcrumb">
                     <ul>
-                        <li><a href="reg-students.php">Admin</a></li>
-                        <li>Issue a Bill</li>
+                        <li><a href="reg-customers.php">Admin</a></li>
+                        <li>Issue Bill</li>
                     </ul>
                 </div>
             </div>
@@ -153,21 +160,6 @@ Issue a New Bill
         <div class="form-group">
             <label>Customer ID<span style="color:red;">*</span></label>
             <input class="form-control" type="text" name="customerid" id="customerid" autocomplete="off"  required />
-        </div>
-
-        <!-- <div class="form-group">
-            <label>Service ID <span style="color:red;">*</span></label>
-            <input class="form-control" type="text" name="serviceid" id="serviceid" required="required" />
-        </div>
-
-        <div class="form-group">
-            <label>Staff ID <span style="color:red;">*</span></label>
-            <input class="form-control" type="text" name="staffid" id="staffid"  required="required" />
-        </div>
-
-        <div class="form-group">
-            <label>Service Price (THB)<span style="color:red;">*</span></label>
-            <input class="form-control" type="text" name="serviceprice" id="serviceprice"  required="required" /> -->
         </div>
         <button type="submit" name="issue" id="submit" class="btn btn-primary">Issue Bill </button>
 
