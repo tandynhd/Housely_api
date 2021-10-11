@@ -197,6 +197,7 @@ foreach($results as $result)
             
     </div>
     </div>
+    </div>
 
      
   <?php include('includes/footer.php');?>

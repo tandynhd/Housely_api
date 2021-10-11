@@ -297,8 +297,6 @@ Issue a New Bill
         
        
         <script type="text/javascript" src="js/main.js"></script>
-	
-
 </body>
 </html>
 <?php } ?>
