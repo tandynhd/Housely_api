@@ -12,16 +12,16 @@ if(isset($_POST['update']))
 {
     $custID=$_GET['custID'];
     $custName=$_POST['custName'];
-    $custemail=$_POST['custemail'];
-    $custtele=$_POST['custtele'];
-    $custaddr=$_POST['custaddr'];
+    $custEmail=$_POST['custemail'];
+    $custTele=$_POST['custtele'];
+    $custAddr=$_POST['custaddr'];
 
-    $sql="update  customer set custName=:custName,custemail=:custemail,custtele:=custtele,custaddr=:custaddr where custID=:custID";
+    $sql="update customer set custName=:custName,custEmail=:custEmail,custTele:=custTele,custAddr=:custAddr where custID=:custID";
     $query = $dbh->prepare($sql);
     $query->bindParam(':custName',$custName,PDO::PARAM_STR);
-    $query->bindParam(':custemail',$custemail,PDO::PARAM_STR);
-    $query->bindParam(':custtele',$custtele,PDO::PARAM_STR);
-    $query->bindParam(':custaddr',$custaddr,PDO::PARAM_STR);
+    $query->bindParam(':custEmail',$custEmail,PDO::PARAM_STR);
+    $query->bindParam(':custTele',$custTele,PDO::PARAM_STR);
+    $query->bindParam(':custAddr',$custAddr,PDO::PARAM_STR);
     $query->bindParam(':custID',$custID,PDO::PARAM_STR);
     $query->execute();
     $_SESSION['updatemsg']="Customer Information updated successfully";
@@ -108,7 +108,7 @@ Customer Information
 <div class="form-group">
 <!--<label>Customer Name</label>-->
 <?php 
-$custID=$_GET['custID'];
+$custID=$_GET['custID']; 
 $sql = "SELECT * from  customer where custID=:custID";
 $query = $dbh -> prepare($sql);
 $query->bindParam(':custID',$custID,PDO::PARAM_STR);
