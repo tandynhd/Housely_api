@@ -12,9 +12,9 @@ if(isset($_POST['issue']))
 {
     $customerid=$_POST['customerid'];
     
-    $sql1 = "SELECT rc.roomPrice, rc.parkingPrice,rc.InternetPrice,rc.staffID, rc.rContID,rc.roomNum
-    FROM roomcontract as rc
-    WHERE custID=:customerid;";
+    $sql1 = "SELECT rc.custID, rc.roomPrice, rc.parkingPrice,rc.InternetPrice,rc.staffID, rc.rContID,rc.roomNum,rr.electricityUnit,rr.waterUnit
+    FROM roomcontract as rc JOIN roomrecord as rr on rc.roomNum = rr.roomNum
+    HAVING rc.custID=:customerid;";
 
     $query1 = $dbh->prepare($sql1);
     $query1->bindParam(':customerid',$customerid,PDO::PARAM_STR);
@@ -31,11 +31,13 @@ if(isset($_POST['issue']))
             $sID = ($result -> staffID);
             $rcID = ($result -> rContID);
             $rNum = ($result -> roomNum);
+            $eUnit = ($result -> electricityUnit);
+            $wunit = ($result -> waterUnit);
         }
     }
-    $total = $rPrice +$pPrice + $iPrice;
+    $total = $rPrice +$pPrice + $iPrice + ($eUnit*55) + ($wunit*30);
     $bidate = date('Y-m-d H:i:s');
-    
+
     $sql="INSERT INTO bill(staffID,rContID,roomNum,Total, billIssueDate) 
     VALUES(:sID, :rcID, :rNum, :total, :bidate);";
     $query = $dbh->prepare($sql);

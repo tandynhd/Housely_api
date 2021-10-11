@@ -171,7 +171,7 @@ if($query->rowCount() > 0)
 foreach($results as $result)
 {               ?>                                      
                                         <tr class="odd gradeX">
-                                            <td class="center"><?php echo htmlentities($cnt);?></td>
+                                            <td class="center"><?php echo htmlentities($result -> StaffID);?></td>
                                             <td class="center"><?php echo htmlentities($result->StaffName);?></td>
                                             <td class="center"><?php echo htmlentities($result->StaffTele);?></td>
                                             <td class="center"><?php echo htmlentities($result->StaffEmail);?></td>

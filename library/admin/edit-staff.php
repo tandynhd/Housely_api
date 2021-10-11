@@ -97,19 +97,20 @@ else{
                                 <form role="form" method="post" enctype="multipart/form-data">
                                     <?php 
                                     $StaffID=intval($_GET['StffID']);
-                                    $sql = "SELECT StaffName,StaffTele,StaffEmail,StaffAddr,StaffSalary from staff where StaffID=:StaffID";
-                                    $query = $dbh -> prepare($sql);
-                                    $query->bindParam(':StaffID',$StaffID,PDO::PARAM_STR);
-                                    $query->execute();
-                                    $results=$query->fetchAll(PDO::FETCH_OBJ);
-                                    $cnt=1;
-                                    if($query->rowCount() > 0)
-                                    {
-                                        foreach($results as $result)
-                                        {          echo $result;  ?> 
-                                            <div class="form-group"> vhkbj
+                                    // $sql = "SELECT StaffName,StaffTele,StaffEmail,StaffAddr,StaffSalary from staff where StaffID=:StaffID";
+                                    // $query = $dbh -> prepare($sql);
+                                    // $query->bindParam(':StaffID',$StaffID,PDO::PARAM_STR);
+                                    // $query->execute();
+                                    // $results=$query->fetchAll(PDO::FETCH_OBJ);
+                                    // $cnt=1;
+                                    // if($query->rowCount() > 0)
+                                    // {
+                                    //     foreach($results as $result)
+                                    //     {           
+                                            ?> 
+                                            <div class="form-group"> 
                                                 <label>Staff Name<span style="color:red;">*</span></label>
-                                                <input class="form-control" type="text" name="staffname" value="<?php echo htmlentities($result->staffname);?>" required />
+                                                <input class="form-control" type="text" name="staffname" value="<?php echo $StaffID;?>" required />
                                             </div>
 
                                             <div class="form-group">
@@ -132,8 +133,9 @@ else{
                                                 <input class="form-control" type="text" name="staffsalary" value="<?php echo htmlentities($result->StaffSalary);?>"  required />
                                             </div>
 
-                                        <?php }
-                                    } ?>
+                                        <?php 
+                                     
+                                    ?>
                                     <button type="submit" name="update" class="btn btn-primary">Update </button>
 
                                 </form>
