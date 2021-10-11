@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2021 at 12:19 PM
+-- Generation Time: Oct 11, 2021 at 05:34 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -41,7 +41,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`AdminID`, `AdminFN`, `AdminEmail`, `AdminUsername`, `AdminPass`, `AdminUpdationDate`) VALUES
-(1, 'Tandin Dorji', '6222790428@g.siit.tu.ac.th', 'Admin', '21232f297a57a5a743894a0e4a801fc3', '2021-10-10 09:38:38'),
+(1, 'Tandin Dorji', '6222790428@g.siit.tu.ac.th', 'Admin', '21232f297a57a5a743894a0e4a801fc3', '2021-10-10 10:23:08'),
 (2, 'Kanokkarn Pinkeaw', '6222790147@g.siit.tu.ac.th', 'Admin2', '21232f297a57a5a743894a0e4a801fc3', '2021-10-10 09:35:17'),
 (3, 'Inkies', 'i@gmail.com', 'admin3', '21232f297a57a5a743894a0e4a801fc3', '2021-10-10 09:35:42');
 
@@ -54,9 +54,8 @@ INSERT INTO `admin` (`AdminID`, `AdminFN`, `AdminEmail`, `AdminUsername`, `Admin
 CREATE TABLE `bill` (
   `BillID` int(11) NOT NULL,
   `staffID` int(11) NOT NULL,
-  `roomID` int(11) NOT NULL,
+  `rContID` int(11) NOT NULL,
   `billIssueDate` datetime NOT NULL,
-  `billDueDate` datetime NOT NULL,
   `Total` decimal(10,2) NOT NULL,
   `roomNum` int(11) NOT NULL,
   `PaidStatus` tinyint(1) NOT NULL,
@@ -67,8 +66,20 @@ CREATE TABLE `bill` (
 -- Dumping data for table `bill`
 --
 
-INSERT INTO `bill` (`BillID`, `staffID`, `roomID`, `billIssueDate`, `billDueDate`, `Total`, `roomNum`, `PaidStatus`, `evidenceurl`) VALUES
-(4, 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0.00', 1101, 0, NULL);
+INSERT INTO `bill` (`BillID`, `staffID`, `rContID`, `billIssueDate`, `Total`, `roomNum`, `PaidStatus`, `evidenceurl`) VALUES
+(1, 1, 1, '2021-10-10 20:14:08', '5522.00', 1101, 0, NULL),
+(2, 1, 2, '2021-10-10 15:17:33', '7200.00', 1102, 0, NULL),
+(3, 1, 3, '2021-10-10 15:19:03', '7068.00', 1103, 0, NULL),
+(4, 1, 4, '2021-10-10 15:22:37', '6602.00', 1104, 0, NULL),
+(7, 1, 1, '0000-00-00 00:00:00', '0.00', 1101, 0, NULL),
+(8, 1, 1, '0000-00-00 00:00:00', '5000.00', 1101, 0, NULL),
+(9, 1, 2, '2021-10-11 02:52:29', '6100.00', 1102, 0, NULL),
+(10, 1, 3, '2021-10-11 02:58:11', '6600.00', 1103, 0, NULL),
+(11, 1, 4, '2021-10-11 03:02:14', '6000.00', 1104, 0, NULL),
+(12, 1, 1, '2021-10-11 04:29:05', '6760.00', 1101, 0, NULL),
+(13, 1, 1, '2021-10-11 04:32:49', '6760.00', 1101, 0, NULL),
+(14, 1, 1, '2021-10-11 04:35:22', '6850.00', 1101, 0, NULL),
+(15, 1, 4, '2021-10-11 05:16:44', '9380.00', 1104, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -82,17 +93,17 @@ CREATE TABLE `bookedservice` (
   `custID` varchar(11) NOT NULL,
   `staffID` int(11) NOT NULL,
   `roomNum` int(11) NOT NULL,
-  `servPrice` decimal(10,2) NOT NULL
+  `servPrice` decimal(10,2) NOT NULL,
+  `servDate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `bookedservice`
 --
 
-INSERT INTO `bookedservice` (`servBookID`, `servID`, `custID`, `staffID`, `roomNum`, `servPrice`) VALUES
-(0, 7, 'C001', 1, 0, '1234.00'),
-(1, 1, 'CID001', 2, 1101, '0.00'),
-(2, 2, 'CID002', 3, 1102, '500.00');
+INSERT INTO `bookedservice` (`servBookID`, `servID`, `custID`, `staffID`, `roomNum`, `servPrice`, `servDate`) VALUES
+(1, 1, 'CID001', 2, 1101, '0.00', '2021-10-04'),
+(2, 2, 'CID002', 3, 1102, '500.00', '2021-10-05');
 
 -- --------------------------------------------------------
 
@@ -161,6 +172,7 @@ CREATE TABLE `roomrecord` (
   `roomNum` int(11) NOT NULL,
   `electricityUnit` int(11) NOT NULL,
   `waterUnit` int(11) NOT NULL,
+  `serviceTotal` int(11) NOT NULL,
   `dRecord` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -168,15 +180,11 @@ CREATE TABLE `roomrecord` (
 -- Dumping data for table `roomrecord`
 --
 
-INSERT INTO `roomrecord` (`roomrecID`, `roomNum`, `electricityUnit`, `waterUnit`, `dRecord`) VALUES
-(1, 1101, 32, 3, '2021-08-04'),
-(2, 1102, 139, 6, '2021-08-04'),
-(3, 1103, 49, 36, '2021-08-04'),
-(4, 1104, 56, 10, '2021-08-04'),
-(5, 1101, 86, 6, '2021-09-04'),
-(6, 1102, 199, 10, '2021-09-04'),
-(7, 1103, 100, 38, '2021-09-04'),
-(8, 1104, 120, 13, '2021-09-04');
+INSERT INTO `roomrecord` (`roomrecID`, `roomNum`, `electricityUnit`, `waterUnit`, `serviceTotal`, `dRecord`) VALUES
+(1, 1101, 32, 3, 0, '2021-09-04'),
+(2, 1102, 139, 6, 0, '2021-09-04'),
+(3, 1103, 49, 36, 0, '2021-09-04'),
+(4, 1104, 56, 10, 0, '2021-09-04');
 
 -- --------------------------------------------------------
 
@@ -322,7 +330,7 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `BillID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `BillID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -340,7 +348,7 @@ ALTER TABLE `service`
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `StaffID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `StaffID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

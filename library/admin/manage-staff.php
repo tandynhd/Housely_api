@@ -183,7 +183,7 @@ foreach($results as $result)
 
                                             <a href="edit-staff.php?StffID =<?php echo htmlentities($result->StaffID);?>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 
                                             <a href="manage-staff.php?del=<?php echo htmlentities($result->StaffID);?>" 
-                                            onclick="return confirm('Are you sure you want to delete?');"" > 
+                                            onclick="return confirm('Are you sure you want to delete?');" > 
                                              <button class="btn btn-danger"><i class="fa fa-pencil"></i> Remove </button>
                                             </td>
                                         </tr>
