@@ -88,7 +88,7 @@ else{
                 <div class="breadcrumb">
                     <ul>
                         <li><a href="manage-services.php">Manage Services</a></li>
-                        <li>Edit Services</li>
+                        <li>Edit Service</li>
                     </ul>
                 </div>
             </div>
@@ -112,17 +112,18 @@ else{
                         <div class="panel-body">
                             <form role="form" method="post" enctype="multipart/form-data">
                                 <?php 
-                                $servID=intval($_GET['servID']);
-                                $sql = "SELECT * from service where service.servID=:servID";
+                                $ServID=$_GET['servID'];
+                                echo "<script type='text/javascript'> alert($ServID); </script>";
+                                // $id=$_GET['del'];
+                                $sql = "SELECT * from service where servID=:servID";
                                 $query = $dbh -> prepare($sql);
                                 $query->bindParam(':servID',$servID,PDO::PARAM_STR);
                                 $query->execute();
                                 $results=$query->fetchAll(PDO::FETCH_OBJ);
                                 $cnt=1;
-                                echo(1);
+                                echo "<script type='text/javascript'> alert($servID); </script>";
                                 if($query->rowCount() > 0)
                                 {
-                                    echo(2);
                                     foreach($results as $result)
                                     {               ?>  
 

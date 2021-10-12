@@ -17,6 +17,7 @@ else{
         $query -> execute();
         $_SESSION['delmsg']="Staff Removed";
         header('location:manage-staff.php');
+        
 
     }
 

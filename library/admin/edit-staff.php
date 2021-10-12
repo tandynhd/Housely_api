@@ -10,13 +10,21 @@ else{
 
     if(isset($_POST['update']))
     {
-        $StaffID=$_GET['StffID'];
+        $StaffID=$_GET['staffID'];
         $StaffName=$_POST['staffname'];
+        $StaffTele=$_POST['stafftele'];
+        $StaffAddr=$_POST['staffaddr'];
+        $StaffSalary=$_POST['staffsala'];
+        $StaffEmail=$_POST['staffemail'];
 
-        $sql="update  staff set StaffName=:StaffName where StaffID=:StaffID";
+        $sql="update  staff set StaffName=:StaffName, StaffTele=:StaffTele, StaffAddr=:StaffAddr, StaffSalary=:StaffSalary, StaffEmail=:StaffEmail where StaffID=:StaffID";
         $query = $dbh->prepare($sql);
         $query->bindParam(':StaffName',$StaffName,PDO::PARAM_STR);
         $query->bindParam(':StaffID',$StaffID,PDO::PARAM_STR);
+        $query->bindParam(':StaffTele',$StaffTele,PDO::PARAM_STR);
+        $query->bindParam(':StaffEmail',$StaffEmail,PDO::PARAM_STR);
+        $query->bindParam(':StaffAddr',$StaffAddr,PDO::PARAM_STR);
+        $query->bindParam(':StaffSalary',$StaffSalary,PDO::PARAM_STR);
         $query->execute();
         $_SESSION['updatemsg']="Staff info updated successfully";
         header('location:manage-staff.php');
@@ -98,7 +106,7 @@ Staff Information
 <div class="form-group">
 <?php 
 $StaffID=$_GET['staffID'];
-echo "<script type='text/javascript'> alert($StaffID); </script>";
+// echo "<script type='text/javascript'> alert($StaffID); </script>";
 $sql = "SELECT * from  staff where StaffID=:StaffID";
 $query = $dbh -> prepare($sql);
 $query->bindParam(':StaffID',$StaffID,PDO::PARAM_STR);
@@ -111,8 +119,20 @@ foreach($results as $result)
 {             
       ?>   
     <div class="form-group">
-        <label>Customer Name</label>
-        <input class="form-control" type="text" name="custname" value="<?php echo $StaffID;?>" required />
+        <label>Staff Name</label>
+        <input class="form-control" type="text" name="staffname" value="<?php echo htmlentities($result->StaffName);?>" required />
+
+        <label>Staff Tele</label>
+        <input class="form-control" type="text" name="stafftele" value="<?php echo htmlentities($result->StaffTele);?>" required />
+
+        <label>Staff Email</label>
+        <input class="form-control" type="text" name="staffemail" value="<?php echo htmlentities($result->StaffEmail);?>" required />
+
+        <label>Staff Address</label>
+        <input class="form-control" type="text" name="staffaddr" value="<?php echo htmlentities($result->StaffAddr);?>" required />
+
+        <label>Staff Salary</label>
+        <input class="form-control" type="text" name="staffsala" value="<?php echo htmlentities($result->StaffSalary);?>" required />
     </div>
 
     <?php }} ?>
