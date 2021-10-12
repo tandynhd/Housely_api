@@ -6,7 +6,18 @@ if(strlen($_SESSION['login'])==0)
   { 
 header('location:index.php');
 }
-else{?>
+else{
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>

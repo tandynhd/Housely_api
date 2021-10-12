@@ -68,7 +68,7 @@
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Bill</a>
                                             <ul class="dropdown-menu">
                                                 <li><a href="issue-bills.php">Issue Bills</a></li>
-                                                <li><a href="manage-issued-bills.php">Manage Issued Bill</a></li>
+                                                <li><a href="manage-issued-bills.php">Manage Issued Bills</a></li>
                                                 
                                             </ul>
                                         </li>

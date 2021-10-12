@@ -2,22 +2,58 @@
 session_start();
 error_reporting(0);
 include('includes/config.php');
+
 if(strlen($_SESSION['login'])==0)
     {   
 header('location:index.php');
 }
 else{ 
-if(isset($_GET['del']))
-{
-$id=$_GET['del'];
-$sql = "delete from reservedbookdetails  WHERE id=:id";
-$query = $dbh->prepare($sql);
-$query -> bindParam(':id',$id, PDO::PARAM_STR);
-$query -> execute();
-$_SESSION['delmsg']="Reservation Canceled";
-header('location:profile.php');
+    $custID = $_SESSION['custId'];
+    if(isset($_POST['payment']))
+    {
+       
+        $receipt = $_FILES["paymentreceipt"]["name"];
+        $extension = substr($receipt,strlen($receipt)-4,strlen($receipt));
+        echo "<script type='text/javascript'> alert($extension); </script>";
+        $allowed_extensions = array(".jpg","jpeg",".png",".gif");
+        if(!in_array($extension,$allowed_extensions))
+        {
+            echo "<script>alert('Receipt image has Invalid format. Only jpg / jpeg/ png /gif format allowed');</script>";
+        }
+        else
+        {
+            $receipt=md5($receipt).time().$extension;
+            move_uploaded_file($_FILES["paymentreceipt"]["tmp_name"],"images/pr/".$receipt);
+    
+    
+    
+            $sql="UPDATE bill SET evidenceurl = :receipt 
+                            where rContID = (
+                                            SELECT r.rContID 
+                                            FROM customer c, roomcontract r, bill b
+                                            WHERE c.custID = r.custID AND
+                                            r.rContID = b.rContID AND
+                                            c.custID = :custID);";
+            $query = $dbh->prepare($sql);
+            $query->bindParam(':receipt',$receipt ,PDO::PARAM_STR);
+            $query->bindParam(':custID',$custID ,PDO::PARAM_STR);
+            $query->execute();
+    
+    
+            $lastInsertId = $dbh->lastInsertId();
+            if($lastInsertId)
+            {
+                $_SESSION['msg']="Service Listed successfully";
+                header('location:home.php');
+            }
+            else 
+            {
+                $_SESSION['error']="Something went wrong. Please try again";
+                header('location:profile.php');
+            }
+        }
+    }
 
-}
 
 
     ?>
@@ -60,6 +96,9 @@ header('location:profile.php');
      
 <?php include('includes/header.php');?>
 
+<?php 
+// echo "<script type='text/javascript'>alert($custID); </script>";
+?>
 
         <section class="page-banner services-banner">
             <div class="container">
@@ -80,22 +119,61 @@ header('location:profile.php');
 		
 
     < <!-- Start: Welcome Section -->
+    <?php
+    $con = "SELECT rc.roomPrice, rc.parkingPrice, rc.internetPrice, rr.electricityUnit, rr.waterUnit, c.custName
+            FROM roomrecord rr, roomcontract rc, customer c
+            WHERE rr.roomNum = rc.roomNum AND
+                rc.custID = c.custID AND
+                c.custID = :custID;";
+
+    $query2 = $dbh->prepare($con);
+    $query2->bindParam(':custID',$custID ,PDO::PARAM_STR);
+    $query2->execute();
+    
+    $results2=$query2->fetchAll(PDO::FETCH_OBJ);
+    $cnt=1;
+    if($query2->rowCount() > 0)
+    {
+        foreach($results2 as $result)
+        {    
+
+
+        $rPrice=($result -> roomPrice);
+        $pPrice=($result -> parkingPrice);
+        $iPrice=($result -> internetPrice);
+        $eUnit=($result -> electricityUnit);
+        $wUnit=($result -> waterUnit);
+        $custName=($result -> custName);
+        $roomPrice = $rPrice + $pPrice + $iPrice;
+        $total = $roomPrice + ($eUnit*55) + ($wUnit*30);
+        }
+    }
+    ?>
             <section class="welcome-section">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="welcome-wrap">
                             <div class="welcome-text">
-                                <h2 class="section-title">Welcome to Housely Mr. X</h2>
+                                <h2 class="section-title">Welcome to Housely <?php echo $custName; ?> <br></br> <?php echo $custID; ?></h2>
+
+
                                 <span class="underline left"></span>
                                 <p class="lead">The house you didn't know you had</p>
                                 <p>Now manage all your dorm related functions from one single place. </p>
                                 <p>Pay your rent with a single click (assuming the bank account has already been linked). </p>
                                 <p>Pay before 5th of every month to avoid a fine of 200 baht every day.</p>
-                                <div class="form-group">
+                                
+                                <form class="payment" method="post" enctype="multipart/form-data">
+                                    <div class="form-group">
                                     <label>Payment Receipt<span style="color:red;">*</span></label>
                                     <input class="form-control" type="file" name="paymentreceipt" value=""  required />
-                                </div>
+                                    </div>  
+                                    <div class="clear"></div>                                                        
+                                        <input type="submit" name="payment" class="button btn btn-default">
+                                    <div class="clear"></div>
+                                </form>
+                                <!-- </div> -->
                             </div>
                         </div>
                     </div>
@@ -107,7 +185,7 @@ header('location:profile.php');
                                         <div class="fact-icon">
                                             <i class="ebook"></i>
                                         </div>
-                                        <span>Rent<strong class="fact-counter">5,000</strong></span>
+                                        <span>Rent<strong class="fact-counter"> <?php echo $roomPrice; ?></strong></span>
                                     </div>
                                 </li>
                                 <li class="bg-green">
@@ -115,7 +193,7 @@ header('location:profile.php');
                                         <div class="fact-icon">
                                             <i class="eaudio"></i>
                                         </div>
-                                        <span>Electricty Bill<strong class="fact-counter">1,000</strong></span>
+                                        <span>Electricty Bill<strong class="fact-counter"> <?php echo $eUnit*55; ?></strong></span>
                                     </div>
                                 </li>
                                 <li class="bg-red">
@@ -123,7 +201,7 @@ header('location:profile.php');
                                         <div class="fact-icon">
                                             <i class="magazine"></i>
                                         </div>
-                                        <span>Water Bill<strong class="fact-counter">450</strong></span>
+                                        <span>Water Bill<strong class="fact-counter"> <?php echo $wUnit*30; ?></strong></span>
                                     </div>
                                 </li>
                                 <li class="bg-blue">
@@ -131,7 +209,7 @@ header('location:profile.php');
                                         <div class="fact-icon">
                                             <i class="videos"></i>
                                         </div>
-                                        <span>Total<strong class="fact-counter">6,450</strong></span>
+                                        <span>Total<strong class="fact-counter"> <?php echo $total; ?></strong></span>
                                     </div>
                                 </li>
                             </ul>

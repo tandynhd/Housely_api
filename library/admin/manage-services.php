@@ -143,7 +143,7 @@ if(isset($_GET['del']))
                                 <table class="content-table" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>Service ID</th>
+                                            <th>#</th>
                                             <th>Service Name</th>
                                             <th>Category Name</th>
                                             <th>Service Description</th>
@@ -171,7 +171,7 @@ foreach($results as $result)
                                             <td class="center">
 											
 
-                                          <a href="edit-services.php?servID =<?php echo htmlentities($result->servID);?>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 
+                                          <a href="edit-services.php?servID=<?php echo htmlentities($result->servID);?>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 
                                           <a href="manage-services.php?del=<?php echo htmlentities($result->servID );?>" onclick="return confirm('Are you sure you want to delete?');">  <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button>
                                             </td>
                                         </tr>

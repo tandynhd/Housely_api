@@ -163,7 +163,7 @@ foreach($results as $result)
                                             <td class="center"><?php echo htmlentities($result->roomNum);?></td>
                                             <td class="center"><?php echo htmlentities($result->billid);?></td>
                                             <td class="center"><?php echo htmlentities($result->total);?></td>
-                                            <td class="center"><?php echo htmlentities($result->evidenceurl);?></td>
+                                            <td class="center"><img src="../images/pr/<?php echo $result->evidenceurl;?>" style="width:100px;"></td>
         
                                             <td class="center">
                                                 <?php if($result->PaidStatus==0)

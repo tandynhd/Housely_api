@@ -9,7 +9,7 @@ if(isset($_POST['change']))
 $email=$_POST['email'];
 $mobile=$_POST['mobile'];
 $newpassword=md5($_POST['newpassword']);
-  $sql ="SELECT EmailId FROM students WHERE EmailId=:email and MobileNumber=:mobile";
+  $sql ="SELECT custEmail FROM customer WHERE custEmail=:email and custTele=:mobile";
 $query= $dbh -> prepare($sql);
 $query-> bindParam(':email', $email, PDO::PARAM_STR);
 $query-> bindParam(':mobile', $mobile, PDO::PARAM_STR);
@@ -17,13 +17,14 @@ $query-> execute();
 $results = $query -> fetchAll(PDO::FETCH_OBJ);
 if($query -> rowCount() > 0)
 {
-$con="update students set Password=:newpassword where EmailId=:email and MobileNumber=:mobile";
+$con="UPDATE customer SET custPass=:newpassword WHERE custEmail=:email and custTele=:mobile";
 $chngpwd1 = $dbh->prepare($con);
 $chngpwd1-> bindParam(':email', $email, PDO::PARAM_STR);
 $chngpwd1-> bindParam(':mobile', $mobile, PDO::PARAM_STR);
 $chngpwd1-> bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
 $chngpwd1->execute();
-echo "<script>alert('Your Password succesfully changed');</script>";
+echo "<script>alert('Your Password has been succesfully changed');</script>";
+header('location:index.php');
 }
 else {
 echo "<script>alert('Email id or Mobile no is invalid');</script>"; 
@@ -38,7 +39,7 @@ echo "<script>alert('Email id or Mobile no is invalid');</script>";
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
         
-        <title>..:: LITERARIUM ::..</title>
+        <title> Housely </title>
         
        
         <link href="images/favicon.ico" rel="icon" type="image/x-icon" />

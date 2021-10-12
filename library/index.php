@@ -24,7 +24,7 @@ if($query->rowCount() > 0)
 // if($result->Status==1)
 // {
 $_SESSION['login']=$_POST['emailid'];
-echo "<script type='text/javascript'> document.location ='home.php'; </script>";
+echo "<script type='text/javascript'> document.location ='profile.php?'; </script>";
 // } else {
 // echo "<script>alert('Your Account Has been blocked .Please contact admin');</script>";
 

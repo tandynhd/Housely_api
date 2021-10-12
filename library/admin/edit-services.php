@@ -7,35 +7,36 @@ if(strlen($_SESSION['alogin'])==0)
 header('location:index.php');
 }
 else{ 
-
     if(isset($_POST['update']))
     {
-        $servName =$_POST['servicename'];
-        $servDesc=$_POST['servicedesc'];
-        $servCataID=$_POST['servicecategory'];
-
+        $servName =$_POST['servname'];
+        $servDesc=$_POST['servdesc'];
         $servthumbnail = $_FILES["serviceimage"]["name"];
         $extension = substr($servthumbnail,strlen($servthumbnail)-4,strlen($servthumbnail));
         $allowed_extensions = array(".jpg","jpeg",".png",".gif");
         if(!in_array($extension,$allowed_extensions))
         {
-            echo "<script>alert('Facility image has Invalid format. Only jpg / jpeg/ png /gif format allowed');</script>";
+            echo "<script>alert('Service image has Invalid format. Only jpg / jpeg/ png /gif format allowed');</script>";
         }
         else
         {
             $servthumbnail=md5($servthumbnail).time().$extension;
             move_uploaded_file($_FILES["serviceimage"]["tmp_name"],"images/stn/".$servthumbnail);
 
-
-            $servID=intval($_GET['servID']);
-            $sql="update services set servName=:servName,servCataID=:servCataID,servDesc=:servDesc,servthumbnail=:servthumbnail where servID=:servID";
+            $ServID=$_GET['servID'];
+            echo "<script type='text/javascript'> alert($ServID); </script>";
+            $sql="UPDATE service SET servName=:servName,servDesc=:servDesc,servthumbnail=:servthumbnail WHERE servID=:ServID";
+            // $sql="UPDATE service SET servName=:servName,servDesc=:servDesc WHERE servID=:ServID";
             $query = $dbh->prepare($sql);
+            $query->bindParam(':ServID',$ServID ,PDO::PARAM_STR);
             $query->bindParam(':servName',$servName ,PDO::PARAM_STR);
-            $query->bindParam(':servCataID',$servCataID ,PDO::PARAM_STR);
             $query->bindParam(':servDesc',$servDesc,PDO::PARAM_STR);
             $query->bindParam(':servthumbnail',$servthumbnail,PDO::PARAM_STR);
+            $query->execute();
+            // echo "<script type='text/javascript'> alert($ServID); </script>";
             $_SESSION['msg']="Service information updated successfully";
             header('location:manage-services.php');
+            
 
         }
     }
@@ -113,58 +114,26 @@ else{
                             <form role="form" method="post" enctype="multipart/form-data">
                                 <?php 
                                 $ServID=$_GET['servID'];
-                                echo "<script type='text/javascript'> alert($ServID); </script>";
-                                // $id=$_GET['del'];
-                                $sql = "SELECT * from service where servID=:servID";
+                                $sql = "SELECT * from service where servID=:ServID";
                                 $query = $dbh -> prepare($sql);
-                                $query->bindParam(':servID',$servID,PDO::PARAM_STR);
+                                $query->bindParam(':ServID',$ServID,PDO::PARAM_STR);
                                 $query->execute();
                                 $results=$query->fetchAll(PDO::FETCH_OBJ);
                                 $cnt=1;
-                                echo "<script type='text/javascript'> alert($servID); </script>";
                                 if($query->rowCount() > 0)
                                 {
                                     foreach($results as $result)
                                     {               ?>  
 
-                                        <div class="form-group">
-                                            <label> Service Category<span style="color:red;">*</span></label>
-                                                <select class="form-control" name="category" required="required">
-                                                    <option value="<?php echo htmlentities($result->servCataID );?>"> <?php echo htmlentities($catname=$result->servCataName);?></option>
-                                                    <?php 
-                                                    $status=1;
-                                                    $sql1 = "SELECT * from  category where Status=:status";
-                                                    $query1 = $dbh -> prepare($sql1);
-                                                    $query1-> bindParam(':status',$status, PDO::PARAM_STR);
-                                                    $query1->execute();
-                                                    $resultss=$query1->fetchAll(PDO::FETCH_OBJ);
-                                                    if($query1->rowCount() > 0)
-                                                    {
-                                                        foreach($resultss as $row)
-                                                        {           
-                                                            if($catname==$row->servCataName)
-                                                                {
-                                                                    continue;
-                                                                }
-                                                            else
-                                                                {
-                                                                    ?>  
-                                                                    <option value="<?php echo htmlentities($row->id);?>"><?php echo htmlentities($row->servCataName);?></option>
-                                                                    <?php 
-                                                                }
-                                                        }
-                                                    } ?> 
-                                                </select>
-                                        </div>
+                                        <div class="form-group" method="post" enctype="multipart/form-data">
+                                            <label>Service Name</label>
+                                            <input class="form-control" type="text" name="servname" value="<?php echo htmlentities($result->servName);?>" required />
 
-                                        <div class="form-group">
-                                            <label>Service Name<span style="color:red;">*</span></label>
-                                            <input class="form-control" type="text" name="servicename" value="<?php echo htmlentities($result->	servName);?>" required />
-                                        </div>
+                                            <label>Service Description</label>
+                                            <input class="form-control" type="text" name="servdesc" value="<?php echo htmlentities($result->servDesc);?>" required />
 
-                                        <div class="form-group">
-                                            <label>Thumbnail<span style="color:red;">*</span></label>
-                                            <input class="form-control" type="file" name="serviceimage" value=""  required />
+                                            <label>Service Thumbnail<span style="color:red;">*</span></label>
+                                            <input class="form-control" type="file" name="serviceimage" value="<?php echo htmlentities($result->servthumbnail);?>" />
 
                                         </div>
 

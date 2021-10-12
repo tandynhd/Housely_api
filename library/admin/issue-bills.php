@@ -217,16 +217,20 @@ Issue a New Bill
 </div>
 <div class="panel-body">
         <form role="form" method="post">
+            Issue Bill to a Specific Customer</br>
         <div class="form-group">
-            <label>Customer ID<span style="color:red;">*</span></label>
+            <label>Customer ID:</span></label>
             <input class="form-control" type="text" name="customerid" id="customerid" autocomplete="off"   />
         </div>
+            
         <button type="submit" name="issue" id="submit" class="btn btn-primary">Issue Bill </button>
 
         <div class="form-group">
             
         </div>
-
+            Issue Bill to All Customers:
+            <br>
+</br>
         <div class="form-group">
             <button type="submit" name="issueall" id="submitall" class="btn btn-primary">Issue Bill to all </button>
         </div>
