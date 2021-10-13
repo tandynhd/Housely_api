@@ -124,15 +124,27 @@
                                             </ul>
                                             
                                         </li>
+
                                         <li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle disabled" href="reserved-services.php">Booked Services</a>
                                             
                                         </li>
+                                        
                                         <li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Bill</a>
                                             <ul class="dropdown-menu">
                                                 <li><a href="issue-bills.php">Issue Bills</a></li>
                                                 <li><a href="manage-issued-bills.php">Manage Issued Bills</a></li>
+                                                
+                                            </ul>
+                                        </li>
+
+                                        
+                                        <li class="dropdown">
+                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Update Record</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="unit-price.php">Unit Price</a></li>
+                                                <li><a href="unit-consume.php">Unit Consumed</a></li>
                                                 
                                             </ul>
                                         </li>
