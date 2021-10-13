@@ -72,6 +72,15 @@
                                                 
                                             </ul>
                                         </li>
+
+                                        <li class="dropdown">
+                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Update Record</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="unit-price.php">Unit Price</a></li>
+                                                <li><a href="unit-consume.php">Unit Consumed</a></li>
+                                                
+                                            </ul>
+                                        </li>
                                         
                                         
                                         <li><a href="reg-customers.php"> Registerd Customers </a></li>
