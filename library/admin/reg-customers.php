@@ -10,7 +10,7 @@ else{
 
     if(isset($_GET['del']))
     {
-        $id=$_GET['del'];
+        $custID=$_GET['del'];
         $sql = "delete from customer  WHERE custID=:custID";
         $query = $dbh->prepare($sql);
         $query -> bindParam(':custID',$custID, PDO::PARAM_STR);
@@ -21,33 +21,33 @@ else{
     }
     
 
-// code for block student    
-if(isset($_GET['inid']))
-{
-$id=$_GET['inid'];
-$status=0;
-$sql = "update customers set Status=:status  WHERE id=:id";
-$query = $dbh->prepare($sql);
-$query -> bindParam(':id',$id, PDO::PARAM_STR);
-$query -> bindParam(':status',$status, PDO::PARAM_STR);
-$query -> execute();
-header('location:reg-customers.php');
-}
+    // code for block student    
+    if(isset($_GET['inid']))
+    {
+    $id=$_GET['inid'];
+    $status=0;
+    $sql = "update customers set Status=:status  WHERE id=:id";
+    $query = $dbh->prepare($sql);
+    $query -> bindParam(':id',$id, PDO::PARAM_STR);
+    $query -> bindParam(':status',$status, PDO::PARAM_STR);
+    $query -> execute();
+    header('location:reg-customers.php');
+    }
 
 
 
-//code for active students
-if(isset($_GET['id']))
-{
-$id=$_GET['id'];
-$status=1;
-$sql = "update customers set Status=:status  WHERE id=:id";
-$query = $dbh->prepare($sql);
-$query -> bindParam(':id',$id, PDO::PARAM_STR);
-$query -> bindParam(':status',$status, PDO::PARAM_STR);
-$query -> execute();
-header('location:reg-customers.php');
-}
+    //code for active students
+    if(isset($_GET['id']))
+    {
+    $id=$_GET['id'];
+    $status=1;
+    $sql = "update customers set Status=:status  WHERE id=:id";
+    $query = $dbh->prepare($sql);
+    $query -> bindParam(':id',$id, PDO::PARAM_STR);
+    $query -> bindParam(':status',$status, PDO::PARAM_STR);
+    $query -> execute();
+    header('location:reg-customers.php');
+    }
 
 
     ?>
