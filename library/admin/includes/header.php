@@ -76,7 +76,7 @@
                                         <li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Update Record</a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="unit-price.php">Unit Price</a></li>
+                                                <li><a href="contract-price.php">Contract Price</a></li>
                                                 <li><a href="unit-consume.php">Unit Consumed</a></li>
                                                 
                                             </ul>
@@ -138,7 +138,7 @@
                                             <a data-toggle="dropdown" class="dropdown-toggle disabled" href="reserved-services.php">Booked Services</a>
                                             
                                         </li>
-                                        
+
                                         <li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Bill</a>
                                             <ul class="dropdown-menu">
@@ -152,7 +152,7 @@
                                         <li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Update Record</a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="unit-price.php">Unit Price</a></li>
+                                                <li><a href="contract-price.php">Contract Price</a></li>
                                                 <li><a href="unit-consume.php">Unit Consumed</a></li>
                                                 
                                             </ul>
