@@ -125,12 +125,13 @@ else{
             WHERE rr.roomNum = rc.roomNum AND
                 rc.custID = c.custID AND
                 c.custID = :custID;";
-
     $query2 = $dbh->prepare($con);
     $query2->bindParam(':custID',$custID ,PDO::PARAM_STR);
     $query2->execute();
-    
     $results2=$query2->fetchAll(PDO::FETCH_OBJ);
+
+    
+    
     $cnt=1;
     if($query2->rowCount() > 0)
     {
