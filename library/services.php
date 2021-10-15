@@ -124,7 +124,7 @@ else{
                                   
                                     <?php 
 
-                                    $sql = "SELECT service.servName,servicecatagory.servCataName,service.servDesc,service.servthumbnail from service,servicecatagory where service.servCataID = servicecatagory.servCataID;";
+                                    $sql = "SELECT service.servID, service.servName,servicecatagory.servCataName,service.servDesc,service.servthumbnail from service,servicecatagory where service.servCataID = servicecatagory.servCataID;";
                                     $query = $dbh -> prepare($sql);
                                     $query->execute();
                                     $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -142,14 +142,16 @@ else{
                                                 
                                                 <h1 style="font-family:'Lato', Georgia, Times, serif; font-weight:900;"><?php echo htmlentities($result->servName);?></h1>
                                                 <p><?php echo htmlentities($result->servCataName);?> </br> <?php echo htmlentities($result->servDesc);?> </p>
-                                                <?php if($result->no_of_books!=0)
+                                                <?php if($result->servID!=0)
                                                                                         {?>
                                                                                         
-                                                                                        <a href="reserve-book.php?bookid=<?php echo $result->bookid;?>" class="btn"  >Reserve</a>
+                                                                                        <a href="reserve-book.php?servID=<?php echo $result->servID;?>" class="btn">Reserve</a>
                                                                                             
-                                                                                        <?php } else { ?>
+                                                                                        <?php } 
                                                                                         
-                                                                                        <a href="services.php" class="btn"  >Reserve</a>
+                                                                                        else { ?>
+                                                                                        <a href="services-book.php?servID=<?php echo htmlentities($result->servID);?>"><button class="btn"> Reserve</button>
+                                                                                        
                                                                                     
                                                                                     <?php }?>
                                             </div>
