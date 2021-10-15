@@ -5,8 +5,8 @@ include('includes/config.php');
 
 if(strlen($_SESSION['login'])==0)
     {   
-header('location:index.php');
-}
+    header('location:index.php');
+    }
 else{ 
     $custID = $_SESSION['custId'];
     if(isset($_POST['payment']))
@@ -65,8 +65,7 @@ else{
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title> Housely </title>
-        
-       
+    
         <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
     
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
