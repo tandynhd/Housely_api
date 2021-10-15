@@ -41,7 +41,7 @@ header('location:profile.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>..:: LITERARIUM ::..</title>
+    <title>Housely</title>
         
        
         <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
@@ -114,14 +114,14 @@ error:function (){}
         <section class="page-banner services-banner">
             <div class="container">
                 <div class="banner-header">
-                    <h2>Session Confirmation</h2>
+                    <h2>Confirmation</h2>
                     <span class="underline center"></span>
                     <p class="lead"></p>
                 </div>
                 <div class="breadcrumb">
                     <ul>
-                        <li><a href="home.php">Home</a></li>
-                        <li>Session Confirmation</li>
+                        <li><a href="services.php">Services</a></li>
+                        <li>Confirmation</li>
                     </ul>
                 </div>
             </div>
@@ -146,25 +146,43 @@ error:function (){}
 Confirm Your Reservation
 </div>
 <div class="panel-body">
-<form role="form" method="post">
+<form role="form" method="post"enctype="multipart/form-data">
+
+<?php 
+                                $ServID=$_GET['servID'];
+                                
+                                $sql = "SELECT * from bookedservice where servID=:ServID AND custID=:custID";
+                                $query = $dbh -> prepare($sql);
+                                $query->bindParam(':ServID',$ServID,PDO::PARAM_STR);
+                                $query->execute();
+                                $results=$query->fetchAll(PDO::FETCH_OBJ);
+                                $cnt=1;
+                                if($query->rowCount() > 0)
+                                {
+                                    foreach($results as $result)
+                                    {               ?>  
+
+                                        <div class="form-group" method="post" enctype="multipart/form-data">
+                                            <label>Service ID</label>
+                                            <input class="form-control" type="text" name="servname" value="<?php echo htmlentities($result->servID);?>" required />
+
+                                            <label>Customer ID</label>
+                                            <input class="form-control" type="text" name="servdesc" value="<?php echo htmlentities($result->custID);?>" required />
+
+                                            <label>Room Number</label>
+                                            <input class="form-control" type="text" name="servdesc" value="<?php echo htmlentities($result->roomNum);?>" required />
 
 
+                                        </div>
 
-<div class="form-group">
-<span id="get_student_name" style="font-size:16px;"></span> 
-</div>
+                                    <?php 
+                                    }
+                                } ?>
+    
+                                <button type="submit" name="issue" id="submit" class="btn btn-primary btn-lg btn-block ">Confirm </button>
+                                <a href="services.php" class="btn btn-danger btn-lg btn-block " role="button">Cancel</a>
 
-
-
-
-
-
-
- 
-<button type="submit" name="issue" id="submit" class="btn btn-primary btn-lg btn-block ">Confirm </button>
-<a href="catalog.php" class="btn btn-danger btn-lg btn-block " role="button">Cancel</a>
-
-                                    </form>
+</form>
                             </div>
                         </div>
                             </div>
