@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2021 at 05:29 PM
+-- Generation Time: Oct 16, 2021 at 06:02 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -80,13 +80,13 @@ INSERT INTO `bill` (`BillID`, `staffID`, `rContID`, `billIssueDate`, `Total`, `r
 
 CREATE TABLE `bookedservice` (
   `servBookID` int(11) NOT NULL,
-  `servID` int(11) NOT NULL,
-  `custID` varchar(11) NOT NULL,
+  `servID` int(11) DEFAULT NULL,
+  `custID` varchar(11) DEFAULT NULL,
   `staffID` int(11) DEFAULT NULL,
-  `roomNum` int(11) NOT NULL,
-  `servPrice` decimal(10,2) DEFAULT NULL,
+  `roomNum` int(11) DEFAULT NULL,
+  `servPrice` decimal(10,2) DEFAULT 0.00,
   `servStatus` tinyint(1) NOT NULL DEFAULT 0,
-  `servDate` date DEFAULT NULL
+  `servDate` date DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -95,7 +95,8 @@ CREATE TABLE `bookedservice` (
 
 INSERT INTO `bookedservice` (`servBookID`, `servID`, `custID`, `staffID`, `roomNum`, `servPrice`, `servStatus`, `servDate`) VALUES
 (1, 1, 'CID001', 2, 1101, '0.00', 1, '2021-10-04'),
-(2, 2, 'CID002', 3, 1102, '500.00', 0, '2021-10-05');
+(2, 2, 'CID002', 3, 1102, '500.00', 0, '2021-10-05'),
+(3, 3, 'CID004', 2, 1104, '100.00', 0, '2021-10-16');
 
 -- --------------------------------------------------------
 
@@ -332,7 +333,7 @@ ALTER TABLE `bill`
 -- AUTO_INCREMENT for table `bookedservice`
 --
 ALTER TABLE `bookedservice`
-  MODIFY `servBookID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `servBookID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `customer`
