@@ -123,7 +123,7 @@ else{
                                 <div class="row" id="myUL">  
                                   
                                     <?php 
-
+                                    
                                     $sql = "SELECT service.servID, service.servName,servicecatagory.servCataName,service.servDesc,service.servthumbnail from service,servicecatagory where service.servCataID = servicecatagory.servCataID;";
                                     $query = $dbh -> prepare($sql);
                                     $query->execute();

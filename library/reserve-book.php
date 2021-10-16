@@ -13,24 +13,27 @@ else{
 
 if(isset($_POST['issue']))
 {
-$studentid=strtoupper($_SESSION['stdid']);
-$bookid=intval($_GET['bookid']);
-$sql="INSERT INTO  reservedbookdetails(StudentID,BookId) VALUES(:studentid,:bookid)";
-$query = $dbh->prepare($sql);
-$query->bindParam(':studentid',$studentid,PDO::PARAM_STR);
-$query->bindParam(':bookid',$bookid,PDO::PARAM_STR);
-$query->execute();
-$lastInsertId = $dbh->lastInsertId();
-if($lastInsertId)
-{
-$_SESSION['msg']="Book Reserved successfully";
-header('location:profile.php');
-}
-else 
-{
-$_SESSION['error']="Something went wrong. Please try again";
-header('location:profile.php');
-}
+    $servID=$_POST['servID'];
+    $custID=$_POST['custID'];
+    $roomNum=$_POST['roomNum'];
+    
+    $sql="INSERT INTO  bookedservice(servID,custID,roomNum) VALUES(:servID,:custID,:roomNum)";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':servID',$servID,PDO::PARAM_STR);
+    $query->bindParam(':custID',$custID,PDO::PARAM_STR);
+    $query->bindParam(':roomNum',$roomNum,PDO::PARAM_STR);
+    $query->execute();
+    $lastInsertId = $dbh->lastInsertId();
+    if($lastInsertId)
+    {
+    $_SESSION['msg']="Book Reserved successfully";
+    header('location:services.php');
+    }
+    else 
+    {
+    $_SESSION['error']="Something went wrong. Please try again";
+    header('location:services.php');
+    }
 
 }
 ?>
@@ -150,34 +153,25 @@ Confirm Your Reservation
 
 <?php 
                                 $ServID=$_GET['servID'];
+                                $custID = $_SESSION['custId'];
                                 
-                                $sql = "SELECT * from bookedservice where servID=:ServID AND custID=:custID";
-                                $query = $dbh -> prepare($sql);
-                                $query->bindParam(':ServID',$ServID,PDO::PARAM_STR);
-                                $query->execute();
-                                $results=$query->fetchAll(PDO::FETCH_OBJ);
-                                $cnt=1;
-                                if($query->rowCount() > 0)
-                                {
-                                    foreach($results as $result)
-                                    {               ?>  
+                                
+                                 ?>  
 
                                         <div class="form-group" method="post" enctype="multipart/form-data">
                                             <label>Service ID</label>
-                                            <input class="form-control" type="text" name="servname" value="<?php echo htmlentities($result->servID);?>" required />
+                                            <input class="form-control" type="text" name="servID" value="<?php echo htmlentities($ServID);?>" required />
 
                                             <label>Customer ID</label>
-                                            <input class="form-control" type="text" name="servdesc" value="<?php echo htmlentities($result->custID);?>" required />
+                                            <input class="form-control" type="text" name="custID" value="<?php echo htmlentities($custID);?>" required />
 
                                             <label>Room Number</label>
-                                            <input class="form-control" type="text" name="servdesc" value="<?php echo htmlentities($result->roomNum);?>" required />
+                                            <input class="form-control" type="text" name="roomNum" value=" " required />
 
 
                                         </div>
 
-                                    <?php 
-                                    }
-                                } ?>
+                                 
     
                                 <button type="submit" name="issue" id="submit" class="btn btn-primary btn-lg btn-block ">Confirm </button>
                                 <a href="services.php" class="btn btn-danger btn-lg btn-block " role="button">Cancel</a>

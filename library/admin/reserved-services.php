@@ -182,11 +182,15 @@ else{
                                             <th>Service Book ID</th>
                                             <th>Service ID</th>
                                             <th>Customer ID</th>
-                                            <th>Staff ID</th>
+                                            
                                             <th>Room Number</th>
-                                            <th>Service Price</th>
+                                            
                                             <th>Booked Date</th>
+                                            <th>Service Price</th>
+                                            <th>Staff ID</th>
                                             <th>Status</th>
+                                            <th>Edit Details</th>
+                                            
                                             
                                         </tr>
                                     </thead>
@@ -205,10 +209,12 @@ foreach($results as $result)
                                             <td class="center"><?php echo htmlentities($result->servBookID);?></td>
                                             <td class="center"><?php echo htmlentities($result->servID);?></td>
                                             <td class="center"><?php echo htmlentities($result->custID	);?></td>
-                                            <td class="center"><?php echo htmlentities($result->staffID);?></td>
+                                            
                                             <td class="center"><?php echo htmlentities($result->roomNum	);?></td>
-                                            <td class="center"><?php echo htmlentities($result->servPrice);?></td>
+                                            
                                             <td class="center"><?php echo htmlentities($result->servDate);?></td>
+                                            <td class="center"><?php echo htmlentities($result->servPrice);?></td>
+                                            <td class="center"><?php echo htmlentities($result->staffID);?></td>
                                             
                                             <td class="center">
                                                 <?php if($result->servStatus==0)
@@ -220,6 +226,12 @@ foreach($results as $result)
                                                 <a href="reserved-services.php?id=<?php echo htmlentities($result->servBookID);?>" onclick="return confirm('Do you want to change the status?');"><button class="btn btn-primary"> Completed</button> 
                                                 <?php } ?>
                                           
+                                            </td>
+                                            <td class="center">
+											
+
+                                            <a href="edit-reserved-services.php?servBookID=<?php echo htmlentities($result->servBookID);?>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 
+                                        
                                             </td>
                                             
                                         </tr>
