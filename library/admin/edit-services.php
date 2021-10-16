@@ -34,7 +34,7 @@ else{
             $query->bindParam(':servthumbnail',$servthumbnail,PDO::PARAM_STR);
             $query->execute();
             // echo "<script type='text/javascript'> alert($ServID); </script>";
-            $_SESSION['msg']="Service information updated successfully";
+            $_SESSION['updatemsg']="Service information updated successfully";
             header('location:manage-services.php');
             
 

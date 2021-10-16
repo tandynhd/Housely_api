@@ -117,7 +117,8 @@ else{
        
 		
 
-    < <!-- Start: Welcome Section -->
+     <!-- Start: Welcome Section -->
+    
     <?php
     $con = "SELECT rc.roomPrice, rc.parkingPrice, rc.internetPrice, rr.electricityUnit, rr.waterUnit, c.custName
             FROM roomrecord rr, roomcontract rc, customer c
@@ -166,8 +167,27 @@ else{
                                 
                                 <form class="payment" method="post" enctype="multipart/form-data">
                                     <div class="form-group">
-                                    <label>Payment Receipt<span style="color:red;">*</span></label>
-                                    <input class="form-control" type="file" name="paymentreceipt" value=""  required />
+                                    <label>Payment Status</label>
+                                        <div class="clear"></div>
+                                        <td class="center">
+                                                <?php if($result->PaidStatus==0)
+                                                {?>
+                                                <button class="btn btn-danger"> Waiting</button>
+                                                <?php }
+                                                else {?>
+
+                                                <button class="btn btn-primary"> Paid</button> 
+                                                <?php } ?>
+                                          
+                                            </td>
+                                            </div>  
+                                            <div class="clear"></div>
+
+                                            <div class="form-group">
+
+                                        <label>Payment Receipt<span style="color:red;">*</span></label>
+                                        <input class="form-control" type="file" name="paymentreceipt" value=""  required />
+                                        
                                     </div>  
                                     <div class="clear"></div>                                                        
                                         <input type="submit" name="payment" class="button btn btn-default">
