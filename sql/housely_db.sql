@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 16, 2021 at 06:02 AM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.9
+-- Host: 127.0.0.1:3307
+-- Generation Time: Oct 19, 2021 at 05:06 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `housely_db`
 --
+CREATE DATABASE IF NOT EXISTS `housely_db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `housely_db`;
 
 -- --------------------------------------------------------
 
@@ -27,6 +29,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin`
 --
 
+DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin` (
   `AdminID` int(11) NOT NULL,
   `AdminFN` varchar(100) NOT NULL,
@@ -41,7 +44,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`AdminID`, `AdminFN`, `AdminEmail`, `AdminUsername`, `AdminPass`, `AdminUpdationDate`) VALUES
-(1, 'Tandin Dorji', '6222790428@g.siit.tu.ac.th', 'Admin', '21232f297a57a5a743894a0e4a801fc3', '2021-10-13 13:06:39'),
+(1, 'Tandin Dorji', '6222790428@g.siit.tu.ac.th', 'Admin', '21232f297a57a5a743894a0e4a801fc3', '2021-10-11 06:32:07'),
 (2, 'Kanokkarn Pinkeaw', '6222790147@g.siit.tu.ac.th', 'Admin2', '21232f297a57a5a743894a0e4a801fc3', '2021-10-10 09:35:17'),
 (3, 'Inkies', 'i@gmail.com', 'admin3', '21232f297a57a5a743894a0e4a801fc3', '2021-10-10 09:35:42');
 
@@ -51,6 +54,7 @@ INSERT INTO `admin` (`AdminID`, `AdminFN`, `AdminEmail`, `AdminUsername`, `Admin
 -- Table structure for table `bill`
 --
 
+DROP TABLE IF EXISTS `bill`;
 CREATE TABLE `bill` (
   `BillID` int(11) NOT NULL,
   `staffID` int(11) NOT NULL,
@@ -70,7 +74,9 @@ INSERT INTO `bill` (`BillID`, `staffID`, `rContID`, `billIssueDate`, `Total`, `r
 (56, 1, 1, '2021-10-11 20:14:32', '6850.00', 1101, 0, 'e5a1f0208478eb7447d4e210f4575fd21634059175.png'),
 (57, 1, 2, '2021-10-11 20:14:32', '13925.00', 1102, 0, NULL),
 (58, 1, 3, '2021-10-11 20:14:32', '10375.00', 1103, 0, '5c66b067b039d58c7a530b9b126af9b81634068434.jpg'),
-(59, 1, 4, '2021-10-11 20:14:32', '9380.00', 1104, 1, NULL);
+(59, 1, 4, '2021-10-11 20:14:32', '9380.00', 1104, 0, NULL),
+(60, 1, 4, '2021-10-11 20:14:32', '9380.00', 1104, 0, NULL),
+(61, 1, 4, '2021-10-11 20:14:32', '9380.00', 1104, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -78,15 +84,16 @@ INSERT INTO `bill` (`BillID`, `staffID`, `rContID`, `billIssueDate`, `Total`, `r
 -- Table structure for table `bookedservice`
 --
 
+DROP TABLE IF EXISTS `bookedservice`;
 CREATE TABLE `bookedservice` (
   `servBookID` int(11) NOT NULL,
-  `servID` int(11) DEFAULT NULL,
-  `custID` varchar(11) DEFAULT NULL,
-  `staffID` int(11) DEFAULT NULL,
-  `roomNum` int(11) DEFAULT NULL,
-  `servPrice` decimal(10,2) DEFAULT 0.00,
-  `servStatus` tinyint(1) NOT NULL DEFAULT 0,
-  `servDate` date DEFAULT current_timestamp()
+  `servID` int(11) NOT NULL,
+  `custID` varchar(11) NOT NULL,
+  `staffID` int(11) NOT NULL,
+  `roomNum` int(11) NOT NULL,
+  `servPrice` decimal(10,2) NOT NULL,
+  `servStatus` tinyint(1) NOT NULL,
+  `servDate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -95,8 +102,7 @@ CREATE TABLE `bookedservice` (
 
 INSERT INTO `bookedservice` (`servBookID`, `servID`, `custID`, `staffID`, `roomNum`, `servPrice`, `servStatus`, `servDate`) VALUES
 (1, 1, 'CID001', 2, 1101, '0.00', 1, '2021-10-04'),
-(2, 2, 'CID002', 3, 1102, '500.00', 0, '2021-10-05'),
-(3, 3, 'CID004', 2, 1104, '100.00', 0, '2021-10-16');
+(2, 2, 'CID002', 3, 1102, '500.00', 0, '2021-10-05');
 
 -- --------------------------------------------------------
 
@@ -104,6 +110,7 @@ INSERT INTO `bookedservice` (`servBookID`, `servID`, `custID`, `staffID`, `roomN
 -- Table structure for table `customer`
 --
 
+DROP TABLE IF EXISTS `customer`;
 CREATE TABLE `customer` (
   `id` int(11) NOT NULL,
   `custID` varchar(11) NOT NULL,
@@ -124,7 +131,7 @@ INSERT INTO `customer` (`id`, `custID`, `custName`, `custTele`, `custEmail`, `cu
 (9, 'CID003', 'Taylor Swift', '0826218523', 't@g.siit.tu.ac.th', '81dc9bdb52d04dc20036dbd8313ed055', 'Chaingmai,thailand'),
 (10, 'CID004', 'Conan Gray', '0973369919', 'hh@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Trang,Thailand'),
 (12, 'CID006', 'inkkiew', '0973366359', 'i@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Khonkean,thailand'),
-(14, 'CID009', 'get get', '0975648524', 'get@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'BKK');
+(13, 'CID007', 'Zac Effron', '112345678', 'ze@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Somewhere West');
 
 -- --------------------------------------------------------
 
@@ -132,6 +139,7 @@ INSERT INTO `customer` (`id`, `custID`, `custName`, `custTele`, `custEmail`, `cu
 -- Table structure for table `roomcontract`
 --
 
+DROP TABLE IF EXISTS `roomcontract`;
 CREATE TABLE `roomcontract` (
   `rContID` int(11) NOT NULL,
   `staffID` int(11) NOT NULL,
@@ -162,6 +170,7 @@ INSERT INTO `roomcontract` (`rContID`, `staffID`, `custID`, `roomNum`, `contSDat
 -- Table structure for table `roomrecord`
 --
 
+DROP TABLE IF EXISTS `roomrecord`;
 CREATE TABLE `roomrecord` (
   `roomrecID` int(11) NOT NULL,
   `roomNum` int(11) NOT NULL,
@@ -178,8 +187,7 @@ INSERT INTO `roomrecord` (`roomrecID`, `roomNum`, `electricityUnit`, `waterUnit`
 (1, 1101, 32, 3, '2021-09-04'),
 (2, 1102, 139, 6, '2021-09-04'),
 (3, 1103, 49, 36, '2021-09-04'),
-(4, 1104, 56, 10, '2021-09-04'),
-(5, 1106, 45, 10, '2021-10-13');
+(4, 1104, 56, 10, '2021-09-04');
 
 -- --------------------------------------------------------
 
@@ -187,6 +195,7 @@ INSERT INTO `roomrecord` (`roomrecID`, `roomNum`, `electricityUnit`, `waterUnit`
 -- Table structure for table `service`
 --
 
+DROP TABLE IF EXISTS `service`;
 CREATE TABLE `service` (
   `servID` int(11) NOT NULL,
   `servCataID` varchar(11) NOT NULL,
@@ -212,6 +221,7 @@ INSERT INTO `service` (`servID`, `servCataID`, `servName`, `servDesc`, `servthum
 -- Table structure for table `servicecatagory`
 --
 
+DROP TABLE IF EXISTS `servicecatagory`;
 CREATE TABLE `servicecatagory` (
   `servCataID` varchar(11) NOT NULL,
   `servCataName` varchar(100) NOT NULL,
@@ -234,6 +244,7 @@ INSERT INTO `servicecatagory` (`servCataID`, `servCataName`, `status`) VALUES
 -- Table structure for table `staff`
 --
 
+DROP TABLE IF EXISTS `staff`;
 CREATE TABLE `staff` (
   `StaffID` int(11) NOT NULL,
   `StaffName` varchar(100) NOT NULL,
@@ -330,16 +341,10 @@ ALTER TABLE `bill`
   MODIFY `BillID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
--- AUTO_INCREMENT for table `bookedservice`
---
-ALTER TABLE `bookedservice`
-  MODIFY `servBookID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `service`
@@ -351,7 +356,7 @@ ALTER TABLE `service`
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `StaffID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `StaffID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
