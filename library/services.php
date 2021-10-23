@@ -101,6 +101,16 @@ else{
         </div>
 		
 		<div class="row">
+        <?php if($_SESSION['msg']!="")
+        {?>
+        <div class="col-md-6">
+        <div class="alert alert-success" >
+        <strong>Success :</strong> 
+        <?php echo htmlentities($_SESSION['msg']);?>
+        <?php echo htmlentities($_SESSION['msg']="");?>
+        </div>
+        </div>
+        <?php } ?>
                          
             <section class="search-filters">
                 <div class="container">

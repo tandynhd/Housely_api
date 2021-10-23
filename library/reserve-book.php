@@ -16,24 +16,19 @@ if(isset($_POST['issue']))
     $servID=$_POST['servID'];
     $custID=$_POST['custID'];
     $roomNum=$_POST['roomNum'];
+    $servDate=$_POST['servDate'];
+    $servTime=$_POST['servTime'];
     
-    $sql="INSERT INTO  bookedservice(servID,custID,roomNum) VALUES(:servID,:custID,:roomNum)";
+    $sql="INSERT INTO  bookedservice(servID,custID,roomNum,servDate,servTime) VALUES(:servID,:custID,:roomNum,:servDate,:servTime)";
     $query = $dbh->prepare($sql);
     $query->bindParam(':servID',$servID,PDO::PARAM_STR);
     $query->bindParam(':custID',$custID,PDO::PARAM_STR);
     $query->bindParam(':roomNum',$roomNum,PDO::PARAM_STR);
+    $query->bindParam(':servDate',$servDate,PDO::PARAM_STR);
+    $query->bindParam(':servTime',$servTime,PDO::PARAM_STR);
     $query->execute();
-    $lastInsertId = $dbh->lastInsertId();
-    if($lastInsertId)
-    {
     $_SESSION['msg']="Book Reserved successfully";
     header('location:services.php');
-    }
-    else 
-    {
-    $_SESSION['error']="Something went wrong. Please try again";
-    header('location:services.php');
-    }
 
 }
 ?>
@@ -167,6 +162,12 @@ Confirm Your Reservation
 
                                             <label>Room Number</label>
                                             <input class="form-control" type="text" name="roomNum" value=" " required />
+
+                                            <label>Date</label>
+                                            <input class="form-control" type="date" name="servDate" value=" " required />
+
+                                            <label>Time</label>
+                                            <input class="form-control" type="time" name="servTime" value=" " required />
 
 
                                         </div>
