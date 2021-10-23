@@ -17,8 +17,10 @@ else{
         $roomNum=$_POST['roomNum'];
         $staffID=$_POST['staffID'];
         $servPrice=$_POST['servPrice'];
+        $servDate=$_POST['servDate'];
+        $servTime=$_POST['servTime'];
 
-        $sql="update  bookedservice set servID=:servID, custID=:custID, roomNum=:roomNum, staffID=:staffID, servPrice=:servPrice where servBookID=:servBookID";
+        $sql="update  bookedservice set servID=:servID, custID=:custID, roomNum=:roomNum, staffID=:staffID, servPrice=:servPrice, servDate=:servDate, servTime=:servTime where servBookID=:servBookID";
         $query = $dbh->prepare($sql);
         $query->bindParam(':servID',$servID,PDO::PARAM_STR);
         $query->bindParam(':custID',$custID,PDO::PARAM_STR);
@@ -26,6 +28,8 @@ else{
         $query->bindParam(':staffID',$staffID,PDO::PARAM_STR);
         $query->bindParam(':servPrice',$servPrice,PDO::PARAM_STR);
         $query->bindParam(':servBookID',$servBookID,PDO::PARAM_STR);
+        $query->bindParam(':servDate',$servDate,PDO::PARAM_STR);
+        $query->bindParam(':servTime',$servTime,PDO::PARAM_STR);
         $query->execute();
         $_SESSION['updatemsg']="Booked Service information updated successfully";
         header('location:reserved-services.php');
@@ -137,6 +141,16 @@ foreach($results as $result)
         <div class="form-group">
         <label>Room Number</label>
         <input class="form-control" type="text" name="roomNum" value="<?php echo htmlentities($result->roomNum);?>" required />
+        </div>
+
+        <div class="form-group">
+        <label>Date</label>
+        <input class="form-control" type="date" name="servDate" value="<?php echo htmlentities($result->servDate);?>" required />
+        </div>
+
+        <div class="form-group">
+        <label>Time</label>
+        <input class="form-control" type="time" name="servTime" value="<?php echo htmlentities($result->servTime);?>" required />
         </div>
 
         <div class="form-group">

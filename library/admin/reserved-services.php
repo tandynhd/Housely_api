@@ -179,13 +179,16 @@ else{
                                     <thead>
                                         <tr>
                                             
-                                            <th>Service Book ID</th>
+                                            <th>Book ID</th>
+                                            <th>Booked Date</th>
                                             <th>Service ID</th>
                                             <th>Customer ID</th>
                                             
                                             <th>Room Number</th>
                                             
-                                            <th>Booked Date</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            
                                             <th>Service Price</th>
                                             <th>Staff ID</th>
                                             <th>Status</th>
@@ -207,12 +210,16 @@ foreach($results as $result)
                                         <tr class="odd gradeX">
                                             
                                             <td class="center"><?php echo htmlentities($result->servBookID);?></td>
+                                            <td class="center"><?php echo htmlentities($result->servBookDate);?></td>
                                             <td class="center"><?php echo htmlentities($result->servID);?></td>
                                             <td class="center"><?php echo htmlentities($result->custID	);?></td>
                                             
                                             <td class="center"><?php echo htmlentities($result->roomNum	);?></td>
-                                            
+
                                             <td class="center"><?php echo htmlentities($result->servDate);?></td>
+                                            <td class="center"><?php echo htmlentities($result->servTime);?></td>
+                                            
+                                            
                                             <td class="center"><?php echo htmlentities($result->servPrice);?></td>
                                             <td class="center"><?php echo htmlentities($result->staffID);?></td>
                                             
