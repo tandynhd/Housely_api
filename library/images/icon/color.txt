@@ -1,0 +1,6 @@
+yellow #F9B81F
+gree #84BB45
+blue #00ADEF
+pink #F56363
+purple #B032E4
+light green #43C5B9
