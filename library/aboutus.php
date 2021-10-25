@@ -128,7 +128,7 @@ include('includes/config.php');
 		
 		
       
-        <section class="latest-blog section-padding banner">
+        <section class="latest-blog2 section-padding banner">
             <div class="container">
                 <div class="center-content">
                     <h2 class="section-title">OUR PRIORITY</h2>
