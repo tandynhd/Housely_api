@@ -9526,7 +9526,7 @@ a:focus {
   width: 64px;
 }
 .facts-counter ul li .fact-item .fact-icon i {
-  background-image: url(images/facts-count-icons-v1.png);
+  background-image: url(images/icon/welcome/01.png);
   background-position: 300px 300px;
   background-repeat: no-repeat;
   display: inline-block;
@@ -9774,6 +9774,8 @@ a:focus {
 .category-filter #category-filter .btn-primary {
   margin-top: 50px;
 }
+
+/*features 1*/
 .features ul {
   list-style: none;
   margin: 0;
@@ -9833,7 +9835,7 @@ a:focus {
   }
 }
 .features ul li .feature-box i {
-  background-image: url(images/features-icons-home-v1.png);
+  background-image: url(images/icon/services/sum.png);
   background-position: 500px 500px;
   background-repeat: no-repeat;
   display: inline-block;
@@ -9942,6 +9944,8 @@ a:focus {
 .features ul li:hover .feature-box a:hover {
   color: #282828;
 }
+
+
 .newsletter {
   background-color: #f4f4f4;
 }
@@ -10872,7 +10876,7 @@ a:focus {
   }
 }
 .latest-blog .tabs-container .tabs-menu ul li a i {
-  background-image: url(images/features-icons-home-v1.png);
+  background-image: url(images/icon/services/sum.png);
   background-position: 500px 500px;
   background-repeat: no-repeat;
   display: inline-block;
@@ -12338,7 +12342,7 @@ a:focus {
   transform: none;
 }
 .layout-v2 .layout-v2-counter .facts-counter ul li .fact-item .fact-icon i {
-  background-image: url(images/facts-count-icons-v2.png);
+  background-image: url(images/icon/welcome/02.png);
 }
 .layout-v2 .layout-v2-counter .facts-counter ul li .fact-item .fact-icon i.ebook {
   background-position: 0 0;
