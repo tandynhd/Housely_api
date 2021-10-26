@@ -126,13 +126,17 @@ else{
                                     {               ?>  
 
                                         <div class="form-group" method="post" enctype="multipart/form-data">
+
+                                            <label>Service ID</label>
+                                            <input class="form-control" type="text" name="servname" value="<?php echo htmlentities($result->servID );?>" required />
+
                                             <label>Service Name</label>
                                             <input class="form-control" type="text" name="servname" value="<?php echo htmlentities($result->servName);?>" required />
 
                                             <label>Service Description</label>
                                             <input class="form-control" type="text" name="servdesc" value="<?php echo htmlentities($result->servDesc);?>" required />
 
-                                            <label>Service Thumbnail<span style="color:red;">*</span></label>
+                                            <label>Service Thumbnail</label>
                                             <input class="form-control" type="file" name="serviceimage" value="<?php echo htmlentities($result->servthumbnail);?>" />
 
                                         </div>
