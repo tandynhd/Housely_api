@@ -97,7 +97,9 @@ include('includes/config.php');
                                 <h2 class="section-title">Welcome to Housely</h2>
                                 <span class="underline left"></span>
                                 <p class="lead">The house you didn't know you had</p>
-                                <p>Based in Thailand, we are an established dormitory for students and all since 2010. We don't just give you a room to live in, we give you a house. A house that we look after and aim at making you feel at home. Because the right way to nurture a bird is to build a good nest. Choose your nest wisely.</p>
+                                <p>Based in Thailand, we are an established dormitory for students and all since 2010. We don't just give you a room to live in,
+                                    we give you a house. A house that we look after and aim at making you feel at home.
+                                    Because the right way to nurture a bird is to build a good nest. Choose your nest wisely.</p>
                                 <a class="btn btn-primary" href="#">Read More</a>
                             </div>
                         </div>
