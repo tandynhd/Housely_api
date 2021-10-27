@@ -170,27 +170,18 @@
                                         </li>
                                         
                                         <li class="dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle disabled" href="aboutus.php">About Us</a>
-                                            
+                                            <a data-toggle="dropdown" class="dropdown-toggle disabled" href="aboutus.php">About Us</a>                
                                         </li>
-                                        
                                         <li><a href="contactus.php">Contact Us</a></li>
-										
 										
 										<li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle disabled" href="signup.php">Register</a>
-                                            
                                         </li>
                                         <li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle disabled" href="adminlogin.php">Admin</a>
                                             
                                         </li>
-                                        
-										
-										
-										
-										
-										
+                            
                                     </ul>
                                 </div>
                             </div>
