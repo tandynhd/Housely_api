@@ -7,13 +7,13 @@ if(isset($_POST['signup']))
 
  
 //Code for customer ID
-$count_my_page = ("custid.txt");
-$hits = file($count_my_page);
-$hits[0] ++;
-$fp = fopen($count_my_page , "w");
-fputs($fp , "$hits[0]");
-fclose($fp); 
-$custId= $hits[0];   
+//$count_my_page = ("custid.txt");
+//$hits = file($count_my_page);
+//$hits[0] ++;
+//$fp = fopen($count_my_page , "w");
+//fputs($fp , "$hits[0]");
+//fclose($fp); 
+//$custId= $hits[0];   
 
 $custname=$_POST['fullname'];
 $custTele=$_POST['mobileno'];
@@ -21,10 +21,10 @@ $custEmail =$_POST['email'];
 $custAddr=$_POST['Address'];
 $password=md5($_POST['password']);
 
-$sql="INSERT INTO  customer(custID,custname,custTele,custEmail,custPass,custAddr) VALUES(:custId,:custname,:custTele,:custEmail,:password,:custAddr)";
+$sql="INSERT INTO  customer(custname,custTele,custEmail,custPass,custAddr) VALUES(:custname,:custTele,:custEmail,:password,:custAddr)";
 
 $query = $dbh->prepare($sql);
-$query->bindParam(':custId',$custId,PDO::PARAM_STR);
+//$query->bindParam(':custId',$custId,PDO::PARAM_STR);
 $query->bindParam(':custname',$custname,PDO::PARAM_STR);
 $query->bindParam(':custTele',$custTele,PDO::PARAM_STR);
 $query->bindParam(':custEmail',$custEmail,PDO::PARAM_STR);
@@ -35,7 +35,7 @@ $query->execute();
 $lastInsertId = $dbh->lastInsertId();
 if($lastInsertId)
 {
-echo '<script>alert("Your Registration successfull and your Customer ID is  "+"'.$custId.'")</script>';
+//echo '<script>alert("Your Registration successfull and your Customer ID is  "+"'.$custId.'")</script>';
 echo "<script type='text/javascript'> document.location ='index.php'; </script>";
 }
 else 
