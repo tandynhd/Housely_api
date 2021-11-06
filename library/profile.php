@@ -8,7 +8,7 @@ if(strlen($_SESSION['login'])==0)
     header('location:index.php');
     }
 else{ 
-    $custID = $_SESSION['custId'];
+    $custID = $_SESSION['custID'];
     if(isset($_POST['payment']))
     {
        
