@@ -1,91 +1,21 @@
-************Triggers for updating No of reserved books*********
+************Triggers for updating No of available rooms*********
 
 delimiter //
-CREATE TRIGGER insertreserve 
-BEFORE INSERT ON tblreservedbookdetails
+CREATE TRIGGER updaterooms 
+BEFORE INSERT ON customer
 FOR EACH ROW 
 BEGIN
-	UPDATE tblstudents SET no_of_books_reserved=no_of_books_reserved+1 WHERE StudentId=NEW.StudentID;
-END;
-//
-    
-
-
-delimiter //
-CREATE TRIGGER updatereserve 
-BEFORE UPDATE ON tblreservedbookdetails
-FOR EACH ROW 
-BEGIN
-	UPDATE tblstudents SET no_of_books_reserved=no_of_books_reserved-1 WHERE StudentId=NEW.StudentID;
+	UPDATE availrooms SET availrooms=availrooms-1 WHERE id=1;
 END;
 //
 
-
 delimiter //
-CREATE TRIGGER deletereserve 
-BEFORE DELETE ON tblreservedbookdetails
+CREATE TRIGGER updaterooms2 
+BEFORE DELETE ON customer
 FOR EACH ROW 
 BEGIN
-	UPDATE tblstudents SET no_of_books_reserved=no_of_books_reserved-1 WHERE StudentId=OLD.StudentID;
+	UPDATE availrooms SET availrooms=availrooms+1 WHERE id=1;
 END;
 //
 
-
-
-
-*******************Updating no of books******************
-
-
-
-
-
-delimiter //
-CREATE TRIGGER insertreservenoofbooks 
-BEFORE INSERT ON tblreservedbookdetails
-FOR EACH ROW 
-BEGIN
-	UPDATE tblbooks SET no_of_books=no_of_books-1 WHERE id=NEW.BookId;
-END;
-//
-
-
-
-delimiter //
-CREATE TRIGGER updatereservenoofbooks 
-BEFORE UPDATE ON tblreservedbookdetails
-FOR EACH ROW 
-BEGIN
-	UPDATE tblbooks SET no_of_books=no_of_books+1 WHERE id=NEW.BookId;
-END;
-//
-
-
-delimiter //
-CREATE TRIGGER deletereservenoofbooks 
-BEFORE DELETE ON tblreservedbookdetails
-FOR EACH ROW 
-BEGIN
-	UPDATE tblbooks SET no_of_books=no_of_books+1 WHERE id=OLD.BookId;
-END;
-//
-
-
-delimiter //
-CREATE TRIGGER insertissuenoofbooks 
-BEFORE INSERT ON tblissuedbookdetails
-FOR EACH ROW 
-BEGIN
-	UPDATE tblbooks SET no_of_books=no_of_books-1 WHERE id=NEW.BookId;
-END;
-//
-
-
-delimiter //
-CREATE TRIGGER updatereservenoofbooks 
-BEFORE UPDATE ON tblreservedbookdetails
-FOR EACH ROW 
-BEGIN
-	UPDATE tblbooks SET no_of_books=no_of_books+1 WHERE id=NEW.BookId;
-END;
-//
 

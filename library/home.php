@@ -33,8 +33,28 @@ include('includes/config.php');
         
        
     </head>
-    
+    <?php
+    $con = "SELECT availrooms FROM availrooms
+            WHERE id=1;";
+
+    $query = $dbh->prepare($con);
+    $query->execute();
+    $results=$query->fetchAll(PDO::FETCH_OBJ);
+
+    $cnt=1;
+    if($query->rowCount() > 0)
+    {
+        foreach($results as $result)
+        {    
+        $availrooms=($result -> availrooms);
+        }
+    }
+    ?>
+
+
+
     <body>
+
         
 <?php include('includes/header.php');?>
         
@@ -112,7 +132,7 @@ include('includes/config.php');
                                         <div class="fact-icon">
                                             <i class="ebook"></i>
                                         </div>
-                                        <span><strong class="fact-counter">35</strong> Province in Thailand</span>
+                                        <span><strong class="fact-counter"><?php echo $availrooms; ?></strong> Available Rooms</span>
                                     </div>
                                 </li>
                                 <li class="bg-green">
@@ -128,7 +148,7 @@ include('includes/config.php');
                                         <div class="fact-icon">
                                             <i class="magazine"></i>
                                         </div>
-                                        <span>Housely member<strong class="fact-counter">57,000</strong></span>
+                                        <span>Members<strong class="fact-counter">57,000</strong></span>
                                         
                                     </div>
                                 </li>
@@ -137,7 +157,7 @@ include('includes/config.php');
                                         <div class="fact-icon">
                                             <i class="videos"></i>
                                         </div>
-                                        <span>Award<strong class="fact-counter">5</strong></span>
+                                        <span>Awards<strong class="fact-counter">5</strong></span>
                                         
                                     </div>
                                 </li>
