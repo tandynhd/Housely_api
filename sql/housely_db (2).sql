@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2021 at 11:42 AM
+-- Generation Time: Nov 10, 2021 at 05:03 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -125,7 +125,8 @@ INSERT INTO `customer` (`custID`, `custName`, `custTele`, `custEmail`, `custPass
 (4, 'Conan Gray', '0973369919', 'hh@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Trang,Thailand'),
 (5, 'halahong', '0973366359', 'i@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Khonkean,thailand'),
 (6, 'Zac Effron', '112345678', 'ze@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Somewhere West'),
-(7, 'kanokkarn pinkeaw', '0973369919', 'hh2555555@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'korat,thailand');
+(7, 'kanokkarn pinkeaw', '0973369919', 'hh2555555@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'korat,thailand'),
+(8, 'honghonghong45461', '0973366359', '6222790147@g.siit.tu.ac.th', '81dc9bdb52d04dc20036dbd8313ed055', 'Khonkean,thailand');
 
 -- --------------------------------------------------------
 
@@ -333,7 +334,7 @@ ALTER TABLE `bill`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `custID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `custID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `service`
