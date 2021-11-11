@@ -375,7 +375,7 @@ include('includes/config.php');
         <!-- End: Features -->
         
         <!-- Start: Newsletter -->
-        <section class="newsletter section-padding">
+        <!-- <section class="newsletter section-padding">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
@@ -391,7 +391,7 @@ include('includes/config.php');
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- End: Newsletter -->
         
         
