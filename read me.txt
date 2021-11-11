@@ -1,8 +1,8 @@
 
 For User
-Login Details for user: himasara98@gmail.com     pass - hima00012
+Login Details for user: username: t@gmail.com         pass: 1234
 
 For Admin Panel
-Login Details for admin : admin            pass - admin
+Login Details for admin : username: admin            pass - admin
 
 
