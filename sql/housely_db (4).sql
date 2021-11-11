@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2021 at 06:56 AM
+-- Generation Time: Nov 11, 2021 at 11:53 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -86,10 +86,10 @@ CREATE TABLE `bill` (
 --
 
 INSERT INTO `bill` (`BillID`, `staffID`, `rContID`, `billIssueDate`, `Total`, `roomNum`, `PaidStatus`, `evidenceurl`) VALUES
-(56, 1, 1, '2021-10-11 20:14:32', '6850.00', 1101, 0, 'e5a1f0208478eb7447d4e210f4575fd21634059175.png'),
-(57, 1, 2, '2021-10-11 20:14:32', '13925.00', 1102, 0, NULL),
-(58, 1, 3, '2021-10-11 20:14:32', '10375.00', 1103, 0, '5c66b067b039d58c7a530b9b126af9b81634068434.jpg'),
-(59, 1, 4, '2021-10-11 20:14:32', '9380.00', 1104, 1, 'a51d05659ac9b5d846d9d2abb68771451636609039.png');
+(56, 1, 1, '2021-10-11 20:14:32', '6850.00', 1101, 1, 'a4c47f11a30e49ea1aae9220c1606ff61636627338.jpg'),
+(57, 1, 2, '2021-10-11 20:14:32', '13925.00', 1102, 1, 'cfc0d7fee8209759a5ad53d6976062e01636627003.jpg'),
+(58, 1, 3, '2021-10-11 20:14:32', '10375.00', 1103, 1, '5c66b067b039d58c7a530b9b126af9b81634068434.jpg'),
+(59, 1, 4, '2021-10-11 20:14:32', '9380.00', 1104, 0, '');
 
 -- --------------------------------------------------------
 
@@ -139,7 +139,7 @@ CREATE TABLE `customer` (
 
 INSERT INTO `customer` (`custID`, `custName`, `custTele`, `custEmail`, `custPass`, `custAddr`) VALUES
 (1, 'Hong Pink', '1243256578', 'hong@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Patumthani,Thailand'),
-(2, 'Emotional Oranges', '0976369898', 'k@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'Korat,Thailand'),
+(2, 'Emotional Oranges', '0976369898', 'k@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Korat,Thailand'),
 (3, 'Taylor Swift', '0826218523', 't@g.siit.tu.ac.th', '81dc9bdb52d04dc20036dbd8313ed055', 'Chaingmai,thailand'),
 (4, 'Conan Gray', '0973369919', 'hh@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Trang,Thailand'),
 (5, 'halahong', '0973366359', 'i@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Khonkean,thailand'),
