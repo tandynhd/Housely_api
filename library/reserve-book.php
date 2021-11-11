@@ -148,7 +148,7 @@ Confirm Your Reservation
 
 <?php 
                                 $ServID=$_GET['servID'];
-                                $custID = $_SESSION['custId'];
+                                $custID = $_SESSION['custID'];
                                 
                                 
                                  ?>  

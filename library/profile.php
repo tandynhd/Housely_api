@@ -29,7 +29,7 @@ else{
     
             $sql="UPDATE bill SET evidenceurl = :receipt 
                             where rContID = (
-                                            SELECT r.rContID 
+                                            SELECT DISTINCT r.rContID 
                                             FROM customer c, roomcontract r, bill b
                                             WHERE c.custID = r.custID AND
                                             r.rContID = b.rContID AND
