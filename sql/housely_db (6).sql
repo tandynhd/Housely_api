@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2021 at 06:28 AM
+-- Generation Time: Nov 14, 2021 at 08:20 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -101,7 +101,7 @@ CREATE TABLE `bookedservice` (
   `servBookID` int(11) NOT NULL,
   `servID` int(11) NOT NULL,
   `custID` int(11) NOT NULL,
-  `staffID` int(11) NOT NULL,
+  `staffID` int(11) NOT NULL DEFAULT 1,
   `roomNum` int(11) NOT NULL,
   `servPrice` decimal(10,2) NOT NULL,
   `servStatus` tinyint(1) NOT NULL,
