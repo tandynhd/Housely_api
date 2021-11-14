@@ -120,11 +120,12 @@ else{
      <!-- Start: Welcome Section -->
     
     <?php
-    $con = "SELECT rc.roomPrice, rc.parkingPrice, rc.internetPrice, rr.electricityUnit, rr.waterUnit, c.custName
-            FROM roomrecord rr, roomcontract rc, customer c
+    $con = "SELECT rc.roomPrice, rc.parkingPrice, rc.internetPrice, rr.electricityUnit, rr.waterUnit, c.custName, b.paidStatus
+            FROM roomrecord rr, roomcontract rc, customer c, bill b
             WHERE rr.roomNum = rc.roomNum AND
                 rc.custID = c.custID AND
-                c.custID = :custID;";
+                c.custID = :custID AND
+                b.rcontID = rc.rcontID;";
     $query2 = $dbh->prepare($con);
     $query2->bindParam(':custID',$custID ,PDO::PARAM_STR);
     $query2->execute();
@@ -145,6 +146,7 @@ else{
         $eUnit=($result -> electricityUnit);
         $wUnit=($result -> waterUnit);
         $custName=($result -> custName);
+        $pstatus=($result -> paidStatus);
         $roomPrice = $rPrice + $pPrice + $iPrice;
         $total = $roomPrice + ($eUnit*55) + ($wUnit*30);
         }
@@ -156,7 +158,7 @@ else{
                     <div class="col-md-6">
                         <div class="welcome-wrap">
                             <div class="welcome-text">
-                                <h2 class="section-title">Welcome to Housely <?php echo $custName; ?> <br></br> <?php echo $custID; ?></h2>
+                                <h2 class="section-title">Welcome to Housely <?php echo $custName; ?> <br></br> Custimer ID: <?php echo  $custID; ?></h2>
 
 
                                 <span class="underline left"></span>
@@ -170,15 +172,15 @@ else{
                                     <label>Payment Status</label>
                                         <div class="clear"></div>
                                         <td class="center">
-                                                <?php if($result->PaidStatus==0)
-                                                {?>
-                                                <button class="btn btn-danger"> Waiting</button>
-                                                <?php }
-                                                else {?>
 
-                                                <button class="btn btn-primary"> Paid</button> 
+                                                <?php if($pstatus==0)
+                                                {?>
+                                                    <button class="btn btn-danger" disabled> Waiting </button>
+                                                <?php }
+                                                else if($pstatus==1){?>
+
+                                                <button class="btn btn-primary" disabled> Paid</button> 
                                                 <?php } ?>
-                                          
                                             </td>
                                             </div>  
                                             <div class="clear"></div>
