@@ -1,0 +1,9 @@
+
+CREATE USER 'admin_housely'@'localhost';
+grant all on housely_db.* to 'admin_housely' identified by "password";
+flush privileges;
+
+CREATE USER 'user_housely'@'localhost';
+grant select, insert on housely_db.* to 'user_housely' identified by "password";
+flush privileges;
+
