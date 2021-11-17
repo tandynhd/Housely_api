@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 14, 2021 at 08:20 AM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.9
+-- Host: localhost:3307
+-- Generation Time: Nov 17, 2021 at 01:48 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `housely_db`
 --
+CREATE DATABASE IF NOT EXISTS `housely_db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `housely_db`;
+
+DELIMITER $$
+--
+-- Procedures
+--
+DROP PROCEDURE IF EXISTS `details`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `details` (IN `cus_id` INT(11) UNSIGNED)  SELECT rc.roomPrice, rc.parkingPrice, rc.internetPrice, rr.electricityUnit, rr.waterUnit, c.custName, b.paidStatus
+            FROM roomrecord rr, roomcontract rc, customer c, bill b
+            WHERE rr.roomNum = rc.roomNum AND
+                rc.custID = c.custID AND
+                c.custID = cus_id AND
+                b.rcontID = rc.rcontID$$
+
+DROP PROCEDURE IF EXISTS `paybill`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `paybill` (IN `rcpt` VARCHAR(250), IN `cus_id` INT(11) UNSIGNED)  UPDATE bill SET evidenceurl = rcpt 
+where rContID = (SELECT DISTINCT r.rContID 
+                 FROM customer c, roomcontract r, bill b
+                 WHERE c.custID = r.custID AND
+                       r.rContID = b.rContID AND
+                       c.custID = cus_id)$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -27,6 +51,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin`
 --
 
+DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin` (
   `AdminID` int(11) NOT NULL,
   `AdminFN` varchar(100) NOT NULL,
@@ -51,6 +76,7 @@ INSERT INTO `admin` (`AdminID`, `AdminFN`, `AdminEmail`, `AdminUsername`, `Admin
 -- Table structure for table `availrooms`
 --
 
+DROP TABLE IF EXISTS `availrooms`;
 CREATE TABLE `availrooms` (
   `id` int(11) NOT NULL,
   `totalrooms` int(11) NOT NULL,
@@ -70,6 +96,7 @@ INSERT INTO `availrooms` (`id`, `totalrooms`, `availrooms`) VALUES
 -- Table structure for table `bill`
 --
 
+DROP TABLE IF EXISTS `bill`;
 CREATE TABLE `bill` (
   `BillID` int(11) NOT NULL,
   `staffID` int(11) NOT NULL,
@@ -86,10 +113,12 @@ CREATE TABLE `bill` (
 --
 
 INSERT INTO `bill` (`BillID`, `staffID`, `rContID`, `billIssueDate`, `Total`, `roomNum`, `PaidStatus`, `evidenceurl`) VALUES
-(56, 1, 1, '2021-10-11 20:14:32', '6850.00', 1101, 1, 'a4c47f11a30e49ea1aae9220c1606ff61636627338.jpg'),
-(57, 1, 2, '2021-10-11 20:14:32', '13925.00', 1102, 1, 'cfc0d7fee8209759a5ad53d6976062e01636627003.jpg'),
+(56, 1, 1, '2021-10-11 20:14:32', '6850.00', 1101, 1, 'fcaac13fbf0c665f0c1626450f248c8e1637149482.png'),
+(57, 1, 2, '2021-10-11 20:14:32', '13925.00', 1102, 0, NULL),
 (58, 1, 3, '2021-10-11 20:14:32', '10375.00', 1103, 1, '5c66b067b039d58c7a530b9b126af9b81634068434.jpg'),
-(59, 1, 4, '2021-10-11 20:14:32', '9380.00', 1104, 0, '');
+(59, 1, 4, '2021-10-11 20:14:32', '9380.00', 1104, 0, NULL),
+(60, 1, 4, '2021-10-11 20:14:32', '9380.00', 1104, 0, NULL),
+(61, 1, 4, '2021-10-11 20:14:32', '9380.00', 1104, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -97,26 +126,25 @@ INSERT INTO `bill` (`BillID`, `staffID`, `rContID`, `billIssueDate`, `Total`, `r
 -- Table structure for table `bookedservice`
 --
 
+DROP TABLE IF EXISTS `bookedservice`;
 CREATE TABLE `bookedservice` (
   `servBookID` int(11) NOT NULL,
   `servID` int(11) NOT NULL,
   `custID` int(11) NOT NULL,
-  `staffID` int(11) NOT NULL DEFAULT 1,
+  `staffID` int(11) NOT NULL,
   `roomNum` int(11) NOT NULL,
   `servPrice` decimal(10,2) NOT NULL,
   `servStatus` tinyint(1) NOT NULL,
-  `servDate` date DEFAULT NULL,
-  `servTime` time DEFAULT NULL
+  `servDate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `bookedservice`
 --
 
-INSERT INTO `bookedservice` (`servBookID`, `servID`, `custID`, `staffID`, `roomNum`, `servPrice`, `servStatus`, `servDate`, `servTime`) VALUES
-(1, 1, 1, 2, 1101, '0.00', 1, '2021-10-04', '13:00:00'),
-(2, 2, 2, 3, 1102, '500.00', 0, '2021-10-05', '12:00:00'),
-(4, 1, 4, 1, 1104, '0.00', 0, '2021-11-19', '13:30:00');
+INSERT INTO `bookedservice` (`servBookID`, `servID`, `custID`, `staffID`, `roomNum`, `servPrice`, `servStatus`, `servDate`) VALUES
+(1, 1, 1, 2, 1101, '0.00', 1, '2021-10-04'),
+(2, 2, 2, 3, 1102, '500.00', 0, '2021-10-05');
 
 -- --------------------------------------------------------
 
@@ -124,6 +152,7 @@ INSERT INTO `bookedservice` (`servBookID`, `servID`, `custID`, `staffID`, `roomN
 -- Table structure for table `customer`
 --
 
+DROP TABLE IF EXISTS `customer`;
 CREATE TABLE `customer` (
   `custID` int(11) NOT NULL,
   `custName` varchar(100) NOT NULL,
@@ -139,7 +168,7 @@ CREATE TABLE `customer` (
 
 INSERT INTO `customer` (`custID`, `custName`, `custTele`, `custEmail`, `custPass`, `custAddr`) VALUES
 (1, 'Hong Pink', '1243256578', 'hong@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Patumthani,Thailand'),
-(2, 'Emotional Oranges', '0976369898', 'k@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Korat,Thailand'),
+(2, 'Emotional Oranges', '0976369898', 'k@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'Korat,Thailand'),
 (3, 'Taylor Swift', '0826218523', 't@g.siit.tu.ac.th', '81dc9bdb52d04dc20036dbd8313ed055', 'Chaingmai,thailand'),
 (4, 'Conan Gray', '0973369919', 'hh@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Trang,Thailand'),
 (5, 'halahong', '0973366359', 'i@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Khonkean,thailand'),
@@ -151,12 +180,14 @@ INSERT INTO `customer` (`custID`, `custName`, `custTele`, `custEmail`, `custPass
 --
 -- Triggers `customer`
 --
+DROP TRIGGER IF EXISTS `updaterooms`;
 DELIMITER $$
 CREATE TRIGGER `updaterooms` BEFORE INSERT ON `customer` FOR EACH ROW BEGIN
 	UPDATE availrooms SET availrooms=availrooms-1 WHERE id=1;
 END
 $$
 DELIMITER ;
+DROP TRIGGER IF EXISTS `updaterooms2`;
 DELIMITER $$
 CREATE TRIGGER `updaterooms2` BEFORE DELETE ON `customer` FOR EACH ROW BEGIN
 	UPDATE availrooms SET availrooms=availrooms+1 WHERE id=1;
@@ -170,6 +201,7 @@ DELIMITER ;
 -- Table structure for table `roomcontract`
 --
 
+DROP TABLE IF EXISTS `roomcontract`;
 CREATE TABLE `roomcontract` (
   `rContID` int(11) NOT NULL,
   `staffID` int(11) NOT NULL,
@@ -200,6 +232,7 @@ INSERT INTO `roomcontract` (`rContID`, `staffID`, `custID`, `roomNum`, `contSDat
 -- Table structure for table `roomrecord`
 --
 
+DROP TABLE IF EXISTS `roomrecord`;
 CREATE TABLE `roomrecord` (
   `roomrecID` int(11) NOT NULL,
   `roomNum` int(11) NOT NULL,
@@ -224,6 +257,7 @@ INSERT INTO `roomrecord` (`roomrecID`, `roomNum`, `electricityUnit`, `waterUnit`
 -- Table structure for table `service`
 --
 
+DROP TABLE IF EXISTS `service`;
 CREATE TABLE `service` (
   `servID` int(11) NOT NULL,
   `servCataID` varchar(11) NOT NULL,
@@ -249,6 +283,7 @@ INSERT INTO `service` (`servID`, `servCataID`, `servName`, `servDesc`, `servthum
 -- Table structure for table `servicecatagory`
 --
 
+DROP TABLE IF EXISTS `servicecatagory`;
 CREATE TABLE `servicecatagory` (
   `servCataID` varchar(11) NOT NULL,
   `servCataName` varchar(100) NOT NULL,
@@ -271,6 +306,7 @@ INSERT INTO `servicecatagory` (`servCataID`, `servCataName`, `status`) VALUES
 -- Table structure for table `staff`
 --
 
+DROP TABLE IF EXISTS `staff`;
 CREATE TABLE `staff` (
   `StaffID` int(11) NOT NULL,
   `StaffName` varchar(100) NOT NULL,
@@ -312,18 +348,16 @@ ALTER TABLE `availrooms`
 -- Indexes for table `bill`
 --
 ALTER TABLE `bill`
-  ADD PRIMARY KEY (`BillID`),
-  ADD KEY `fk_4` (`staffID`),
-  ADD KEY `fk_5` (`rContID`);
+  ADD PRIMARY KEY (`BillID`);
 
 --
 -- Indexes for table `bookedservice`
 --
 ALTER TABLE `bookedservice`
   ADD PRIMARY KEY (`servBookID`),
-  ADD KEY `fk_1` (`custID`),
-  ADD KEY `fk_2` (`servID`),
-  ADD KEY `fk_6` (`staffID`);
+  ADD KEY `fk_10` (`custID`),
+  ADD KEY `fk_11` (`servID`),
+  ADD KEY `fk_12` (`staffID`);
 
 --
 -- Indexes for table `customer`
@@ -350,7 +384,7 @@ ALTER TABLE `roomrecord`
 --
 ALTER TABLE `service`
   ADD PRIMARY KEY (`servID`),
-  ADD KEY `fk_7` (`servCataID`);
+  ADD KEY `fk` (`servCataID`);
 
 --
 -- Indexes for table `servicecatagory`
@@ -381,53 +415,22 @@ ALTER TABLE `bill`
   MODIFY `BillID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
--- AUTO_INCREMENT for table `bookedservice`
---
-ALTER TABLE `bookedservice`
-  MODIFY `servBookID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `custID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `custID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `service`
 --
 ALTER TABLE `service`
-  MODIFY `servID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `servID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
   MODIFY `StaffID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `bill`
---
-ALTER TABLE `bill`
-  ADD CONSTRAINT `fk_4` FOREIGN KEY (`staffID`) REFERENCES `staff` (`StaffID`),
-  ADD CONSTRAINT `fk_5` FOREIGN KEY (`rContID`) REFERENCES `roomcontract` (`rContID`);
-
---
--- Constraints for table `bookedservice`
---
-ALTER TABLE `bookedservice`
-  ADD CONSTRAINT `fk_1` FOREIGN KEY (`custID`) REFERENCES `customer` (`custID`),
-  ADD CONSTRAINT `fk_2` FOREIGN KEY (`servID`) REFERENCES `service` (`servID`),
-  ADD CONSTRAINT `fk_6` FOREIGN KEY (`staffID`) REFERENCES `staff` (`StaffID`);
-
---
--- Constraints for table `service`
---
-ALTER TABLE `service`
-  ADD CONSTRAINT `fk_7` FOREIGN KEY (`servCataID`) REFERENCES `servicecatagory` (`servCataID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
