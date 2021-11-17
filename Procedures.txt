@@ -1,0 +1,10 @@
+CREATE PROCEDURE `details`(IN `cus_id` INT(11) UNSIGNED) 
+NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER 
+SELECT rc.roomPrice, rc.parkingPrice, rc.internetPrice, rr.electricityUnit, rr.waterUnit, c.custName, b.paidStatus FROM roomrecord rr, roomcontract rc, customer c, bill b 
+WHERE rr.roomNum = rc.roomNum AND rc.custID = c.custID AND c.custID = cus_id AND b.rcontID = rc.rcontID;
+
+CREATE PROCEDURE `paybill`(IN `rcpt` VARCHAR(250), IN `cus_id` INT(11) UNSIGNED) 
+NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER 
+UPDATE bill SET evidenceurl = rcpt 
+WHERE rContID = (SELECT DISTINCT r.rContID FROM customer c, roomcontract r, bill b 
+                WHERE c.custID = r.custID AND r.rContID = b.rContID AND c.custID = cus_id);

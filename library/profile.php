@@ -27,13 +27,14 @@ else{
     
     
     
-            $sql="UPDATE bill SET evidenceurl = :receipt 
-                            where rContID = (
-                                            SELECT DISTINCT r.rContID 
-                                            FROM customer c, roomcontract r, bill b
-                                            WHERE c.custID = r.custID AND
-                                            r.rContID = b.rContID AND
-                                            c.custID = :custID);";
+            // $sql="UPDATE bill SET evidenceurl = :receipt 
+            //                 where rContID = (
+            //                                 SELECT DISTINCT r.rContID 
+            //                                 FROM customer c, roomcontract r, bill b
+            //                                 WHERE c.custID = r.custID AND
+            //                                 r.rContID = b.rContID AND
+            //                                 c.custID = :custID);";
+            $sql = "CALL `paybill`(:receipt, :custID);";
             $query = $dbh->prepare($sql);
             $query->bindParam(':receipt',$receipt ,PDO::PARAM_STR);
             $query->bindParam(':custID',$custID ,PDO::PARAM_STR);
@@ -120,12 +121,13 @@ else{
      <!-- Start: Welcome Section -->
     
     <?php
-    $con = "SELECT rc.roomPrice, rc.parkingPrice, rc.internetPrice, rr.electricityUnit, rr.waterUnit, c.custName, b.paidStatus
-            FROM roomrecord rr, roomcontract rc, customer c, bill b
-            WHERE rr.roomNum = rc.roomNum AND
-                rc.custID = c.custID AND
-                c.custID = :custID AND
-                b.rcontID = rc.rcontID;";
+    // $con = "SELECT rc.roomPrice, rc.parkingPrice, rc.internetPrice, rr.electricityUnit, rr.waterUnit, c.custName, b.paidStatus
+    //         FROM roomrecord rr, roomcontract rc, customer c, bill b
+    //         WHERE rr.roomNum = rc.roomNum AND
+    //             rc.custID = c.custID AND
+    //             c.custID = :custID AND
+    //             b.rcontID = rc.rcontID;";
+    $con = "CALL `details`(:custID);";
     $query2 = $dbh->prepare($con);
     $query2->bindParam(':custID',$custID ,PDO::PARAM_STR);
     $query2->execute();
@@ -158,7 +160,7 @@ else{
                     <div class="col-md-6">
                         <div class="welcome-wrap">
                             <div class="welcome-text">
-                                <h2 class="section-title">Welcome to Housely <?php echo $custName; ?> <br></br> Custimer ID: <?php echo  $custID; ?></h2>
+                                <h2 class="section-title">Welcome to Housely <?php echo $custName; ?> <br></br> Customer ID: <?php echo  $custID; ?></h2>
 
 
                                 <span class="underline left"></span>
