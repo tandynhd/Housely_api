@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 INSERT INTO `admin` (`AdminID`, `AdminFN`, `AdminEmail`, `AdminUsername`, `AdminPass`, `AdminUpdationDate`) VALUES
 (1, 'Tandin Dorji', '6222790428@g.siit.tu.ac.th', 'Admin', '21232f297a57a5a743894a0e4a801fc3', '2021-10-11 06:32:07'),
 (2, 'Kanokkarn Pinkeaw', '6222790147@g.siit.tu.ac.th', 'Admin2', '21232f297a57a5a743894a0e4a801fc3', '2021-10-10 09:35:17'),
-(3, 'Inkies', 'i@gmail.com', 'admin3', '21232f297a57a5a743894a0e4a801fc3', '2021-10-10 09:35:42');
+
 
 -- --------------------------------------------------------
 
