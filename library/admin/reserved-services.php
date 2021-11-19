@@ -139,7 +139,7 @@ else{
                                         <tr>
                                             
                                             <th>Book ID</th>
-                                            <th>Booked Date</th>
+                                            
                                             <th>Service ID</th>
                                             <th>Customer ID</th>
                                             
@@ -169,7 +169,7 @@ foreach($results as $result)
                                         <tr class="odd gradeX">
                                             
                                             <td class="center"><?php echo htmlentities($result->servBookID);?></td>
-                                            <td class="center"><?php echo htmlentities($result->servBookDate);?></td>
+                                            
                                             <td class="center"><?php echo htmlentities($result->servID);?></td>
                                             <td class="center"><?php echo htmlentities($result->custID	);?></td>
                                             
