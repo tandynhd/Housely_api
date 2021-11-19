@@ -1,10 +1,6 @@
 <?php if($_SESSION['login'])
 {
 ?> 
-
-
-
-
 <!-- Start: Header Section -->
         <header id="header-v1" class="navbar-wrapper inner-navbar-wrapper">
             <div class="container">
@@ -22,9 +18,6 @@
                                     </div>
                                 </div>
                             </div>
-							
-							
-							
 							
                             <div class="col-md-9">
                                 <!-- Header Topbar -->
@@ -55,8 +48,7 @@
                                         </li>
 
                                         <li class="dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle disabled" href="profile.php">Profile</a>
-											                                            
+                                            <a data-toggle="dropdown" class="dropdown-toggle disabled" href="profile.php">Profile</a>                                          
                                         </li>
 
                                         <li class="dropdown">
@@ -67,7 +59,6 @@
                                         
                                         <li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle disabled" href="aboutus.php">About Us</a>
-                                            
                                         </li>
                                         
                                         <li><a href="contactus.php">Contact Us</a></li>
@@ -138,10 +129,7 @@
                                     </div>
                                 </div>
                             </div>
-							
-							
-							
-							
+
                             <div class="col-md-9">
                                 <!-- Header Topbar -->
                                 <div class="header-topbar hidden-sm hidden-xs">
@@ -194,7 +182,7 @@
                                         <h4>Navigation</h4>
                                         <a href="#" class="close"></a>
                                     </li>
-                                  <li >
+                                <li >
                                             <a data-toggle="dropdown" class="dropdown-toggle disabled" href="home.php">Home</a>
                                             
                                         </li>
@@ -231,5 +219,5 @@
 		
 		
 		
-		<?php } ?>
+<?php } ?>
 		
