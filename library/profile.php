@@ -11,7 +11,6 @@ else{
     $custID = $_SESSION['custID'];
     if(isset($_POST['payment']))
     {
-       
         $receipt = $_FILES["paymentreceipt"]["name"];
         $extension = substr($receipt,strlen($receipt)-4,strlen($receipt));
         echo "<script type='text/javascript'> alert($extension); </script>";
@@ -24,9 +23,8 @@ else{
         {
             $receipt=md5($receipt).time().$extension;
             move_uploaded_file($_FILES["paymentreceipt"]["tmp_name"],"images/pr/".$receipt);
-    
-    
-    
+
+            // What the procedure `paybill` does:    
             // $sql="UPDATE bill SET evidenceurl = :receipt 
             //                 where rContID = (
             //                                 SELECT DISTINCT r.rContID 
@@ -39,7 +37,6 @@ else{
             $query->bindParam(':receipt',$receipt ,PDO::PARAM_STR);
             $query->bindParam(':custID',$custID ,PDO::PARAM_STR);
             $query->execute();
-    
     
             $lastInsertId = $dbh->lastInsertId();
             if($lastInsertId)
@@ -66,39 +63,21 @@ else{
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title> Housely </title>
-    
-        <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
-    
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
-   
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
-   
     <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
-   
     <link href="assets/css/style.css" rel="stylesheet" />
 	<link href="assets/css/style1.css" rel="stylesheet" />
-   
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-	
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
-        <link href="assets/css2/font-awesome.min.css" rel="stylesheet" type="text/css" />
-
-        
-        <link href="assets/css2/mmenu.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css2/mmenu.positioning.css" rel="stylesheet" type="text/css" />
-
-        
-        <link href="assets/css2/style.css" rel="stylesheet" type="text/css" />
-	
-
+    <link href="assets/css2/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css2/mmenu.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css2/mmenu.positioning.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css2/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-     
 <?php include('includes/header.php');?>
-
-<?php 
-// echo "<script type='text/javascript'>alert($custID); </script>";
-?>
 
         <section class="page-banner services-banner">
             <div class="container">
@@ -115,12 +94,10 @@ else{
                 </div>
             </div>
         </section>
-       
-		
 
-     <!-- Start: Welcome Section -->
-    
+    <!-- Start: Welcome Section -->
     <?php
+    // What the procedure `details` calls:
     // $con = "SELECT rc.roomPrice, rc.parkingPrice, rc.internetPrice, rr.electricityUnit, rr.waterUnit, c.custName, b.paidStatus
     //         FROM roomrecord rr, roomcontract rc, customer c, bill b
     //         WHERE rr.roomNum = rc.roomNum AND
@@ -132,16 +109,11 @@ else{
     $query2->bindParam(':custID',$custID ,PDO::PARAM_STR);
     $query2->execute();
     $results2=$query2->fetchAll(PDO::FETCH_OBJ);
-
-    
-    
     $cnt=1;
     if($query2->rowCount() > 0)
     {
         foreach($results2 as $result)
         {    
-
-
         $rPrice=($result -> roomPrice);
         $pPrice=($result -> parkingPrice);
         $iPrice=($result -> internetPrice);
@@ -245,69 +217,30 @@ else{
         </section>
         <!-- End: Welcome Section -->
 
-     
-  <?php include('includes/footer.php');?>
-      
+<?php include('includes/footer.php');?>
     <script src="assets/js/jquery-1.10.2.js"></script>
-   
     <script src="assets/js/bootstrap.js"></script>
-   
     <script src="assets/js/dataTables/jquery.dataTables.js"></script>
     <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
-  
     <script src="assets/js/custom.js"></script>
-	
-	
-	 <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
-       
-        <script type="text/javascript" src="js/jquery-ui.min.js"></script>
-        
-      
-        <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-
-        
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        
-        <!-- Mobile Menu -->
-        <script type="text/javascript" src="js/mmenu.min.js"></script>
-        
-       
-        <script type="text/javascript" src="js/harvey.min.js"></script>
-        
-        
-        <script type="text/javascript" src="js/waypoints.min.js"></script>
-
-        
-        <script type="text/javascript" src="js/facts.counter.min.js"></script>
-
-        
-        <script type="text/javascript" src="js/mixitup.min.js"></script>
-
-        
-        <script type="text/javascript" src="js/owl.carousel.min.js"></script>
-        
-       
-        <script type="text/javascript" src="js/accordion.min.js"></script>
-        
-        
-        <script type="text/javascript" src="js/responsive.tabs.min.js"></script>
-        
-        
-        <script type="text/javascript" src="js/responsive.table.min.js"></script>
-        
-       
-        <script type="text/javascript" src="js/masonry.min.js"></script>
-        
-        
-        <script type="text/javascript" src="js/carousel.swipe.min.js"></script>
-        
-        
-        <script type="text/javascript" src="js/bxslider.min.js"></script>
-        
-       
-        <script type="text/javascript" src="js/main.js"></script>
-	
-
-</body>
+	<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- Mobile Menu -->
+    <script type="text/javascript" src="js/mmenu.min.js"></script>
+    <script type="text/javascript" src="js/harvey.min.js"></script>
+    <script type="text/javascript" src="js/waypoints.min.js"></script>
+    <script type="text/javascript" src="js/facts.counter.min.js"></script>
+    <script type="text/javascript" src="js/mixitup.min.js"></script>
+    <script type="text/javascript" src="js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="js/accordion.min.js"></script>
+    <script type="text/javascript" src="js/responsive.tabs.min.js"></script>
+    <script type="text/javascript" src="js/responsive.table.min.js"></script>
+    <script type="text/javascript" src="js/masonry.min.js"></script>
+    <script type="text/javascript" src="js/carousel.swipe.min.js"></script>
+    <script type="text/javascript" src="js/bxslider.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    </body>
 </html>
 <?php } ?>

@@ -8,27 +8,18 @@ include('includes/config.php');
 <html lang="zxx">
     
 
-<head>        
-        
-       
+<head>    
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
         
-    
-       <title> Housely </title>
+        <title> Housely </title>
         
-       
         <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
         
-      
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
-        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        
-       
+        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />        
         <link href="css/mmenu.css" rel="stylesheet" type="text/css" />
         <link href="css/mmenu.positioning.css" rel="stylesheet" type="text/css" />
-        
-       
         <link href="style.css" rel="stylesheet" type="text/css" />
         
     </head>
@@ -36,8 +27,6 @@ include('includes/config.php');
     <body>
         
 <?php include('includes/header.php');?>
-        
-       
         <section class="page-banner services-banner">
             <div class="container">
                 <div class="banner-header">
@@ -53,15 +42,8 @@ include('includes/config.php');
                 </div>
             </div>
         </section>
-       
-	   
-        
-       
-        
-        
-        
-       
-            <!-- Start: Welcome Section -->
+
+        <!-- Start: Welcome Section -->
         <section class="welcome-section">
             <div class="container">
                 <div class="row">
@@ -122,12 +104,7 @@ include('includes/config.php');
             <div class="welcome-image"></div>
         </section>
         <!-- End: Welcome Section -->
-        
-		
-		
-		
-		
-      
+
         <section class="latest-blog2 section-padding banner">
             <div class="container">
                 <div class="center-content">
@@ -265,9 +242,9 @@ include('includes/config.php');
                 </div>
             </div>
         </section>
-       
-	   <!-- Start: Newsletter -->
-       <section class="newsletter section-padding">
+
+	    <!-- Start: Newsletter -->
+        <section class="newsletter section-padding">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
@@ -285,9 +262,9 @@ include('includes/config.php');
             </div>
         </section>
         <!-- End: Newsletter -->
-	   
-         <!-- Start: Social Network -->
-         <section class="social-network section-padding">
+
+        <!-- Start: Social Network -->
+        <section class="social-network section-padding">
             <div class="container">
                 <div class="center-content">
                     <h2 class="section-title">Follow Us</h2>
@@ -340,60 +317,24 @@ include('includes/config.php');
                 </ul>
             </div>
         </section>
-       
         
-        
-       <?php include('includes/footer.php');?>
-        
-       
+        <?php include('includes/footer.php');?>
         <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
-        
-     
-        <script type="text/javascript" src="js/jquery-ui.min.js"></script>
-        
-       
+        <script type="text/javascript" src="js/jquery-ui.min.js"></script>     
         <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-
-      
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        
-       
         <script type="text/javascript" src="js/mmenu.min.js"></script>
-        
-     
         <script type="text/javascript" src="js/harvey.min.js"></script>
-        
-     
         <script type="text/javascript" src="js/waypoints.min.js"></script>
-
-      
         <script type="text/javascript" src="js/facts.counter.min.js"></script>
-
-        
         <script type="text/javascript" src="js/mixitup.min.js"></script>
-
-      
         <script type="text/javascript" src="js/owl.carousel.min.js"></script>
-        
-      
         <script type="text/javascript" src="js/accordion.min.js"></script>
-        
-       
         <script type="text/javascript" src="js/responsive.tabs.min.js"></script>
-        
-       
         <script type="text/javascript" src="js/responsive.table.min.js"></script>
-        
-      
         <script type="text/javascript" src="js/masonry.min.js"></script>
-        
-     
         <script type="text/javascript" src="js/carousel.swipe.min.js"></script>
-        
-       
         <script type="text/javascript" src="js/bxslider.min.js"></script>
-        
-       
         <script type="text/javascript" src="js/main.js"></script>
         
     </body>

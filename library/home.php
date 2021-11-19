@@ -6,32 +6,17 @@ include('includes/config.php');
 
 <!DOCTYPE html>
 <html lang="zxx">
-    
 
-<head>        
-        
-        
+<head>      
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
-        
-       
         <title> Housely </title>
-        
-       
         <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
-        
-       
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
         <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        
-       
         <link href="css/mmenu.css" rel="stylesheet" type="text/css" />
         <link href="css/mmenu.positioning.css" rel="stylesheet" type="text/css" />
-        
-       
         <link href="style.css" rel="stylesheet" type="text/css" />
-        
-       
     </head>
     <?php
     $con = "SELECT availrooms FROM availrooms
@@ -50,12 +35,8 @@ include('includes/config.php');
         }
     }
     ?>
-
-
-
     <body>
 
-        
 <?php include('includes/header.php');?>
         
         <!-- Start: Slider Section -->
@@ -74,7 +55,6 @@ include('includes/config.php');
                             <p>Everything you need to do to feel at home is find the right place to live in. Choose us, choose the right place.</p>
                             <div class="slide-buttons hidden-sm hidden-xs">    
                                 <a href="#" class="btn btn-primary">Read More</a>
-                                
                             </div>
                         </div>
                     </div>
@@ -95,7 +75,6 @@ include('includes/config.php');
                         </div>
                     </div>
                 </div>
-                
             </div>
             
             <!-- Controls -->
@@ -103,8 +82,6 @@ include('includes/config.php');
             <a class="right carousel-control" href="#home-v1-header-carousel" data-slide="next"></a>
         </div>
         <!-- End: Slider Section -->
-        
-        
         
         <!-- Start: Welcome Section -->
         <section class="welcome-section">
@@ -192,10 +169,8 @@ include('includes/config.php');
                             <figcaption class="bg-orange">
                                 <div class="info-block">
                                     <h4>Fitness</h4>
-                    
                                     <p>Housely has excellent fully equipped and modern indoor Gymnasium for those who are into health and fitness.</p>
                                     <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                                   
                                 </div>
                             </figcaption>
                         </figure>
@@ -362,7 +337,7 @@ include('includes/config.php');
                         <div class="feature-box">
                             <i class="green"></i>
                             <h3>MOVING SERVICES</h3>
-							 <p>Our team can offer a simple, stress-free moving experience. We can always ensure a friendly, good value service that will suit your specific needs.</p>
+							<p>Our team can offer a simple, stress-free moving experience. We can always ensure a friendly, good value service that will suit your specific needs.</p>
 
                             <a class="green" href="#">
                                 View Selection <i class="fa fa-long-arrow-right"></i>
@@ -373,28 +348,7 @@ include('includes/config.php');
             </div>
         </section>
         <!-- End: Features -->
-        
-        <!-- Start: Newsletter -->
-        <!-- <section class="newsletter section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="center-content">
-                            <h2 class="section-title">Discover Your New Home</h2>
-                            <span class="underline center"></span>
-                            
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" placeholder="Enter your Email, we will help you find the right fit" id="newsletter" name="newsletter" type="email">
-                            <input class="form-control" value="Enter" type="submit">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-        <!-- End: Newsletter -->
-        
-        
+
         <!-- Start: Latest Blog -->
         <section class="latest-blog section-padding banner">
             <div class="container">
@@ -457,7 +411,6 @@ include('includes/config.php');
                             </li>
                         </ul>
                     </div>
-
                     <div class="tabs-list">
 
                     <!-- Start: living privilage -->
@@ -896,13 +849,10 @@ include('includes/config.php');
 
                     
                     <div class="clearfix"></div>
-                        </div>
+                    </div>
 
-                    
-               
         </section>
         <!-- End: Our Community Section -->
-        
         <!-- Start: News & Event -->
         <section class="news-events section-padding banner">
             <div class="container">
@@ -975,7 +925,7 @@ include('includes/config.php');
                                     <li>
                                         <a href="#" target="_blank">
                                             <i class="fa fa-map-marker"></i>
-                                           Bangkok, Thailand
+                                                Bangkok, Thailand
                                         </a>
                                     </li>
                                 </ul>
@@ -1076,61 +1026,26 @@ include('includes/config.php');
                 </ul>
             </div>
         </section>
-       
-        
-       <?php include('includes/footer.php');?>
-        
-       
-        <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
-       
-        <script type="text/javascript" src="js/jquery-ui.min.js"></script>
-        
-      
-        <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
 
-        
+        <?php include('includes/footer.php');?>
+        <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+        <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         
         <!-- Mobile Menu -->
-        <script type="text/javascript" src="js/mmenu.min.js"></script>
-        
-       
+        <script type="text/javascript" src="js/mmenu.min.js"></script>       
         <script type="text/javascript" src="js/harvey.min.js"></script>
-        
-        
         <script type="text/javascript" src="js/waypoints.min.js"></script>
-
-        
         <script type="text/javascript" src="js/facts.counter.min.js"></script>
-
-        
         <script type="text/javascript" src="js/mixitup.min.js"></script>
-
-        
         <script type="text/javascript" src="js/owl.carousel.min.js"></script>
-        
-       
         <script type="text/javascript" src="js/accordion.min.js"></script>
-        
-        
         <script type="text/javascript" src="js/responsive.tabs.min.js"></script>
-        
-        
         <script type="text/javascript" src="js/responsive.table.min.js"></script>
-        
-       
         <script type="text/javascript" src="js/masonry.min.js"></script>
-        
-        
         <script type="text/javascript" src="js/carousel.swipe.min.js"></script>
-        
-        
         <script type="text/javascript" src="js/bxslider.min.js"></script>
-        
-       
         <script type="text/javascript" src="js/main.js"></script>
-        
     </body>
-
-
 </html>
