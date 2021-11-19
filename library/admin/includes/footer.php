@@ -1,5 +1,5 @@
-  <!-- Start: Footer -->
-  <footer class="site-footer">
+<!-- Start: Footer -->
+<footer class="site-footer">
             <div class="container">
                 <div id="footer-widgets">
                     <div class="row">
@@ -83,7 +83,7 @@
                     <div class="row">
                         <div class="footer-text">
                             <div >
-                   &copy; 2021 Housely |<a href="" > Designed by : team typo*</a> 
+                &copy; 2021 Housely |<a href="" > Designed by : team typo*</a> 
                 </div>
                         </div>
                         
