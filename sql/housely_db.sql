@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2021 at 06:38 PM
+-- Generation Time: Nov 21, 2021 at 08:01 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -68,8 +68,8 @@ CREATE TABLE IF NOT EXISTS `admin` (
 
 INSERT INTO `admin` (`AdminID`, `AdminFN`, `AdminEmail`, `AdminUsername`, `AdminPass`, `AdminUpdationDate`) VALUES
 (1, 'Tandin Dorji', '6222790428@g.siit.tu.ac.th', 'Admin', '21232f297a57a5a743894a0e4a801fc3', '2021-10-11 06:32:07'),
-(2, 'Kanokkarn Pinkeaw', '6222790147@g.siit.tu.ac.th', 'Admin2', '21232f297a57a5a743894a0e4a801fc3', '2021-10-10 09:35:17');
-
+(2, 'Kanokkarn Pinkeaw', '6222790147@g.siit.tu.ac.th', 'Admin2', '21232f297a57a5a743894a0e4a801fc3', '2021-10-10 09:35:17'),
+(3, 'Inkies', 'i@gmail.com', 'admin3', '21232f297a57a5a743894a0e4a801fc3', '2021-10-10 09:35:42');
 
 -- --------------------------------------------------------
 
@@ -129,16 +129,17 @@ INSERT INTO `bill` (`BillID`, `staffID`, `rContID`, `billIssueDate`, `Total`, `r
 
 DROP TABLE IF EXISTS `bookedservice`;
 CREATE TABLE IF NOT EXISTS `bookedservice` (
-  `servBookID` int(11) NOT NULL,
+  `servBookID` int(11) NOT NULL AUTO_INCREMENT,
   `servID` int(11) NOT NULL,
   `custID` int(11) NOT NULL,
-  `staffID` int(11) NOT NULL,
+  `staffID` int(11) NOT NULL DEFAULT 1,
   `roomNum` int(11) NOT NULL,
   `servPrice` decimal(10,2) NOT NULL,
   `servStatus` tinyint(1) NOT NULL,
   `servDate` date DEFAULT NULL,
-  `servTime` time DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `servTime` time DEFAULT NULL,
+  PRIMARY KEY (`servBookID`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `bookedservice`
@@ -146,9 +147,10 @@ CREATE TABLE IF NOT EXISTS `bookedservice` (
 
 INSERT INTO `bookedservice` (`servBookID`, `servID`, `custID`, `staffID`, `roomNum`, `servPrice`, `servStatus`, `servDate`, `servTime`) VALUES
 (1, 1, 1, 2, 1101, '0.00', 1, '2021-10-04', '13:00:00'),
-(2, 2, 2, 3, 1102, '500.00', 0, '2021-10-05', '12:00:00'),
-(4, 1, 4, 0, 1104, '0.00', 0, '2021-11-19', '13:30:00'),
-(0, 1, 15, 0, 1120, '0.00', 1, '2021-11-21', '09:31:00');
+(2, 2, 2, 3, 1102, '500.00', 1, '2021-10-05', '12:00:00'),
+(4, 1, 4, 1, 1104, '0.00', 0, '2021-11-19', '13:30:00'),
+(5, 1, 15, 5, 1120, '500.00', 1, '2021-11-21', '09:31:00'),
+(8, 2, 4, 3, 1104, '0.00', 0, '2021-11-22', '09:00:00');
 
 -- --------------------------------------------------------
 
