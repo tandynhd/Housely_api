@@ -18,32 +18,7 @@ else{
         $_SESSION['delmsg']="Service deleted scuccessfully ";
         header('location:reg-customers.php');
     }
-    // code for block student    
-    if(isset($_GET['inid']))
-    {
-    $id=$_GET['inid'];
-    $status=0;
-    $sql = "update customers set Status=:status  WHERE id=:id";
-    $query = $dbh->prepare($sql);
-    $query -> bindParam(':id',$id, PDO::PARAM_STR);
-    $query -> bindParam(':status',$status, PDO::PARAM_STR);
-    $query -> execute();
-    header('location:reg-customers.php');
-    }
-
-    //code for active students
-    if(isset($_GET['id']))
-    {
-    $id=$_GET['id'];
-    $status=1;
-    $sql = "update customers set Status=:status  WHERE id=:id";
-    $query = $dbh->prepare($sql);
-    $query -> bindParam(':id',$id, PDO::PARAM_STR);
-    $query -> bindParam(':status',$status, PDO::PARAM_STR);
-    $query -> execute();
-    header('location:reg-customers.php');
-    }
-
+    
     ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
