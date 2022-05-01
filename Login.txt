@@ -1,8 +1,10 @@
 
 For User
-Login Details for user: username: t@gmail.com         pass: 1234
+Login Details for user: username: k@gmail.com         pass: 1234
 
 For Admin Panel
 Login Details for admin : username: admin            pass - admin
+
+
 
 

@@ -1,4 +1,4 @@
-************Triggers for updating No of available rooms*********
+************Triggers for updating No of available rooms**********
 
 delimiter //
 CREATE TRIGGER updaterooms 

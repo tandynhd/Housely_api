@@ -7,3 +7,5 @@ CREATE USER 'user_housely'@'localhost';
 grant select, insert on housely_db.* to 'user_housely' identified by "password";
 flush privileges;
 
+
+

@@ -1,4 +1,4 @@
-********************Procedures**********************
+********************Procedures***********************
 CREATE PROCEDURE `details`(IN `cus_id` INT(11) UNSIGNED) 
 NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER 
 SELECT rc.roomPrice, rc.parkingPrice, rc.internetPrice, rr.electricityUnit, rr.waterUnit, c.custName, b.paidStatus FROM roomrecord rr, roomcontract rc, customer c, bill b 
