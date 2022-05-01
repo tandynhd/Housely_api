@@ -23,5 +23,5 @@ https://maps.googleapis.com/maps/api/js?key=AIzaSyAT5k-RhvFSVIuCALkpHhKgQx6SJUd9
 | Generate Bill  | :x:  |:x:  | :heavy_check_mark:  |
 | Receive Bill  | :x:  | :heavy_check_mark:  |:x:  |
 | Upload Slip  | :x:  | :heavy_check_mark:  |:x:  |
-| Weather API  | :x:  | :heavy_check_mark:  |:x:  |
-| Map API  | :x:  | :heavy_check_mark:  |:x:  |
+| Weather API  | :heavy_check_mark:  | :heavy_check_mark:  |:heavy_check_mark:  |
+| Map API  | :heavy_check_mark:  | :heavy_check_mark:  |:heavy_check_mark: |
