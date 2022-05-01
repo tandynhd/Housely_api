@@ -240,7 +240,7 @@ INSERT INTO `roomcontract` (`rContID`, `staffID`, `custID`, `roomNum`, `contSDat
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roomrecord`
+-- Table structure for table `roomrecord`s
 --
 
 DROP TABLE IF EXISTS `roomrecord`;
