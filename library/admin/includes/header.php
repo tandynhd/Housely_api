@@ -84,6 +84,8 @@
                                         
                                         
                                         <li><a href="reg-customers.php"> Registerd Customers </a></li>
+
+                                        <li><a href="weather.php">Weather</a></li>
                                     </ul>
                                 </div>
                             </div>

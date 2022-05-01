@@ -62,6 +62,8 @@
                                         </li>
                                         
                                         <li><a href="contactus.php">Contact Us</a></li>
+
+                                        <li><a href="weather.php">Weather</a></li>
                                     </ul>
                                 </div>
                             </div>
