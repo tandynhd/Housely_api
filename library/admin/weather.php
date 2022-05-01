@@ -23,44 +23,50 @@
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <title> Weather Forecast Using OpenWeatherMap with PHP </title>
 
     <style>
-        body {
-            font-family: Arial;
-            font-size: 0.95em;
-            color: #929292;
-        }
-        
-        .report-container {
-            border: #E0E0E0 1px solid;
-            padding: 20px 40px 40px 40px;
-            border-radius: 2px;
-            width: 550px;
-            margin: 0 auto;
-        }
+    body {
+        font-family: Arial;
+        font-size: 0.95em;
+        color: #929292;
+    }
 
-        .weather-icon {
-            vertical-align: middle;
-            margin-right: 20px;
-        }
+    .report-container {
+        border: #E0E0E0 1px solid;
+        padding: 20px 40px 40px 40px;
+        border-radius: 2px;
+        width: 550px;
+        margin: 0 auto;
+    }
 
-        .weather-forecast{
-            color: #212121;
-            font-size: 1.2em;
-            font-weight: bold
-        }
+    .weather-icon {
+        vertical-align: middle;
+        margin-right: 20px;
+    }
 
-        span.min-temperature{
-            margin-left: 15px;
-            color: #929292;
-        }
-        
-        .time{
-            line-height: 25px;
-        }
+    .weather-forecast {
+        color: #212121;
+        font-size: 1.2em;
+        font-weight: bold
+    }
 
+    span.min-temperature {
+        margin-left: 15px;
+        color: #929292;
+    }
+
+    .overRide {
+        font-family: Arial;
+        font-size: 1.2em;
+        color: black;
+    }
+
+    .time {
+        line-height: 25px;
+    }
     </style>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -71,64 +77,69 @@
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
-	<link href="assets/css/style1.css" rel="stylesheet" />
+    <link href="assets/css/style1.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i"
+        rel="stylesheet" />
     <link href="assets/css2/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css2/mmenu.css" rel="stylesheet" type="text/css" />
     <link href="assets/css2/mmenu.positioning.css" rel="stylesheet" type="text/css" />
     <link href="assets/css2/style.css" rel="stylesheet" type="text/css" />
-	
+
 </head>
+
 <body>
-    
-<?php include('includes/header.php');?>
-        <section class="page-banner services-banner">
-            <div class="container">
-                <div class="banner-header">
-                    <h2>Local Weather</h2>
-                    <span class="underline center"></span>
-                    <p class="lead"></p>
-                </div>
-                <div class="breadcrumb">
-                    <ul>
-                        <li><a href="home.php">Home</a></li>
-                        <li>Weather</li>
-                    </ul>
-                </div>
+
+    <?php include('includes/header.php');?>
+    <section class="page-banner services-banner">
+        <div class="container">
+            <div class="banner-header">
+                <h2>Local Weather</h2>
+                <span class="underline center"></span>
+                <p class="lead"></p>
             </div>
-        </section>
-    </div>
-    </div>
-  
-    </br>
-  
-    <div class="report-container">
-            <div class="timer">
-                
-                <div><h2><?php echo $data->name; ?></h2></div>
-                <div><?php echo date("l g:i a", $currentTime); ?></div>
-                <div><?php echo date("jS F, Y", $currentTime); ?></div>
-                <div><?php echo ucwords($data->weather[0]->description); ?></div>
-            </div>
-            <div class="weather-forecast">
-                <img src="http://openweathermap.org/img/w/<?php echo $data->weather[0]->icon; ?>.png"
-                    class="weather-icon" /> <?php echo $data->main->temp_max; ?>&deg;C 
-                    <span class="min-temperature"><?php echo $data->main->temp_min; ?>&deg;C</span>
-            </div>
-            <div class="time">
-                <div>Humidity: <?php echo $data->main->humidity; ?>%</div>
-                <div>Wind: <?php echo $data->wind->speed; ?>km/h</div>
+            <div class="breadcrumb">
+                <ul>
+                    <li><a href="home.php">Home</a></li>
+                    <li>Weather</li>
+                </ul>
             </div>
         </div>
+    </section>
+    </div>
+    </div>
 
-        </br>
-    
-<?php include('includes/footer.php');?>
+    </br>
+
+    <div class="report-container">
+        <div class="timer">
+
+            <div>
+                <h2 class="overRide"><?php echo $data->name; ?></h2>
+            </div>
+            <div><?php echo date("l g:i a", $currentTime); ?></div>
+            <div><?php echo date("jS F, Y", $currentTime); ?></div>
+            <div><?php echo ucwords($data->weather[0]->description); ?></div>
+        </div>
+        <div class="weather-forecast">
+            <img src="http://openweathermap.org/img/w/<?php echo $data->weather[0]->icon; ?>.png"
+                class="weather-icon" /> <?php echo $data->main->temp_max; ?>&deg;C
+            <span class="min-temperature"><?php echo $data->main->temp_min; ?>&deg;C</span>
+        </div>
+        <div class="time">
+            <div>Humidity: <?php echo $data->main->humidity; ?>%</div>
+            <div>Wind: <?php echo $data->wind->speed; ?>km/h</div>
+        </div>
+    </div>
+
+    </br>
+
+    <?php include('includes/footer.php');?>
     <script src="assets/js/jquery-1.10.2.js"></script>
     <script src="assets/js/bootstrap.js"></script>
     <script src="assets/js/custom.js"></script>
-	<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -146,11 +157,7 @@
     <script type="text/javascript" src="js/carousel.swipe.min.js"></script>
     <script type="text/javascript" src="js/bxslider.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
-	
+
 </body>
+
 </html>
-
-
-
-
-
