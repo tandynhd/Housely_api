@@ -972,7 +972,7 @@ include('includes/config.php');
         </section>
         <!-- End: News & Event -->
         
-        <!-- Start: Social Network -->
+        <!-- Start: Social Network f-->
         <section class="social-network section-padding">
             <div class="container">
                 <div class="center-content">
