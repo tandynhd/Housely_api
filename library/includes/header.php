@@ -100,6 +100,8 @@
                                         </li>
                                         
                                         <li><a href="contactus.php">Contact Us</a></li>
+
+                                        <li><a href="weather.php">Weather</a></li>
                                         <li><a href="change-password.php">Change Password</a></li>
 										<li><a href="logout.php">Log Out</a></li>
                                 </ul>
@@ -171,6 +173,7 @@
                                             <a data-toggle="dropdown" class="dropdown-toggle disabled" href="adminlogin.php">Admin</a>
                                             
                                         </li>
+                                        <li><a href="weather.php">Weather</a></li>
                             
                                     </ul>
                                 </div>
